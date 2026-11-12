@@ -217,9 +217,15 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
-        <p>
-          광고 소재 규격 자동 검수 시스템 • 애디슨, 애피어, 버즈빌, 쿠팡, 크리테오, 당근, 구글, 카카오, 메타, 몰로코, 네이버, RTB House, 틱톡, 토스, 엑스 (15대 주요 광고 매체)
+      <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2">
+        <p className="font-semibold text-slate-800 text-sm tracking-tight">
+          Crafted with passion in 2026 by <strong className="text-blue-600 font-bold">Owen O. Magnus</strong>.
+        </p>
+        <p className="text-xs text-slate-500 font-medium">
+          Feedbacks are warmly welcomed, and coffee sponsorships are deeply appreciated! ☕✨
+        </p>
+        <p className="text-[11px] text-slate-400">
+          Ad Creative Guideline Validator • 15 Major Advertising Platforms & 150+ Official Placements Supported
         </p>
       </footer>
 

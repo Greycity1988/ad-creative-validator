@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { UploadCloud, X, Image as ImageIcon, Plus } from 'lucide-react';
+import { UploadCloud, X, Image as ImageIcon, Plus, ShieldCheck } from 'lucide-react';
 import { UploadedFileItem } from '../types';
 
 interface FileUploaderProps {
@@ -74,8 +74,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center space-x-2 flex-wrap gap-y-1">
           <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
             1
           </span>
@@ -84,6 +84,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           </h2>
           <span className="text-xs text-slate-400 font-normal">
             (JPG, PNG, GIF, WebP 다중 선택 가능)
+          </span>
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <ShieldCheck className="w-3 h-3 text-emerald-600" />
+            서버 미저장 · 100% 보안 안심
           </span>
         </div>
 
@@ -97,6 +101,15 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             전체 비우기
           </button>
         )}
+      </div>
+
+      {/* Security Guarantee Notice */}
+      <div className="flex items-start gap-2.5 px-3.5 py-2.5 bg-emerald-50/60 border border-emerald-200/80 rounded-lg text-xs text-slate-700">
+        <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+        <div className="leading-relaxed">
+          <span className="font-bold text-emerald-800">100% 무저장 안심 보안 확인: </span>
+          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-emerald-900 underline decoration-emerald-400 decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
+        </div>
       </div>
 
       {/* Drag & Drop Zone */}
