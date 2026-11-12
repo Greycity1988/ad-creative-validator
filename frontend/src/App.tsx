@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
+import { OverviewHero } from './components/OverviewHero';
 import { FileUploader } from './components/FileUploader';
 import { MediaSelector } from './components/MediaSelector';
 import { ResultDashboard } from './components/ResultDashboard';
@@ -138,8 +139,13 @@ export const App: React.FC = () => {
     filePreviewMap[f.id] = f.previewUrl;
   });
 
+  const totalPlacementsCount = platformsMetadata.reduce(
+    (acc, p) => acc + (p.placements?.length || 0),
+    0
+  ) || 160;
+
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen bg-canvas text-ink-primary font-sans antialiased flex flex-col selection:bg-accent/15 selection:text-accent">
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
@@ -147,15 +153,28 @@ export const App: React.FC = () => {
         onOpenLogo={() => setIsLogoOpen(true)}
       />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Step 1: Upload */}
-        <FileUploader
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+        {/* Scandinavian Metric Hero Banner */}
+        <OverviewHero
           files={files}
-          onAddFiles={handleAddFiles}
-          onRemoveFile={handleRemoveFile}
-          onClearFiles={handleClearFiles}
-          disabled={isLoading}
+          selectedPlatformCount={selectedPlatforms.length}
+          totalPlacementCount={totalPlacementsCount}
+          onScrollToUpload={() => {
+            const el = document.getElementById('step-upload');
+            el?.scrollIntoView({ behavior: 'smooth' });
+          }}
         />
+
+        {/* Step 1: Upload */}
+        <div id="step-upload">
+          <FileUploader
+            files={files}
+            onAddFiles={handleAddFiles}
+            onRemoveFile={handleRemoveFile}
+            onClearFiles={handleClearFiles}
+            disabled={isLoading}
+          />
+        </div>
 
         {/* Step 2: Platform & Placement Selection & Action */}
         <MediaSelector
@@ -174,18 +193,18 @@ export const App: React.FC = () => {
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-3 text-red-700">
+          <div className="p-5 bg-red-50/80 border border-red-200/90 rounded-2xl flex items-start space-x-3 text-red-800 shadow-soft-xs">
             <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-600" />
             <div className="text-sm">
-              <span className="font-bold">검수 오류: </span>
-              <span>{errorMessage}</span>
+              <span className="font-bold">검수 처리 오류: </span>
+              <span className="text-red-700">{errorMessage}</span>
             </div>
           </div>
         )}
 
         {/* Step 3: Results Dashboard */}
         {results && (
-          <div id="results-section" className="pt-4">
+          <div id="results-section" className="pt-2">
             <ResultDashboard
               results={results}
               filePreviews={filePreviewMap}
@@ -198,31 +217,31 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2 flex flex-col items-center justify-center">
+      <footer className="mt-auto border-t border-line bg-surface/80 backdrop-blur-sm py-10 text-center text-xs text-ink-muted space-y-3 flex flex-col items-center justify-center">
         <button
           type="button"
           onClick={() => setIsLogoOpen(true)}
-          className="group relative p-1.5 rounded-xl hover:bg-slate-100 transition-all cursor-pointer"
+          className="group relative p-2 rounded-2xl hover:bg-canvas-subtle transition-all cursor-pointer"
           title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
         >
-          <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-110" />
+          <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-105" />
         </button>
-        <p className="font-semibold text-slate-800 text-sm tracking-tight">
-          Crafted with passion in 2026 by <strong className="text-blue-600 font-bold">Owen O. Magnus</strong>.
+        <p className="font-semibold text-ink-primary text-sm tracking-tight">
+          Crafted with passion in 2026 by <strong className="text-accent font-bold">Owen O. Magnus</strong>.
         </p>
-        <p className="text-xs text-slate-500 font-medium">
+        <p className="text-xs text-ink-secondary font-medium">
           Feedbacks are warmly welcomed, and{' '}
           <button
             type="button"
             onClick={() => setIsDonationOpen(true)}
-            className="text-amber-600 hover:text-amber-700 font-bold underline decoration-amber-300 hover:decoration-amber-500 cursor-pointer inline-flex items-center space-x-0.5"
+            className="text-accent hover:text-accent-hover font-bold underline decoration-accent/30 hover:decoration-accent cursor-pointer inline-flex items-center space-x-1"
           >
             <span>coffee sponsorships</span>
             <span>☕✨</span>
           </button>{' '}
           are deeply appreciated!
         </p>
-        <p className="text-[11px] text-slate-400">
+        <p className="text-[11px] text-ink-muted">
           ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 160+ Official Placements Supported
         </p>
       </footer>

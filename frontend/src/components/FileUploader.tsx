@@ -72,23 +72,39 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   };
 
+  const getAspectRatioLabel = (width?: number, height?: number): string | null => {
+    if (!width || !height) return null;
+    const ratio = width / height;
+    if (Math.abs(ratio - 1.0) < 0.05) return '1:1';
+    if (Math.abs(ratio - 1.91) < 0.08) return '1.91:1';
+    if (Math.abs(ratio - 0.5625) < 0.05) return '9:16';
+    if (Math.abs(ratio - 0.8) < 0.05) return '4:5';
+    if (Math.abs(ratio - 2.0) < 0.08) return '2:1';
+    return `${(width / height).toFixed(2)}:1`;
+  };
+
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-4">
-      <div className="flex items-center justify-between flex-wrap gap-2">
-        <div className="flex items-center space-x-2 flex-wrap gap-y-1">
-          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
-            1
+    <div className="bg-surface rounded-3xl border border-line shadow-soft-sm p-6 sm:p-8 space-y-6 transition-all">
+      {/* Step Header */}
+      <div className="flex items-center justify-between flex-wrap gap-3">
+        <div className="flex items-center space-x-3 flex-wrap gap-y-2">
+          <span className="flex items-center justify-center w-7 h-7 rounded-full bg-accent text-white text-xs font-bold font-mono tracking-tight shadow-soft-xs">
+            01
           </span>
-          <h2 className="text-base font-bold text-slate-800">
-            소재 이미지 업로드
-          </h2>
-          <span className="text-xs text-slate-400 font-normal">
-            (JPG, PNG, GIF, WebP 다중 선택 가능)
-          </span>
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-            <ShieldCheck className="w-3 h-3 text-emerald-600" />
-            서버 미저장 · 100% 보안 안심
-          </span>
+          <div>
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg sm:text-xl font-bold tracking-tight text-ink-primary">
+                소재 이미지 업로드
+              </h2>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-canvas-subtle border border-line text-ink-secondary">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
+                <span>100% 로컬 보안 판정</span>
+              </span>
+            </div>
+            <p className="text-xs text-ink-muted mt-0.5">
+              JPG, PNG, GIF, WebP 다중 파일 선택 지원 (단일 파일 최대 30MB)
+            </p>
+          </div>
         </div>
 
         {files.length > 0 && (
@@ -96,19 +112,21 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             type="button"
             onClick={onClearFiles}
             disabled={disabled}
-            className="text-xs text-slate-500 hover:text-red-600 transition-colors cursor-pointer"
+            className="text-xs font-medium text-ink-muted hover:text-status-fail px-3 py-1.5 rounded-full hover:bg-canvas-subtle transition-all cursor-pointer"
           >
             전체 비우기
           </button>
         )}
       </div>
 
-      {/* Security Guarantee Notice */}
-      <div className="flex items-start gap-2.5 px-3.5 py-2.5 bg-emerald-50/60 border border-emerald-200/80 rounded-lg text-xs text-slate-700">
-        <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
-          <span className="font-bold text-emerald-800">100% 무저장 안심 보안 확인: </span>
-          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-emerald-900 underline decoration-emerald-400 decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
+      {/* Security Privacy Callout */}
+      <div className="flex items-start gap-3 p-4 rounded-2xl bg-canvas-subtle/80 border border-line text-xs text-ink-secondary leading-relaxed">
+        <div className="w-6 h-6 rounded-lg bg-surface border border-line flex items-center justify-center text-accent flex-shrink-0 mt-0.5 shadow-2xs">
+          <ShieldCheck className="w-3.5 h-3.5 text-accent-mint" />
+        </div>
+        <div>
+          <span className="font-bold text-ink-primary">클라이언트 메모리 실시간 판정: </span>
+          업로드하신 광고 소재는 외부 서버로 전송되지 않으며, 사용자 브라우저의 샌드박스 메모리에서 즉시 픽셀・용량・세이프존을 정밀 검수합니다. 런칭 전 대외비 캠페인 에셋도 안전하게 테스트하세요.
         </div>
       </div>
 
@@ -119,10 +137,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => !disabled && fileInputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200 ${
+        className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-10 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
-            ? 'border-blue-500 bg-blue-50/70 scale-[0.99]'
-            : 'border-slate-300 hover:border-blue-400 bg-slate-50/50 hover:bg-slate-50'
+            ? 'border-accent bg-accent/5 scale-[0.995]'
+            : 'border-line-strong hover:border-accent/60 bg-canvas/60 hover:bg-canvas-subtle'
         } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <input
@@ -135,16 +153,16 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           disabled={disabled}
         />
 
-        <div className="flex flex-col items-center justify-center space-y-3">
-          <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-            <UploadCloud className="w-6 h-6" />
+        <div className="flex flex-col items-center justify-center space-y-3.5">
+          <div className="w-14 h-14 rounded-2xl bg-surface border border-line flex items-center justify-center text-accent shadow-soft-xs group-hover:scale-105 group-hover:border-accent/40 transition-all duration-200">
+            <UploadCloud className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-slate-700">
-              이미지를 드래그하거나 클릭하여 업로드
+            <p className="text-sm font-semibold text-ink-primary">
+              이미지를 드래그하거나 클릭하여 추가
             </p>
-            <p className="text-xs text-slate-400 mt-1">
-              최대 용량 30MB • 다중 파일 일괄 검수 가능
+            <p className="text-xs text-ink-muted mt-1">
+              드래그앤드롭으로 여러 이미지를 한 번에 일괄 등록할 수 있습니다.
             </p>
           </div>
         </div>
@@ -152,69 +170,84 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
 
       {/* Selected File Previews */}
       {files.length > 0 && (
-        <div className="space-y-2 pt-2">
-          <div className="text-xs font-semibold text-slate-500 flex items-center justify-between">
-            <span>선택된 이미지 ({files.length}개)</span>
+        <div className="space-y-3 pt-1">
+          <div className="flex items-center justify-between text-xs font-semibold text-ink-secondary">
+            <span className="tracking-wide">
+              등록된 소재 에셋 ({files.length}개)
+            </span>
+            <span className="text-ink-muted text-[11px]">
+              지면별 적합도 자동 판정 준비 완료
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-h-80 overflow-y-auto pr-1">
-            {files.map((item) => (
-              <div
-                key={item.id}
-                className="group relative flex items-center space-x-3 p-2.5 rounded-lg border border-slate-200 bg-white hover:border-slate-300 transition-all shadow-sm"
-              >
-                <div className="w-14 h-14 rounded-md overflow-hidden bg-slate-100 flex-shrink-0 flex items-center justify-center border border-slate-100">
-                  {item.previewUrl ? (
-                    <img
-                      src={item.previewUrl}
-                      alt={item.file.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <ImageIcon className="w-6 h-6 text-slate-400" />
-                  )}
-                </div>
-
-                <div className="flex-1 min-w-0 pr-6">
-                  <p
-                    className="text-xs font-medium text-slate-800 truncate"
-                    title={item.file.name}
-                  >
-                    {item.file.name}
-                  </p>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
-                    {formatFileSize(item.file.size)}
-                  </p>
-                  {item.dimensions && (
-                    <span className="inline-block mt-0.5 text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.2 rounded font-mono">
-                      {item.dimensions.width}×{item.dimensions.height}
-                    </span>
-                  )}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onRemoveFile(item.id);
-                  }}
-                  disabled={disabled}
-                  title="파일 제거"
-                  className="absolute top-2 right-2 p-1 rounded-full text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 max-h-88 overflow-y-auto pr-1">
+            {files.map((item) => {
+              const ratioLabel = getAspectRatioLabel(item.dimensions?.width, item.dimensions?.height);
+              return (
+                <div
+                  key={item.id}
+                  className="group relative flex items-center space-x-3 p-3 rounded-2xl border border-line bg-surface hover:border-accent/40 hover:shadow-soft-xs transition-all"
                 >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              </div>
-            ))}
+                  <div className="w-14 h-14 rounded-xl overflow-hidden bg-canvas-subtle flex-shrink-0 flex items-center justify-center border border-line relative">
+                    {item.previewUrl ? (
+                      <img
+                        src={item.previewUrl}
+                        alt={item.file.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <ImageIcon className="w-6 h-6 text-ink-muted" />
+                    )}
+                  </div>
+
+                  <div className="flex-1 min-w-0 pr-6">
+                    <p
+                      className="text-xs font-medium text-ink-primary truncate"
+                      title={item.file.name}
+                    >
+                      {item.file.name}
+                    </p>
+                    <div className="flex items-center gap-1.5 mt-1 flex-wrap">
+                      <span className="text-[11px] text-ink-muted font-mono">
+                        {formatFileSize(item.file.size)}
+                      </span>
+                      {ratioLabel && (
+                        <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded-md bg-canvas-subtle border border-line text-ink-secondary">
+                          {ratioLabel}
+                        </span>
+                      )}
+                    </div>
+                    {item.dimensions && (
+                      <span className="inline-block mt-0.5 text-[10px] text-ink-muted font-mono">
+                        {item.dimensions.width}×{item.dimensions.height} px
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onRemoveFile(item.id);
+                    }}
+                    disabled={disabled}
+                    title="파일 제거"
+                    className="absolute top-2.5 right-2.5 p-1 rounded-full text-ink-muted hover:text-status-fail hover:bg-canvas-subtle transition-all cursor-pointer"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              );
+            })}
 
             <button
               type="button"
               onClick={() => !disabled && fileInputRef.current?.click()}
               disabled={disabled}
-              className="flex flex-col items-center justify-center p-3 rounded-lg border border-dashed border-slate-300 text-slate-500 hover:border-blue-400 hover:text-blue-600 hover:bg-blue-50/30 transition-all min-h-[70px] text-xs font-medium cursor-pointer"
+              className="flex flex-col items-center justify-center p-3 rounded-2xl border border-dashed border-line-strong text-ink-secondary hover:border-accent hover:text-accent hover:bg-canvas-subtle/70 transition-all min-h-[76px] text-xs font-semibold cursor-pointer group"
             >
-              <Plus className="w-5 h-5 mb-1" />
-              <span>추가 업로드</span>
+              <Plus className="w-4 h-4 mb-1 text-ink-muted group-hover:text-accent group-hover:scale-110 transition-all" />
+              <span>소재 추가</span>
             </button>
           </div>
         </div>

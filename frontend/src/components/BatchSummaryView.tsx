@@ -49,7 +49,6 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
     const fileSizeKb = item.image_info.file_size_kb;
     const textRatio = item.text_ratio;
 
-    // Placements targeted for this file (ignoring platforms marked 'na')
     let relevantPlacements: { platformName: string; placement: PlacementResult }[] = [];
     let hasTargetMatches = false;
 
@@ -94,14 +93,13 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
           passedCount++;
         } else {
           failedCount++;
-          // Collect specific fail checks
           placement.checks.forEach((chk: CheckItem) => {
             if (chk.status === 'fail' || chk.status === 'error') {
               const reasonStr = `[${placement.name}] ${chk.message}`;
               if (!failureReasons.includes(reasonStr)) {
                 failureReasons.push(reasonStr);
               }
-            } else if (chk.status === 'warning') {
+            } else if (chk.status === 'warning' || chk.status === 'warn') {
               const warnStr = `[${placement.name}] ${chk.message}`;
               if (!warningReasons.includes(warnStr)) {
                 warningReasons.push(warnStr);
@@ -115,6 +113,8 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         overallStatus = 'fail';
       } else if (warningReasons.length > 0) {
         overallStatus = 'warning';
+      } else {
+        overallStatus = 'pass';
       }
 
       targetPlacementNames = relevantPlacements.map(
@@ -146,14 +146,12 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   const passFiles = fileSummaries.filter((f) => f.overallStatus === 'pass');
   const warnFiles = fileSummaries.filter((f) => f.overallStatus === 'warning');
 
-  // Filter files based on user tab selection
   const displayedFiles = fileSummaries.filter((f) => {
     if (statusFilter === 'fail') return f.overallStatus === 'fail';
     if (statusFilter === 'pass') return f.overallStatus === 'pass';
     return true;
   });
 
-  // Collect category counts for why files failed
   let dimFailCount = 0;
   let sizeFailCount = 0;
   let formatFailCount = 0;
@@ -174,12 +172,17 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
       {/* 1. Batch KPI & Diagnostics Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Total Files */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
+        <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold text-slate-500 block">검수 대상 소재</span>
-            <span className="text-2xl font-black text-slate-800">{totalFiles}개 파일</span>
+            <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
+              TOTAL ASSETS
+            </span>
+            <div className="flex items-baseline space-x-1.5 mt-1">
+              <span className="text-3xl font-extrabold font-mono text-ink-primary">{totalFiles}</span>
+              <span className="text-xs text-ink-secondary">개 소재</span>
+            </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600">
+          <div className="w-12 h-12 rounded-xl bg-canvas-subtle border border-line flex items-center justify-center text-ink-secondary">
             <ImageIcon className="w-5 h-5" />
           </div>
         </div>
@@ -187,17 +190,22 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         {/* Pass Files */}
         <div
           onClick={() => setStatusFilter(statusFilter === 'pass' ? 'all' : 'pass')}
-          className={`p-4 rounded-xl border shadow-2xs flex items-center justify-between cursor-pointer transition-all ${
+          className={`p-5 rounded-2xl border shadow-soft-xs flex items-center justify-between cursor-pointer transition-all ${
             statusFilter === 'pass'
-              ? 'bg-emerald-50 border-emerald-400 ring-2 ring-emerald-200'
-              : 'bg-white border-slate-200 hover:border-emerald-300'
+              ? 'bg-accent-mint/10 border-accent-mint ring-2 ring-accent-mint/30'
+              : 'bg-surface border-line hover:border-line-strong'
           }`}
         >
           <div>
-            <span className="text-xs font-semibold text-emerald-700 block">✅ 전체 통과 (적합)</span>
-            <span className="text-2xl font-black text-emerald-800">{passFiles.length}개 파일</span>
+            <span className="tracking-wider text-[11px] font-bold text-accent-mint uppercase block">
+              FULLY QUALIFIED
+            </span>
+            <div className="flex items-baseline space-x-1.5 mt-1">
+              <span className="text-3xl font-extrabold font-mono text-accent-mint">{passFiles.length}</span>
+              <span className="text-xs text-accent-mint font-semibold">개 통과</span>
+            </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+          <div className="w-12 h-12 rounded-xl bg-accent-mint/10 border border-accent-mint/20 flex items-center justify-center text-accent-mint">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
@@ -205,67 +213,77 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         {/* Fail Files */}
         <div
           onClick={() => setStatusFilter(statusFilter === 'fail' ? 'all' : 'fail')}
-          className={`p-4 rounded-xl border shadow-2xs flex items-center justify-between cursor-pointer transition-all ${
+          className={`p-5 rounded-2xl border shadow-soft-xs flex items-center justify-between cursor-pointer transition-all ${
             statusFilter === 'fail'
-              ? 'bg-red-50 border-red-400 ring-2 ring-red-200'
-              : 'bg-white border-slate-200 hover:border-red-300'
+              ? 'bg-rose-500/10 border-rose-500 ring-2 ring-rose-500/30'
+              : 'bg-surface border-line hover:border-line-strong'
           }`}
         >
           <div>
-            <span className="text-xs font-semibold text-red-700 block">❌ 불일치 / 반려 위험</span>
-            <span className="text-2xl font-black text-red-800">{failFiles.length}개 파일</span>
+            <span className="tracking-wider text-[11px] font-bold text-status-fail uppercase block">
+              ACTION REQUIRED
+            </span>
+            <div className="flex items-baseline space-x-1.5 mt-1">
+              <span className="text-3xl font-extrabold font-mono text-status-fail">{failFiles.length}</span>
+              <span className="text-xs text-status-fail font-semibold">개 반려 위험</span>
+            </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-red-700">
+          <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-status-fail">
             <XCircle className="w-5 h-5" />
           </div>
         </div>
 
         {/* Warning / Caution */}
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs flex items-center justify-between">
+        <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold text-amber-700 block">⚠️ 수정 권장 (주의)</span>
-            <span className="text-2xl font-black text-amber-800">{warnFiles.length}개 파일</span>
+            <span className="tracking-wider text-[11px] font-bold text-amber-600 uppercase block">
+              OPTIMIZATION NEEDED
+            </span>
+            <div className="flex items-baseline space-x-1.5 mt-1">
+              <span className="text-3xl font-extrabold font-mono text-amber-700">{warnFiles.length}</span>
+              <span className="text-xs text-amber-600 font-semibold">개 주의</span>
+            </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-700">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600">
             <AlertTriangle className="w-5 h-5" />
           </div>
         </div>
       </div>
 
-      {/* 2. Failure Root-Cause Breakdown (Only if failures exist) */}
+      {/* 2. Failure Root-Cause Breakdown */}
       {failFiles.length > 0 && (
-        <div className="bg-red-50/60 border border-red-200 rounded-xl p-4 space-y-3">
-          <div className="flex items-center space-x-2 text-red-800">
-            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+        <div className="bg-rose-500/[0.04] border border-rose-500/20 rounded-2xl p-5 space-y-3">
+          <div className="flex items-center space-x-2 text-rose-800">
+            <AlertTriangle className="w-4 h-4 flex-shrink-0 text-rose-600" />
             <h4 className="text-xs font-bold uppercase tracking-wider">
-              🚨 검수 통과 실패 원인 요약 (즉시 수정 필요)
+              검수 통과 실패 원인 요약 (즉시 수정 권장)
             </h4>
           </div>
 
           <div className="flex flex-wrap gap-2 text-xs">
             {dimFailCount > 0 && (
-              <span className="bg-white border border-red-200 text-red-700 px-2.5 py-1 rounded-lg font-semibold shadow-2xs">
-                📐 해상도 / 비율 불일치: <strong>{dimFailCount}개 파일</strong>
+              <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
+                📐 해상도 / 비율 불일치: <strong className="font-mono">{dimFailCount}개</strong>
               </span>
             )}
             {sizeFailCount > 0 && (
-              <span className="bg-white border border-red-200 text-red-700 px-2.5 py-1 rounded-lg font-semibold shadow-2xs">
-                💾 파일 용량 초과: <strong>{sizeFailCount}개 파일</strong>
+              <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
+                💾 파일 용량 초과: <strong className="font-mono">{sizeFailCount}개</strong>
               </span>
             )}
             {formatFailCount > 0 && (
-              <span className="bg-white border border-red-200 text-red-700 px-2.5 py-1 rounded-lg font-semibold shadow-2xs">
-                📄 지원하지 않는 확장자/포맷: <strong>{formatFailCount}개 파일</strong>
+              <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
+                📄 미지원 확장자: <strong className="font-mono">{formatFailCount}개</strong>
               </span>
             )}
             {transFailCount > 0 && (
-              <span className="bg-white border border-red-200 text-red-700 px-2.5 py-1 rounded-lg font-semibold shadow-2xs">
-                🔳 투명 배경(누끼) 미적용: <strong>{transFailCount}개 파일</strong>
+              <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
+                🔳 투명 배경(누끼) 미적용: <strong className="font-mono">{transFailCount}개</strong>
               </span>
             )}
             {textRatioFailCount > 0 && (
-              <span className="bg-white border border-red-200 text-red-700 px-2.5 py-1 rounded-lg font-semibold shadow-2xs">
-                ✍️ 텍스트 비율 기준 초과: <strong>{textRatioFailCount}개 파일</strong>
+              <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
+                ✍️ 텍스트 비율 기준 초과: <strong className="font-mono">{textRatioFailCount}개</strong>
               </span>
             )}
           </div>
@@ -273,26 +291,26 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
       )}
 
       {/* 3. Consolidated Table of All Files */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        {/* Table Filter Tabs */}
-        <div className="p-4 bg-slate-50 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-surface rounded-3xl border border-line shadow-soft-sm overflow-hidden">
+        {/* Table Filter Header */}
+        <div className="p-5 bg-surface border-b border-line/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-slate-800">
+            <span className="text-sm font-bold text-ink-primary">
               전체 소재 검수 현황표
             </span>
-            <span className="text-xs text-slate-400">
-              ({displayedFiles.length}/{totalFiles}개 표시 중)
+            <span className="text-xs font-mono text-ink-muted">
+              ({displayedFiles.length}/{totalFiles})
             </span>
           </div>
 
-          <div className="inline-flex rounded-lg border border-slate-200 p-0.5 bg-white text-xs">
+          <div className="bg-canvas-subtle p-1 rounded-2xl border border-line inline-flex items-center space-x-1 text-xs">
             <button
               type="button"
               onClick={() => setStatusFilter('all')}
-              className={`px-3 py-1 rounded-md font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-xl font-semibold transition-all cursor-pointer ${
                 statusFilter === 'all'
-                  ? 'bg-slate-800 text-white shadow-2xs'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                  : 'text-ink-secondary hover:text-ink-primary'
               }`}
             >
               전체 ({totalFiles})
@@ -300,24 +318,24 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
             <button
               type="button"
               onClick={() => setStatusFilter('fail')}
-              className={`px-3 py-1 rounded-md font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-xl font-semibold transition-all cursor-pointer ${
                 statusFilter === 'fail'
-                  ? 'bg-red-600 text-white shadow-2xs'
-                  : 'text-red-600 hover:bg-red-50'
+                  ? 'bg-surface text-status-fail shadow-soft-xs border border-line'
+                  : 'text-ink-secondary hover:text-status-fail'
               }`}
             >
-              ❌ 불일치만 보기 ({failFiles.length})
+              불일치 ({failFiles.length})
             </button>
             <button
               type="button"
               onClick={() => setStatusFilter('pass')}
-              className={`px-3 py-1 rounded-md font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1 rounded-xl font-semibold transition-all cursor-pointer ${
                 statusFilter === 'pass'
-                  ? 'bg-emerald-600 text-white shadow-2xs'
-                  : 'text-emerald-700 hover:bg-emerald-50'
+                  ? 'bg-surface text-accent-mint shadow-soft-xs border border-line'
+                  : 'text-ink-secondary hover:text-accent-mint'
               }`}
             >
-              ✅ 통과만 보기 ({passFiles.length})
+              통과 ({passFiles.length})
             </button>
           </div>
         </div>
@@ -326,19 +344,19 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="bg-slate-100/70 border-b border-slate-200 text-slate-600 font-bold">
+              <tr className="bg-canvas-subtle/60 border-b border-line text-ink-muted font-bold tracking-wider uppercase text-[11px]">
                 <th className="py-3 px-4 w-12 text-center">#</th>
                 <th className="py-3 px-4 min-w-[200px]">소재 파일명 / 사양</th>
                 <th className="py-3 px-4 min-w-[140px]">매칭 타겟 지면</th>
                 <th className="py-3 px-4 min-w-[110px] text-center">종합 판정</th>
                 <th className="py-3 px-4 min-w-[280px]">검수 결과 및 불일치 사유 요약</th>
-                <th className="py-3 px-4 w-24 text-center">상세보기</th>
+                <th className="py-3 px-4 w-24 text-center">상세</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-line/60">
               {displayedFiles.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-8 text-center text-slate-400">
+                  <td colSpan={6} className="py-10 text-center text-ink-muted">
                     선택한 필터 조건에 해당하는 소재가 없습니다.
                   </td>
                 </tr>
@@ -350,12 +368,12 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                   return (
                     <tr
                       key={file.index}
-                      className={`hover:bg-slate-50/80 transition-colors ${
-                        isFail ? 'bg-red-50/20' : ''
+                      className={`hover:bg-canvas-subtle/50 transition-colors ${
+                        isFail ? 'bg-rose-500/[0.02]' : ''
                       }`}
                     >
                       {/* Index */}
-                      <td className="py-3.5 px-4 text-center text-slate-400 font-mono font-semibold">
+                      <td className="py-3.5 px-4 text-center text-ink-muted font-mono font-semibold">
                         {file.index + 1}
                       </td>
 
@@ -366,18 +384,18 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             <img
                               src={file.previewUrl}
                               alt={file.filename}
-                              className="w-11 h-11 rounded-lg object-cover border border-slate-200 bg-white flex-shrink-0 shadow-2xs"
+                              className="w-12 h-12 rounded-xl object-cover border border-line bg-surface flex-shrink-0 shadow-2xs"
                             />
                           ) : (
-                            <div className="w-11 h-11 rounded-lg bg-slate-100 flex items-center justify-center text-slate-400 border border-slate-200 flex-shrink-0">
+                            <div className="w-12 h-12 rounded-xl bg-canvas-subtle flex items-center justify-center text-ink-muted border border-line flex-shrink-0">
                               <ImageIcon className="w-5 h-5" />
                             </div>
                           )}
                           <div className="min-w-0">
-                            <div className="font-bold text-slate-800 truncate max-w-[220px]" title={file.filename}>
+                            <div className="font-bold text-ink-primary truncate max-w-[220px]" title={file.filename}>
                               {file.filename}
                             </div>
-                            <div className="text-[11px] text-slate-500 font-mono mt-0.5 space-x-1.5">
+                            <div className="text-[11px] text-ink-muted font-mono mt-0.5 space-x-1.5">
                               <span>{file.width}×{file.height}px</span>
                               <span>•</span>
                               <span>{file.format}</span>
@@ -386,7 +404,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                               {file.textRatio !== null && file.textRatio !== undefined && (
                                 <>
                                   <span>•</span>
-                                  <span className={`font-semibold ${file.textRatio > 0.2 ? 'text-amber-600' : 'text-slate-500'}`}>
+                                  <span className={`font-semibold ${file.textRatio > 0.2 ? 'text-amber-600' : 'text-ink-secondary'}`}>
                                     텍스트 {(file.textRatio * 100).toFixed(0)}%
                                   </span>
                                 </>
@@ -403,38 +421,38 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             {file.targetPlacementNames.slice(0, 2).map((tp, idx) => (
                               <div
                                 key={idx}
-                                className="text-[11px] font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded truncate max-w-[200px]"
+                                className="text-[11px] font-semibold text-accent bg-accent/5 border border-accent/20 px-2.5 py-0.5 rounded-full truncate max-w-[200px]"
                                 title={tp}
                               >
                                 {tp}
                               </div>
                             ))}
                             {file.targetPlacementNames.length > 2 && (
-                              <span className="text-[10px] text-slate-400 block">
+                              <span className="text-[10px] text-ink-muted block pl-1">
                                 외 {file.targetPlacementNames.length - 2}개 지면
                               </span>
                             )}
                           </div>
                         ) : (
-                          <span className="text-slate-400 text-xs">일반 검수</span>
+                          <span className="text-ink-muted text-xs">일반 검수</span>
                         )}
                       </td>
 
                       {/* Status Badge */}
                       <td className="py-3.5 px-4 text-center">
                         {isPass ? (
-                          <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-accent-mint bg-accent-mint/10 border border-accent-mint/20 font-mono">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
                             <span>적합 (통과)</span>
                           </span>
                         ) : isFail ? (
-                          <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-bold text-red-700 bg-red-50 border border-red-200">
-                            <XCircle className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-status-fail bg-rose-500/10 border border-rose-500/20 font-mono">
+                            <span className="w-1.5 h-1.5 rounded-full bg-status-fail" />
                             <span>반려 위험</span>
                           </span>
                         ) : (
-                          <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200">
-                            <AlertTriangle className="w-3.5 h-3.5" />
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-700 bg-amber-500/10 border border-amber-500/20 font-mono">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                             <span>수정 권장</span>
                           </span>
                         )}
@@ -443,16 +461,16 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                       {/* Failure / Success Summary Reasons */}
                       <td className="py-3.5 px-4">
                         {isPass ? (
-                          <span className="text-emerald-700 font-semibold text-xs flex items-center space-x-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
+                          <span className="text-accent-mint font-semibold text-xs flex items-center space-x-1.5">
+                            <CheckCircle2 className="w-4 h-4 text-accent-mint" />
                             <span>해상도, 파일 형식, 용량, 비율 기준을 모두 충족했습니다.</span>
                           </span>
                         ) : (
-                          <div className="space-y-1.5 max-h-24 overflow-y-auto pr-1">
+                          <div className="space-y-1 max-h-24 overflow-y-auto pr-1">
                             {file.failureReasons.map((reason, rIdx) => (
                               <div
                                 key={rIdx}
-                                className="text-[11px] text-red-700 bg-red-100/60 border border-red-200/80 px-2 py-0.5 rounded font-medium leading-tight"
+                                className="text-[11px] text-status-fail bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-lg font-medium leading-tight"
                               >
                                 {reason}
                               </div>
@@ -460,7 +478,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             {file.warningReasons.map((warn, wIdx) => (
                               <div
                                 key={wIdx}
-                                className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-medium leading-tight"
+                                className="text-[11px] text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-lg font-medium leading-tight"
                               >
                                 {warn}
                               </div>
@@ -474,7 +492,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                         <button
                           type="button"
                           onClick={() => onSelectFileDetail(file.index)}
-                          className="inline-flex items-center space-x-1 text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2.5 py-1.5 rounded-lg transition-colors cursor-pointer"
+                          className="inline-flex items-center space-x-1 text-xs font-bold text-accent hover:text-accent-hover bg-surface hover:bg-canvas-subtle border border-line px-3 py-1.5 rounded-full transition-all cursor-pointer shadow-2xs"
                         >
                           <span>상세</span>
                           <ArrowRight className="w-3 h-3" />

@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import {
   Download,
-  FileCheck,
   Filter,
-  CheckCircle2,
-  XCircle,
   AlertTriangle,
   Loader2,
   Layers,
-  Target,
   ListFilter,
   LayoutGrid,
   FileText,
@@ -67,6 +63,11 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
     });
   });
 
+  const complianceRate =
+    totalPlacementsCount > 0
+      ? Math.round((passPlacementsCount / totalPlacementsCount) * 100)
+      : 0;
+
   const handleDownloadCsv = async () => {
     try {
       setIsExporting(true);
@@ -98,136 +99,134 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Top Summary Banner */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 text-white shadow-lg border border-slate-700">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <span className="p-1.5 bg-blue-500/20 text-blue-400 rounded-lg">
-                <FileCheck className="w-5 h-5" />
-              </span>
-              <h2 className="text-lg font-bold">
-                검수 분석 완료 리포트
-              </h2>
+      {/* Top Summary Banner - Northpoint Scandinavian Card */}
+      <div className="bg-surface rounded-3xl border border-line shadow-soft-sm p-6 sm:p-8 space-y-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-line/60">
+          <div>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-canvas-subtle border border-line text-xs font-semibold text-ink-secondary mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
+              <span>규격 검수 리포트 분석 완료</span>
             </div>
-            <p className="text-slate-300 text-sm">
-              총 <span className="font-extrabold text-white">{results.length}개</span> 이미지 파일 검수 완료 —{' '}
-              지면 규격 통과율:{' '}
-              <span className="font-extrabold text-emerald-400">
-                {totalPlacementsCount > 0
-                  ? ((passPlacementsCount / totalPlacementsCount) * 100).toFixed(0)
-                  : 0}
-                %
-              </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary">
+              소재 규격 검수 종합 결과
+            </h2>
+            <p className="text-sm text-ink-secondary mt-1.5 leading-relaxed">
+              총 <strong className="text-ink-primary font-mono">{results.length}개</strong> 소재에 대한 15대 매체사 규격 검증이 완료되었습니다.
             </p>
           </div>
 
-          {/* Quick Metrics Badges */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="bg-slate-800/80 border border-slate-700 px-3.5 py-2 rounded-xl text-center min-w-[90px]">
-              <span className="text-[11px] text-slate-400 block font-medium">검수 파일</span>
-              <span className="text-lg font-bold text-white font-mono">{results.length}개</span>
-            </div>
-
-            <div className="bg-blue-950/40 border border-blue-800/50 px-3.5 py-2 rounded-xl text-center min-w-[90px]">
-              <span className="text-[11px] text-blue-400 block font-medium flex items-center justify-center space-x-1">
-                <Target className="w-3 h-3 inline" />
-                <span>타겟 매칭</span>
-              </span>
-              <span className="text-lg font-bold text-blue-300 font-mono">
-                {matchedPlacementsCount}건
-              </span>
-            </div>
-
-            <div className="bg-emerald-950/40 border border-emerald-800/50 px-3.5 py-2 rounded-xl text-center min-w-[90px]">
-              <span className="text-[11px] text-emerald-400 block font-medium flex items-center justify-center space-x-1">
-                <CheckCircle2 className="w-3 h-3 inline" />
-                <span>지면 적합</span>
-              </span>
-              <span className="text-lg font-bold text-emerald-300 font-mono">
-                {passPlacementsCount}건
-              </span>
-            </div>
-
-            <div className="bg-red-950/40 border border-red-800/50 px-3.5 py-2 rounded-xl text-center min-w-[90px]">
-              <span className="text-[11px] text-red-400 block font-medium flex items-center justify-center space-x-1">
-                <XCircle className="w-3 h-3 inline" />
-                <span>규격 불일치</span>
-              </span>
-              <span className="text-lg font-bold text-red-300 font-mono">
-                {failPlacementsCount}건
-              </span>
-            </div>
-
-            {/* CSV Download Button */}
+          {/* CSV Download Button */}
+          <div className="flex items-center space-x-3 flex-shrink-0">
             <button
               type="button"
               onClick={handleDownloadCsv}
               disabled={isExporting}
-              className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow-md transition-all cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-hover active:scale-[0.98] text-white font-bold text-xs px-6 py-3.5 rounded-full shadow-soft-sm hover:shadow-soft-md transition-all cursor-pointer disabled:opacity-50"
             >
               {isExporting ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin text-white" />
                   <span>다운로드 생성 중...</span>
                 </>
               ) : (
                 <>
                   <Download className="w-4 h-4" />
-                  <span>📥 CSV 다운로드 (엑셀 호환)</span>
+                  <span>CSV 리포트 다운로드 (엑셀 호환)</span>
                 </>
               )}
             </button>
           </div>
         </div>
 
+        {/* 4 Metric Overview Cards */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-4 sm:p-5 rounded-2xl border border-line bg-canvas-subtle/50">
+            <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
+              COMPLIANCE RATE
+            </span>
+            <div className="flex items-baseline space-x-2 mt-1">
+              <span className="text-3xl sm:text-4xl font-extrabold font-mono text-ink-primary">
+                {complianceRate}%
+              </span>
+              <span className="text-xs font-semibold text-accent-mint">종합 적합도</span>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 rounded-2xl border border-line bg-canvas-subtle/50">
+            <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
+              TARGET MATCHES
+            </span>
+            <div className="flex items-baseline space-x-2 mt-1">
+              <span className="text-3xl sm:text-4xl font-extrabold font-mono text-accent">
+                {matchedPlacementsCount}
+              </span>
+              <span className="text-xs text-ink-muted">건 매칭</span>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 rounded-2xl border border-line bg-canvas-subtle/50">
+            <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
+              VALIDATED PASSED
+            </span>
+            <div className="flex items-baseline space-x-2 mt-1">
+              <span className="text-3xl sm:text-4xl font-extrabold font-mono text-accent-mint">
+                {passPlacementsCount}
+              </span>
+              <span className="text-xs text-accent-mint font-semibold">지면 통과</span>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 rounded-2xl border border-line bg-canvas-subtle/50">
+            <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
+              SPEC MISMATCHES
+            </span>
+            <div className="flex items-baseline space-x-2 mt-1">
+              <span className="text-3xl sm:text-4xl font-extrabold font-mono text-status-fail">
+                {failPlacementsCount}
+              </span>
+              <span className="text-xs text-status-fail font-semibold">불일치</span>
+            </div>
+          </div>
+        </div>
+
         {exportError && (
-          <div className="mt-4 p-2.5 bg-red-900/50 border border-red-700 rounded-lg text-xs text-red-200 flex items-center space-x-2">
-            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+          <div className="p-3.5 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-xs text-rose-700 flex items-center space-x-2">
+            <AlertTriangle className="w-4 h-4 flex-shrink-0 text-rose-600" />
             <span>{exportError}</span>
           </div>
         )}
       </div>
 
-      {/* Primary Tab Switcher: Batch Overview vs Individual File Detail */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-2">
-        <div className="flex items-center space-x-2">
+      {/* Primary Tab Switcher: Segmented Control */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="bg-canvas-subtle p-1 rounded-2xl border border-line inline-flex items-center space-x-1">
           <button
             type="button"
             onClick={() => setMainTab('batch')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               mainTab === 'batch'
-                ? 'bg-blue-600 text-white shadow-sm ring-2 ring-blue-300'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                : 'text-ink-secondary hover:text-ink-primary'
             }`}
           >
             <LayoutGrid className="w-4 h-4" />
-            <span>📊 전체 파일 일괄 종합 리포트</span>
-            <span
-              className={`text-[11px] px-2 py-0.5 rounded-full font-mono ${
-                mainTab === 'batch'
-                  ? 'bg-blue-700 text-blue-100'
-                  : 'bg-slate-100 text-slate-600'
-              }`}
-            >
-              {results.length}개 파일
+            <span>전체 파일 일괄 리포트</span>
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-canvas-subtle border border-line text-ink-muted">
+              {results.length}개
             </span>
           </button>
 
           <button
             type="button"
             onClick={() => setMainTab('detail')}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
               mainTab === 'detail'
-                ? 'bg-blue-600 text-white shadow-sm ring-2 ring-blue-300'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                : 'text-ink-secondary hover:text-ink-primary'
             }`}
           >
             <FileText className="w-4 h-4" />
-            <span>🖼️ 파일별 개별 상세 검수</span>
-            <span className="text-[11px] text-slate-400 font-normal hidden md:inline truncate max-w-[150px]">
-              (현재: {currentItem.filename})
-            </span>
+            <span>파일별 개별 상세 검수</span>
           </button>
         </div>
 
@@ -235,10 +234,10 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
           <button
             type="button"
             onClick={() => setMainTab('batch')}
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors cursor-pointer self-start sm:self-auto"
+            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-accent hover:text-accent-hover bg-surface hover:bg-canvas-subtle border border-line px-3.5 py-2 rounded-full transition-all cursor-pointer shadow-2xs self-start sm:self-auto"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>전체 일괄 리포트로 돌아가기</span>
+            <span>전체 리포트로 돌아가기</span>
           </button>
         )}
       </div>
@@ -258,8 +257,8 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
         <div className="space-y-4">
           {/* Multiple Files Navigation Tabs */}
           {results.length > 1 && (
-            <div className="flex items-center space-x-2 overflow-x-auto pb-2 border-b border-slate-200">
-              <span className="text-xs font-semibold text-slate-500 flex-shrink-0 mr-1">
+            <div className="flex items-center space-x-2 overflow-x-auto pb-2">
+              <span className="text-xs font-semibold text-ink-muted flex-shrink-0 mr-1">
                 소재 선택:
               </span>
               {results.map((item, idx) => {
@@ -268,16 +267,16 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                   <button
                     key={idx}
                     onClick={() => setSelectedFileIndex(idx)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center space-x-2 flex-shrink-0 cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 flex-shrink-0 cursor-pointer ${
                       isSelected
-                        ? 'bg-blue-600 text-white font-bold shadow-sm'
-                        : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-100'
+                        ? 'bg-accent text-white shadow-soft-xs'
+                        : 'bg-surface text-ink-secondary border border-line hover:border-line-strong'
                     }`}
                   >
                     <span className="truncate max-w-[140px]">{item.filename}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                        isSelected ? 'bg-blue-700 text-blue-100' : 'bg-slate-100 text-slate-500'
+                        isSelected ? 'bg-white/20 text-white' : 'bg-canvas-subtle text-ink-muted'
                       }`}
                     >
                       #{idx + 1}
@@ -313,43 +312,43 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
           )}
 
           {/* View Mode & Filter Controls */}
-          <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div className="bg-surface p-4 rounded-2xl border border-line shadow-soft-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-center space-x-2">
-              <ListFilter className="w-4 h-4 text-blue-600" />
-              <span className="text-xs font-bold text-slate-700">지면 표시 모드:</span>
-              <div className="inline-flex rounded-lg border border-slate-200 p-0.5 bg-slate-50">
+              <ListFilter className="w-4 h-4 text-accent" />
+              <span className="text-xs font-bold text-ink-primary">지면 표시:</span>
+              <div className="bg-canvas-subtle p-1 rounded-xl border border-line inline-flex items-center space-x-1">
                 <button
                   type="button"
                   onClick={() => setViewMode('target')}
-                  className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     viewMode === 'target'
-                      ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                      : 'text-ink-secondary hover:text-ink-primary'
                   }`}
                 >
-                  🎯 매칭/타겟 지면만 보기 (권장)
+                  🎯 매칭 지면만 보기
                 </button>
                 <button
                   type="button"
                   onClick={() => setViewMode('pass')}
-                  className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     viewMode === 'pass'
-                      ? 'bg-emerald-600 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-surface text-accent-mint shadow-soft-xs border border-line'
+                      : 'text-ink-secondary hover:text-ink-primary'
                   }`}
                 >
-                  ✅ 적합(PASS) 지면만 보기
+                  ✅ 통과 지면
                 </button>
                 <button
                   type="button"
                   onClick={() => setViewMode('all')}
-                  className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
                     viewMode === 'all'
-                      ? 'bg-slate-800 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                      : 'text-ink-secondary hover:text-ink-primary'
                   }`}
                 >
-                  📋 모든 지면 검수 보기
+                  📋 전체 지면
                 </button>
               </div>
             </div>
@@ -357,14 +356,14 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
             {/* Platform Filter Buttons */}
             {allPlatforms.length > 1 && (
               <div className="flex items-center space-x-1.5 overflow-x-auto text-xs">
-                <Filter className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                <Filter className="w-3.5 h-3.5 text-ink-muted flex-shrink-0" />
                 <button
                   type="button"
                   onClick={() => setPlatformFilter('all')}
-                  className={`px-2 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     platformFilter === 'all'
-                      ? 'bg-slate-800 text-white'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      ? 'bg-accent text-white'
+                      : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                   }`}
                 >
                   전체 매체
@@ -378,10 +377,10 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                       key={pid}
                       type="button"
                       onClick={() => setPlatformFilter(pid)}
-                      className={`px-2 py-1 rounded text-[11px] font-medium transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                         platformFilter === pid
-                          ? 'bg-slate-800 text-white'
-                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                          ? 'bg-accent text-white'
+                          : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                       }`}
                     >
                       {match ? match.platform : pid}
@@ -393,13 +392,13 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
           </div>
 
           {/* Platform Results Cards Grid */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Layers className="w-4 h-4 text-blue-600" />
-              <h3 className="text-sm font-bold text-slate-800">
+              <Layers className="w-4 h-4 text-accent" />
+              <h3 className="text-sm font-bold text-ink-primary">
                 매체별 지면 규격 검수 결과
               </h3>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-ink-muted font-mono">
                 ({filteredPlatformResults.length}개 매체)
               </span>
             </div>
@@ -414,11 +413,11 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
       )}
 
       {/* Bottom Action Footer */}
-      <div className="flex justify-end pt-4 border-t border-slate-200">
+      <div className="flex justify-end pt-4 border-t border-line/60">
         <button
           type="button"
           onClick={onReset}
-          className="text-xs text-slate-500 hover:text-slate-800 font-medium px-4 py-2 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors cursor-pointer"
+          className="text-xs text-ink-secondary hover:text-ink-primary font-semibold px-4 py-2 rounded-full border border-line hover:border-line-strong bg-surface hover:bg-canvas-subtle transition-all cursor-pointer shadow-2xs"
         >
           새로운 소재 검수하기
         </button>
