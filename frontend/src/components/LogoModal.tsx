@@ -32,7 +32,7 @@ export const LogoModal: React.FC<LogoModalProps> = ({ isOpen, onClose }) => {
               <h2 className="text-base font-bold text-white flex items-center space-x-2">
                 <span>ACV 브랜드 아이덴티티 & 엠블럼</span>
                 <span className="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/40 px-2 py-0.5 rounded-full font-mono font-bold">
-                  NIKE ACG HOMAGE
+                  OFFICIAL IDENTITY
                 </span>
               </h2>
               <p className="text-xs text-slate-400 mt-0.5">
@@ -73,7 +73,7 @@ export const LogoModal: React.FC<LogoModalProps> = ({ isOpen, onClose }) => {
                 </span>
               </div>
               <p className="text-xs text-slate-400 mt-1 font-medium">
-                나이키 ACG 아웃도어 기어 감성을 오마주한 퍼포먼스 마케팅 테크 엠블럼
+                광고 규격 정밀 검수와 크리에이티브 품질 보증을 상징하는 공식 테크 엠블럼
               </p>
             </div>
           </div>

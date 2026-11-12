@@ -15,7 +15,7 @@ export const ACVLogo: React.FC<ACVLogoProps> = ({
 }) => {
   return (
     <div className={`inline-flex items-center gap-3 ${className}`}>
-      {/* Nike ACG-Inspired ACV Triangle Badge */}
+      {/* ACV Geometric Triangle Badge */}
       <svg
         width={size}
         height={size * 0.9}
@@ -51,7 +51,7 @@ export const ACVLogo: React.FC<ACVLogoProps> = ({
           </linearGradient>
         </defs>
 
-        {/* 1. Base Rounded Triangle (Nike ACG Silhouette) */}
+        {/* 1. Base Rounded Triangle Silhouette */}
         {/* Triangle vertices: (100, 12), (184, 162), (16, 162) with rounded corners */}
         <path
           d="M 91.5 21.5
