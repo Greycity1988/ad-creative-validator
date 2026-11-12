@@ -18,11 +18,11 @@ app = FastAPI(
     version="1.2.0",
 )
 
-# CORS setup
+# CORS setup (no cookies or auth headers are used, so credentials stay off with the wildcard origin)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -105,35 +105,41 @@ async def list_platforms():
 
 @app.post("/api/specs/update")
 async def update_all_specs():
-    """Verify and synchronize all platform guidelines against official media publisher documentation."""
+    """Reload the spec files and report what is loaded.
+
+    This does not compare anything against publisher documentation and does not touch
+    last_verified_date: that date is set by hand in the YAML when a person has checked the guide.
+    """
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M")
     specs_dir = Path(__file__).resolve().parent / "specs"
 
     total_placements = 0
-    updated_files = 0
+    loaded_files = 0
+    verified_dates = []
 
     for yaml_file in specs_dir.glob("*.yaml"):
         try:
             with open(yaml_file, "r", encoding="utf-8") as f:
                 data = yaml.safe_load(f) or {}
 
-            # Update verification timestamp
-            data["last_verified_date"] = datetime.now().strftime("%Y-%m-%d")
-            placements = data.get("placements", [])
-            total_placements += len(placements)
-
-            with open(yaml_file, "w", encoding="utf-8") as f:
-                yaml.dump(data, f, allow_unicode=True, sort_keys=False)
-
-            updated_files += 1
+            total_placements += len(data.get("placements", []))
+            if data.get("last_verified_date"):
+                verified_dates.append(str(data["last_verified_date"]))
+            loaded_files += 1
         except Exception:
             pass
 
+    oldest_verified = min(verified_dates) if verified_dates else None
+
     return {
         "success": True,
-        "message": f"모든 매체({updated_files}개 공식 가이드 센터, {total_placements}개 세부 지면)와의 대조 검증 및 동기화가 완료되었습니다. (검증 기준: {now_str})",
-        "verified_at": now_str,
-        "total_platforms": updated_files,
+        "message": (
+            f"규격 파일 {loaded_files}개({total_placements}개 세부 지면)를 다시 읽었습니다. "
+            f"공식 가이드와의 자동 대조는 하지 않으며, 가장 오래된 수동 확인일은 {oldest_verified or '기록 없음'}입니다."
+        ),
+        "checked_at": now_str,
+        "oldest_verified_date": oldest_verified,
+        "total_platforms": loaded_files,
         "total_placements": total_placements,
     }
 

@@ -298,3 +298,61 @@ def test_new_platforms_validation():
     assert res_buzz.overall == CheckStatus.PASS.value
 
 
+
+
+def test_specs_update_does_not_rewrite_spec_files():
+    """The reload endpoint only reports what is loaded; it must not stamp verification dates."""
+    from pathlib import Path
+
+    specs_dir = Path(__file__).resolve().parent.parent / "specs"
+    before = {f.name: f.read_bytes() for f in specs_dir.glob("*.yaml")}
+
+    res = client.post("/api/specs/update")
+    assert res.status_code == 200
+    body = res.json()
+    assert body["total_platforms"] == len(before)
+    assert "자동 대조는 하지 않으며" in body["message"]
+
+    after = {f.name: f.read_bytes() for f in specs_dir.glob("*.yaml")}
+    assert after == before
+
+
+def test_feedback_list_hides_email(tmp_path, monkeypatch):
+    """Submitter emails are stored but never returned by the public list."""
+    from routers import feedback
+
+    monkeypatch.setattr(feedback, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(feedback, "FEEDBACKS_FILE", tmp_path / "feedbacks.json")
+
+    res_post = client.post(
+        "/api/feedbacks",
+        json={
+            "title": "이메일 비공개 확인",
+            "category": "기능 개선",
+            "content": "목록에서 이메일이 보이면 안 됩니다.",
+            "email": "tester@example.com",
+        },
+    )
+    assert res_post.status_code == 200
+    assert res_post.json()["reply"] is None
+
+    items = client.get("/api/feedbacks").json()
+    assert len(items) == 1
+    assert items[0]["email"] is None
+    assert "tester@example.com" in (tmp_path / "feedbacks.json").read_text(encoding="utf-8")
+
+
+def test_validate_rejects_oversized_upload(monkeypatch):
+    """Files over the size limit are refused with 413 before any analysis."""
+    from routers import upload
+
+    monkeypatch.setattr(upload, "MAX_FILE_SIZE_BYTES", 1024)
+    img = create_test_image(1200, 628, fmt="PNG")
+    assert len(img) > 1024
+
+    res = client.post(
+        "/api/validate",
+        files=[("files", ("big.png", img, "image/png"))],
+        data={"analyze_text": "false"},
+    )
+    assert res.status_code == 413

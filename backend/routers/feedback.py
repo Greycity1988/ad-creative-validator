@@ -63,7 +63,8 @@ def _save_feedbacks(items: List[dict]):
 async def list_feedbacks():
     """Retrieve all feedback and feature suggestions, ordered by newest first."""
     items = _load_feedbacks()
-    return items
+    # This list is public: never expose submitters' contact emails
+    return [{**item, "email": None} for item in items]
 
 
 @router.post("", response_model=FeedbackItem)
@@ -79,7 +80,6 @@ async def create_feedback(req: FeedbackCreateRequest):
         author=req.author.strip() if req.author else "익명 마케터",
         email=req.email.strip() if req.email else None,
         status="검토 중",
-        reply="소중한 건의 감사합니다! 검토 후 빠른 시일 내에 규격 데이터 또는 기능에 반영하도록 하겠습니다.",
     )
 
     items = _load_feedbacks()

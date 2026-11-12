@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api", tags=["validation"])
 
+# Upload guards: ad creatives are small, so anything beyond this is refused before analysis
+MAX_FILES_PER_REQUEST = 50
+MAX_FILE_SIZE_BYTES = 20 * 1024 * 1024
+
 
 def _parse_platforms(platforms_raw: Optional[str]) -> List[str]:
     """Parse platforms whether received as JSON array or comma-separated string."""
@@ -71,6 +75,11 @@ async def validate_images(
     """Validate one or more uploaded images against specified ad platform guidelines."""
     if not files:
         raise HTTPException(status_code=400, detail="No files provided.")
+    if len(files) > MAX_FILES_PER_REQUEST:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Too many files: up to {MAX_FILES_PER_REQUEST} per request.",
+        )
 
     target_platforms = _parse_platforms(platforms)
     target_placements_map = _parse_placements(placements)
@@ -85,8 +94,14 @@ async def validate_images(
     results: List[ImageValidationResult] = []
 
     for file in files:
+        # Read one byte past the limit so oversized files are detected without loading them whole
+        content = await file.read(MAX_FILE_SIZE_BYTES + 1)
+        if len(content) > MAX_FILE_SIZE_BYTES:
+            raise HTTPException(
+                status_code=413,
+                detail=f"File '{file.filename}' exceeds {MAX_FILE_SIZE_BYTES // (1024 * 1024)}MB.",
+            )
         try:
-            content = await file.read()
             if not content:
                 continue
 
