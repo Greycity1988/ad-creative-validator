@@ -136,7 +136,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                     디자이너 ↔ 마케터 간 수정 요청 커뮤니케이션 시
                   </h4>
                   <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                    "이 소재 수정해주세요"라고 말로 설명할 필요 없이, 검수 완료 후 <strong>[엑셀 리포트 다운로드]</strong>를 눌러 불합격 사유가 일목요연하게 정리된 시트를 슬랙/잔디에 공유할 때.
+                    "이 소재 수정해주세요"라고 말로 설명할 필요 없이, 검수 완료 후 <strong>[CSV 다운로드 (엑셀 호환)]</strong>를 눌러 불합격 사유가 일목요연하게 정리된 시트를 슬랙/잔디에 공유할 때.
                   </p>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
                 <h4 className="font-bold text-slate-800 mt-1">검수 시작 & 리포트</h4>
                 <p className="text-[11px] text-slate-500">
-                  파란색 <strong>[검수 시작]</strong> 버튼을 누르고 결과 확인 및 엑셀 다운로드를 진행합니다.
+                  파란색 <strong>[검수 시작]</strong> 버튼을 누르고 결과 확인 및 CSV 다운로드(엑셀에서 열림)를 진행합니다.
                 </p>
               </div>
             </div>

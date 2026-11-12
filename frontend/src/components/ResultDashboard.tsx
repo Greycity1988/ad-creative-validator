@@ -19,7 +19,7 @@ import { ImagePreview } from './ImagePreview';
 import { TextRatioGauge } from './TextRatioGauge';
 import { ResultCard } from './ResultCard';
 import { BatchSummaryView } from './BatchSummaryView';
-import { downloadExcelReport } from '../api/validator';
+import { downloadCsvReport } from '../api/validator';
 
 interface ResultDashboardProps {
   results: ValidationItem[];
@@ -67,14 +67,14 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
     });
   });
 
-  const handleDownloadExcel = async () => {
+  const handleDownloadCsv = async () => {
     try {
       setIsExporting(true);
       setExportError(null);
-      await downloadExcelReport(results, `ad_creative_report_${Date.now()}.xlsx`);
+      await downloadCsvReport(results, `ad_creative_report_${Date.now()}.csv`);
     } catch (err: unknown) {
-      console.error('Failed to export excel:', err);
-      setExportError('엑셀 파일 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      console.error('Failed to export CSV:', err);
+      setExportError('CSV 파일 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
     } finally {
       setIsExporting(false);
     }
@@ -159,10 +159,10 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               </span>
             </div>
 
-            {/* Excel Download Button */}
+            {/* CSV Download Button */}
             <button
               type="button"
-              onClick={handleDownloadExcel}
+              onClick={handleDownloadCsv}
               disabled={isExporting}
               className="inline-flex items-center space-x-2 bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-sm px-4 py-2.5 rounded-xl shadow-md transition-all cursor-pointer disabled:opacity-50"
             >
@@ -174,7 +174,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               ) : (
                 <>
                   <Download className="w-4 h-4" />
-                  <span>📥 엑셀 다운로드</span>
+                  <span>📥 CSV 다운로드 (엑셀 호환)</span>
                 </>
               )}
             </button>

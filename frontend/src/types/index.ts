@@ -1,6 +1,6 @@
 export interface CheckItem {
   name: string;
-  status: 'pass' | 'fail' | 'warning' | string;
+  status: 'pass' | 'fail' | 'warning' | 'manual' | string;
   message: string;
   expected?: string;
   actual?: string;

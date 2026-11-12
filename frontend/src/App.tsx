@@ -223,7 +223,7 @@ export const App: React.FC = () => {
           are deeply appreciated!
         </p>
         <p className="text-[11px] text-slate-400">
-          ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 150+ Official Placements Supported
+          ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 160+ Official Placements Supported
         </p>
       </footer>
 

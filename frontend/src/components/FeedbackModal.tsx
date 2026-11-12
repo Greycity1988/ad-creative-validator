@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, MessageSquare, Send, CheckCircle2, Sparkles, AlertCircle, RefreshCw, ExternalLink } from 'lucide-react';
 import { FeedbackItem, FeedbackCreateRequest } from '../types';
-import { fetchFeedbacks, submitFeedback } from '../api/validator';
+import { HAS_BACKEND, buildFeedbackIssueUrl, fetchFeedbacks, submitFeedback } from '../api/validator';
 
 interface FeedbackModalProps {
   isOpen: boolean;
@@ -62,8 +62,17 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
         email: email.trim() || undefined,
       };
 
+      if (!HAS_BACKEND) {
+        // No server on the public site: hand the draft to GitHub Issues, where the developer actually sees it.
+        window.open(buildFeedbackIssueUrl(reqData), '_blank', 'noopener,noreferrer');
+        setSuccessMessage(
+          'GitHub 이슈 작성 화면을 새 탭으로 열었습니다. 그 화면에서 등록(Create) 버튼을 눌러야 개발자에게 전달됩니다. (GitHub 로그인 필요)'
+        );
+        return;
+      }
+
       await submitFeedback(reqData);
-      setSuccessMessage('건의가 성공적으로 등록되었습니다! 개발팀에서 검토 후 빠르게 업데이트하겠습니다.');
+      setSuccessMessage('건의가 등록되었습니다. 검토 상태는 목록에서 확인할 수 있습니다.');
       setTitle('');
       setContent('');
       setActiveTab('list');
@@ -92,7 +101,9 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
                 개발자에게 건의 및 규격 업데이트 제보
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                신규 매체 추가 요청이나 최신 규격 변경 제보를 남겨주시면 신속히 반영합니다.
+                {HAS_BACKEND
+                  ? '신규 매체 추가 요청이나 최신 규격 변경 제보를 남겨주세요.'
+                  : '작성한 내용은 GitHub Issues 작성 화면으로 넘어갑니다. 이 사이트에는 저장되지 않습니다.'}
               </p>
             </div>
           </div>
@@ -186,7 +197,7 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className={`grid grid-cols-1 gap-3 ${HAS_BACKEND ? 'sm:grid-cols-2' : ''}`}>
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
                     작성자 (선택)
@@ -199,18 +210,21 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
                     className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    이메일 (답변 수신용, 선택)
-                  </label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="user@example.com"
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
+                {/* GitHub issues are public, so the email field is only offered when a backend receives it */}
+                {HAS_BACKEND && (
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1">
+                      이메일 (답변 수신용, 선택)
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="user@example.com"
+                      className="w-full px-3 py-2 text-xs rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                )}
               </div>
 
               <div>
@@ -241,7 +255,9 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
                   className="inline-flex items-center space-x-1.5 px-5 py-2 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>{isSubmitting ? '등록 중...' : '건의 등록하기'}</span>
+                  <span>
+                    {isSubmitting ? '등록 중...' : HAS_BACKEND ? '건의 등록하기' : 'GitHub 이슈로 보내기'}
+                  </span>
                 </button>
               </div>
             </form>
@@ -261,7 +277,11 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
 
               {feedbacks.length === 0 ? (
                 <div className="text-center py-10 px-4 text-slate-500 text-xs space-y-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-700">현재 등록된 건의 및 규격 제보 내역이 없습니다.</p>
+                  <p className="font-bold text-slate-700">
+                    {HAS_BACKEND
+                      ? '현재 등록된 건의 및 규격 제보 내역이 없습니다.'
+                      : '건의 및 규격 제보 내역은 GitHub Issues에서 확인할 수 있습니다.'}
+                  </p>
                   <p className="text-slate-500 text-[11px] leading-relaxed max-w-md mx-auto">
                     새로운 매체 지면 추가나 규격 변경 제보는 상단 <strong>[새 건의 작성하기]</strong> 탭을 이용하시거나,
                     개발자 공식 GitHub 저장소 Issues를 통해 제보해주실 수 있습니다.

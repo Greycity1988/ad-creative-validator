@@ -17,7 +17,8 @@ export interface SpecPlacement {
   aspect_ratio?: [number, number] | null;
   aspect_ratio_tolerance?: number;
   require_transparency?: boolean;
-  max_text_ratio?: number | null;
+  text_ratio_limit?: number | null;
+  text_ratio_level?: string;
   description?: string;
   notes?: string[];
 }
@@ -391,6 +392,19 @@ export function evaluatePlacement(
         actual: `${(w / h).toFixed(2)}:1`,
       });
     }
+  }
+
+  // 6. Text ratio: the browser engine has no OCR, so the limit is shown as a manual check.
+  // 'manual' is informational and does not change the placement's overall status.
+  if (placement.text_ratio_limit != null) {
+    const limitPct = Math.round(placement.text_ratio_limit * 100);
+    checks.push({
+      name: 'text_ratio',
+      status: 'manual',
+      message: `자동 측정 미지원: 이 지면은 텍스트 비율 ${limitPct}% 이하 기준이 있습니다. 직접 확인해주세요.`,
+      expected: `≤ ${limitPct}%`,
+      actual: '미측정',
+    });
   }
 
   // Calculate overall status

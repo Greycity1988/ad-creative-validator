@@ -31,22 +31,30 @@ export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
   return DEFAULT_METADATA;
 };
 
+/** True only when an external backend is configured. The public site runs without one. */
+export const HAS_BACKEND = Boolean(import.meta.env.VITE_API_BASE_URL);
+
+const FEEDBACK_ISSUES_URL = 'https://github.com/Greycity1988/ad-creative-validator/issues/new';
+
+/**
+ * Build a prefilled GitHub issue link for a feedback item.
+ * The email field is left out on purpose: issues are public.
+ */
+export const buildFeedbackIssueUrl = (data: FeedbackCreateRequest): string => {
+  const title = `[${data.category}] ${data.title}`;
+  const body = `${data.content}\n\n---\n작성자: ${data.author || '익명 마케터'}`;
+  return `${FEEDBACK_ISSUES_URL}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+};
+
 export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    try {
-      const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
-      if (Array.isArray(response.data)) {
-        return response.data;
-      }
-    } catch {
-      // ignore
-    }
+  if (!HAS_BACKEND) {
+    return [];
   }
 
   try {
-    const stored = localStorage.getItem('ad_user_feedbacks');
-    if (stored) {
-      return JSON.parse(stored);
+    const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
+    if (Array.isArray(response.data)) {
+      return response.data;
     }
   } catch {
     // ignore
@@ -55,61 +63,16 @@ export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
   return [];
 };
 
+/**
+ * Send feedback to the backend. Only call this when HAS_BACKEND is true;
+ * without a backend there is nowhere to deliver it, so the UI opens a GitHub issue instead.
+ */
 export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    try {
-      const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
-      if (response.data && typeof response.data === 'object' && response.data.id) {
-        return response.data;
-      }
-    } catch {
-      // ignore
-    }
+  const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
+  if (response.data && typeof response.data === 'object' && response.data.id) {
+    return response.data;
   }
-
-  // Save to client-side localStorage
-  const newItem: FeedbackItem = {
-    id: `fb-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
-    title: data.title,
-    category: data.category,
-    content: data.content,
-    author: data.author || '익명 마케터',
-    email: data.email,
-    created_at: new Date().toISOString().split('T')[0],
-    status: '접수완료',
-    reply: '제보해주셔서 감사합니다! 검토 후 다음 공식 규격 릴리즈에 신속히 반영하겠습니다.',
-  };
-
-  try {
-    const stored = localStorage.getItem('ad_user_feedbacks');
-    const list: FeedbackItem[] = stored ? JSON.parse(stored) : [];
-    list.unshift(newItem);
-    localStorage.setItem('ad_user_feedbacks', JSON.stringify(list));
-  } catch {
-    // ignore
-  }
-
-  return newItem;
-};
-
-export const updateAllSpecs = async (): Promise<{
-  success: boolean;
-  message: string;
-  updated_at: string;
-  total_platforms: number;
-  total_placements: number;
-}> => {
-  const totalPlatforms = DEFAULT_METADATA.length;
-  const totalPlacements = DEFAULT_METADATA.reduce((sum, p) => sum + (p.placements_count || 0), 0);
-  const verifiedDate = '2026-11-12';
-
-  return {
-    success: true,
-    message: `15개 주요 매체(${totalPlatforms}개 공식 가이드 센터, ${totalPlacements}개 세부 지면) 규격 검증 완료 (최종 검증일: ${verifiedDate})`,
-    updated_at: verifiedDate,
-    total_platforms: totalPlatforms,
-    total_placements: totalPlacements,
-  };
+  throw new Error('Unexpected feedback response');
 };
 
 /**
@@ -156,7 +119,7 @@ export const validateImages = async (
   return validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
 };
 
-export const downloadExcelReport = async (
+export const downloadCsvReport = async (
   results: ValidationItem[],
   customFilename: string = 'ad_creative_validation_report.csv'
 ): Promise<void> => {
@@ -193,7 +156,7 @@ export const downloadExcelReport = async (
   const url = window.URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.setAttribute('download', customFilename.replace(/\.xlsx$/i, '.csv'));
+  link.setAttribute('download', customFilename);
   document.body.appendChild(link);
   link.click();
   link.remove();

@@ -134,6 +134,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
       case 'warning':
       case 'warn':
         return <AlertTriangle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />;
+      case 'manual':
+        return <Info className="w-3.5 h-3.5 text-sky-500 flex-shrink-0" />;
       case 'fail':
       case 'error':
       default:
@@ -301,6 +303,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
                                     ? 'text-red-600 font-medium'
                                     : check.status === 'warning'
                                     ? 'text-amber-700 font-medium'
+                                    : check.status === 'manual'
+                                    ? 'text-sky-700 font-medium'
                                     : 'text-slate-600'
                                 }`}
                               >
