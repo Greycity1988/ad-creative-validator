@@ -211,7 +211,16 @@ export const App: React.FC = () => {
           Crafted with passion in 2026 by <strong className="text-blue-600 font-bold">Owen O. Magnus</strong>.
         </p>
         <p className="text-xs text-slate-500 font-medium">
-          Feedbacks are warmly welcomed, and coffee sponsorships are deeply appreciated! ☕✨
+          Feedbacks are warmly welcomed, and{' '}
+          <button
+            type="button"
+            onClick={() => setIsDonationOpen(true)}
+            className="text-amber-600 hover:text-amber-700 font-bold underline decoration-amber-300 hover:decoration-amber-500 cursor-pointer inline-flex items-center space-x-0.5"
+          >
+            <span>coffee sponsorships</span>
+            <span>☕✨</span>
+          </button>{' '}
+          are deeply appreciated!
         </p>
         <p className="text-[11px] text-slate-400">
           ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 150+ Official Placements Supported
