@@ -120,6 +120,19 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </div>
           </div>
 
+          {/* Witty encouragement banner */}
+          <div className="p-3 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-200/90 flex items-center space-x-2.5 text-xs text-amber-950">
+            <span className="text-xl">☕✨</span>
+            <div className="leading-snug">
+              <strong className="text-amber-900 font-extrabold text-xs">
+                당신의 $1가 개발자에게 큰 힘이 됩니다!
+              </strong>
+              <p className="text-[11px] text-amber-800/90 mt-0.5">
+                야근과 지속적인 신규 매체 규격 업데이트 연구를 이어가는 가장 달콤한 연료입니다 🚀
+              </p>
+            </div>
+          </div>
+
           {/* Main CTA: Go to Buy Me a Coffee */}
           <div className="space-y-2">
             <a
@@ -173,7 +186,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             <div className="pt-1 border-t border-slate-200 flex items-start space-x-1.5 text-slate-500">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0 mt-0.5" />
               <span>
-                후원금은 <strong>ACV의 완전 무료 서비스 유지와 15대 매체 공식 가이드 모니터링 및 규격 연구</strong>에 소중하게 사용됩니다.
+                후원금은 <strong>ACV의 완전 무료 서비스 유지와 매체 공식 가이드 모니터링 및 규격 연구</strong>에 소중하게 사용됩니다.
               </span>
             </div>
           </div>
