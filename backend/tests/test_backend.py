@@ -205,3 +205,55 @@ def test_criteo_big_banner():
     res_bb = v_criteo.validate(info_bb, auto_match=True)
     assert any("576×300" in p.name for p in res_bb.placements)
     assert res_bb.overall == CheckStatus.PASS.value
+
+
+def test_criteo_iab_and_timer_banners():
+    """Verify Criteo Standard IAB display banners and timer/coupon banners."""
+    v_criteo = get_validator("criteo")
+
+    # Standard IAB 300x250
+    img_300 = create_test_image(300, 250, fmt="JPEG")
+    info_300 = extract_image_info("banner_300x250.jpg", img_300)
+    res_300 = v_criteo.validate(info_300, auto_match=True)
+    assert any("300×250" in p.name for p in res_300.placements)
+    assert res_300.overall == CheckStatus.PASS.value
+
+    # Skyscraper 160x600
+    img_160 = create_test_image(160, 600, fmt="PNG")
+    info_160 = extract_image_info("criteo_160x600.png", img_160)
+    res_160 = v_criteo.validate(info_160, auto_match=True)
+    assert any("160×600" in p.name for p in res_160.placements)
+    assert res_160.overall == CheckStatus.PASS.value
+
+
+def test_feedback_api():
+    """Verify feedback list and feedback submission API."""
+    # 1. GET feedbacks
+    res_get = client.get("/api/feedbacks")
+    assert res_get.status_code == 200
+    items = res_get.json()
+    assert isinstance(items, list)
+    assert len(items) >= 1
+
+    # 2. POST feedback
+    new_data = {
+        "title": "테스트 자동화 피드백",
+        "category": "신규 매체 추가",
+        "content": "테스트용 신규 매체 건의 내용입니다.",
+        "author": "테스터",
+    }
+    res_post = client.post("/api/feedbacks", json=new_data)
+    assert res_post.status_code == 200
+    created = res_post.json()
+    assert created["title"] == new_data["title"]
+    assert created["status"] == "검토 중"
+
+
+def test_alphabetical_platforms_order():
+    """Verify platforms are returned in strict alphabetical order."""
+    res = client.get("/api/platforms")
+    assert res.status_code == 200
+    platforms = res.json()["platforms"]
+    pids = [p["id"] for p in platforms]
+    assert pids == sorted(pids)
+

@@ -15,24 +15,9 @@ import {
   Target,
 } from 'lucide-react';
 import { PlatformOption, PlatformMetadata } from '../types';
+import { TARGET_CHANNELS } from '../constants/channels';
 
 export const PLATFORMS: PlatformOption[] = [
-  {
-    id: 'kakao',
-    name: '카카오 (비즈보드 / DA)',
-    englishName: 'Kakao Moment',
-    icon: '💬',
-    badgeColor: 'border-yellow-200 bg-yellow-50/50 text-amber-800',
-    description: '비즈보드, New 비즈보드, 카카오 DA, 포커스보드',
-  },
-  {
-    id: 'naver',
-    name: '네이버 (DA / 타임보드 / NOSP)',
-    englishName: 'Naver Ads / NOSP',
-    icon: '🟩',
-    badgeColor: 'border-emerald-200 bg-emerald-50/50 text-emerald-800',
-    description: '타임보드(1660×260), 스페셜DA(1250×520), 더블/트리플크라운, 스마트채널, 피드 DA',
-  },
   {
     id: 'adison',
     name: '애디슨 오퍼월',
@@ -40,6 +25,22 @@ export const PLATFORMS: PlatformOption[] = [
     icon: '🎁',
     badgeColor: 'border-pink-200 bg-pink-50/50 text-pink-700',
     description: '목록 배너 A타입(720×360), B타입(144×144), 상세 배너(720×780)',
+  },
+  {
+    id: 'appier',
+    name: '애피어 (Appier)',
+    englishName: 'Appier',
+    icon: '🤖',
+    badgeColor: 'border-indigo-200 bg-indigo-50/50 text-indigo-800',
+    description: 'AI 쿼드/인터스티셜, 모바일 전면, 표준 배너, 네이티브',
+  },
+  {
+    id: 'criteo',
+    name: '크리테오 (Criteo)',
+    englishName: 'Criteo',
+    icon: '🎯',
+    badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-800',
+    description: '표준 IAB 배너 13종, 빅배너(576×300/200, 쇼케이스), 어댑티브',
   },
   {
     id: 'google_ads',
@@ -50,20 +51,20 @@ export const PLATFORMS: PlatformOption[] = [
     description: 'PMax, Demand Gen (Shorts), GDN 고정 배너 17종',
   },
   {
+    id: 'kakao',
+    name: '카카오 (비즈보드 / DA)',
+    englishName: 'Kakao Moment',
+    icon: '💬',
+    badgeColor: 'border-yellow-200 bg-yellow-50/50 text-amber-800',
+    description: '비즈보드(960×300), New 비즈보드, 카카오 DA, 포커스보드',
+  },
+  {
     id: 'meta',
     name: 'META',
     englishName: 'Meta (FB/IG)',
     icon: '♾️',
     badgeColor: 'border-sky-200 bg-sky-50/50 text-sky-700',
     description: '피드 (1:1, 4:5), 스토리·릴스 (9:16), 캐러셀',
-  },
-  {
-    id: 'tiktok',
-    name: '틱톡 (TikTok)',
-    englishName: 'TikTok Ads',
-    icon: '🎵',
-    badgeColor: 'border-rose-200 bg-rose-50/50 text-rose-700',
-    description: '인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle',
   },
   {
     id: 'moloco',
@@ -74,12 +75,12 @@ export const PLATFORMS: PlatformOption[] = [
     description: '모바일 DSP 네이티브 (1.91:1, 2:1, 1:1, 9:16), 카카오 연동',
   },
   {
-    id: 'criteo',
-    name: '크리테오 (Criteo)',
-    englishName: 'Criteo',
-    icon: '🎯',
-    badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-800',
-    description: '빅배너(플래그십 576×300/200, 쇼케이스, 브랜디드 헤더), 어댑티브, 빅쿠폰, 타이머',
+    id: 'naver',
+    name: '네이버 (DA / 타임보드 / NOSP)',
+    englishName: 'Naver Ads / NOSP',
+    icon: '🟩',
+    badgeColor: 'border-emerald-200 bg-emerald-50/50 text-emerald-800',
+    description: '타임보드(1660×260), 스페셜DA(1250×520), 더블/트리플크라운, 스마트채널, 피드 DA',
   },
   {
     id: 'rtb_house',
@@ -90,12 +91,12 @@ export const PLATFORMS: PlatformOption[] = [
     description: '스태틱 배너 (300×250 등), 프로모보드 (1200×628), 인터스티셜',
   },
   {
-    id: 'appier',
-    name: '애피어 (Appier)',
-    englishName: 'Appier',
-    icon: '🤖',
-    badgeColor: 'border-indigo-200 bg-indigo-50/50 text-indigo-800',
-    description: 'AI 쿼드/인터스티셜, 모바일 전면, 표준 배너, 네이티브',
+    id: 'tiktok',
+    name: '틱톡 (TikTok)',
+    englishName: 'TikTok Ads',
+    icon: '🎵',
+    badgeColor: 'border-rose-200 bg-rose-50/50 text-rose-700',
+    description: '인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle',
   },
   {
     id: 'twitter',
@@ -145,10 +146,12 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   fileCount,
 }) => {
   const [expandedPlatform, setExpandedPlatform] = useState<string | null>(null);
+  const [selectedChannelId, setSelectedChannelId] = useState<string>('all');
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
 
   const handleToggleAll = () => {
+    setSelectedChannelId('all');
     if (isAllSelected) {
       onChangeSelected([]);
     } else {
@@ -157,6 +160,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   };
 
   const handleTogglePlatform = (id: string) => {
+    setSelectedChannelId('all');
     if (selectedPlatforms.includes(id)) {
       onChangeSelected(selectedPlatforms.filter((p) => p !== id));
       if (expandedPlatform === id) setExpandedPlatform(null);
@@ -168,6 +172,36 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   const getPlatformMeta = (pid: string) => {
     return platformsMetadata.find((m) => m.id === pid);
   };
+
+  const handleSelectChannel = (channelId: string) => {
+    setSelectedChannelId(channelId);
+    if (channelId === 'all') {
+      onChangeSelected(PLATFORMS.map((p) => p.id));
+      onChangePlacements({});
+      return;
+    }
+
+    const channel = TARGET_CHANNELS.find((c) => c.id === channelId);
+    if (!channel) return;
+
+    const meta = getPlatformMeta(channel.platformId);
+    if (!meta) {
+      onChangeSelected([channel.platformId]);
+      return;
+    }
+
+    // Filter placements for this platform that match any keyword
+    const matchedPlacements = meta.placements.filter((pName) =>
+      channel.keywords.some((kw) => pName.toLowerCase().includes(kw.toLowerCase()))
+    );
+
+    onChangeSelected([channel.platformId]);
+    onChangePlacements({
+      [channel.platformId]: matchedPlacements.length > 0 ? matchedPlacements : meta.placements,
+    });
+  };
+
+  const selectedChannel = TARGET_CHANNELS.find((c) => c.id === selectedChannelId);
 
   const handleTogglePlacement = (platformId: string, placementName: string) => {
     const meta = getPlatformMeta(platformId);
@@ -267,6 +301,77 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           <span className="font-bold">매체 공식 가이드라인 실시간 대조 시스템:</span> 임의의 날짜가 아닌 각 매체사(카카오, 네이버, 메타, 구글 등)에서 최종 배포한 <strong>실제 공식 개정일자</strong>를 기준으로 작동합니다. 상단의 <strong>[가이드 최신화 / 전체 업데이트]</strong> 버튼을 누르면 각 매체 공식 가이드 센터 문서와 전수 대조 검증을 수행합니다.
         </div>
       </div>
+
+      {/* Quick Channel Dropdown Selector (17 Key Placements) */}
+      <div className="p-4 bg-slate-900 rounded-xl text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="flex items-center space-x-2.5">
+          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-inner flex-shrink-0">
+            🎯
+          </div>
+          <div>
+            <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+              <span>빠른 세부 지면 선택기 (17대 주요 지면)</span>
+              <span className="text-[10px] bg-blue-500/30 text-blue-300 border border-blue-400/30 px-1.5 py-0.2 rounded font-semibold">
+                원클릭 필터
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-400">
+              특정 지면을 선택하면 해당 지면 규격만 정밀 검수되어 타 지면 불일치(오검출)를 방지합니다.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 flex-shrink-0">
+          <select
+            value={selectedChannelId}
+            onChange={(e) => handleSelectChannel(e.target.value)}
+            disabled={isLoading}
+            className="bg-slate-800 text-slate-100 border border-slate-700 hover:border-slate-500 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-sm w-full md:w-auto"
+          >
+            <option value="all">전체 매체 검수 (스마트 자동 매칭 권장)</option>
+            <optgroup label="── 17대 주요 세부 지면 ──">
+              {TARGET_CHANNELS.map((ch) => (
+                <option key={ch.id} value={ch.id}>
+                  {selectedChannelId === ch.id ? '✓ ' : ''}{ch.label}
+                </option>
+              ))}
+            </optgroup>
+          </select>
+
+          {selectedChannelId !== 'all' && (
+            <button
+              type="button"
+              onClick={() => handleSelectChannel('all')}
+              className="px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-[11px] font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer flex-shrink-0"
+              title="전체 매체 선택으로 초기화"
+            >
+              전체 보기
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Selected Channel Active Notice Banner */}
+      {selectedChannel && (
+        <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between text-xs text-blue-900 animate-fadeIn">
+          <div className="flex items-center space-x-2">
+            <span className="font-bold text-blue-700">✓ 현재 적용된 지면:</span>
+            <span className="font-extrabold text-blue-900 bg-white px-2 py-0.5 rounded border border-blue-200">
+              {selectedChannel.label}
+            </span>
+            <span className="text-slate-500 hidden sm:inline">
+              ({selectedChannel.description})
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => handleSelectChannel('all')}
+            className="text-blue-600 hover:text-blue-800 font-bold underline cursor-pointer"
+          >
+            모든 매체 보기로 전환
+          </button>
+        </div>
+      )}
 
       {/* Platform Selection Grid (11 Platforms) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

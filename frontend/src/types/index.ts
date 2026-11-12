@@ -76,4 +76,34 @@ export interface UploadedFileItem {
   file: File;
   previewUrl: string;
   dimensions?: { width: number; height: number };
+  targetChannelId?: string;
+}
+
+export interface FeedbackItem {
+  id: string;
+  title: string;
+  category: string;
+  content: string;
+  author: string;
+  email?: string;
+  created_at: string;
+  status: string;
+  reply?: string;
+}
+
+export interface FeedbackCreateRequest {
+  title: string;
+  category: string;
+  content: string;
+  author?: string;
+  email?: string;
+}
+
+export interface TargetChannelOption {
+  id: string;
+  label: string;
+  platformId: string;
+  categoryName: string;
+  keywords: string[];
+  description: string;
 }

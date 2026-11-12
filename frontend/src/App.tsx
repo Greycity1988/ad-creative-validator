@@ -3,6 +3,8 @@ import { Header } from './components/Header';
 import { FileUploader } from './components/FileUploader';
 import { MediaSelector, PLATFORMS } from './components/MediaSelector';
 import { ResultDashboard } from './components/ResultDashboard';
+import { FeedbackModal } from './components/FeedbackModal';
+import { DonationModal } from './components/DonationModal';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages, updateAllSpecs } from './api/validator';
 import { AlertCircle } from 'lucide-react';
@@ -21,6 +23,8 @@ export const App: React.FC = () => {
   const [specsUpdateMessage, setSpecsUpdateMessage] = useState<string | null>(null);
   const [results, setResults] = useState<ValidationItem[] | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
+  const [isDonationOpen, setIsDonationOpen] = useState<boolean>(false);
 
   // Fetch available platform & placement specs from backend
   useEffect(() => {
@@ -149,7 +153,10 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      <Header />
+      <Header
+        onOpenFeedback={() => setIsFeedbackOpen(true)}
+        onOpenDonation={() => setIsDonationOpen(true)}
+      />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Step 1: Upload */}
@@ -212,6 +219,16 @@ export const App: React.FC = () => {
           광고 소재 규격 자동 검수 시스템 • 카카오, 네이버, 애디슨, 구글, 메타, 틱톡, 몰로코, 크리테오, RTB House, 애피어, 엑스 (X)
         </p>
       </footer>
+
+      {/* Modals */}
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={() => setIsFeedbackOpen(false)}
+      />
+      <DonationModal
+        isOpen={isDonationOpen}
+        onClose={() => setIsDonationOpen(false)}
+      />
     </div>
   );
 };

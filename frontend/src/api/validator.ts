@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ValidationResponse, ValidationItem, PlatformMetadata } from '../types';
+import { ValidationResponse, ValidationItem, PlatformMetadata, FeedbackItem, FeedbackCreateRequest } from '../types';
 
 const apiClient = axios.create({
   baseURL: '/api',
@@ -8,6 +8,16 @@ const apiClient = axios.create({
 export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
   const response = await apiClient.get<{ platforms: PlatformMetadata[] }>('/platforms');
   return response.data.platforms;
+};
+
+export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
+  const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
+  return response.data;
+};
+
+export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {
+  const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
+  return response.data;
 };
 
 export const updateAllSpecs = async (): Promise<{

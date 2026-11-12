@@ -4,10 +4,12 @@ from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 import yaml
 
 from routers.upload import router as upload_router
 from routers.report import router as report_router
+from routers.feedback import router as feedback_router
 from validators import VALIDATOR_REGISTRY, get_validator
 
 app = FastAPI(
@@ -28,10 +30,11 @@ app.add_middleware(
 # Include routers
 app.include_router(upload_router)
 app.include_router(report_router)
+app.include_router(feedback_router)
 
 
-@app.get("/")
-async def root():
+@app.get("/api/health")
+async def health():
     return {
         "service": "Ad Creative Validator API",
         "status": "online",
@@ -43,7 +46,7 @@ async def root():
 async def list_platforms():
     """Return available platforms and their spec metadata including placement details, official update dates, and source URLs."""
     platforms_meta = []
-    for pid in VALIDATOR_REGISTRY:
+    for pid in sorted(VALIDATOR_REGISTRY.keys()):
         try:
             validator = get_validator(pid)
             placements_info = []
@@ -133,3 +136,12 @@ async def update_all_specs():
         "total_platforms": updated_files,
         "total_placements": total_placements,
     }
+
+
+# Mount static frontend for production deployment if dist directory exists
+PROD_DIST_PATH = Path(__file__).resolve().parent.parent / "frontend" / "dist"
+LOCAL_STATIC_PATH = Path(__file__).resolve().parent / "static"
+if PROD_DIST_PATH.exists():
+    app.mount("/", StaticFiles(directory=str(PROD_DIST_PATH), html=True), name="frontend")
+elif LOCAL_STATIC_PATH.exists():
+    app.mount("/", StaticFiles(directory=str(LOCAL_STATIC_PATH), html=True), name="frontend")

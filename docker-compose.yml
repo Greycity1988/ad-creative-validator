@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  ad-creative-validator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ad-creative-validator
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    volumes:
+      - feedback_data:/app/backend/data
+
+volumes:
+  feedback_data:

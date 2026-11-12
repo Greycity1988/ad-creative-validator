@@ -2,11 +2,14 @@
 node_modules/
 .venv/
 __pycache__/
+**/__pycache__/
 *.pyc
+**/*.pyc
 
 # Build outputs
 dist/
 build/
+frontend/dist/
 .pytest_cache/
 
 # OS files
