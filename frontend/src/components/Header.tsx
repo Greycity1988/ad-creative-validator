@@ -6,19 +6,33 @@ interface HeaderProps {
   onOpenFeedback: () => void;
   onOpenDonation: () => void;
   onOpenGuide: () => void;
+  onOpenLogo?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenFeedback, onOpenDonation, onOpenGuide }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onOpenFeedback,
+  onOpenDonation,
+  onOpenGuide,
+  onOpenLogo,
+}) => {
   return (
     <header className="bg-slate-900 border-b border-slate-800 text-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         {/* Brand / Logo */}
         <div className="flex items-center space-x-3.5">
-          <ACVLogo size={44} showText={false} className="cursor-pointer" />
+          <button
+            type="button"
+            onClick={onOpenLogo}
+            className="group relative p-1 rounded-xl hover:bg-slate-800/80 transition-all cursor-pointer flex-shrink-0"
+            title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
+          >
+            <div className="absolute inset-0 bg-blue-500/10 rounded-xl blur-md group-hover:bg-blue-500/25 transition-all" />
+            <ACVLogo size={52} showText={false} className="relative z-10 transition-transform duration-200 group-hover:scale-105" />
+          </button>
           <div>
             <div className="flex items-center space-x-2">
               <h1 className="text-xl font-black tracking-tight text-white flex items-center gap-1.5 font-mono">
-                <span>ACV</span>
+                <span className="text-blue-400">ACV</span>
                 <span className="text-base font-bold font-sans text-slate-100">광고 소재 검수 시스템</span>
               </h1>
               <span className="bg-blue-900/60 text-blue-300 text-xs px-2 py-0.5 rounded-full font-medium border border-blue-700/50">

@@ -6,6 +6,7 @@ import { ResultDashboard } from './components/ResultDashboard';
 import { FeedbackModal } from './components/FeedbackModal';
 import { DonationModal } from './components/DonationModal';
 import { GuideModal } from './components/GuideModal';
+import { LogoModal } from './components/LogoModal';
 import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages, updateAllSpecs } from './api/validator';
@@ -28,6 +29,7 @@ export const App: React.FC = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
   const [isDonationOpen, setIsDonationOpen] = useState<boolean>(false);
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
+  const [isLogoOpen, setIsLogoOpen] = useState<boolean>(false);
 
   // Fetch available platform & placement specs from backend
   useEffect(() => {
@@ -160,6 +162,7 @@ export const App: React.FC = () => {
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
+        onOpenLogo={() => setIsLogoOpen(true)}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -219,7 +222,14 @@ export const App: React.FC = () => {
       </main>
 
       <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2 flex flex-col items-center justify-center">
-        <ACVLogo size={32} showText={false} className="opacity-80 hover:opacity-100 transition-opacity" />
+        <button
+          type="button"
+          onClick={() => setIsLogoOpen(true)}
+          className="group relative p-1.5 rounded-xl hover:bg-slate-100 transition-all cursor-pointer"
+          title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
+        >
+          <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-110" />
+        </button>
         <p className="font-semibold text-slate-800 text-sm tracking-tight">
           Crafted with passion in 2026 by <strong className="text-blue-600 font-bold">Owen O. Magnus</strong>.
         </p>
@@ -243,6 +253,10 @@ export const App: React.FC = () => {
       <DonationModal
         isOpen={isDonationOpen}
         onClose={() => setIsDonationOpen(false)}
+      />
+      <LogoModal
+        isOpen={isLogoOpen}
+        onClose={() => setIsLogoOpen(false)}
       />
     </div>
   );

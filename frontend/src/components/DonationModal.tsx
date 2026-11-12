@@ -19,12 +19,10 @@ interface DonationModalProps {
 }
 
 type PaymentTab = 'qr' | 'account';
-type QrChannel = 'toss' | 'kakao';
 
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
   const [selectedAmount, setSelectedAmount] = useState<number>(3000);
   const [activeTab, setActiveTab] = useState<PaymentTab>('qr');
-  const [qrChannel, setQrChannel] = useState<QrChannel>('toss');
   const [copied, setCopied] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -48,9 +46,6 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
 
   // Toss Direct Remittance Deep Link
   const tossDeepLink = `supertoss://send?bank=${encodeURIComponent(BANK_NAME)}&accountNo=${ACCOUNT_NUMBER_CLEAN}&amount=${selectedAmount}`;
-  const kakaoAccountText = `${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`;
-
-  const currentQrValue = qrChannel === 'toss' ? tossDeepLink : kakaoAccountText;
 
   const handleTossPay = () => {
     navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
@@ -185,37 +180,17 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           {/* TAB 1: QR Code Scanner for PC Users */}
           {activeTab === 'qr' && (
             <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col items-center text-center space-y-3.5 animate-fadeIn">
-              {/* Channel Selector for QR */}
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setQrChannel('toss')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
-                    qrChannel === 'toss'
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-2xs'
-                      : 'bg-white text-slate-600 border-slate-300 hover:bg-slate-50'
-                  }`}
-                >
-                  💙 토스(Toss) 송금 QR
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setQrChannel('kakao')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
-                    qrChannel === 'kakao'
-                      ? 'bg-yellow-400 text-slate-900 border-yellow-400 shadow-2xs'
-                      : 'bg-white text-slate-600 border-slate-300 hover:bg-slate-50'
-                  }`}
-                >
-                  💬 카카오뱅크 송금 QR
-                </button>
+              {/* Badge */}
+              <div className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 text-[11px] font-bold">
+                <Sparkles className="w-3 h-3 text-blue-600" />
+                <span>스마트폰 카메라 / 토스로 비추면 3초 만에 송금 완료</span>
               </div>
 
               {/* QR Code SVG Box */}
-              <div className="p-3.5 bg-white rounded-2xl border-2 border-slate-200/90 shadow-md">
+              <div className="p-3.5 bg-white rounded-2xl border-2 border-blue-200/90 shadow-md">
                 <QRCodeSVG
-                  value={currentQrValue}
-                  size={150}
+                  value={tossDeepLink}
+                  size={155}
                   level="M"
                   includeMargin={false}
                 />
@@ -224,23 +199,28 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               {/* Instructions */}
               <div className="space-y-1">
                 <p className="text-xs font-bold text-slate-800">
-                  {qrChannel === 'toss'
-                    ? `스마트폰 카메라로 비추면 토스 앱이 열리며 ₩${selectedAmount.toLocaleString()}원이 자동 입력됩니다.`
-                    : '카카오톡 상단 [코드스캔] 또는 카메라로 비추면 바로 송금창이 열립니다.'}
+                  스마트폰 기본 카메라로 비추면 토스 앱이 열리며 <span className="text-blue-600 font-extrabold">₩{selectedAmount.toLocaleString()}원</span>이 자동 입력됩니다.
                 </p>
                 <p className="text-[11px] text-slate-500">
                   {BANK_NAME} <span className="font-mono font-semibold text-slate-700">{ACCOUNT_NUMBER}</span> ({ACCOUNT_HOLDER})
                 </p>
               </div>
 
-              <button
-                type="button"
-                onClick={handleCopyAccount}
-                className="inline-flex items-center space-x-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold cursor-pointer underline"
-              >
-                <Copy className="w-3.5 h-3.5" />
-                <span>계좌번호 텍스트로 바로 복사하기</span>
-              </button>
+              {/* Kakao & General Copy Helper */}
+              <div className="w-full pt-2 border-t border-slate-200/80 flex flex-col items-center space-y-2">
+                <button
+                  type="button"
+                  onClick={handleCopyAccount}
+                  className="w-full py-2.5 px-3 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-slate-900 font-bold text-xs transition-colors flex items-center justify-center space-x-2 cursor-pointer shadow-2xs"
+                  title="카카오뱅크 계좌를 복사하여 카카오톡이나 은행 앱에서 붙여넣기합니다."
+                >
+                  <Copy className="w-3.5 h-3.5 text-slate-800" />
+                  <span>💬 카카오톡 / 카카오뱅크로 송금하기 (계좌 1초 복사)</span>
+                </button>
+                <p className="text-[10px] text-slate-500 leading-tight">
+                  💡 카카오톡/카카오뱅크는 계좌번호 복사 후 앱을 열면 <strong>"복사한 계좌로 송금할까요?"</strong> 팝업이 바로 나타납니다.
+                </p>
+              </div>
             </div>
           )}
 
