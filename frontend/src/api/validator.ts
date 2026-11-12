@@ -6,17 +6,36 @@ const apiClient = axios.create({
 });
 
 export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
-  const response = await apiClient.get<{ platforms: PlatformMetadata[] }>('/platforms');
-  return response.data.platforms;
+  try {
+    const response = await apiClient.get<{ platforms: PlatformMetadata[] }>('/platforms');
+    if (response.data && typeof response.data === 'object' && Array.isArray(response.data.platforms)) {
+      return response.data.platforms;
+    }
+    return [];
+  } catch (err) {
+    console.warn('API /platforms unreachable:', err);
+    return [];
+  }
 };
 
 export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
-  const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
-  return response.data;
+  try {
+    const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
+    if (Array.isArray(response.data)) {
+      return response.data;
+    }
+    return [];
+  } catch (err) {
+    console.warn('API /feedbacks unreachable:', err);
+    return [];
+  }
 };
 
 export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {
   const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
+  if (!response.data || typeof response.data !== 'object' || !response.data.id) {
+    throw new Error('피드백 저장 실패: 백엔드 서버 상태를 확인해주세요.');
+  }
   return response.data;
 };
 
@@ -28,6 +47,9 @@ export const updateAllSpecs = async (): Promise<{
   total_placements: number;
 }> => {
   const response = await apiClient.post('/specs/update');
+  if (!response.data || typeof response.data !== 'object' || !response.data.message) {
+    throw new Error('가이드라인 동기화 실패: 백엔드 서버 상태를 확인해주세요.');
+  }
   return response.data;
 };
 
@@ -54,6 +76,10 @@ export const validateImages = async (
       'Content-Type': 'multipart/form-data',
     },
   });
+
+  if (typeof response.data === 'string' || !response.data?.results) {
+    throw new Error('백엔드 검수 서버와 통신할 수 없습니다. 백엔드 주소(VITE_API_BASE_URL) 설정을 확인해주세요.');
+  }
 
   return response.data;
 };

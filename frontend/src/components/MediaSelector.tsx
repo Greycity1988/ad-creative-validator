@@ -202,6 +202,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   };
 
   const getPlatformMeta = (pid: string) => {
+    if (!platformsMetadata || !Array.isArray(platformsMetadata)) return undefined;
     return platformsMetadata.find((m) => m.id === pid);
   };
 
