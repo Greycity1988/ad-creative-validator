@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageSquare, Coffee, BookOpen } from 'lucide-react';
+import { ACVLogo } from './ACVLogo';
 
 interface HeaderProps {
   onOpenFeedback: () => void;
@@ -12,14 +13,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenFeedback, onOpenDonation, 
     <header className="bg-slate-900 border-b border-slate-800 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         {/* Brand / Logo */}
-        <div className="flex items-center space-x-3">
-          <div className="p-2.5 bg-blue-600 rounded-xl shadow-inner text-white flex items-center justify-center">
-            <span className="text-2xl" role="img" aria-label="camera">📸</span>
-          </div>
+        <div className="flex items-center space-x-3.5">
+          <ACVLogo size={44} showText={false} className="cursor-pointer" />
           <div>
             <div className="flex items-center space-x-2">
-              <h1 className="text-xl font-bold tracking-tight text-white">
-                광고 소재 검수 시스템
+              <h1 className="text-xl font-black tracking-tight text-white flex items-center gap-1.5 font-mono">
+                <span>ACV</span>
+                <span className="text-base font-bold font-sans text-slate-100">광고 소재 검수 시스템</span>
               </h1>
               <span className="bg-blue-900/60 text-blue-300 text-xs px-2 py-0.5 rounded-full font-medium border border-blue-700/50">
                 v2.1 Pro

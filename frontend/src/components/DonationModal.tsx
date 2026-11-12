@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
-import { X, Coffee, Heart, Copy, Check, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
+import {
+  X,
+  Coffee,
+  Heart,
+  Copy,
+  Check,
+  Sparkles,
+  ShieldCheck,
+  ArrowRight,
+  QrCode,
+  Monitor,
+} from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 
 interface DonationModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+type PaymentTab = 'qr' | 'account';
+type QrChannel = 'toss' | 'kakao';
+
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
   const [selectedAmount, setSelectedAmount] = useState<number>(3000);
+  const [activeTab, setActiveTab] = useState<PaymentTab>('qr');
+  const [qrChannel, setQrChannel] = useState<QrChannel>('toss');
   const [copied, setCopied] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
@@ -25,41 +42,37 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
   const handleCopyAccount = () => {
     navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
     setCopied(true);
-    showToast('카카오뱅크 계좌번호와 예금주가 클립보드에 복사되었습니다!');
+    showToast('카카오뱅크 계좌번호와 예금주가 복사되었습니다! (PC 카카오톡 또는 인터넷 뱅킹에 바로 붙여넣기)');
     setTimeout(() => setCopied(false), 2500);
   };
 
   // Toss Direct Remittance Deep Link
+  const tossDeepLink = `supertoss://send?bank=${encodeURIComponent(BANK_NAME)}&accountNo=${ACCOUNT_NUMBER_CLEAN}&amount=${selectedAmount}`;
+  const kakaoAccountText = `${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`;
+
+  const currentQrValue = qrChannel === 'toss' ? tossDeepLink : kakaoAccountText;
+
   const handleTossPay = () => {
-    // 1. Copy account to clipboard as guaranteed fallback
     navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
-
-    // 2. Prepare Toss deep link: supertoss://send?bank=카카오뱅크&accountNo=0000000000000&amount=3000
-    const tossScheme = `supertoss://send?bank=${encodeURIComponent(BANK_NAME)}&accountNo=${ACCOUNT_NUMBER_CLEAN}&amount=${selectedAmount}`;
-
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
       showToast(`💙 토스 앱을 실행하여 ${selectedAmount.toLocaleString()}원 송금 화면으로 연결합니다.`);
-      window.location.href = tossScheme;
+      window.location.href = tossDeepLink;
     } else {
-      showToast(`💙 계좌번호(${BANK_NAME} ${ACCOUNT_NUMBER}) 및 ${selectedAmount.toLocaleString()}원이 복사되었습니다! 모바일 토스 앱을 여시면 바로 송금창이 뜹니다.`);
-      // Still attempt scheme in case desktop Toss app is installed
+      showToast(`💙 계좌번호(${BANK_NAME} ${ACCOUNT_NUMBER})와 후원금액(₩${selectedAmount.toLocaleString()})이 복사되었습니다! 모바일 토스 앱을 열어 [붙여넣기] 해주세요.`);
       try {
-        window.location.href = tossScheme;
+        window.location.href = tossDeepLink;
       } catch {
         // ignore
       }
     }
   };
 
-  // KakaoPay / KakaoBank 1-Click Flow
   const handleKakaoPay = () => {
-    // Copy account info
     navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
-
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    showToast(`💬 카카오뱅크 계좌번호가 복사되었습니다! 카카오톡/카카오뱅크 앱을 열면 '복사한 계좌로 송금' 팝업이 바로 뜹니다.`);
+    showToast(`💬 카카오뱅크 계좌번호가 복사되었습니다! 카카오톡이나 카카오뱅크 앱을 열면 '복사한 계좌로 송금' 팝업이 바로 나타납니다.`);
 
     if (isMobile) {
       setTimeout(() => {
@@ -72,9 +85,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden animate-scaleUp">
+      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden animate-scaleUp max-h-[92vh] flex flex-col">
         {/* Header */}
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-amber-50 to-orange-50">
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-amber-50 to-orange-50 flex-shrink-0">
           <div className="flex items-center space-x-2.5">
             <div className="p-2.5 bg-amber-500 text-white rounded-xl shadow-sm">
               <Coffee className="w-5 h-5" />
@@ -87,7 +100,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                 </span>
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                광고 소재 검수 도구의 무료 운영과 지속적인 규격 최신화에 큰 힘이 됩니다.
+                PC와 모바일 어디서나 3초 만에 간편하게 후원하실 수 있습니다.
               </p>
             </div>
           </div>
@@ -100,8 +113,8 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-5 space-y-4">
+        {/* Scrollable Content */}
+        <div className="p-5 space-y-4 overflow-y-auto">
           {/* Coffee Option Selector */}
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-2">
@@ -110,8 +123,8 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             <div className="grid grid-cols-3 gap-2.5">
               {[
                 { amount: 3000, label: '☕ 커피 1잔', desc: '아메리카노 응원!' },
-                { amount: 6000, label: '☕☕ 커피 2잔', desc: '커피와 달콤한 디저트' },
-                { amount: 10000, label: '🚀 서버 후원', desc: '1달 호스팅 및 도메인' },
+                { amount: 6000, label: '☕☕ 커피 2잔', desc: '커피 & 디저트' },
+                { amount: 10000, label: '🚀 서버 후원', desc: '호스팅 & 유지비' },
               ].map((opt) => (
                 <button
                   key={opt.amount}
@@ -141,84 +154,176 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </div>
           )}
 
-          {/* Account Transfer Box */}
-          <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-3">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-800">
-              <span className="flex items-center space-x-1.5">
-                <Heart className="w-4 h-4 text-red-500 fill-current" />
-                <span>계좌 직접 송금</span>
-              </span>
-              <span className="text-[11px] text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-bold">
-                수수료 0원
-              </span>
-            </div>
+          {/* Tab Selector: QR Code vs Direct Copy */}
+          <div className="flex rounded-xl bg-slate-100 p-1 text-xs font-bold">
+            <button
+              type="button"
+              onClick={() => setActiveTab('qr')}
+              className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center space-x-1.5 transition-all cursor-pointer ${
+                activeTab === 'qr'
+                  ? 'bg-white text-slate-900 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              <QrCode className="w-4 h-4 text-blue-600" />
+              <span>📱 PC 추천: 스마트폰 QR 송금</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('account')}
+              className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center space-x-1.5 transition-all cursor-pointer ${
+                activeTab === 'account'
+                  ? 'bg-white text-slate-900 shadow-xs'
+                  : 'text-slate-500 hover:text-slate-700'
+              }`}
+            >
+              <Monitor className="w-4 h-4 text-emerald-600" />
+              <span>💻 계좌 직접 복사 & 앱 송금</span>
+            </button>
+          </div>
 
-            <div className="bg-white p-3 rounded-lg border border-slate-200 flex items-center justify-between">
-              <div>
-                <span className="text-xs font-bold text-slate-700">{BANK_NAME}</span>
-                <p className="text-sm font-mono font-bold text-slate-900 tracking-wide mt-0.5">
-                  {ACCOUNT_NUMBER}
+          {/* TAB 1: QR Code Scanner for PC Users */}
+          {activeTab === 'qr' && (
+            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col items-center text-center space-y-3.5 animate-fadeIn">
+              {/* Channel Selector for QR */}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => setQrChannel('toss')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+                    qrChannel === 'toss'
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-2xs'
+                      : 'bg-white text-slate-600 border-slate-300 hover:bg-slate-50'
+                  }`}
+                >
+                  💙 토스(Toss) 송금 QR
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setQrChannel('kakao')}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-all cursor-pointer ${
+                    qrChannel === 'kakao'
+                      ? 'bg-yellow-400 text-slate-900 border-yellow-400 shadow-2xs'
+                      : 'bg-white text-slate-600 border-slate-300 hover:bg-slate-50'
+                  }`}
+                >
+                  💬 카카오뱅크 송금 QR
+                </button>
+              </div>
+
+              {/* QR Code SVG Box */}
+              <div className="p-3.5 bg-white rounded-2xl border-2 border-slate-200/90 shadow-md">
+                <QRCodeSVG
+                  value={currentQrValue}
+                  size={150}
+                  level="M"
+                  includeMargin={false}
+                />
+              </div>
+
+              {/* Instructions */}
+              <div className="space-y-1">
+                <p className="text-xs font-bold text-slate-800">
+                  {qrChannel === 'toss'
+                    ? `스마트폰 카메라로 비추면 토스 앱이 열리며 ₩${selectedAmount.toLocaleString()}원이 자동 입력됩니다.`
+                    : '카카오톡 상단 [코드스캔] 또는 카메라로 비추면 바로 송금창이 열립니다.'}
                 </p>
-                <span className="text-[11px] text-slate-500">예금주: {ACCOUNT_HOLDER}</span>
+                <p className="text-[11px] text-slate-500">
+                  {BANK_NAME} <span className="font-mono font-semibold text-slate-700">{ACCOUNT_NUMBER}</span> ({ACCOUNT_HOLDER})
+                </p>
               </div>
 
               <button
                 type="button"
                 onClick={handleCopyAccount}
-                className={`inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs ${
-                  copied
-                    ? 'bg-emerald-600 text-white'
-                    : 'bg-amber-500 hover:bg-amber-600 text-white'
-                }`}
+                className="inline-flex items-center space-x-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold cursor-pointer underline"
               >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5" />
-                    <span>복사 완료!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>계좌 복사</span>
-                  </>
-                )}
+                <Copy className="w-3.5 h-3.5" />
+                <span>계좌번호 텍스트로 바로 복사하기</span>
               </button>
             </div>
-          </div>
+          )}
 
-          {/* Quick Pay Links */}
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <label className="block text-xs font-bold text-slate-700">
-                간편 송금 앱 연동 (토스 / 카카오)
-              </label>
-              <span className="text-[11px] text-slate-400">선택 금액: ₩{selectedAmount.toLocaleString()}</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={handleKakaoPay}
-                className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-yellow-300 bg-yellow-400/95 hover:bg-yellow-400 text-slate-900 font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
-                title="카카오뱅크 계좌를 복사하고 카카오톡 송금으로 연결합니다."
-              >
-                <span>💬 카카오페이 / 카카오뱅크</span>
-                <ArrowRight className="w-3.5 h-3.5 text-slate-800" />
-              </button>
+          {/* TAB 2: Direct Account Copy / App Launch */}
+          {activeTab === 'account' && (
+            <div className="space-y-4 animate-fadeIn">
+              {/* Account Transfer Box */}
+              <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-3">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-800">
+                  <span className="flex items-center space-x-1.5">
+                    <Heart className="w-4 h-4 text-red-500 fill-current" />
+                    <span>계좌 직접 송금</span>
+                  </span>
+                  <span className="text-[11px] text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-bold">
+                    수수료 0원
+                  </span>
+                </div>
 
-              <button
-                type="button"
-                onClick={handleTossPay}
-                className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-blue-400 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
-                title="토스 앱을 실행하여 카카오뱅크 계좌와 후원 금액이 자동 입력된 송금창을 띄웁니다."
-              >
-                <span>💙 토스(Toss) 바로 송금</span>
-                <ArrowRight className="w-3.5 h-3.5 text-white" />
-              </button>
+                <div className="bg-white p-3 rounded-lg border border-slate-200 flex items-center justify-between">
+                  <div>
+                    <span className="text-xs font-bold text-slate-700">{BANK_NAME}</span>
+                    <p className="text-sm font-mono font-bold text-slate-900 tracking-wide mt-0.5">
+                      {ACCOUNT_NUMBER}
+                    </p>
+                    <span className="text-[11px] text-slate-500">예금주: {ACCOUNT_HOLDER}</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleCopyAccount}
+                    className={`inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer shadow-2xs ${
+                      copied
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-amber-500 hover:bg-amber-600 text-white'
+                    }`}
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3.5 h-3.5" />
+                        <span>복사 완료!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>계좌 복사</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+
+              {/* Quick Pay Buttons */}
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-slate-700">
+                    간편 송금 앱 연동 (토스 / 카카오)
+                  </label>
+                  <span className="text-[11px] text-slate-400">선택 금액: ₩{selectedAmount.toLocaleString()}</span>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={handleKakaoPay}
+                    className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-yellow-300 bg-yellow-400/95 hover:bg-yellow-400 text-slate-900 font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
+                    title="카카오뱅크 계좌를 복사하고 카카오톡 송금으로 연결합니다."
+                  >
+                    <span>💬 카카오페이 / 카카오뱅크</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-slate-800" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleTossPay}
+                    className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-blue-400 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
+                    title="토스 앱을 실행하여 카카오뱅크 계좌와 후원 금액이 자동 입력된 송금창을 띄웁니다."
+                  >
+                    <span>💙 토스(Toss) 바로 송금</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  </button>
+                </div>
+              </div>
             </div>
-            <p className="text-[11px] text-slate-500 text-center">
-              💡 토스 버튼 클릭 시 <strong className="text-slate-700">은행/계좌/금액(₩{selectedAmount.toLocaleString()})</strong>이 자동 입력된 토스 송금 화면이 즉시 열립니다.
-            </p>
-          </div>
+          )}
 
           {/* Guarantee / Promise Notice */}
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 flex items-start space-x-2 text-[11px] text-slate-600 leading-relaxed">
@@ -230,7 +335,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Footer */}
-        <div className="p-3 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
+        <div className="p-3 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-500 flex-shrink-0">
           <span className="flex items-center space-x-1">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>Thank you for supporting Owen O. Magnus!</span>

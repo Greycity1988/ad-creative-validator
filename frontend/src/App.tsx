@@ -6,6 +6,7 @@ import { ResultDashboard } from './components/ResultDashboard';
 import { FeedbackModal } from './components/FeedbackModal';
 import { DonationModal } from './components/DonationModal';
 import { GuideModal } from './components/GuideModal';
+import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages, updateAllSpecs } from './api/validator';
 import { AlertCircle } from 'lucide-react';
@@ -217,7 +218,8 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2">
+      <footer className="mt-auto border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2 flex flex-col items-center justify-center">
+        <ACVLogo size={32} showText={false} className="opacity-80 hover:opacity-100 transition-opacity" />
         <p className="font-semibold text-slate-800 text-sm tracking-tight">
           Crafted with passion in 2026 by <strong className="text-blue-600 font-bold">Owen O. Magnus</strong>.
         </p>
@@ -225,7 +227,7 @@ export const App: React.FC = () => {
           Feedbacks are warmly welcomed, and coffee sponsorships are deeply appreciated! ☕✨
         </p>
         <p className="text-[11px] text-slate-400">
-          Ad Creative Guideline Validator • 15 Major Advertising Platforms & 150+ Official Placements Supported
+          ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 150+ Official Placements Supported
         </p>
       </footer>
 
