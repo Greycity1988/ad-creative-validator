@@ -1,9 +1,9 @@
 platform: 당근 (Karrot Ads)
 platform_id: daangn
 official_update_date: 2026.04 공식 개정
-official_source_name: 당근 비즈니스 광고 가이드
+official_source_name: 당근 비즈니스 공식 가이드
 official_source_url: https://business.daangn.com
-revision_summary: 중고거래 피드 정방형/와이드형 및 홈 상단 배너, 동네생활 세로형 전면 지면 공식 규격 반영
+revision_summary: 네이티브 피드 1:1(최소 200×200, 권장 1080×1080), 와이드(1.91:1), 세로형(4:5, 9:16), 홈 상단 배너, WebP 공식 지원 및 10MB 기준 확정
 last_verified_date: '2026-11-12'
 description: 피드 정방형 (1:1), 피드 와이드 (1.91:1), 세로형 (4:5), 홈 상단 배너, 동네생활 스토리 (9:16)
 placements:
@@ -12,15 +12,17 @@ placements:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 800
-  min_height: 800
+  min_width: 200
+  min_height: 200
   recommended_width: 1080
   recommended_height: 1080
-  max_file_size_kb: 5120
+  max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
+  - webp
+  description: 당근 전문가모드 네이티브 피드 대표 정방형 규격 (JPG, PNG, WEBP 지원)
 - name: 당근 (피드 와이드 Landscape 1.91:1 1200×628)
   aspect_ratio:
   - 1.91
@@ -30,12 +32,13 @@ placements:
   min_height: 314
   recommended_width: 1200
   recommended_height: 628
-  max_file_size_kb: 5120
+  max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
-- name: 당근 (피드 세로형 Portrait 4:5 800×1000)
+  - webp
+- name: 당근 (피드 세로형 Portrait 4:5 1080×1350)
   aspect_ratio:
   - 4
   - 5
@@ -44,20 +47,22 @@ placements:
   min_height: 1000
   recommended_width: 1080
   recommended_height: 1350
-  max_file_size_kb: 5120
+  max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
+  - webp
 - name: 당근 (중고거래 홈 상단 배너 1000×500)
   exact_width: 1000
   exact_height: 500
-  max_file_size_kb: 1024
+  max_file_size_kb: 2048
   allowed_formats:
   - jpg
   - jpeg
   - png
-- name: 당근 (동네생활 스토리 전면 9:16 1080×1920)
+  - webp
+- name: 당근 (동네생활 스토리/리드폼 전면 9:16 1080×1920)
   aspect_ratio:
   - 9
   - 16
@@ -66,8 +71,10 @@ placements:
   min_height: 1280
   recommended_width: 1080
   recommended_height: 1920
-  max_file_size_kb: 5120
+  max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
+  - webp
+  description: 당근 전문가모드 풀스크린/리드폼 세로형 규격 (권장 9:16)

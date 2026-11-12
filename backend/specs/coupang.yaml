@@ -1,12 +1,94 @@
 platform: 쿠팡 (Coupang Ads)
 platform_id: coupang
 official_update_date: 2026.03 공식 개정
-official_source_name: 쿠팡 마케팅 서비스 광고 가이드
+official_source_name: 쿠팡 마케팅 서비스 디스플레이 광고 가이드
 official_source_url: https://advertising.coupang.com
-revision_summary: 메인 홈 와이드 배너, 골드박스 타임할인, C.Native 상품 피드, 기획전 헤더 규격 반영
+revision_summary: C1 메인 상단(PC 1920×450 / 모바일 720×380), G1 골드박스(PC 980×140 / 모바일 720×120), R1 로켓배송, S4 검색결과 배너 공식 사양 반영
 last_verified_date: '2026-11-12'
-description: 메인 홈 배너 (2:1), 골드박스 (2:1), C.Native 상품 (1:1), 기획전 헤더 (3:1, 4:1)
+description: C1 메인 상단, G1 골드박스, R1 로켓배송, S4 검색결과, B2 기획전 배너
 placements:
+- name: 쿠팡 C1 (메인 상단 배너 PC 1920×450)
+  exact_width: 1920
+  exact_height: 450
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 쿠팡 PC 메인 상단 헤더 와이드 배너 (최대 500KB)
+- name: 쿠팡 C1 (메인 상단 배너 모바일 720×380)
+  exact_width: 720
+  exact_height: 380
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 쿠팡 모바일 앱 메인 상단 대표 배너 (최대 300KB)
+- name: 쿠팡 G1 (골드박스 상단 배너 PC 980×140)
+  exact_width: 980
+  exact_height: 140
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 G1 (골드박스 상단 배너 모바일 720×120)
+  exact_width: 720
+  exact_height: 120
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 R1 (로켓배송 상단 배너 PC 768×324)
+  exact_width: 768
+  exact_height: 324
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 R1 (로켓배송 상단 배너 모바일 720×240)
+  exact_width: 720
+  exact_height: 240
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 S4 (검색결과 배너 PC 1050×120)
+  exact_width: 1050
+  exact_height: 120
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 S4 (검색결과 배너 모바일 720×240)
+  exact_width: 720
+  exact_height: 240
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 B2 (브랜드 기획전 배너 PC 980×200)
+  exact_width: 980
+  exact_height: 200
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 쿠팡 B2 (브랜드 기획전 배너 모바일 720×332)
+  exact_width: 720
+  exact_height: 332
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
 - name: 쿠팡 (메인 홈 와이드 배너 1200×600)
   exact_width: 1200
   exact_height: 600
@@ -15,33 +97,9 @@ placements:
   - jpg
   - jpeg
   - png
-- name: 쿠팡 (골드박스 타임할인 배너 750×375)
-  exact_width: 750
-  exact_height: 375
-  max_file_size_kb: 300
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
 - name: 쿠팡 (C.Native 상품 피드 배너 500×500)
   exact_width: 500
   exact_height: 500
-  max_file_size_kb: 300
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-- name: 쿠팡 (카테고리 기획전 헤더 배너 1080×360)
-  exact_width: 1080
-  exact_height: 360
-  max_file_size_kb: 500
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-- name: 쿠팡 (로켓배송 상단 슬라이드 배너 960×240)
-  exact_width: 960
-  exact_height: 240
   max_file_size_kb: 300
   allowed_formats:
   - jpg

@@ -1,8 +1,8 @@
 platform: 크리테오
 platform_id: criteo
 official_update_date: 2026.03 공식 개정
-official_source_name: Criteo Advertising Guidelines
-official_source_url: https://www.criteo.com
+official_source_name: Criteo Advertising Guidelines (Help Center)
+official_source_url: https://help.criteo.com
 revision_summary: 표준 IAB 디스플레이 배너 13종(300×250, 728×90, 160×600, 970×250 등), 플래그십/쇼케이스
   빅배너, 어댑티브 마스터, 빅쿠폰 및 타이머 규격 완비
 last_verified_date: '2026-11-12'

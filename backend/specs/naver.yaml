@@ -1,17 +1,16 @@
 platform: 네이버 (GFA / NOSP)
 platform_id: naver
 official_update_date: 2026.04 공식 개정
-official_source_name: 네이버 디스플레이 광고(N Ads / NOSP) 가이드
-official_source_url: https://saedu.naver.com/guide/da/nosp/index.naver
-revision_summary: NOSP 타임보드(1660×260), 모바일 스페셜DA(1250×520), 더블크라운 및 트리플크라운 프리미엄 지면
-  추가, 2:3 세로형 이미지 피드(1200×1800) 및 스마트채널 750×280 가이드 반영
+official_source_name: 네이버 디스플레이 광고(N Ads / NOSP) 공식 가이드
+official_source_url: https://ads.naver.com/guide/da
+revision_summary: NOSP 타임보드 300KB 허용 기준 반영, 모바일 스페셜DA(1250×520 300KB), 스마트채널(750×280 투명PNG 250KB 및 750×200/160), 네이티브 피드 사양 최신화
 last_verified_date: '2026-11-12'
-description: 스마트채널, 네이버 DA, NOSP 타임보드, 스페셜DA, 더블크라운, 트리플크라운
+description: 스마트채널, 네이버 DA, NOSP 타임보드, 스페셜DA, 더블크라운, 롤링보드
 placements:
 - name: 네이버 NOSP (PC 타임보드 고해상도 1660×260)
   exact_width: 1660
   exact_height: 260
-  max_file_size_kb: 200
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -19,10 +18,11 @@ placements:
   - gif
   text_ratio_limit: 0.25
   text_ratio_level: warning
+  description: NOSP PC 타임보드 레티나 대응 규격 (노출 시 830×130 축소, NOSP 콘솔 최대 300KB 허용)
 - name: 네이버 NOSP (PC 타임보드 기본형 830×130)
   exact_width: 830
   exact_height: 130
-  max_file_size_kb: 150
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -31,7 +31,7 @@ placements:
 - name: 네이버 NOSP (모바일 스페셜DA 520 확장형 1250×520)
   exact_width: 1250
   exact_height: 520
-  max_file_size_kb: 250
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -41,8 +41,7 @@ placements:
 - name: 네이버 NOSP (모바일 스페셜DA 기본형 750×280)
   exact_width: 750
   exact_height: 280
-  min_file_size_kb: 50
-  max_file_size_kb: 200
+  max_file_size_kb: 250
   allowed_formats:
   - jpg
   - jpeg
@@ -52,7 +51,7 @@ placements:
 - name: 네이버 NOSP (모바일 더블크라운 메인 1250×520)
   exact_width: 1250
   exact_height: 520
-  max_file_size_kb: 250
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -77,37 +76,36 @@ placements:
 - name: 네이버 NOSP (모바일 트리플크라운 메인 1250×520)
   exact_width: 1250
   exact_height: 520
-  max_file_size_kb: 250
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
-- name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
-  exact_width: 750
-  exact_height: 200
-  min_height: 160
-  max_file_size_kb: 150
-  allowed_formats:
-  - png
-  require_transparency: true
-  description: GFA 모바일 상단 스마트채널 기본 규격 (배경 투명 필수 PNG)
 - name: 네이버 스마트채널 (750×280 투명 PNG)
   exact_width: 750
   exact_height: 280
-  min_file_size_kb: 150
-  max_file_size_kb: 200
+  max_file_size_kb: 250
   allowed_formats:
   - png
   require_transparency: true
   text_ratio_limit: 0.2
   text_ratio_level: error
+  description: GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB)
+- name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
+  exact_width: 750
+  exact_height: 200
+  min_height: 160
+  max_file_size_kb: 200
+  allowed_formats:
+  - png
+  require_transparency: true
+  description: GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG)
 - name: 네이버 DA (모바일 DA 1250×560)
   exact_width: 1250
   exact_height: 560
-  min_file_size_kb: 50
-  max_file_size_kb: 250
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -119,8 +117,7 @@ placements:
   aspect_ratio_tolerance: 0.02
   min_width: 1200
   min_height: 1200
-  min_file_size_kb: 80
-  max_file_size_kb: 800
+  max_file_size_kb: 1024
   allowed_formats:
   - jpg
   - jpeg
@@ -134,8 +131,7 @@ placements:
   aspect_ratio_tolerance: 0.02
   min_width: 1200
   min_height: 628
-  min_file_size_kb: 80
-  max_file_size_kb: 800
+  max_file_size_kb: 1024
   allowed_formats:
   - jpg
   - jpeg
@@ -149,8 +145,7 @@ placements:
   aspect_ratio_tolerance: 0.02
   min_width: 1200
   min_height: 1800
-  min_file_size_kb: 80
-  max_file_size_kb: 800
+  max_file_size_kb: 1024
   allowed_formats:
   - jpg
   - jpeg
@@ -160,8 +155,7 @@ placements:
 - name: 네이버 DA (네이티브 배너 342×228)
   exact_width: 342
   exact_height: 228
-  min_file_size_kb: 10
-  max_file_size_kb: 130
+  max_file_size_kb: 200
   allowed_formats:
   - jpg
   - jpeg
@@ -179,7 +173,7 @@ placements:
 - name: 네이버 NOSP (PC 메인 롤링보드 350×280)
   exact_width: 350
   exact_height: 280
-  max_file_size_kb: 150
+  max_file_size_kb: 200
   allowed_formats:
   - jpg
   - jpeg
@@ -190,7 +184,7 @@ placements:
 - name: 네이버 NOSP (모바일 롤링보드 750×400)
   exact_width: 750
   exact_height: 400
-  max_file_size_kb: 250
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg
@@ -200,7 +194,7 @@ placements:
 - name: 네이버 브랜드검색 (PC 메인 브랜드존 300×150)
   exact_width: 300
   exact_height: 150
-  max_file_size_kb: 150
+  max_file_size_kb: 200
   allowed_formats:
   - jpg
   - jpeg

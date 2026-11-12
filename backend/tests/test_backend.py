@@ -100,9 +100,9 @@ def test_naver_gfa_validation():
     info = extract_image_info("naver_sq.png", data)
     res = v.validate(info, text_ratio=0.15)
     sq_res = next(p for p in res.placements if "Square" in p.name)
-    # File size min_file_size_kb is 80KB in naver spec; our blank dummy image is smaller so file_size fails
+    # File size check passes because arbitrary min_file_size restrictions were removed
     file_size_check = next(c for c in sq_res.checks if c.name == "file_size")
-    assert file_size_check.status == CheckStatus.FAIL.value
+    assert file_size_check.status == CheckStatus.PASS.value
     # But dimensions, aspect_ratio, format pass
     dim_check = next(c for c in sq_res.checks if c.name == "dimensions")
     assert dim_check.status == CheckStatus.PASS.value
@@ -291,10 +291,10 @@ def test_new_platforms_validation():
     assert res_cp.overall == CheckStatus.PASS.value
 
     v_buzz = get_validator("buzzvil")
-    img_buzz = create_test_image(720, 1280, fmt="JPEG")
-    info_buzz = extract_image_info("buzzvil_lock.jpg", img_buzz)
+    img_buzz = create_test_image(1200, 627, fmt="JPEG")
+    info_buzz = extract_image_info("buzzvil_native.jpg", img_buzz)
     res_buzz = v_buzz.validate(info_buzz, auto_match=True)
-    assert any("720×1280" in p.name for p in res_buzz.placements)
+    assert any("1200×627" in p.name for p in res_buzz.placements)
     assert res_buzz.overall == CheckStatus.PASS.value
 
 

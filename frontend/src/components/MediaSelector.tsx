@@ -169,6 +169,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   const [selectedChannelId, setSelectedChannelId] = useState<string>('all');
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
+  const totalPlacementsCount = platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 162;
 
   const handleToggleAll = () => {
     setSelectedChannelId('all');
@@ -276,7 +277,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           {/* Official Spec Status Badge */}
           <div className="inline-flex items-center space-x-1.5 text-xs font-bold px-2.5 py-1.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 shadow-2xs">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>15대 매체 152개 지면 공식 규격 탑재</span>
+            <span>15대 매체 {totalPlacementsCount}개 지면 공식 규격 탑재</span>
           </div>
 
           {/* Toggle All */}
@@ -305,7 +306,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       <div className="p-3.5 bg-blue-50/70 border border-blue-200/80 rounded-xl flex items-start space-x-2.5 text-xs text-blue-900 leading-relaxed">
         <ShieldCheck className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold">15대 주요 광고 매체 152개 공식 지면 전수 탑재:</span> 각 매체사(네이버, 카카오, 메타, 구글, 토스, 쿠팡 등) 공식 광고 가이드 센터 기준 규격을 바탕으로 검수합니다. 규격 불일치나 신규 지면 추가는 상단 <strong>[💡 건의 / 규격 제보]</strong>를 통해 알려주시면 신속히 반영됩니다.
+          <span className="font-bold">15대 주요 광고 매체 {totalPlacementsCount}개 공식 지면 전수 탑재:</span> 각 매체사(네이버, 카카오, 메타, 구글, 토스, 쿠팡 등) 공식 광고 가이드 센터 기준 규격을 바탕으로 검수합니다. 규격 불일치나 신규 지면 추가는 상단 <strong>[💡 건의 / 규격 제보]</strong>를 통해 알려주시면 신속히 반영됩니다.
         </div>
       </div>
 
