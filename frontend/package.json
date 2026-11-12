@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:specs": "../backend/.venv/bin/python ../scripts/sync_specs.py"
   },
   "dependencies": {
     "axios": "^1.7.9",

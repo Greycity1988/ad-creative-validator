@@ -288,19 +288,29 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
             </div>
           )}
 
-          {/* Top: Image Preview & Text Ratio */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-2">
+          {/* Top: Image Preview & Optional Text Ratio Gauge */}
+          {currentItem.text_ratio !== null && currentItem.text_ratio !== undefined ? (
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div className="lg:col-span-2">
+                <ImagePreview
+                  filename={currentItem.filename}
+                  imageInfo={currentItem.image_info}
+                  previewUrl={filePreviews[currentItem.filename]}
+                />
+              </div>
+              <div>
+                <TextRatioGauge ratio={currentItem.text_ratio} />
+              </div>
+            </div>
+          ) : (
+            <div className="w-full">
               <ImagePreview
                 filename={currentItem.filename}
                 imageInfo={currentItem.image_info}
                 previewUrl={filePreviews[currentItem.filename]}
               />
             </div>
-            <div>
-              <TextRatioGauge ratio={currentItem.text_ratio} />
-            </div>
-          </div>
+          )}
 
           {/* View Mode & Filter Controls */}
           <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-3">
