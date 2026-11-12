@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Coffee, Heart, Copy, Check, ExternalLink, Sparkles, ShieldCheck } from 'lucide-react';
+import { X, Coffee, Heart, Copy, Check, Sparkles, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -9,16 +9,63 @@ interface DonationModalProps {
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
   const [selectedAmount, setSelectedAmount] = useState<number>(3000);
   const [copied, setCopied] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Donation bank details
   const BANK_NAME = '카카오뱅크';
   const ACCOUNT_NUMBER = '0000-00-0000000';
+  const ACCOUNT_NUMBER_CLEAN = '0000000000000';
   const ACCOUNT_HOLDER = '개발자';
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 5000);
+  };
 
   const handleCopyAccount = () => {
     navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
     setCopied(true);
+    showToast('카카오뱅크 계좌번호와 예금주가 클립보드에 복사되었습니다!');
     setTimeout(() => setCopied(false), 2500);
+  };
+
+  // Toss Direct Remittance Deep Link
+  const handleTossPay = () => {
+    // 1. Copy account to clipboard as guaranteed fallback
+    navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
+
+    // 2. Prepare Toss deep link: supertoss://send?bank=카카오뱅크&accountNo=0000000000000&amount=3000
+    const tossScheme = `supertoss://send?bank=${encodeURIComponent(BANK_NAME)}&accountNo=${ACCOUNT_NUMBER_CLEAN}&amount=${selectedAmount}`;
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      showToast(`💙 토스 앱을 실행하여 ${selectedAmount.toLocaleString()}원 송금 화면으로 연결합니다.`);
+      window.location.href = tossScheme;
+    } else {
+      showToast(`💙 계좌번호(${BANK_NAME} ${ACCOUNT_NUMBER}) 및 ${selectedAmount.toLocaleString()}원이 복사되었습니다! 모바일 토스 앱을 여시면 바로 송금창이 뜹니다.`);
+      // Still attempt scheme in case desktop Toss app is installed
+      try {
+        window.location.href = tossScheme;
+      } catch {
+        // ignore
+      }
+    }
+  };
+
+  // KakaoPay / KakaoBank 1-Click Flow
+  const handleKakaoPay = () => {
+    // Copy account info
+    navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    showToast(`💬 카카오뱅크 계좌번호가 복사되었습니다! 카카오톡/카카오뱅크 앱을 열면 '복사한 계좌로 송금' 팝업이 바로 뜹니다.`);
+
+    if (isMobile) {
+      setTimeout(() => {
+        window.location.href = 'kakaotalk://';
+      }, 500);
+    }
   };
 
   if (!isOpen) return null;
@@ -54,7 +101,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
         </div>
 
         {/* Content */}
-        <div className="p-5 space-y-5">
+        <div className="p-5 space-y-4">
           {/* Coffee Option Selector */}
           <div>
             <label className="block text-xs font-bold text-slate-700 mb-2">
@@ -64,7 +111,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               {[
                 { amount: 3000, label: '☕ 커피 1잔', desc: '아메리카노 응원!' },
                 { amount: 6000, label: '☕☕ 커피 2잔', desc: '커피와 달콤한 디저트' },
-                { amount: 10000, label: '🚀 서버 후원', desc: '1달 서버 호스팅 지원' },
+                { amount: 10000, label: '🚀 서버 후원', desc: '1달 호스팅 및 도메인' },
               ].map((opt) => (
                 <button
                   key={opt.amount}
@@ -86,12 +133,20 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </div>
           </div>
 
+          {/* Toast Notification Box */}
+          {toastMessage && (
+            <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs text-blue-900 font-medium flex items-start space-x-2 animate-fadeIn">
+              <Sparkles className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div className="leading-relaxed">{toastMessage}</div>
+            </div>
+          )}
+
           {/* Account Transfer Box */}
           <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/40 space-y-3">
             <div className="flex items-center justify-between text-xs font-bold text-slate-800">
               <span className="flex items-center space-x-1.5">
                 <Heart className="w-4 h-4 text-red-500 fill-current" />
-                <span>계좌 간편 이체 후원</span>
+                <span>계좌 직접 송금</span>
               </span>
               <span className="text-[11px] text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-bold">
                 수수료 0원
@@ -119,7 +174,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                 {copied ? (
                   <>
                     <Check className="w-3.5 h-3.5" />
-                    <span>복사됨!</span>
+                    <span>복사 완료!</span>
                   </>
                 ) : (
                   <>
@@ -133,30 +188,36 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
 
           {/* Quick Pay Links */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-slate-700">
-              간편 송금 앱 바로가기
-            </label>
-            <div className="grid grid-cols-2 gap-2">
-              <a
-                href="https://qr.kakaopay.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center space-x-2 p-2.5 rounded-xl border border-yellow-300 bg-yellow-400/90 hover:bg-yellow-400 text-slate-900 font-bold text-xs transition-colors shadow-2xs"
-              >
-                <span>💬 카카오페이 송금</span>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-700" />
-              </a>
-
-              <a
-                href="https://toss.me"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-center space-x-2 p-2.5 rounded-xl border border-blue-300 bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs transition-colors shadow-2xs"
-              >
-                <span>💙 토스(Toss) 송금</span>
-                <ExternalLink className="w-3.5 h-3.5 text-white" />
-              </a>
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-bold text-slate-700">
+                간편 송금 앱 연동 (토스 / 카카오)
+              </label>
+              <span className="text-[11px] text-slate-400">선택 금액: ₩{selectedAmount.toLocaleString()}</span>
             </div>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={handleKakaoPay}
+                className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-yellow-300 bg-yellow-400/95 hover:bg-yellow-400 text-slate-900 font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
+                title="카카오뱅크 계좌를 복사하고 카카오톡 송금으로 연결합니다."
+              >
+                <span>💬 카카오페이 / 카카오뱅크</span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-800" />
+              </button>
+
+              <button
+                type="button"
+                onClick={handleTossPay}
+                className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-blue-400 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
+                title="토스 앱을 실행하여 카카오뱅크 계좌와 후원 금액이 자동 입력된 송금창을 띄웁니다."
+              >
+                <span>💙 토스(Toss) 바로 송금</span>
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </button>
+            </div>
+            <p className="text-[11px] text-slate-500 text-center">
+              💡 토스 버튼 클릭 시 <strong className="text-slate-700">은행/계좌/금액(₩{selectedAmount.toLocaleString()})</strong>이 자동 입력된 토스 송금 화면이 즉시 열립니다.
+            </p>
           </div>
 
           {/* Guarantee / Promise Notice */}
@@ -172,7 +233,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
         <div className="p-3 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
           <span className="flex items-center space-x-1">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-            <span>Thank you for supporting this project!</span>
+            <span>Thank you for supporting Owen O. Magnus!</span>
           </span>
           <button
             type="button"
