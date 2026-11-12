@@ -68,10 +68,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3.5 rounded-xl border border-amber-100 bg-amber-50/40 space-y-1.5">
                 <div className="font-bold text-amber-800 flex items-center space-x-1">
                   <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-                  <span>텍스트 20% 초과 사전 진단</span>
+                  <span>투명 배경(누끼) & 바이너리 포맷 검증</span>
                 </div>
                 <p className="text-slate-600 leading-relaxed text-[11px]">
-                  네이버 타임보드·스페셜DA, 카카오 비즈보드는 이미지 내 텍스트 면적이 20%를 넘으면 즉각 반려됩니다. AI OCR로 등록 전에 즉시 초과 여부를 감지합니다.
+                  카카오 비즈보드, 네이버 스마트채널 등 투명 배경(Alpha PNG)이 필수인 지면의 누끼 여부와 파일명 확장자 위장 여부를 브라우저 캔버스와 매직 바이트로 정밀 판정합니다.
                 </p>
               </div>
 

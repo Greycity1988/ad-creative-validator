@@ -38,6 +38,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -64,6 +65,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -87,6 +89,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -110,6 +113,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -159,6 +163,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -183,6 +188,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -207,6 +213,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -231,6 +238,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -255,6 +263,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -279,6 +288,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -303,6 +313,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -327,6 +338,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -353,6 +365,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -379,6 +392,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -424,6 +438,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -447,6 +462,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -470,6 +486,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -496,6 +513,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -539,6 +557,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -562,6 +581,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -585,6 +605,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -608,6 +629,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -631,6 +653,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -704,6 +727,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -727,6 +751,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -750,6 +775,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -773,6 +799,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -796,6 +823,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -819,6 +847,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -843,6 +872,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -867,6 +897,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -891,6 +922,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -915,6 +947,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -939,6 +972,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -963,6 +997,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -987,6 +1022,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1011,6 +1047,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1035,6 +1072,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1059,6 +1097,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1083,6 +1122,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1107,6 +1147,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1131,6 +1172,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1157,6 +1199,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1183,6 +1226,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1209,6 +1253,7 @@
           3
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1233,6 +1278,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1256,6 +1302,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1280,6 +1327,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1304,6 +1352,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1328,6 +1377,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1352,6 +1402,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1376,6 +1427,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1400,6 +1452,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1424,6 +1477,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1448,6 +1502,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1471,6 +1526,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1495,6 +1551,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1519,6 +1576,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1565,6 +1623,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1591,6 +1650,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1617,6 +1677,7 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1640,6 +1701,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1666,6 +1728,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1727,6 +1790,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1753,6 +1817,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1779,6 +1844,7 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1805,6 +1871,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1829,6 +1896,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1853,6 +1921,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1877,6 +1946,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1901,6 +1971,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1925,6 +1996,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1949,6 +2021,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1973,6 +2046,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -1997,6 +2071,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2021,6 +2096,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2045,6 +2121,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2069,6 +2146,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2093,6 +2171,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2117,6 +2196,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2141,6 +2221,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2165,6 +2246,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2189,6 +2271,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2201,12 +2284,13 @@
     "description": "비즈보드 (16:5), New 비즈보드, 카카오 DA, 포커스보드",
     "official_update_date": "2026.03 공식 개정",
     "official_source_name": "카카오 비즈니스 가이드",
-    "official_source_url": "https://kakaobusiness.gitbook.io/moment",
+    "official_source_url": "https://kakaobusiness.gitbook.io/main/ad/moment/performance/talkboard/content-guide",
     "revision_summary": "비즈보드 960×300 단일화 전면 적용, 톡 개편 연동 4:5 피드 및 9:16 세로형 지면 공식 확대, PC 포커스보드(1504×336) 가이드 반영",
     "last_verified_date": "2026-11-12",
-    "placements_count": 13,
+    "placements_count": 14,
     "placements": [
       "카카오 비즈보드 (960×300 16:5)",
+      "카카오 비즈보드 (클래식 1029×258)",
       "New 카카오 비즈보드 (확장/오브젝트형 960×300)",
       "카카오 DA (디스플레이 네이티브 2:1)",
       "카카오 DA (디스플레이 네이티브 1:1)",
@@ -2241,8 +2325,31 @@
           5
         ],
         "aspect_ratio_tolerance": 0.01,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
+        "notes": []
+      },
+      {
+        "name": "카카오 비즈보드 (클래식 1029×258)",
+        "dimension_str": "1029×258px",
+        "aspect_ratio_str": "",
+        "allowed_formats": [
+          "png"
+        ],
+        "exact_width": 1029,
+        "exact_height": 258,
+        "min_width": null,
+        "min_height": null,
+        "max_width": null,
+        "max_height": null,
+        "max_file_size_kb": 300,
+        "max_file_size_mb": null,
+        "aspect_ratio": null,
+        "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
+        "max_text_ratio": null,
+        "description": "카카오 비즈보드 클래식 규격 (배경 투명 필수 PNG)",
         "notes": []
       },
       {
@@ -2265,6 +2372,7 @@
           5
         ],
         "aspect_ratio_tolerance": 0.01,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2291,6 +2399,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2317,6 +2426,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2343,6 +2453,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2369,6 +2480,7 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2392,6 +2504,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2413,6 +2526,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2439,6 +2553,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2462,6 +2577,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2485,6 +2601,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2508,6 +2625,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2531,6 +2649,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2577,6 +2696,7 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2603,6 +2723,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2629,6 +2750,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2655,6 +2777,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2681,6 +2804,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2729,6 +2853,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2756,6 +2881,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2783,6 +2909,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2810,6 +2937,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2837,6 +2965,7 @@
           4
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2858,6 +2987,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2870,10 +3000,10 @@
     "description": "스마트채널, 네이버 DA, NOSP 타임보드, 스페셜DA, 더블크라운, 트리플크라운",
     "official_update_date": "2026.04 공식 개정",
     "official_source_name": "네이버 디스플레이 광고(N Ads / NOSP) 가이드",
-    "official_source_url": "https://gfa.naver.com",
+    "official_source_url": "https://saedu.naver.com/guide/da/nosp/index.naver",
     "revision_summary": "NOSP 타임보드(1660×260), 모바일 스페셜DA(1250×520), 더블크라운 및 트리플크라운 프리미엄 지면 추가, 2:3 세로형 이미지 피드(1200×1800) 및 스마트채널 750×280 가이드 반영",
     "last_verified_date": "2026-11-12",
-    "placements_count": 22,
+    "placements_count": 23,
     "placements": [
       "네이버 NOSP (PC 타임보드 고해상도 1660×260)",
       "네이버 NOSP (PC 타임보드 기본형 830×130)",
@@ -2883,6 +3013,7 @@
       "네이버 NOSP (모바일 더블크라운 우측 브랜딩 1340×200)",
       "네이버 NOSP (모바일 트리플크라운 스페셜 로고 960×160)",
       "네이버 NOSP (모바일 트리플크라운 메인 1250×520)",
+      "네이버 스마트채널 (기본 750×200/160 투명 PNG)",
       "네이버 스마트채널 (750×280 투명 PNG)",
       "네이버 DA (모바일 DA 1250×560)",
       "네이버 DA (네이티브 피드 Square 1:1)",
@@ -2919,6 +3050,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2943,6 +3075,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2966,6 +3099,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -2989,6 +3123,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3012,6 +3147,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3035,6 +3171,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3056,6 +3193,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3079,8 +3217,31 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
+        "notes": []
+      },
+      {
+        "name": "네이버 스마트채널 (기본 750×200/160 투명 PNG)",
+        "dimension_str": "750×200px",
+        "aspect_ratio_str": "",
+        "allowed_formats": [
+          "png"
+        ],
+        "exact_width": 750,
+        "exact_height": 200,
+        "min_width": null,
+        "min_height": 160,
+        "max_width": null,
+        "max_height": null,
+        "max_file_size_kb": 150,
+        "max_file_size_mb": null,
+        "aspect_ratio": null,
+        "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
+        "max_text_ratio": null,
+        "description": "GFA 모바일 상단 스마트채널 기본 규격 (배경 투명 필수 PNG)",
         "notes": []
       },
       {
@@ -3100,6 +3261,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": true,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3123,6 +3285,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3149,6 +3312,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3175,6 +3339,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3201,6 +3366,7 @@
           3
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3224,6 +3390,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3247,6 +3414,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3271,6 +3439,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3294,6 +3463,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3317,6 +3487,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3340,6 +3511,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3363,6 +3535,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3386,6 +3559,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3409,6 +3583,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3457,6 +3632,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3481,6 +3657,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3505,6 +3682,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3529,6 +3707,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3553,6 +3732,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3577,6 +3757,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3603,6 +3784,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3629,6 +3811,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3653,6 +3836,7 @@
         "max_file_size_mb": null,
         "aspect_ratio": null,
         "aspect_ratio_tolerance": 0.05,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3698,6 +3882,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3724,6 +3909,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3750,6 +3936,7 @@
           9
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3776,6 +3963,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3821,6 +4009,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3847,6 +4036,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3873,6 +4063,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3899,6 +4090,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3944,6 +4136,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3970,6 +4163,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -3996,6 +4190,7 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []
@@ -4022,6 +4217,7 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
+        "require_transparency": false,
         "max_text_ratio": null,
         "description": "",
         "notes": []

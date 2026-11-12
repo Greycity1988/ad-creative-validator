@@ -40,31 +40,7 @@ class FeedbackCreateRequest(BaseModel):
 def _load_feedbacks() -> List[dict]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     if not FEEDBACKS_FILE.exists():
-        # Initialize with sample community updates
-        initial_data = [
-            {
-                "id": "fb-001",
-                "title": "네이버 타임보드 및 스페셜DA 보장형 지면 추가 요청",
-                "category": "신규 매체 추가",
-                "content": "GFA 성과형 지면 외에 NOSP 타임보드(1660x260)와 모바일 스페셜DA(1250x520), 더블크라운 지면도 검수되면 좋겠습니다.",
-                "author": "퍼포먼스 마케터 K",
-                "email": "marketer@agency.com",
-                "created_at": "2026-11-12 10:15",
-                "status": "반영 완료",
-                "reply": "2026.04 최신 가이드 기준으로 네이버 NOSP 타임보드 2종, 스페셜DA 2종, 더블크라운 및 트리플크라운 총 8개 지면이 모두 업데이트되었습니다!",
-            },
-            {
-                "id": "fb-002",
-                "title": "크리테오 플래그십 및 쇼케이스 빅배너 규격 추가 건의",
-                "category": "규격 변경 제보",
-                "content": "크리테오 리테일 미디어와 쇼케이스 빅배너(576x300, 310x500 등) 지면 규격도 검수에 포함해주세요.",
-                "author": "미디어렙사 AE",
-                "email": "ae_criteo@media.co.kr",
-                "created_at": "2026-11-12 11:30",
-                "status": "반영 완료",
-                "reply": "크리테오 플래그십(576x300, 576x200), 쇼케이스 및 브랜디드 헤더, 표준 IAB 배너 13종이 전면 탑재되었습니다.",
-            },
-        ]
+        initial_data: List[dict] = []
         with open(FEEDBACKS_FILE, "w", encoding="utf-8") as f:
             json.dump(initial_data, f, ensure_ascii=False, indent=2)
         return initial_data

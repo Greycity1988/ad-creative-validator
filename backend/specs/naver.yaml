@@ -2,7 +2,7 @@ platform: 네이버 (GFA / NOSP)
 platform_id: naver
 official_update_date: 2026.04 공식 개정
 official_source_name: 네이버 디스플레이 광고(N Ads / NOSP) 가이드
-official_source_url: https://gfa.naver.com
+official_source_url: https://saedu.naver.com/guide/da/nosp/index.naver
 revision_summary: NOSP 타임보드(1660×260), 모바일 스페셜DA(1250×520), 더블크라운 및 트리플크라운 프리미엄 지면
   추가, 2:3 세로형 이미지 피드(1200×1800) 및 스마트채널 750×280 가이드 반영
 last_verified_date: '2026-11-12'
@@ -84,6 +84,15 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+- name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
+  exact_width: 750
+  exact_height: 200
+  min_height: 160
+  max_file_size_kb: 150
+  allowed_formats:
+  - png
+  require_transparency: true
+  description: GFA 모바일 상단 스마트채널 기본 규격 (배경 투명 필수 PNG)
 - name: 네이버 스마트채널 (750×280 투명 PNG)
   exact_width: 750
   exact_height: 280

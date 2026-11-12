@@ -237,7 +237,6 @@ def test_feedback_api():
     assert res_get.status_code == 200
     items = res_get.json()
     assert isinstance(items, list)
-    assert len(items) >= 1
 
     # 2. POST feedback
     new_data = {
@@ -251,6 +250,12 @@ def test_feedback_api():
     created = res_post.json()
     assert created["title"] == new_data["title"]
     assert created["status"] == "검토 중"
+
+    # 3. GET feedbacks again to ensure newly submitted feedback is persisted
+    res_after = client.get("/api/feedbacks")
+    assert res_after.status_code == 200
+    items_after = res_after.json()
+    assert any(it.get("id") == created["id"] for it in items_after)
 
 
 def test_alphabetical_platforms_order():

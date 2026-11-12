@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { FileUploader } from './components/FileUploader';
-import { MediaSelector, PLATFORMS } from './components/MediaSelector';
+import { MediaSelector } from './components/MediaSelector';
 import { ResultDashboard } from './components/ResultDashboard';
 import { FeedbackModal } from './components/FeedbackModal';
 import { DonationModal } from './components/DonationModal';
@@ -9,21 +9,22 @@ import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
 import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
-import { fetchPlatformsMetadata, validateImages, updateAllSpecs } from './api/validator';
+import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
-  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>(
-    PLATFORMS.map((p) => p.id)
-  );
+  // Default to the 4 core major platforms to prevent result cluttering
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([
+    'naver',
+    'kakao',
+    'meta',
+    'google_ads',
+  ]);
   const [platformsMetadata, setPlatformsMetadata] = useState<PlatformMetadata[]>([]);
   const [selectedPlacements, setSelectedPlacements] = useState<Record<string, string[]>>({});
-  const [analyzeText, setAnalyzeText] = useState<boolean>(true);
   const [autoMatch, setAutoMatch] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isUpdatingSpecs, setIsUpdatingSpecs] = useState<boolean>(false);
-  const [specsUpdateMessage, setSpecsUpdateMessage] = useState<string | null>(null);
   const [results, setResults] = useState<ValidationItem[] | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
@@ -31,38 +32,21 @@ export const App: React.FC = () => {
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isLogoOpen, setIsLogoOpen] = useState<boolean>(false);
 
-  // Fetch available platform & placement specs from backend
+  // Fetch available platform & placement specs from backend (or static fallback)
   useEffect(() => {
     fetchPlatformsMetadata()
       .then((data) => setPlatformsMetadata(data))
       .catch((err) => console.error('Failed to fetch platforms metadata:', err));
   }, []);
 
-  // Clean up object URLs on unmount
+  // Clean up object URLs strictly on unmount
   useEffect(() => {
     return () => {
       files.forEach((item) => {
         if (item.previewUrl) URL.revokeObjectURL(item.previewUrl);
       });
     };
-  }, [files]);
-
-  const handleUpdateSpecs = async () => {
-    try {
-      setIsUpdatingSpecs(true);
-      setSpecsUpdateMessage(null);
-      const res = await updateAllSpecs();
-      const freshMeta = await fetchPlatformsMetadata();
-      setPlatformsMetadata(freshMeta);
-      setSpecsUpdateMessage(res.message);
-      setTimeout(() => setSpecsUpdateMessage(null), 6000);
-    } catch (err) {
-      console.error('Failed to update specs:', err);
-      setSpecsUpdateMessage('가이드라인 동기화 중 오류가 발생했습니다.');
-    } finally {
-      setIsUpdatingSpecs(false);
-    }
-  };
+  }, []);
 
   const handleAddFiles = (newFiles: File[]) => {
     const newItems: UploadedFileItem[] = newFiles.map((file) => {
@@ -122,7 +106,7 @@ export const App: React.FC = () => {
         rawFiles,
         selectedPlatforms,
         selectedPlacements,
-        analyzeText,
+        false,
         autoMatch
       );
 
@@ -137,12 +121,9 @@ export const App: React.FC = () => {
       }, 100);
     } catch (err: unknown) {
       console.error('Validation request failed:', err);
-      let message = '검수 요청 처리 중 오류가 발생했습니다. 백엔드 서버 상태를 확인해주세요.';
-      if (err && typeof err === 'object' && 'response' in err) {
-        const axErr = err as { response?: { data?: { detail?: string } } };
-        if (axErr.response?.data?.detail) {
-          message = axErr.response.data.detail;
-        }
+      let message = '검수 처리 중 예기치 못한 오류가 발생했습니다.';
+      if (err instanceof Error) {
+        message = err.message;
       }
       setErrorMessage(message);
     } finally {
@@ -150,10 +131,11 @@ export const App: React.FC = () => {
     }
   };
 
-  // Map file names to preview URLs for ResultDashboard
+  // Map item IDs and file names to preview URLs for ResultDashboard
   const filePreviewMap: Record<string, string> = {};
   files.forEach((f) => {
     filePreviewMap[f.file.name] = f.previewUrl;
+    filePreviewMap[f.id] = f.previewUrl;
   });
 
   return (
@@ -182,11 +164,6 @@ export const App: React.FC = () => {
           platformsMetadata={platformsMetadata}
           selectedPlacements={selectedPlacements}
           onChangePlacements={setSelectedPlacements}
-          onUpdateSpecs={handleUpdateSpecs}
-          isUpdatingSpecs={isUpdatingSpecs}
-          specsUpdateMessage={specsUpdateMessage}
-          analyzeText={analyzeText}
-          onToggleAnalyzeText={setAnalyzeText}
           autoMatch={autoMatch}
           onToggleAutoMatch={setAutoMatch}
           onStartValidation={handleStartValidation}

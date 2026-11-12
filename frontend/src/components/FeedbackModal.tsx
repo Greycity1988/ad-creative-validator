@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, MessageSquare, Send, CheckCircle2, Sparkles, AlertCircle, RefreshCw } from 'lucide-react';
+import { X, MessageSquare, Send, CheckCircle2, Sparkles, AlertCircle, RefreshCw, ExternalLink } from 'lucide-react';
 import { FeedbackItem, FeedbackCreateRequest } from '../types';
 import { fetchFeedbacks, submitFeedback } from '../api/validator';
 
@@ -260,8 +260,23 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
               </div>
 
               {feedbacks.length === 0 ? (
-                <div className="text-center py-10 text-slate-400 text-xs">
-                  등록된 건의가 없습니다. 첫 건의를 남겨보세요!
+                <div className="text-center py-10 px-4 text-slate-500 text-xs space-y-3 bg-slate-50 rounded-xl border border-slate-200">
+                  <p className="font-bold text-slate-700">현재 등록된 건의 및 규격 제보 내역이 없습니다.</p>
+                  <p className="text-slate-500 text-[11px] leading-relaxed max-w-md mx-auto">
+                    새로운 매체 지면 추가나 규격 변경 제보는 상단 <strong>[새 건의 작성하기]</strong> 탭을 이용하시거나,
+                    개발자 공식 GitHub 저장소 Issues를 통해 제보해주실 수 있습니다.
+                  </p>
+                  <div className="pt-1">
+                    <a
+                      href="https://github.com/Greycity1988/ad-creative-validator/issues"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-colors shadow-2xs"
+                    >
+                      <span>GitHub Issues로 제보하기</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
                 </div>
               ) : (
                 feedbacks.map((item) => {

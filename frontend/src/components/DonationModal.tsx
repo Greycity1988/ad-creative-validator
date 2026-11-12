@@ -9,9 +9,7 @@ import {
   ShieldCheck,
   ArrowRight,
   QrCode,
-  Monitor,
-  CreditCard,
-  ExternalLink,
+  Smartphone,
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 
@@ -20,7 +18,7 @@ interface DonationModalProps {
   onClose: () => void;
 }
 
-type PaymentTab = 'qr' | 'account' | 'paypal';
+type PaymentTab = 'qr' | 'account';
 
 export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
   const [selectedAmount, setSelectedAmount] = useState<number>(3000);
@@ -28,30 +26,45 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
   const [copied, setCopied] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Donation bank details
+  // Verified Korean banking details
   const BANK_NAME = '카카오뱅크';
   const ACCOUNT_NUMBER = '0000-00-0000000';
   const ACCOUNT_NUMBER_CLEAN = '0000000000000';
   const ACCOUNT_HOLDER = '개발자';
-  const PAYPAL_EMAIL = 'donation@example.com'; // Owen O. Magnus PayPal account
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => setToastMessage(null), 5000);
   };
 
-  const handleCopyAccount = () => {
-    navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
-    setCopied(true);
-    showToast('카카오뱅크 계좌번호와 예금주가 복사되었습니다! (PC 카카오톡 또는 인터넷 뱅킹에 바로 붙여넣기)');
-    setTimeout(() => setCopied(false), 2500);
+  const handleCopyAccount = async () => {
+    const textToCopy = `${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(textToCopy);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = textToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      setCopied(true);
+      showToast('카카오뱅크 계좌번호가 복사되었습니다! 카카오톡, 토스 또는 은행 앱에 바로 붙여넣기하세요.');
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      showToast(`계좌번호: ${BANK_NAME} ${ACCOUNT_NUMBER} (${ACCOUNT_HOLDER})`);
+    }
   };
 
-  // Toss Direct Remittance Deep Link (Verified 100% working)
+  // Toss Direct Remittance Deep Link (Verified working via camera / QR)
   const tossDeepLink = `supertoss://send?bank=${encodeURIComponent(BANK_NAME)}&accountNo=${ACCOUNT_NUMBER_CLEAN}&amount=${selectedAmount}`;
 
-  const handleTossPay = () => {
-    navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
+  const handleTossPay = async () => {
+    await handleCopyAccount();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
     if (isMobile) {
@@ -67,8 +80,8 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
     }
   };
 
-  const handleKakaoPay = () => {
-    navigator.clipboard.writeText(`${BANK_NAME} ${ACCOUNT_NUMBER} ${ACCOUNT_HOLDER}`);
+  const handleKakaoPay = async () => {
+    await handleCopyAccount();
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     showToast(`💬 카카오뱅크 계좌번호가 복사되었습니다! 카카오톡이나 카카오뱅크 앱을 열면 '복사한 계좌로 송금' 팝업이 바로 나타납니다.`);
 
@@ -78,8 +91,6 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
       }, 500);
     }
   };
-
-  const usdAmount = selectedAmount === 3000 ? 3 : selectedAmount === 6000 ? 5 : 10;
 
   if (!isOpen) return null;
 
@@ -122,9 +133,9 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </label>
             <div className="grid grid-cols-3 gap-2.5">
               {[
-                { amount: 3000, label: '☕ 커피 1잔', desc: '아메리카노 응원!' },
-                { amount: 6000, label: '☕☕ 커피 2잔', desc: '커피 & 디저트' },
-                { amount: 10000, label: '🚀 서버 후원', desc: '호스팅 & 유지비' },
+                { amount: 3000, label: '☕ 커피 1잔', desc: '따뜻한 아메리카노 응원!' },
+                { amount: 6000, label: '☕☕ 커피 2잔', desc: '커피 & 디저트 응원' },
+                { amount: 10000, label: '🎯 규격 연구 후원', desc: '15대 매체 가이드 유지' },
               ].map((opt) => (
                 <button
                   key={opt.amount}
@@ -154,43 +165,31 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </div>
           )}
 
-          {/* Tab Selector: QR Code vs Direct Copy vs PayPal */}
+          {/* Tab Selector: QR Code vs Direct Copy */}
           <div className="flex rounded-xl bg-slate-100 p-1 text-xs font-bold gap-1">
             <button
               type="button"
               onClick={() => setActiveTab('qr')}
-              className={`flex-1 py-2 px-2 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer ${
+              className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center space-x-1.5 transition-all cursor-pointer ${
                 activeTab === 'qr'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
               <QrCode className="w-3.5 h-3.5 text-blue-600" />
-              <span>📱 토스 QR</span>
+              <span>📱 PC 추천: 스마트폰 QR 송금 (토스)</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('account')}
-              className={`flex-1 py-2 px-2 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer ${
+              className={`flex-1 py-2 px-3 rounded-lg flex items-center justify-center space-x-1.5 transition-all cursor-pointer ${
                 activeTab === 'account'
                   ? 'bg-white text-slate-900 shadow-xs'
                   : 'text-slate-500 hover:text-slate-700'
               }`}
             >
-              <Monitor className="w-3.5 h-3.5 text-emerald-600" />
-              <span>💬 계좌 복사</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('paypal')}
-              className={`flex-1 py-2 px-2 rounded-lg flex items-center justify-center space-x-1 transition-all cursor-pointer ${
-                activeTab === 'paypal'
-                  ? 'bg-white text-slate-900 shadow-xs'
-                  : 'text-slate-500 hover:text-slate-700'
-              }`}
-            >
-              <CreditCard className="w-3.5 h-3.5 text-indigo-600" />
-              <span>💳 페이팔 카드</span>
+              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
+              <span>💬 계좌 직접 복사 (카카오뱅크)</span>
             </button>
           </div>
 
@@ -303,7 +302,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                     className="flex items-center justify-center space-x-2 p-3 rounded-xl border border-yellow-300 bg-yellow-400/95 hover:bg-yellow-400 text-slate-900 font-bold text-xs transition-all shadow-2xs cursor-pointer active:scale-98"
                     title="카카오뱅크 계좌를 복사하고 카카오톡 송금으로 연결합니다."
                   >
-                    <span>💬 카카오페이 / 카카오뱅크</span>
+                    <span>💬 카카오페이 / 카카오</span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-800" />
                   </button>
 
@@ -321,67 +320,11 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
             </div>
           )}
 
-          {/* TAB 3: PayPal Credit/Debit Card Payment */}
-          {activeTab === 'paypal' && (
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-4 animate-fadeIn">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <CreditCard className="w-4 h-4 text-blue-600" />
-                  <span className="text-xs font-bold text-slate-800">해외 및 국내 신용/체크카드 결제 (PayPal)</span>
-                </div>
-                <span className="text-[11px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
-                  글로벌 카드 지원
-                </span>
-              </div>
-
-              {/* Supported card badges */}
-              <div className="flex items-center space-x-2 text-[10px] text-slate-500 font-semibold flex-wrap gap-y-1">
-                <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 font-bold">VISA</span>
-                <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 font-bold">MasterCard</span>
-                <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 font-bold">AMEX</span>
-                <span className="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 font-bold">JCB</span>
-                <span className="text-slate-500 text-[11px]">페이팔 계정 없이 카드 단독 결제 가능</span>
-              </div>
-
-              {/* Amount conversion summary */}
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1.5">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-slate-600 font-medium">후원 금액 (USD):</span>
-                  <span className="font-black text-blue-600 text-sm">
-                    ${usdAmount}.00 USD
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
-                  <span>수취 계정:</span>
-                  <span className="font-mono font-semibold text-slate-700">{PAYPAL_EMAIL}</span>
-                </div>
-                <p className="text-[10px] text-slate-400">
-                  (한화 약 {selectedAmount.toLocaleString()}원 상당 • 달러(USD) 기준으로 안전하게 승인 결제됩니다)
-                </p>
-              </div>
-
-              {/* PayPal External Link Button (Bypasses donation restriction with _xclick digital coffee sponsorship) */}
-              <a
-                href={`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&currency_code=USD&amount=${usdAmount}&item_name=Ad%20Creative%20Validator%20Coffee%20Sponsorship&no_shipping=1`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 shadow-sm cursor-pointer active:scale-98"
-              >
-                <span>🅿️ PayPal 신용/체크카드 결제창 열기</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-
-              <p className="text-[11px] text-slate-500 text-center leading-relaxed">
-                💡 페이팔 화면이 열리면 로그인할 필요 없이 <strong className="text-slate-800">[신용카드 또는 체크카드로 결제 (Pay with Debit or Credit Card)]</strong>를 누르시면 3초 만에 카드 결제하실 수 있습니다.
-              </p>
-            </div>
-          )}
-
           {/* Guarantee / Promise Notice */}
           <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/80 flex items-start space-x-2 text-[11px] text-slate-600 leading-relaxed">
             <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
             <div>
-              후원해주신 소중한 금액은 <strong>서버 호스팅 비용, 도메인 유지비, 신규 광고 매체 API 및 가이드라인 동기화 연구</strong>에 투명하게 사용됩니다. 진심으로 감사드립니다!
+              후원해주신 소중한 금액은 <strong>ACV의 완전 무료 서비스 유지와 15대 매체 공식 가이드 모니터링 및 규격 업데이트 연구</strong>에 감사히 사용됩니다.
             </div>
           </div>
         </div>

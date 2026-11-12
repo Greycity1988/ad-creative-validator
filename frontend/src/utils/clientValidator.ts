@@ -1,7 +1,7 @@
 import { ValidationResponse, ValidationItem, PlatformResult, PlacementResult, CheckItem, ImageInfo } from '../types';
 import specsData from '../data/specsData.json';
 
-interface SpecPlacement {
+export interface SpecPlacement {
   name: string;
   dimension_str: string;
   aspect_ratio_str: string;
@@ -16,12 +16,13 @@ interface SpecPlacement {
   max_file_size_mb?: number | null;
   aspect_ratio?: [number, number] | null;
   aspect_ratio_tolerance?: number;
+  require_transparency?: boolean;
   max_text_ratio?: number | null;
   description?: string;
   notes?: string[];
 }
 
-interface SpecPlatform {
+export interface SpecPlatform {
   id: string;
   name: string;
   description?: string;
@@ -37,20 +38,121 @@ interface SpecPlatform {
 
 const typedSpecs = specsData as unknown as SpecPlatform[];
 
-function parseDimensionsFromFilename(filename: string): [number, number] | null {
-  const pattern = /(\d{2,4})\s*[_xX×*]\s*(\d{2,4})/;
+/**
+ * Detect actual image format from binary magic bytes rather than just file extension.
+ */
+export async function detectActualImageFormat(file: File): Promise<string> {
+  try {
+    const buffer = await file.slice(0, 16).arrayBuffer();
+    const bytes = new Uint8Array(buffer);
+    // PNG: 89 50 4E 47
+    if (bytes[0] === 0x89 && bytes[1] === 0x50 && bytes[2] === 0x4e && bytes[3] === 0x47) {
+      return 'PNG';
+    }
+    // JPEG: FF D8 FF
+    if (bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff) {
+      return 'JPG';
+    }
+    // GIF: 47 49 46 38 ('GIF8')
+    if (bytes[0] === 0x47 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x38) {
+      return 'GIF';
+    }
+    // WebP: 52 49 46 46 (RIFF) ... 57 45 42 50 (WEBP)
+    if (
+      bytes[0] === 0x52 &&
+      bytes[1] === 0x49 &&
+      bytes[2] === 0x46 &&
+      bytes[3] === 0x46 &&
+      bytes[8] === 0x57 &&
+      bytes[9] === 0x45 &&
+      bytes[10] === 0x42 &&
+      bytes[11] === 0x50
+    ) {
+      return 'WEBP';
+    }
+  } catch {
+    // fallback
+  }
+
+  // Fallback to extension if magic bytes unreadable
+  const ext = file.name.split('.').pop()?.toUpperCase() || (file.type.split('/')[1] || 'JPG').toUpperCase();
+  return ext === 'JPEG' ? 'JPG' : ext;
+}
+
+/**
+ * Detect transparent pixels using Canvas API.
+ */
+export async function checkImageHasTransparency(file: File): Promise<boolean> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        // Sample down to max 100x100 for fast non-blocking evaluation
+        canvas.width = Math.min(img.naturalWidth || img.width, 100);
+        canvas.height = Math.min(img.naturalHeight || img.height, 100);
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          URL.revokeObjectURL(url);
+          resolve(false);
+          return;
+        }
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+        // Check alpha channel (every 4th byte)
+        for (let i = 3; i < data.length; i += 4) {
+          if (data[i] < 250) {
+            URL.revokeObjectURL(url);
+            resolve(true);
+            return;
+          }
+        }
+      } catch {
+        // ignore canvas security/CORS
+      }
+      URL.revokeObjectURL(url);
+      resolve(false);
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      resolve(false);
+    };
+    img.src = url;
+  });
+}
+
+/**
+ * Parse dimensions safely from filename without falsely matching dates like 2026_1112.
+ */
+export function parseDimensionsFromFilename(filename: string): [number, number] | null {
+  // 1. Strict delimiter: 'x', 'X', '×', '*'
+  const pattern = /(\d{2,4})\s*[xX×*]\s*(\d{2,4})/;
   const match = filename.match(pattern);
   if (match) {
     const w = parseInt(match[1], 10);
     const h = parseInt(match[2], 10);
-    if (w >= 50 && w <= 5000 && h >= 50 && h <= 5000) {
+    // Ignore unreasonable dimensions or full year numbers (e.g. 2026x1112)
+    if (w >= 50 && w <= 4000 && h >= 50 && h <= 4000 && !(w >= 2020 && w <= 2035 && h >= 1000)) {
       return [w, h];
     }
   }
+
+  // 2. Specific underscore delimiter e.g. 1200_628 or 960_300 (strictly excluding year prefixes like 2026_...)
+  const underscorePattern = /(?<!202\d_)(\b\d{3,4})_(\d{3,4}\b)/;
+  const uMatch = filename.match(underscorePattern);
+  if (uMatch) {
+    const w = parseInt(uMatch[1], 10);
+    const h = parseInt(uMatch[2], 10);
+    if (w !== 2026 && w !== 2025 && w >= 50 && w <= 4000 && h >= 50 && h <= 4000) {
+      return [w, h];
+    }
+  }
+
   return null;
 }
 
-function isPlacementMatchedByFilename(placement: SpecPlacement, filename: string): boolean {
+export function isPlacementMatchedByFilename(placement: SpecPlacement, filename: string): boolean {
   const fnameLower = filename.toLowerCase();
   const pnameLower = placement.name.toLowerCase();
 
@@ -71,6 +173,7 @@ function isPlacementMatchedByFilename(placement: SpecPlacement, filename: string
 
   // Keywords
   if (fnameLower.includes('비즈보드') || fnameLower.includes('bizboard')) return pnameLower.includes('비즈보드');
+  if (fnameLower.includes('스마트채널') || fnameLower.includes('smartchannel')) return pnameLower.includes('스마트채널');
   if (fnameLower.includes('포커스보드') || fnameLower.includes('focusboard')) return pnameLower.includes('포커스보드');
   if (fnameLower.includes('타임보드') || fnameLower.includes('timeboard')) return pnameLower.includes('타임보드');
   if (fnameLower.includes('스페셜da') || fnameLower.includes('specialda')) return pnameLower.includes('스페셜 da');
@@ -89,7 +192,7 @@ function isPlacementMatchedByFilename(placement: SpecPlacement, filename: string
   return false;
 }
 
-function isPlacementMatchedByDimension(
+export function isPlacementMatchedByDimension(
   placement: SpecPlacement,
   width: number,
   height: number,
@@ -116,15 +219,14 @@ function isPlacementMatchedByDimension(
   return false;
 }
 
-function evaluatePlacement(
+export function evaluatePlacement(
   placement: SpecPlacement,
   imageInfo: ImageInfo,
-  filename: string,
-  textRatio: number | null
+  filename: string
 ): PlacementResult {
   const checks: CheckItem[] = [];
 
-  // 1. Format check
+  // 1. Format check (Evaluated using actual binary format detected)
   const allowed = (placement.allowed_formats || ['jpg', 'jpeg', 'png']).map((f) => f.toLowerCase());
   if (allowed.includes('jpeg') && !allowed.includes('jpg')) allowed.push('jpg');
   if (allowed.includes('jpg') && !allowed.includes('jpeg')) allowed.push('jpeg');
@@ -134,7 +236,7 @@ function evaluatePlacement(
     checks.push({
       name: 'format',
       status: 'pass',
-      message: `${imageInfo.format.toUpperCase()} 형식 허용`,
+      message: `${imageInfo.format.toUpperCase()} 바이너리 포맷 규격 일치`,
       expected: allowed.map((f) => f.toUpperCase()).join(', '),
       actual: imageInfo.format.toUpperCase(),
     });
@@ -142,13 +244,42 @@ function evaluatePlacement(
     checks.push({
       name: 'format',
       status: 'fail',
-      message: `지원하지 않는 형식: ${imageInfo.format.toUpperCase()} (허용: ${allowed.map((f) => f.toUpperCase()).join(', ')})`,
+      message: `지원하지 않는 포맷: ${imageInfo.format.toUpperCase()} (공식 허용: ${allowed.map((f) => f.toUpperCase()).join(', ')})`,
       expected: allowed.map((f) => f.toUpperCase()).join(', '),
       actual: imageInfo.format.toUpperCase(),
     });
   }
 
-  // 2. Dimensions check
+  // 2. Transparency Check (if required by placement, e.g. Kakao Bizboard, Naver Smart Channel)
+  if (placement.require_transparency) {
+    if (imageInfo.format.toUpperCase() !== 'PNG') {
+      checks.push({
+        name: 'transparency',
+        status: 'fail',
+        message: '배경 투명화(누끼) 필수 규격 미달: PNG 파일만 투명 배경을 지원합니다.',
+        expected: '투명 배경 PNG',
+        actual: `${imageInfo.format.toUpperCase()} (투명 불가)`,
+      });
+    } else if (imageInfo.has_alpha) {
+      checks.push({
+        name: 'transparency',
+        status: 'pass',
+        message: '배경 투명화(누끼) 확인 완료 (알파 채널 감지)',
+        expected: '투명 배경 필수',
+        actual: '투명 배경 확인됨',
+      });
+    } else {
+      checks.push({
+        name: 'transparency',
+        status: 'fail',
+        message: '배경 투명화(누끼) 필수 규격 미달: 불투명 배경이 감지되었습니다. 배경을 투명하게 처리한 PNG 파일로 제작해주세요.',
+        expected: '투명 배경 (Alpha)',
+        actual: '불투명 배경 (Opaque)',
+      });
+    }
+  }
+
+  // 3. Dimensions check
   const { exact_width: ew, exact_height: eh, min_width: mw, min_height: mh, max_width: xw, max_height: xh } = placement;
   const w = imageInfo.width;
   const h = imageInfo.height;
@@ -166,7 +297,7 @@ function evaluatePlacement(
       checks.push({
         name: 'dimensions',
         status: 'fail',
-        message: `해상도 불일치: ${w}×${h}px (요구: ${ew}×${eh}px)`,
+        message: `해상도 불일치: ${w}×${h}px (요구 규격: ${ew}×${eh}px)`,
         expected: `${ew}×${eh}px`,
         actual: `${w}×${h}px`,
       });
@@ -195,7 +326,7 @@ function evaluatePlacement(
       checks.push({
         name: 'dimensions',
         status: 'fail',
-        message: `최소 해상도 미달: ${w}×${h}px (최소: ${mw}×${mh}px)`,
+        message: `최소 해상도 미달: ${w}×${h}px (최소 요구: ${mw}×${mh}px)`,
         expected: `최소 ${mw}×${mh}px`,
         actual: `${w}×${h}px`,
       });
@@ -210,7 +341,7 @@ function evaluatePlacement(
     });
   }
 
-  // 3. File size check
+  // 4. File size check
   let maxKb = placement.max_file_size_kb;
   if (placement.max_file_size_mb) {
     maxKb = placement.max_file_size_mb * 1024;
@@ -220,7 +351,7 @@ function evaluatePlacement(
       checks.push({
         name: 'file_size',
         status: 'pass',
-        message: `용량 적합: ${imageInfo.file_size_kb.toFixed(1)} KB (최대: ${maxKb} KB)`,
+        message: `용량 적합: ${imageInfo.file_size_kb.toFixed(1)} KB (최대 허용: ${maxKb} KB)`,
         expected: `≤ ${maxKb} KB`,
         actual: `${imageInfo.file_size_kb.toFixed(1)} KB`,
       });
@@ -228,14 +359,14 @@ function evaluatePlacement(
       checks.push({
         name: 'file_size',
         status: 'fail',
-        message: `용량 초과: ${imageInfo.file_size_kb.toFixed(1)} KB (최대: ${maxKb} KB)`,
+        message: `용량 초과: ${imageInfo.file_size_kb.toFixed(1)} KB (최대 허용: ${maxKb} KB)`,
         expected: `≤ ${maxKb} KB`,
         actual: `${imageInfo.file_size_kb.toFixed(1)} KB`,
       });
     }
   }
 
-  // 4. Aspect ratio check
+  // 5. Aspect ratio check
   if (placement.aspect_ratio && placement.aspect_ratio.length === 2) {
     const [rw, rh] = placement.aspect_ratio;
     const targetRatio = rw / rh;
@@ -262,29 +393,7 @@ function evaluatePlacement(
     }
   }
 
-  // 5. Text ratio check (if provided)
-  if (textRatio != null && placement.max_text_ratio != null) {
-    const maxPercent = placement.max_text_ratio * 100;
-    if (textRatio <= maxPercent) {
-      checks.push({
-        name: 'text_ratio',
-        status: 'pass',
-        message: `텍스트 비율 적합: ${textRatio.toFixed(1)}% (권장 ≤ ${maxPercent}%)`,
-        expected: `≤ ${maxPercent}%`,
-        actual: `${textRatio.toFixed(1)}%`,
-      });
-    } else {
-      checks.push({
-        name: 'text_ratio',
-        status: 'warning',
-        message: `텍스트 비율 주의: ${textRatio.toFixed(1)}% (권장 ≤ ${maxPercent}%, 노출 감소 가능)`,
-        expected: `≤ ${maxPercent}%`,
-        actual: `${textRatio.toFixed(1)}%`,
-      });
-    }
-  }
-
-  // Calculate overall
+  // Calculate overall status
   const hasFail = checks.some((c) => c.status === 'fail');
   const hasWarning = checks.some((c) => c.status === 'warning');
   const overall = hasFail ? 'fail' : hasWarning ? 'warning' : 'pass';
@@ -309,47 +418,96 @@ export async function validateImagesLocally(
   files: File[],
   platformIds: string[],
   selectedPlacementsMap: Record<string, string[]>,
-  analyzeText: boolean = false,
   autoMatch: boolean = true
 ): Promise<ValidationResponse> {
   const results: ValidationItem[] = [];
 
   for (const file of files) {
-    // 1. Load dimensions
-    const [width, height] = await new Promise<[number, number]>((resolve) => {
+    // 1. Detect actual image format from binary magic bytes
+    const detectedFormat = await detectActualImageFormat(file);
+
+    // 2. Load image dimensions and safely detect decoding errors
+    let width = 0;
+    let height = 0;
+    let loadFailed = false;
+
+    await new Promise<void>((resolve) => {
       const img = new Image();
       const url = URL.createObjectURL(file);
       img.onload = () => {
-        const dims: [number, number] = [img.naturalWidth || img.width, img.naturalHeight || img.height];
+        width = img.naturalWidth || img.width;
+        height = img.naturalHeight || img.height;
         URL.revokeObjectURL(url);
-        resolve(dims);
+        resolve();
       };
       img.onerror = () => {
+        loadFailed = true;
         URL.revokeObjectURL(url);
-        resolve([1000, 1000]); // fallback
+        resolve();
       };
       img.src = url;
     });
 
-    const ext = file.name.split('.').pop()?.toUpperCase() || (file.type.split('/')[1] || 'JPG').toUpperCase();
     const fileSizeKb = file.size / 1024;
+
+    // Handle corrupted or unreadable images directly without false 1000x1000 fallback
+    if (loadFailed || width <= 0 || height <= 0) {
+      results.push({
+        filename: file.name,
+        image_info: {
+          width: 0,
+          height: 0,
+          format: detectedFormat,
+          file_size_kb: fileSizeKb,
+          has_alpha: false,
+          aspect_ratio: '0:0',
+          aspect_ratio_value: 0,
+        },
+        text_ratio: null,
+        platform_results: [
+          {
+            platform: '파일 판독 실패',
+            platform_id: 'unknown',
+            overall: 'fail',
+            placements: [
+              {
+                name: '이미지 디코딩 불가',
+                overall: 'fail',
+                checks: [
+                  {
+                    name: 'load',
+                    status: 'fail',
+                    message: '손상되었거나 브라우저에서 읽을 수 없는 이미지 파일입니다. 파일 손상 여부를 확인해주세요.',
+                  },
+                ],
+                is_matched_target: false,
+              },
+            ],
+          },
+        ],
+      });
+      continue;
+    }
+
+    // 3. Detect alpha transparency if format is PNG
+    let hasAlpha = false;
+    if (detectedFormat === 'PNG') {
+      hasAlpha = await checkImageHasTransparency(file);
+    }
+
     const ratioVal = width / height;
-    const ratioStr = `${(width / (gcd(width, height) || 1)).toFixed(0)}:${(height / (gcd(width, height) || 1)).toFixed(0)}`;
+    const divisor = gcd(width, height) || 1;
+    const ratioStr = `${(width / divisor).toFixed(0)}:${(height / divisor).toFixed(0)}`;
 
     const imageInfo: ImageInfo = {
       width,
       height,
-      format: ext === 'JPEG' ? 'JPG' : ext,
+      format: detectedFormat,
       file_size_kb: fileSizeKb,
-      has_alpha: ext === 'PNG',
+      has_alpha: hasAlpha,
       aspect_ratio: ratioStr,
       aspect_ratio_value: ratioVal,
     };
-
-    let simulatedTextRatio: number | null = null;
-    if (analyzeText) {
-      simulatedTextRatio = 12.5; // Realistic safe advertising text ratio
-    }
 
     const platformResults: PlatformResult[] = [];
 
@@ -404,7 +562,7 @@ export async function validateImagesLocally(
       }
 
       const evalPlacements = targetPlacements.map((p) =>
-        evaluatePlacement(p, imageInfo, file.name, simulatedTextRatio)
+        evaluatePlacement(p, imageInfo, file.name)
       );
 
       const hasFail = evalPlacements.some((p) => p.overall === 'fail');
@@ -424,7 +582,7 @@ export async function validateImagesLocally(
     results.push({
       filename: file.name,
       image_info: imageInfo,
-      text_ratio: simulatedTextRatio,
+      text_ratio: null,
       platform_results: platformResults,
     });
   }

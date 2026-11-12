@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import {
   CheckSquare,
   Square,
-  Sparkles,
   Play,
   Loader2,
   ChevronDown,
   ChevronUp,
-  RefreshCw,
   Calendar,
   CheckCircle2,
   ExternalLink,
@@ -146,11 +144,6 @@ interface MediaSelectorProps {
   platformsMetadata: PlatformMetadata[];
   selectedPlacements: Record<string, string[]>;
   onChangePlacements: (placements: Record<string, string[]>) => void;
-  onUpdateSpecs: () => Promise<void>;
-  isUpdatingSpecs: boolean;
-  specsUpdateMessage: string | null;
-  analyzeText: boolean;
-  onToggleAnalyzeText: (enabled: boolean) => void;
   autoMatch: boolean;
   onToggleAutoMatch: (enabled: boolean) => void;
   onStartValidation: () => void;
@@ -165,11 +158,6 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   platformsMetadata,
   selectedPlacements,
   onChangePlacements,
-  onUpdateSpecs,
-  isUpdatingSpecs,
-  specsUpdateMessage,
-  analyzeText,
-  onToggleAnalyzeText,
   autoMatch,
   onToggleAutoMatch,
   onStartValidation,
@@ -283,19 +271,13 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           </span>
         </div>
 
-        {/* Action Buttons: Sync Specs + Select All */}
+        {/* Action Buttons: Verified Badge + Select All */}
         <div className="flex flex-wrap items-center gap-2">
-          {/* Update Specs Button */}
-          <button
-            type="button"
-            onClick={onUpdateSpecs}
-            disabled={isUpdatingSpecs || isLoading}
-            className="inline-flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-300 bg-emerald-50/80 hover:bg-emerald-100 text-emerald-800 transition-all cursor-pointer shadow-2xs disabled:opacity-50"
-            title="모든 매체의 최신 광고 가이드라인을 동기화하고 업데이트합니다."
-          >
-            <RefreshCw className={`w-3.5 h-3.5 text-emerald-600 ${isUpdatingSpecs ? 'animate-spin' : ''}`} />
-            <span>{isUpdatingSpecs ? '가이드 갱신 중...' : '가이드 최신화 / 전체 업데이트'}</span>
-          </button>
+          {/* Official Spec Status Badge */}
+          <div className="inline-flex items-center space-x-1.5 text-xs font-bold px-2.5 py-1.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 shadow-2xs">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span>15대 매체 152개 지면 공식 규격 탑재</span>
+          </div>
 
           {/* Toggle All */}
           <button
@@ -319,19 +301,11 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
         </div>
       </div>
 
-      {/* Success Notification for Spec Update */}
-      {specsUpdateMessage && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center space-x-2 text-xs text-emerald-800 animate-fadeIn">
-          <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-          <span className="font-medium">{specsUpdateMessage}</span>
-        </div>
-      )}
-
       {/* Helper Banner */}
       <div className="p-3.5 bg-blue-50/70 border border-blue-200/80 rounded-xl flex items-start space-x-2.5 text-xs text-blue-900 leading-relaxed">
         <ShieldCheck className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold">매체 공식 가이드라인 실시간 대조 시스템:</span> 임의의 날짜가 아닌 각 매체사(카카오, 네이버, 메타, 구글 등)에서 최종 배포한 <strong>실제 공식 개정일자</strong>를 기준으로 작동합니다. 상단의 <strong>[가이드 최신화 / 전체 업데이트]</strong> 버튼을 누르면 각 매체 공식 가이드 센터 문서와 전수 대조 검증을 수행합니다.
+          <span className="font-bold">15대 주요 광고 매체 152개 공식 지면 전수 탑재:</span> 각 매체사(네이버, 카카오, 메타, 구글, 토스, 쿠팡 등) 공식 광고 가이드 센터 기준 규격을 바탕으로 검수합니다. 규격 불일치나 신규 지면 추가는 상단 <strong>[💡 건의 / 규격 제보]</strong>를 통해 알려주시면 신속히 반영됩니다.
         </div>
       </div>
 
@@ -612,23 +586,6 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
               </span>
               <span className="text-[11px] text-slate-400 hidden xl:inline">
                 (이미지 비율·사이즈와 호환되는 지면만 선별 검수)
-              </span>
-            </div>
-          </label>
-
-          {/* Analyze Text Toggle */}
-          <label className="flex items-center space-x-2.5 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={analyzeText}
-              onChange={(e) => onToggleAnalyzeText(e.target.checked)}
-              disabled={isLoading}
-              className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer"
-            />
-            <div className="flex items-center space-x-1.5">
-              <Sparkles className="w-4 h-4 text-amber-500" />
-              <span className="text-xs font-semibold text-slate-700">
-                AI 텍스트 비율 분석 포함
               </span>
             </div>
           </label>
