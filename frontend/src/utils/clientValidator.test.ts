@@ -41,6 +41,26 @@ describe('parseDimensionsFromFilename', () => {
     expect(parseDimensionsFromFilename('kakao 960×300.png')).toEqual([960, 300]);
   });
 
+  it('reads W_H written with underscores, also after other words', () => {
+    expect(parseDimensionsFromFilename('960_300.png')).toEqual([960, 300]);
+    expect(parseDimensionsFromFilename('banner_960_300.png')).toEqual([960, 300]);
+    expect(parseDimensionsFromFilename('naver_gfa_1200_628_final.jpg')).toEqual([1200, 628]);
+  });
+
+  it('does not read dates as dimensions', () => {
+    expect(parseDimensionsFromFilename('kakao_2026_1112.png')).toBeNull();
+    expect(parseDimensionsFromFilename('2026_1112_banner.png')).toBeNull();
+    expect(parseDimensionsFromFilename('promo_1112_2026.png')).toBeNull();
+    expect(parseDimensionsFromFilename('banner_0115_final.png')).toBeNull();
+  });
+
+  it('finds the dimensions next to a date', () => {
+    expect(parseDimensionsFromFilename('event_20261112_1200_628.jpg')).toEqual([1200, 628]);
+    expect(parseDimensionsFromFilename('kakao_2026_1112_960_300.png')).toEqual([960, 300]);
+    expect(parseDimensionsFromFilename('banner_0115_1200_628.png')).toEqual([1200, 628]);
+    expect(parseDimensionsFromFilename('meta_2026_1080_1080.png')).toEqual([1080, 1080]);
+  });
+
   it('returns null when the name has no dimensions', () => {
     expect(parseDimensionsFromFilename('final_banner.png')).toBeNull();
   });

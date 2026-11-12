@@ -139,18 +139,39 @@ export function parseDimensionsFromFilename(filename: string): [number, number] 
     }
   }
 
-  // 2. Specific underscore delimiter e.g. 1200_628 or 960_300 (strictly excluding year prefixes like 2026_...)
-  const underscorePattern = /(?<!202\d_)(\b\d{3,4})_(\d{3,4}\b)/;
-  const uMatch = filename.match(underscorePattern);
-  if (uMatch) {
-    const w = parseInt(uMatch[1], 10);
-    const h = parseInt(uMatch[2], 10);
-    if (w !== 2026 && w !== 2025 && w >= 50 && w <= 4000 && h >= 50 && h <= 4000) {
-      return [w, h];
+  // 2. Underscore delimiter e.g. banner_1200_628.png or 960_300.png.
+  // Date-like tokens (2026, 1112 right after a year, 0115) are skipped so dates are not read as sizes.
+  const underscoreRuns = filename.match(/(?<!\d)\d{3,4}(?:_\d{3,4})+(?!\d)/g) || [];
+  for (const run of underscoreRuns) {
+    const tokens = run.split('_');
+    for (let i = 0; i < tokens.length - 1; i++) {
+      if (isDateLikeToken(tokens, i) || isDateLikeToken(tokens, i + 1)) continue;
+      const w = parseInt(tokens[i], 10);
+      const h = parseInt(tokens[i + 1], 10);
+      if (w >= 50 && w <= 4000 && h >= 50 && h <= 4000) {
+        return [w, h];
+      }
     }
   }
 
   return null;
+}
+
+function isYearToken(token: string): boolean {
+  const n = parseInt(token, 10);
+  return token.length === 4 && n >= 2020 && n <= 2035;
+}
+
+function isDateLikeToken(tokens: string[], index: number): boolean {
+  const token = tokens[index];
+  if (token.startsWith('0') || isYearToken(token)) return true;
+  // MMDD right after a year, e.g. 2026_1112
+  if (index > 0 && isYearToken(tokens[index - 1]) && token.length === 4) {
+    const month = parseInt(token.slice(0, 2), 10);
+    const day = parseInt(token.slice(2), 10);
+    return month >= 1 && month <= 12 && day >= 1 && day <= 31;
+  }
+  return false;
 }
 
 export function isPlacementMatchedByFilename(placement: SpecPlacement, filename: string): boolean {
