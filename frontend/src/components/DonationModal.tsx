@@ -360,19 +360,19 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                 </p>
               </div>
 
-              {/* PayPal External Link Button */}
+              {/* PayPal External Link Button (Bypasses donation restriction with _xclick digital coffee sponsorship) */}
               <a
-                href={`https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&currency_code=USD&amount=${usdAmount}&item_name=Ad%20Creative%20Validator%20Coffee%20Sponsorship`}
+                href={`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&currency_code=USD&amount=${usdAmount}&item_name=Ad%20Creative%20Validator%20Coffee%20Sponsorship&no_shipping=1`}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 shadow-sm cursor-pointer"
+                className="w-full py-3 px-4 rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 shadow-sm cursor-pointer active:scale-98"
               >
                 <span>🅿️ PayPal 신용/체크카드 결제창 열기</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
 
               <p className="text-[11px] text-slate-500 text-center leading-relaxed">
-                💡 페이팔 화면이 열리면 로그인할 필요 없이 <strong className="text-slate-800">[신용카드 또는 체크카드로 결제 (Donate with Debit or Credit Card)]</strong>를 누르시면 3초 만에 카드 결제하실 수 있습니다.
+                💡 페이팔 화면이 열리면 로그인할 필요 없이 <strong className="text-slate-800">[신용카드 또는 체크카드로 결제 (Pay with Debit or Credit Card)]</strong>를 누르시면 3초 만에 카드 결제하실 수 있습니다.
               </p>
             </div>
           )}
