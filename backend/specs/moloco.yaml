@@ -1,0 +1,94 @@
+platform: 몰로코 (Moloco)
+platform_id: moloco
+official_update_date: 2026.02 공식 개정
+official_source_name: Moloco Ads Help Center
+official_source_url: https://support.moloco.com
+revision_summary: 모바일 네이티브 5대 비율(1.91:1, 2:1, 1:1, 9:16, 3:4) 및 국내 카카오 비즈보드 지면(960×300)
+  연동 사양 최신화
+last_verified_date: '2026-11-12'
+description: 모바일 DSP 네이티브 (1.91:1, 2:1, 1:1, 9:16), 카카오 연동
+placements:
+- name: 몰로코 네이티브 Landscape (1.91:1)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 628
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 몰로코 네이티브 2:1 (1200×600)
+  aspect_ratio:
+  - 2
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 몰로코 정사각형 (1:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 720
+  min_height: 720
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 몰로코 전면/세로형 (9:16)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 몰로코 세로형 (3:4)
+  aspect_ratio:
+  - 3
+  - 4
+  aspect_ratio_tolerance: 0.02
+  min_width: 720
+  min_height: 960
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 몰로코 카카오 지면 연동 비즈보드
+  exact_width: 960
+  exact_height: 300
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  require_transparency: true
+  text_ratio_limit: 0.2
+  text_ratio_level: error

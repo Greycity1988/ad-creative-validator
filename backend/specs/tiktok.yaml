@@ -1,0 +1,72 @@
+platform: 틱톡 (TikTok)
+platform_id: tiktok
+official_update_date: 2026.01 공식 개정
+official_source_name: TikTok Ads Manager 헬프센터
+official_source_url: https://ads.tiktok.com/help/
+revision_summary: 인피드 세로형 9:16(1080×1920, 500MB) 및 TikTok Ad Network(Pangle) 1.91:1
+  및 1:1 규격 가이드 최신화
+last_verified_date: '2026-11-12'
+description: 인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle
+placements:
+- name: 틱톡 인피드 세로형 (9:16)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 102400
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.3
+  text_ratio_level: warning
+- name: 틱톡 정사각형 (1:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1080
+  min_width: 640
+  min_height: 640
+  max_file_size_kb: 102400
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.3
+  text_ratio_level: warning
+- name: 틱톡 가로형 (16:9)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1920
+  recommended_height: 1080
+  min_width: 1280
+  min_height: 720
+  max_file_size_kb: 102400
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.3
+  text_ratio_level: warning
+- name: 틱톡 Pangle 네트워크 배너 (1.91:1)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 102400
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

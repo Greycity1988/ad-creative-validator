@@ -1,0 +1,137 @@
+platform: 카카오모먼트
+platform_id: kakao
+official_update_date: 2026.03 공식 개정
+official_source_name: 카카오 비즈니스 가이드
+official_source_url: https://kakaobusiness.gitbook.io/moment
+revision_summary: 비즈보드 960×300 단일화 전면 적용, 톡 개편 연동 4:5 피드 및 9:16 세로형 지면 공식 확대, PC 포커스보드(1504×336)
+  가이드 반영
+last_verified_date: '2026-11-12'
+description: 비즈보드 (16:5), New 비즈보드, 카카오 DA, 포커스보드
+placements:
+- name: 카카오 비즈보드 (960×300 16:5)
+  aspect_ratio:
+  - 16
+  - 5
+  aspect_ratio_tolerance: 0.01
+  exact_width: 960
+  exact_height: 300
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  require_transparency: true
+  text_ratio_limit: 0.2
+  text_ratio_level: error
+- name: New 카카오 비즈보드 (확장/오브젝트형 960×300)
+  aspect_ratio:
+  - 16
+  - 5
+  aspect_ratio_tolerance: 0.01
+  exact_width: 960
+  exact_height: 300
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  require_transparency: true
+  text_ratio_limit: 0.2
+  text_ratio_level: error
+- name: 카카오 DA (디스플레이 네이티브 2:1)
+  aspect_ratio:
+  - 2
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 DA (디스플레이 네이티브 1:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 500
+  min_height: 500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 DA (디스플레이 네이티브 9:16)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 DA (디스플레이 네이티브 4:5)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 1000
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 포커스보드 (PC 배경 1504×336)
+  exact_width: 1504
+  exact_height: 336
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 카카오 포커스보드 (PC 투명 오브젝트 314×300)
+  exact_width: 314
+  exact_height: 300
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  require_transparency: true
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 포커스보드 (하위버전 대체 2:1)
+  aspect_ratio:
+  - 2
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 채널 메시지 (4:3)
+  aspect_ratio:
+  - 4
+  - 3
+  aspect_ratio_tolerance: 0.02
+  exact_width: 800
+  exact_height: 600
+  max_file_size_kb: 10240
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

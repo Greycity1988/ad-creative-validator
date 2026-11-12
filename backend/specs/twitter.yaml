@@ -1,0 +1,72 @@
+platform: 엑스 (X / Twitter)
+platform_id: twitter
+official_update_date: 2026.03 공식 개정
+official_source_name: X Business Creative Specs
+official_source_url: https://business.x.com
+revision_summary: 단일 이미지 1:1 (1200×1200) 및 1.91:1 (1200×628), 9:16 몰입형 세로형, 웹사이트 카드
+  5MB 제한 최신화
+last_verified_date: '2026-11-12'
+description: 단일 이미지 (1:1, 1.91:1), 몰입형 (9:16), 웹사이트 카드
+placements:
+- name: 엑스 단일 이미지 정사각형 (1:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 1200
+  min_width: 600
+  min_height: 600
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 엑스 웹사이트 카드 가로형 (1.91:1)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 엑스 몰입형 세로형 (9:16)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 엑스 캐러셀 카드 (1:1 / 1.91:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1080
+  min_width: 600
+  min_height: 600
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

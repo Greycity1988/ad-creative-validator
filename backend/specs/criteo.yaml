@@ -1,0 +1,172 @@
+platform: 크리테오
+platform_id: criteo
+official_update_date: 2026.03 공식 개정
+official_source_name: Criteo Advertising Guidelines
+official_source_url: https://www.criteo.com
+revision_summary: 플래그십/쇼케이스 빅배너(576×300, 576×200, 310×500), 브랜디드 헤더(1242×300), 어댑티브
+  마스터, 빅쿠폰 배너 및 타이머 규격 반영
+last_verified_date: '2026-11-12'
+description: 빅배너 (플래그십 576×300/200, 쇼케이스, 브랜디드 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너,
+  타이머 배너
+placements:
+- name: 크리테오 (플래그십 데스크톱 빅배너 FS_300 576×300)
+  exact_width: 576
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (플래그십 데스크톱 빅배너 FS_200 576×200)
+  exact_width: 576
+  exact_height: 200
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (쇼케이스 빅배너 310×500)
+  exact_width: 310
+  exact_height: 500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (쇼케이스 일반 빅배너 270×390)
+  exact_width: 270
+  exact_height: 390
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (브랜디드 헤더 빅배너 배경 1242×300)
+  exact_width: 1242
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (브랜디드 헤더 빅배너 로고 460×300)
+  exact_width: 460
+  exact_height: 300
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+- name: 크리테오 (어댑티브 Square 1:1 1200×1200)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 800
+  recommended_width: 1200
+  recommended_height: 1200
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (어댑티브 Landscape 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 600
+  min_height: 314
+  recommended_width: 1200
+  recommended_height: 628
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (어댑티브 Portrait 2:3 800×1200)
+  aspect_ratio:
+  - 2
+  - 3
+  aspect_ratio_tolerance: 0.02
+  min_width: 600
+  min_height: 900
+  recommended_width: 800
+  recommended_height: 1200
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (빅쿠폰 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (빅쿠폰 배너 1200×628)
+  exact_width: 1200
+  exact_height: 628
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 크리테오 (빅쿠폰 배너 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (빅쿠폰 배너 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (타이머 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (타이머 배너 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (타이머 배너 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
