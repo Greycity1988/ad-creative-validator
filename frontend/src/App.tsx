@@ -5,6 +5,7 @@ import { MediaSelector, PLATFORMS } from './components/MediaSelector';
 import { ResultDashboard } from './components/ResultDashboard';
 import { FeedbackModal } from './components/FeedbackModal';
 import { DonationModal } from './components/DonationModal';
+import { GuideModal } from './components/GuideModal';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages, updateAllSpecs } from './api/validator';
 import { AlertCircle } from 'lucide-react';
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isFeedbackOpen, setIsFeedbackOpen] = useState<boolean>(false);
   const [isDonationOpen, setIsDonationOpen] = useState<boolean>(false);
+  const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
 
   // Fetch available platform & placement specs from backend
   useEffect(() => {
@@ -156,6 +158,7 @@ export const App: React.FC = () => {
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
+        onOpenGuide={() => setIsGuideOpen(true)}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
@@ -216,11 +219,15 @@ export const App: React.FC = () => {
 
       <footer className="mt-auto border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400">
         <p>
-          광고 소재 규격 자동 검수 시스템 • 카카오, 네이버, 애디슨, 구글, 메타, 틱톡, 몰로코, 크리테오, RTB House, 애피어, 엑스 (X)
+          광고 소재 규격 자동 검수 시스템 • 애디슨, 애피어, 버즈빌, 쿠팡, 크리테오, 당근, 구글, 카카오, 메타, 몰로코, 네이버, RTB House, 틱톡, 토스, 엑스 (15대 주요 광고 매체)
         </p>
       </footer>
 
       {/* Modals */}
+      <GuideModal
+        isOpen={isGuideOpen}
+        onClose={() => setIsGuideOpen(false)}
+      />
       <FeedbackModal
         isOpen={isFeedbackOpen}
         onClose={() => setIsFeedbackOpen(false)}

@@ -13,18 +13,26 @@ from .adison import AdisonValidator
 from .tiktok import TikTokValidator
 from .moloco import MolocoValidator
 from .twitter import TwitterValidator
+from .daangn import DaangnValidator
+from .toss import TossValidator
+from .coupang import CoupangValidator
+from .buzzvil import BuzzvilValidator
 
 VALIDATOR_REGISTRY: Dict[str, Type[BaseValidator]] = {
-    "kakao": KakaoValidator,
-    "naver": NaverValidator,
-    "google_ads": GoogleAdsValidator,
-    "meta": MetaValidator,
-    "criteo": CriteoValidator,
-    "rtb_house": RTBHouseValidator,
     "adison": AdisonValidator,
-    "tiktok": TikTokValidator,
-    "moloco": MolocoValidator,
     "appier": AppierValidator,
+    "buzzvil": BuzzvilValidator,
+    "coupang": CoupangValidator,
+    "criteo": CriteoValidator,
+    "daangn": DaangnValidator,
+    "google_ads": GoogleAdsValidator,
+    "kakao": KakaoValidator,
+    "meta": MetaValidator,
+    "moloco": MolocoValidator,
+    "naver": NaverValidator,
+    "rtb_house": RTBHouseValidator,
+    "tiktok": TikTokValidator,
+    "toss": TossValidator,
     "twitter": TwitterValidator,
 }
 

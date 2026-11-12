@@ -167,3 +167,64 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+- name: 네이버 NOSP (PC 메인 롤링보드 350×280)
+  exact_width: 350
+  exact_height: 280
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  text_ratio_limit: 0.25
+  text_ratio_level: warning
+- name: 네이버 NOSP (모바일 롤링보드 750×400)
+  exact_width: 750
+  exact_height: 400
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 네이버 브랜드검색 (PC 메인 브랜드존 300×150)
+  exact_width: 300
+  exact_height: 150
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 네이버 브랜드검색 (모바일 브랜드존 와이드 1000×500)
+  exact_width: 1000
+  exact_height: 500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 네이버 브랜드검색 (모바일 브랜드존 정방형 1000×1000)
+  exact_width: 1000
+  exact_height: 1000
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 네이버 밴드 (BAND 피드 배너 정방형 1000×1000)
+  exact_width: 1000
+  exact_height: 1000
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 네이버 밴드 (BAND 피드 배너 와이드 1200×600)
+  exact_width: 1200
+  exact_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

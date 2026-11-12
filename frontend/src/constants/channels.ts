@@ -1,6 +1,7 @@
 import { TargetChannelOption } from '../types';
 
 export const TARGET_CHANNELS: TargetChannelOption[] = [
+  // ── 주요 포털 & 메신저 (카카오 / 네이버) ──
   {
     id: 'kakao_bizboard',
     label: '카카오 비즈보드',
@@ -26,6 +27,14 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     description: '디스플레이 네이티브 2:1 (1200×600), 1:1, 9:16, 4:5',
   },
   {
+    id: 'kakao_channel',
+    label: '카카오톡 채널 메시지',
+    platformId: 'kakao',
+    categoryName: '카카오모먼트',
+    keywords: ['채널 메시지'],
+    description: '와이드형 800×400 (2:1), 기본형 800×600 (4:3), 캐러셀 800×800 (1:1)',
+  },
+  {
     id: 'naver_da',
     label: '네이버 DA',
     platformId: 'naver',
@@ -42,13 +51,81 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     description: '750×280 (GFA), 750×200 / 1500×400 (NOSP 보장형)',
   },
   {
-    id: 'adison',
-    label: '애디슨 오퍼월',
-    platformId: 'adison',
-    categoryName: '애디슨 오퍼월',
-    keywords: ['애디슨'],
-    description: '목록 배너 A(720×360), B(144×144), 상세 배너(720×780)',
+    id: 'naver_rolling',
+    label: '네이버 롤링보드',
+    platformId: 'naver',
+    categoryName: '네이버 (NOSP/GFA)',
+    keywords: ['롤링보드'],
+    description: 'PC 메인 롤링보드 (350×280), 모바일 롤링보드 (750×400)',
   },
+  {
+    id: 'naver_brand',
+    label: '네이버 브랜드검색',
+    platformId: 'naver',
+    categoryName: '네이버 (NOSP/GFA)',
+    keywords: ['브랜드검색'],
+    description: 'PC 브랜드존 (300×150), 모바일 브랜드존 (1000×500, 1000×1000)',
+  },
+  {
+    id: 'naver_band',
+    label: '네이버 밴드 (BAND)',
+    platformId: 'naver',
+    categoryName: '네이버 (NOSP/GFA)',
+    keywords: ['밴드'],
+    description: 'BAND 피드 배너 정방형 (1000×1000), 와이드 (1200×600)',
+  },
+
+  // ── 커머스 & 버티컬 슈퍼앱 (당근 / 토스 / 쿠팡) ──
+  {
+    id: 'daangn_feed',
+    label: '당근 (피드 광고)',
+    platformId: 'daangn',
+    categoryName: '당근 비즈니스',
+    keywords: ['당근 (피드'],
+    description: '피드 정방형 1:1 (1080×1080), 와이드 1.91:1 (1200×628), 세로형 4:5',
+  },
+  {
+    id: 'daangn_banner',
+    label: '당근 (홈 배너 / 스토리)',
+    platformId: 'daangn',
+    categoryName: '당근 비즈니스',
+    keywords: ['상단 배너', '동네생활 스토리'],
+    description: '중고거래 홈 상단 배너 (1000×500), 동네생활 스토리 9:16 (1080×1920)',
+  },
+  {
+    id: 'toss_feed',
+    label: '토스 (피드 배너)',
+    platformId: 'toss',
+    categoryName: '토스 애즈',
+    keywords: ['토스 (피드'],
+    description: '피드 정방형 1:1 (1080×1080), 와이드 배너 2:1 (1200×600)',
+  },
+  {
+    id: 'toss_quiz',
+    label: '토스 (행운퀴즈·머니알림)',
+    platformId: 'toss',
+    categoryName: '토스 애즈',
+    keywords: ['행운퀴즈', '전면'],
+    description: '행운퀴즈 및 머니알림 1.91:1 (1200×628), 전면 인터스티셜 9:16',
+  },
+  {
+    id: 'coupang_home',
+    label: '쿠팡 (메인 홈 배너)',
+    platformId: 'coupang',
+    categoryName: '쿠팡 애즈',
+    keywords: ['메인 홈', '골드박스'],
+    description: '메인 홈 와이드 (1200×600), 골드박스 타임할인 (750×375)',
+  },
+  {
+    id: 'coupang_product',
+    label: '쿠팡 (C.Native 상품 피드)',
+    platformId: 'coupang',
+    categoryName: '쿠팡 애즈',
+    keywords: ['c.native', '기획전', '로켓배송'],
+    description: 'C.Native 상품 (500×500), 카테고리 기획전 헤더 (1080×360)',
+  },
+
+  // ── 글로벌 플랫폼 (구글 / 메타 / 틱톡 / 엑스) ──
   {
     id: 'google',
     label: '구글 (Google)',
@@ -74,13 +151,15 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     description: '인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9)',
   },
   {
-    id: 'moloco',
-    label: '몰로코 (Moloco)',
-    platformId: 'moloco',
-    categoryName: '몰로코 DSP',
-    keywords: ['moloco'],
-    description: '모바일 DSP 네이티브 (1.91:1, 2:1, 1:1, 9:16), 카카오 연동',
+    id: 'twitter',
+    label: '엑스 (X / Twitter)',
+    platformId: 'twitter',
+    categoryName: '엑스 (Twitter)',
+    keywords: ['엑스', 'twitter'],
+    description: '단일 이미지 (1:1, 1.91:1), 몰입형 (9:16), 웹사이트 카드',
   },
+
+  // ── 프로그래머틱 & 리타게팅 (크리테오 / RTB House / 몰로코 / 애피어) ──
   {
     id: 'criteo_adaptive',
     label: '크리테오 (어댑티브)',
@@ -122,6 +201,14 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     description: '프로모보드 와이드 1.91:1 (1200×628), 정방형 1:1 (1200×1200)',
   },
   {
+    id: 'moloco',
+    label: '몰로코 (Moloco)',
+    platformId: 'moloco',
+    categoryName: '몰로코 DSP',
+    keywords: ['moloco'],
+    description: '모바일 DSP 네이티브 (1.91:1, 2:1, 1:1, 9:16), 카카오 연동',
+  },
+  {
     id: 'appier',
     label: '애피어 (Appier)',
     platformId: 'appier',
@@ -130,11 +217,19 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     description: 'AI 쿼드/인터스티셜, 모바일 전면, 표준 배너, 네이티브',
   },
   {
-    id: 'twitter',
-    label: '엑스 (X / Twitter)',
-    platformId: 'twitter',
-    categoryName: '엑스 (Twitter)',
-    keywords: ['엑스', 'twitter'],
-    description: '단일 이미지 (1:1, 1.91:1), 몰입형 (9:16), 웹사이트 카드',
+    id: 'adison',
+    label: '애디슨 오퍼월',
+    platformId: 'adison',
+    categoryName: '애디슨 오퍼월',
+    keywords: ['애디슨'],
+    description: '목록 배너 A(720×360), B(144×144), 상세 배너(720×780)',
+  },
+  {
+    id: 'buzzvil',
+    label: '버즈빌 (Buzzvil)',
+    platformId: 'buzzvil',
+    categoryName: '버즈빌',
+    keywords: ['버즈빌'],
+    description: '잠금화면 전면 (9:16), 인앱 피드 배너 (2:1), 리워드 아이콘 (1:1)',
   },
 ];

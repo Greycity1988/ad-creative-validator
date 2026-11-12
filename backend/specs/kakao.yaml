@@ -123,14 +123,34 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
-- name: 카카오 채널 메시지 (4:3)
-  aspect_ratio:
-  - 4
-  - 3
-  aspect_ratio_tolerance: 0.02
+- name: 카카오톡 채널 메시지 (와이드형 800×400 2:1)
+  exact_width: 800
+  exact_height: 400
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 카카오톡 채널 메시지 (기본형 800×600 4:3)
   exact_width: 800
   exact_height: 600
-  max_file_size_kb: 10240
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 카카오톡 채널 메시지 (캐러셀 800×800 1:1)
+  exact_width: 800
+  exact_height: 800
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 카카오페이지 / 다음 웹툰 배너 (720×300)
+  exact_width: 720
+  exact_height: 300
+  max_file_size_kb: 300
   allowed_formats:
   - jpg
   - jpeg

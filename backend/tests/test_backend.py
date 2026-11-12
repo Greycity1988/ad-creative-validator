@@ -44,6 +44,10 @@ def test_registry_has_all_platforms():
         "tiktok",
         "moloco",
         "twitter",
+        "daangn",
+        "toss",
+        "coupang",
+        "buzzvil",
     }
     assert expected.issubset(set(VALIDATOR_REGISTRY.keys()))
     for pid in expected:
@@ -256,4 +260,36 @@ def test_alphabetical_platforms_order():
     platforms = res.json()["platforms"]
     pids = [p["id"] for p in platforms]
     assert pids == sorted(pids)
+
+
+def test_new_platforms_validation():
+    """Verify Daangn, Toss, Coupang, and Buzzvil validation."""
+    v_daangn = get_validator("daangn")
+    img_daangn = create_test_image(1080, 1080, fmt="PNG")
+    info_daangn = extract_image_info("daangn_feed.png", img_daangn)
+    res_daangn = v_daangn.validate(info_daangn, auto_match=True)
+    assert any("Square" in p.name or "1:1" in p.name for p in res_daangn.placements)
+    assert res_daangn.overall == CheckStatus.PASS.value
+
+    v_toss = get_validator("toss")
+    img_toss = create_test_image(1200, 600, fmt="JPEG")
+    info_toss = extract_image_info("toss_wide.jpg", img_toss)
+    res_toss = v_toss.validate(info_toss, auto_match=True)
+    assert any("2:1" in p.name for p in res_toss.placements)
+    assert res_toss.overall == CheckStatus.PASS.value
+
+    v_coupang = get_validator("coupang")
+    img_cp = create_test_image(1200, 600, fmt="PNG")
+    info_cp = extract_image_info("coupang_home.png", img_cp)
+    res_cp = v_coupang.validate(info_cp, auto_match=True)
+    assert any("1200×600" in p.name for p in res_cp.placements)
+    assert res_cp.overall == CheckStatus.PASS.value
+
+    v_buzz = get_validator("buzzvil")
+    img_buzz = create_test_image(720, 1280, fmt="JPEG")
+    info_buzz = extract_image_info("buzzvil_lock.jpg", img_buzz)
+    res_buzz = v_buzz.validate(info_buzz, auto_match=True)
+    assert any("720×1280" in p.name for p in res_buzz.placements)
+    assert res_buzz.overall == CheckStatus.PASS.value
+
 

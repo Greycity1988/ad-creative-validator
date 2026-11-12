@@ -1,12 +1,13 @@
 import React from 'react';
-import { MessageSquare, Coffee } from 'lucide-react';
+import { MessageSquare, Coffee, BookOpen } from 'lucide-react';
 
 interface HeaderProps {
   onOpenFeedback: () => void;
   onOpenDonation: () => void;
+  onOpenGuide: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenFeedback, onOpenDonation }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenFeedback, onOpenDonation, onOpenGuide }) => {
   return (
     <header className="bg-slate-900 border-b border-slate-800 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -21,24 +22,34 @@ export const Header: React.FC<HeaderProps> = ({ onOpenFeedback, onOpenDonation }
                 광고 소재 검수 시스템
               </h1>
               <span className="bg-blue-900/60 text-blue-300 text-xs px-2 py-0.5 rounded-full font-medium border border-blue-700/50">
-                v2.0 Pro
+                v2.1 Pro
               </span>
             </div>
             <p className="text-xs text-slate-400 font-medium">
-              Ad Creative Guideline Validator — 11대 주요 광고 매체 & 100+ 공식 지면 원클릭 규격 검수
+              Ad Creative Guideline Validator — 15대 주요 광고 매체 & 150+ 공식 지면 원클릭 규격 검수
             </p>
           </div>
         </div>
 
-        {/* Action Buttons: Feedback + Donation */}
-        <div className="flex items-center space-x-2.5">
+        {/* Action Buttons: Guide + Feedback + Donation */}
+        <div className="flex items-center space-x-2 flex-wrap gap-y-2">
+          <button
+            type="button"
+            onClick={onOpenGuide}
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-blue-700/80 bg-blue-900/40 hover:bg-blue-800/60 text-xs font-semibold text-blue-200 hover:text-white transition-all cursor-pointer shadow-2xs"
+            title="이 도구가 왜 필요한지, 어떨 때 쓰면 좋은지 활용 가이드를 확인합니다."
+          >
+            <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+            <span>📖 사용 가이드</span>
+          </button>
+
           <button
             type="button"
             onClick={onOpenFeedback}
             className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 bg-slate-800/80 hover:bg-slate-700/80 text-xs font-semibold text-slate-200 transition-all cursor-pointer shadow-2xs"
             title="새로운 광고 매체/지면 추가 요청이나 의견을 남겨주세요."
           >
-            <MessageSquare className="w-3.5 h-3.5 text-blue-400" />
+            <MessageSquare className="w-3.5 h-3.5 text-slate-300" />
             <span>💡 건의 / 규격 제보</span>
           </button>
 

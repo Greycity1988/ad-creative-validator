@@ -116,6 +116,30 @@ def is_placement_matched_by_filename(placement: Dict[str, Any], filename: str) -
     if "트위터" in fname_lower or "twitter" in fname_lower or "엑스" in fname_lower:
         return "엑스" in pname_lower or "twitter" in pname_lower
 
+    if "당근" in fname_lower or "karrot" in fname_lower or "daangn" in fname_lower:
+        return "당근" in pname_lower
+
+    if "토스" in fname_lower or "toss" in fname_lower:
+        return "토스" in pname_lower
+
+    if "쿠팡" in fname_lower or "coupang" in fname_lower or "골드박스" in fname_lower:
+        return "쿠팡" in pname_lower
+
+    if "버즈빌" in fname_lower or "buzzvil" in fname_lower:
+        return "버즈빌" in pname_lower
+
+    if "롤링보드" in fname_lower or "rolling" in fname_lower:
+        return "롤링보드" in pname_lower
+
+    if "브랜드검색" in fname_lower or "브검" in fname_lower or "brandsearch" in fname_lower:
+        return "브랜드" in pname_lower
+
+    if "밴드" in fname_lower or "band" in fname_lower:
+        return "밴드" in pname_lower
+
+    if "채널" in fname_lower or "플친" in fname_lower or "알림톡" in fname_lower:
+        return "채널 메시지" in pname_lower
+
     if "쇼핑" in fname_lower or "shopping" in fname_lower:
         return "쇼핑" in pname_lower
 
