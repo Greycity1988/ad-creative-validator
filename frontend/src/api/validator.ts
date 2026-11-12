@@ -2,7 +2,7 @@ import axios from 'axios';
 import { ValidationResponse, ValidationItem, PlatformMetadata, FeedbackItem, FeedbackCreateRequest } from '../types';
 
 const apiClient = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
 });
 
 export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
