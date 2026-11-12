@@ -33,7 +33,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
   const ACCOUNT_NUMBER = '0000-00-0000000';
   const ACCOUNT_NUMBER_CLEAN = '0000000000000';
   const ACCOUNT_HOLDER = '개발자';
-  const PAYPAL_USERNAME = 'greycity1988'; // Owen O. Magnus PayPal account
+  const PAYPAL_EMAIL = 'donation@example.com'; // Owen O. Magnus PayPal account
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -346,19 +346,23 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               {/* Amount conversion summary */}
               <div className="bg-white p-3.5 rounded-xl border border-slate-200 space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-slate-600 font-medium">결제 후원 금액 (USD):</span>
+                  <span className="text-slate-600 font-medium">후원 금액 (USD):</span>
                   <span className="font-black text-blue-600 text-sm">
                     ${usdAmount}.00 USD
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1 border-t border-slate-100">
+                  <span>수취 계정:</span>
+                  <span className="font-mono font-semibold text-slate-700">{PAYPAL_EMAIL}</span>
+                </div>
+                <p className="text-[10px] text-slate-400">
                   (한화 약 {selectedAmount.toLocaleString()}원 상당 • 달러(USD) 기준으로 안전하게 승인 결제됩니다)
                 </p>
               </div>
 
               {/* PayPal External Link Button */}
               <a
-                href={`https://paypal.me/${PAYPAL_USERNAME}/${usdAmount}USD`}
+                href={`https://www.paypal.com/donate/?business=${encodeURIComponent(PAYPAL_EMAIL)}&currency_code=USD&amount=${usdAmount}&item_name=Ad%20Creative%20Validator%20Coffee%20Sponsorship`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3 px-4 rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs transition-colors flex items-center justify-center space-x-2 shadow-sm cursor-pointer"
@@ -368,7 +372,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               </a>
 
               <p className="text-[11px] text-slate-500 text-center leading-relaxed">
-                💡 페이팔 화면이 열리면 로그인할 필요 없이 <strong className="text-slate-800">[신용카드 또는 체크카드로 결제 (Pay with Debit or Credit Card)]</strong>를 누르시면 3초 만에 카드 결제하실 수 있습니다.
+                💡 페이팔 화면이 열리면 로그인할 필요 없이 <strong className="text-slate-800">[신용카드 또는 체크카드로 결제 (Donate with Debit or Credit Card)]</strong>를 누르시면 3초 만에 카드 결제하실 수 있습니다.
               </p>
             </div>
           )}
