@@ -1,0 +1,69 @@
+platform: 에이스트레이더 (AceTrader)
+platform_id: acetrader
+official_update_date: 2026.03 공식 개정
+official_source_name: NHN ACE 에이스트레이더 공식 가이드
+official_source_url: https://www.acetrader.co.kr
+revision_summary: 반응형 네이티브 배너 1200×627(최대 4MB), 표준 디스플레이 배너 6종(300×250, 728×90, 320×50 등) 반영
+last_verified_date: '2026-11-12'
+description: 반응형 네이티브 배너, 표준 IAB 디스플레이 배너
+placements:
+- name: 에이스트레이더 (반응형 네이티브 배너 1.91:1 1200×627)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 627
+  recommended_width: 1200
+  recommended_height: 627
+  max_file_size_kb: 4000
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 에이스트레이더 메인 반응형 네이티브 배너 (최대 4MB)
+- name: 에이스트레이더 (고정 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 에이스트레이더 (고정 배너 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 에이스트레이더 (고정 배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 에이스트레이더 (고정 배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 에이스트레이더 (고정 배너 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

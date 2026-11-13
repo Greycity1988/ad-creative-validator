@@ -1,0 +1,79 @@
+platform: 타겟픽 (TargetPick)
+platform_id: targetpick
+official_update_date: 2026.04 공식 개정
+official_source_name: CJ메조미디어 타겟픽 공식 가이드
+official_source_url: https://targetpick.io
+revision_summary: 모바일 띠배너(320×50, 320×100, 640×100), 전면/종료(320×480, 640×960, 750×1200), 스플래시(1200×1000) 및 디스플레이 사양 확정
+last_verified_date: '2026-11-12'
+description: 모바일 띠배너, 전면/종료 배너, 스플래시, 표준 IAB 배너
+placements:
+- name: 타겟픽 (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 타겟픽 (모바일 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 타겟픽 (고해상도 띠배너 640×100)
+  exact_width: 640
+  exact_height: 100
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 타겟픽 (스플래시 대형 배너 1200×1000)
+  exact_width: 1200
+  exact_height: 1000
+  max_file_size_kb: 500
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 타겟픽 앱 실행 스플래시 배너 (배경 투명 PNG 권장, 최대 500KB)
+- name: 타겟픽 (전면/종료 배너 750×1200)
+  exact_width: 750
+  exact_height: 1200
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 타겟픽 (전면 배너 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 타겟픽 (디스플레이 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 타겟픽 (디스플레이 배너 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

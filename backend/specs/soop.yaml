@@ -1,0 +1,56 @@
+platform: 숲 (SOOP, 구 아프리카TV)
+platform_id: soop
+official_update_date: 2026.04 공식 개정
+official_source_name: SOOP 공식 가이드
+official_source_url: https://sooplive.com
+revision_summary: 방송국 타이틀 와이드 배너(2320×338 개편 규격), 방송국 하단 배너(720×150), 라이브 썸네일(16:9 1280×720), 채널 프로필(1:1 800×800) 반영
+last_verified_date: '2026-11-12'
+description: 방송국 타이틀 배너 (2320×338), 하단 배너 (720×150), 라이브 썸네일, 채널 프로필
+placements:
+- name: SOOP (방송국 타이틀 대문 와이드 배너 2320×338)
+  exact_width: 2320
+  exact_height: 338
+  max_file_size_kb: 10240
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: SOOP 공식 개편 방송국 메인 상단 타이틀 배너 (최대 10MB)
+- name: SOOP (방송국 하단 배너 720×150)
+  exact_width: 720
+  exact_height: 150
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: SOOP 방송국 홈 하단 정보/스폰서 배너 (최대 200KB)
+- name: SOOP (방송 라이브 썸네일 16:9 1280×720)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  min_width: 1280
+  min_height: 720
+  recommended_width: 1280
+  recommended_height: 720
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: SOOP (채널 프로필 1:1 800×800)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 800
+  recommended_width: 800
+  recommended_height: 800
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

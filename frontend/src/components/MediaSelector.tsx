@@ -17,12 +17,28 @@ import { TARGET_CHANNELS } from '../constants/channels';
 
 export const PLATFORMS: PlatformOption[] = [
   {
+    id: 'acetrader',
+    name: '에이스트레이더 (AceTrader)',
+    englishName: 'NHN AceTrader',
+    icon: '🎯',
+    badgeColor: 'border-blue-200 bg-blue-50/50 text-blue-800',
+    description: '반응형 네이티브 배너(1200×627), 고정 배너 6종(300×250, 728×90 등)',
+  },
+  {
     id: 'adison',
     name: '애디슨 오퍼월',
     englishName: 'Adison Offerwall',
     icon: '🎁',
     badgeColor: 'border-pink-200 bg-pink-50/50 text-pink-700',
     description: '목록 배너 A타입(720×360), B타입(144×144), 상세 배너(720×780)',
+  },
+  {
+    id: 'adpopcorn',
+    name: '애드팝콘 (AdPopcorn)',
+    englishName: 'AdPopcorn (IGAWorks)',
+    icon: '🍿',
+    badgeColor: 'border-red-200 bg-red-50/50 text-red-800',
+    description: '모바일 띠배너(320×50, 320×100), 중형 배너(300×250)',
   },
   {
     id: 'appier',
@@ -38,7 +54,23 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Buzzvil Ads',
     icon: '⚡',
     badgeColor: 'border-amber-200 bg-amber-50/50 text-amber-800',
-    description: '잠금화면 전면 (9:16), 인앱 피드 와이드 배너 (2:1), 리워드 아이콘',
+    description: '반응형 네이티브 배너(1200×627), 잠금화면 Lockscreen(1080×2340)',
+  },
+  {
+    id: 'cauly',
+    name: '카울리 (Cauly)',
+    englishName: 'Cauly',
+    icon: '📱',
+    badgeColor: 'border-emerald-200 bg-emerald-50/50 text-emerald-800',
+    description: '모바일 표준 띠배너(320×50, 320×100), 중형 배너(300×250)',
+  },
+  {
+    id: 'chzzk',
+    name: '네이버 치지직 (CHZZK)',
+    englishName: 'Naver CHZZK',
+    icon: '🎮',
+    badgeColor: 'border-green-200 bg-green-50/50 text-green-800',
+    description: '채널 대문 배너(1920×480), 오프라인 대기화면(1920×1080), 프로필(800×800)',
   },
   {
     id: 'coupang',
@@ -46,7 +78,7 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Coupang Ads',
     icon: '🛒',
     badgeColor: 'border-red-200 bg-red-50/50 text-red-700',
-    description: '메인 홈 와이드 배너 (2:1), 골드박스 타임할인, C.Native 상품 피드',
+    description: 'C1 메인 상단(1920×450/720×380), G1 골드박스, R1 로켓배송, S4 검색',
   },
   {
     id: 'criteo',
@@ -54,7 +86,7 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Criteo',
     icon: '🎯',
     badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-800',
-    description: '표준 IAB 배너 13종, 빅배너(576×300/200, 쇼케이스), 어댑티브',
+    description: '표준 IAB 배너 13종, 플래그십/쇼케이스 빅배너, 어댑티브 마스터',
   },
   {
     id: 'daangn',
@@ -62,7 +94,15 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Karrot Ads',
     icon: '🥕',
     badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-700',
-    description: '피드 정방형 (1:1), 피드 와이드 (1.91:1), 홈 상단 배너, 동네생활 (9:16)',
+    description: '피드 정방형(1:1), 피드 와이드(1.91:1), 세로형(4:5, 9:16), WebP',
+  },
+  {
+    id: 'dable',
+    name: '데이블 (Dable)',
+    englishName: 'Dable Native',
+    icon: '📰',
+    badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-800',
+    description: '네이티브 4:3(1600×1200), 16:10(1200×750), 1:1, 2:1, 배너(4:1, 1:4)',
   },
   {
     id: 'google_ads',
@@ -78,7 +118,15 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Kakao Moment',
     icon: '💬',
     badgeColor: 'border-yellow-200 bg-yellow-50/50 text-amber-800',
-    description: '비즈보드(960×300), 카카오 DA, 포커스보드, 채널 메시지, 웹툰 배너',
+    description: '비즈보드(960×300), 클래식(1029×258), 카카오 DA, 포커스보드',
+  },
+  {
+    id: 'linkedin',
+    name: '링크드인 (LinkedIn)',
+    englishName: 'LinkedIn Ads',
+    icon: '💼',
+    badgeColor: 'border-blue-200 bg-blue-50/50 text-blue-900',
+    description: '단일 이미지 정방형(1200×1200), 가로형(1200×627), 세로형(4:5), 캐러셀',
   },
   {
     id: 'meta',
@@ -102,7 +150,39 @@ export const PLATFORMS: PlatformOption[] = [
     englishName: 'Naver Ads / NOSP',
     icon: '🟩',
     badgeColor: 'border-emerald-200 bg-emerald-50/50 text-emerald-800',
-    description: '타임보드(1660×260), 롤링보드(350×280), 브랜드검색, 스페셜DA, 스마트채널, 밴드',
+    description: '타임보드(1660×260, 300KB), 스페셜DA, 스마트채널(250KB), 피드, 밴드',
+  },
+  {
+    id: 'onestore',
+    name: '원스토어 애즈 (ONE store)',
+    englishName: 'ONE store Ads',
+    icon: '🏬',
+    badgeColor: 'border-red-200 bg-red-50/50 text-red-800',
+    description: '스토어 프로모션 그래픽 배너(1024×578), 대표 아이콘(512×512)',
+  },
+  {
+    id: 'pinterest',
+    name: '핀터레스트 (Pinterest)',
+    englishName: 'Pinterest Ads',
+    icon: '📌',
+    badgeColor: 'border-red-200 bg-red-50/50 text-red-900',
+    description: '표준 핀(2:3 1000×1500), 정방형 핀(1:1), 롱 핀(1:2.1 1000×2100)',
+  },
+  {
+    id: 'realclick',
+    name: '리얼클릭 (RealClick)',
+    englishName: 'RealClick',
+    icon: '🖱️',
+    badgeColor: 'border-cyan-200 bg-cyan-50/50 text-cyan-800',
+    description: '박스형 배너(250×250, 240×240), 와이드형(570×240), 띠배너(728×90)',
+  },
+  {
+    id: 'reddit',
+    name: '레딧 (Reddit)',
+    englishName: 'Reddit Ads',
+    icon: '🤖',
+    badgeColor: 'border-orange-200 bg-orange-50/50 text-orange-900',
+    description: '프로모티드 가로형(1440×1080), 정방형(1:1), 세로형(4:5 1080×1350)',
   },
   {
     id: 'rtb_house',
@@ -113,6 +193,54 @@ export const PLATFORMS: PlatformOption[] = [
     description: '스태틱 배너 (300×250 등), 프로모보드 (1200×628), 인터스티셜',
   },
   {
+    id: 'snapchat',
+    name: '스냅챗 (Snapchat)',
+    englishName: 'Snapchat Ads',
+    icon: '👻',
+    badgeColor: 'border-yellow-200 bg-yellow-50/50 text-yellow-900',
+    description: '싱글 이미지 풀스크린(9:16 1080×1920), 스토리 타일(360×600)',
+  },
+  {
+    id: 'soop',
+    name: '숲 (SOOP / 구 아프리카TV)',
+    englishName: 'SOOP Live',
+    icon: '🌲',
+    badgeColor: 'border-teal-200 bg-teal-50/50 text-teal-800',
+    description: '방송국 대문 배너(2320×338), 하단 배너(720×150), 라이브 썸네일',
+  },
+  {
+    id: 'spotify',
+    name: '스포티파이 (Spotify)',
+    englishName: 'Spotify Ads',
+    icon: '🎧',
+    badgeColor: 'border-green-200 bg-green-50/50 text-green-900',
+    description: '컴패니언 디스플레이 배너(1:1 640×640), 리더보드 오버레이(728×90)',
+  },
+  {
+    id: 'syrup',
+    name: '시럽 / OK캐쉬백 (Planet AD)',
+    englishName: 'Syrup / OKCB',
+    icon: '🍯',
+    badgeColor: 'border-amber-200 bg-amber-50/50 text-amber-800',
+    description: '메인 피드 네이티브(1200×627), 오퍼월/라방(720×720), 오!비즈(420×240)',
+  },
+  {
+    id: 'taboola',
+    name: '타불라 (Taboola)',
+    englishName: 'Taboola Native',
+    icon: '📊',
+    badgeColor: 'border-blue-200 bg-blue-50/50 text-blue-800',
+    description: '네이티브 추천 가로형(16:9 1200×674), 정방형(1:1 1000×1000), 300×600',
+  },
+  {
+    id: 'targetpick',
+    name: '타겟픽 (TargetPick)',
+    englishName: 'CJ MezzoMedia TargetPick',
+    icon: '🎯',
+    badgeColor: 'border-indigo-200 bg-indigo-50/50 text-indigo-800',
+    description: '모바일 띠배너(320×50/100, 640×100), 스플래시(1200×1000), 전면(750×1200)',
+  },
+  {
     id: 'tiktok',
     name: '틱톡 (TikTok)',
     englishName: 'TikTok Ads',
@@ -121,12 +249,20 @@ export const PLATFORMS: PlatformOption[] = [
     description: '인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle',
   },
   {
+    id: 'tnk',
+    name: '티엔케이팩토리 (TNK Factory)',
+    englishName: 'TNK Factory',
+    icon: '🕹️',
+    badgeColor: 'border-purple-200 bg-purple-50/50 text-purple-800',
+    description: '가로형(1200×627, 960×640), 세로형(640×1320), 정방형(627×627), 띠배너',
+  },
+  {
     id: 'toss',
     name: '토스 (Toss)',
     englishName: 'Toss Ads',
     icon: '💙',
     badgeColor: 'border-blue-200 bg-blue-50/50 text-blue-700',
-    description: '피드 정방형 (1:1), 와이드 배너 (2:1), 행운퀴즈·머니알림, 전면 인터스티셜',
+    description: '피드 정방형 (1:1 1000×1000), 가로형 (1200×628), 세로형 (9:16), 10MB',
   },
   {
     id: 'twitter',
@@ -169,10 +305,17 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   const [selectedChannelId, setSelectedChannelId] = useState<string>('all');
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
-  const totalPlacementsCount = platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 162;
+  const totalPlacementsCount = platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 230;
+
+  const handleTogglePlatform = (id: string) => {
+    if (selectedPlatforms.includes(id)) {
+      onChangeSelected(selectedPlatforms.filter((p) => p !== id));
+    } else {
+      onChangeSelected([...selectedPlatforms, id]);
+    }
+  };
 
   const handleToggleAll = () => {
-    setSelectedChannelId('all');
     if (isAllSelected) {
       onChangeSelected([]);
     } else {
@@ -180,25 +323,26 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
     }
   };
 
-  const handleTogglePlatform = (id: string) => {
-    setSelectedChannelId('all');
-    if (selectedPlatforms.includes(id)) {
-      onChangeSelected(selectedPlatforms.filter((p) => p !== id));
-      if (expandedPlatform === id) setExpandedPlatform(null);
+  const handleTogglePlacement = (platformId: string, placementName: string) => {
+    const currentList = selectedPlacements[platformId] || [];
+    let updatedList: string[];
+
+    if (currentList.includes(placementName)) {
+      updatedList = currentList.filter((name) => name !== placementName);
     } else {
-      onChangeSelected([...selectedPlatforms, id]);
+      updatedList = [...currentList, placementName];
     }
+
+    onChangePlacements({
+      ...selectedPlacements,
+      [platformId]: updatedList,
+    });
   };
 
-  const getPlatformMeta = (pid: string) => {
-    if (!platformsMetadata || !Array.isArray(platformsMetadata)) return undefined;
-    return platformsMetadata.find((m) => m.id === pid);
-  };
-
-  const handleSelectChannel = (channelId: string) => {
+  const handleChannelSelect = (channelId: string) => {
     setSelectedChannelId(channelId);
     if (channelId === 'all') {
-      onChangeSelected(PLATFORMS.map((p) => p.id));
+      onChangeSelected(['naver', 'kakao', 'meta', 'google_ads']);
       onChangePlacements({});
       return;
     }
@@ -206,68 +350,37 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
     const channel = TARGET_CHANNELS.find((c) => c.id === channelId);
     if (!channel) return;
 
-    const meta = getPlatformMeta(channel.platformId);
-    if (!meta) {
-      onChangeSelected([channel.platformId]);
-      return;
+    if (!selectedPlatforms.includes(channel.platformId)) {
+      onChangeSelected([...selectedPlatforms, channel.platformId]);
     }
 
-    // Filter placements for this platform that match any keyword
-    const matchedPlacements = meta.placements.filter((pName) =>
-      channel.keywords.some((kw) => pName.toLowerCase().includes(kw.toLowerCase()))
-    );
-
-    onChangeSelected([channel.platformId]);
-    onChangePlacements({
-      [channel.platformId]: matchedPlacements.length > 0 ? matchedPlacements : meta.placements,
-    });
-  };
-
-  const selectedChannel = TARGET_CHANNELS.find((c) => c.id === selectedChannelId);
-
-  const handleTogglePlacement = (platformId: string, placementName: string) => {
-    const meta = getPlatformMeta(platformId);
-    if (!meta) return;
-
-    const currentSelected = selectedPlacements[platformId] !== undefined
-      ? selectedPlacements[platformId]
-      : meta.placements;
-
-    let updated: string[];
-    if (currentSelected.includes(placementName)) {
-      updated = currentSelected.filter((p) => p !== placementName);
-    } else {
-      updated = [...currentSelected, placementName];
-    }
+    const meta = platformsMetadata.find((p) => p.id === channel.platformId);
+    const matchedPlacements = meta
+      ? meta.placements.filter((pName: string) =>
+          channel.keywords.some((kw: string) => pName.toLowerCase().includes(kw.toLowerCase()))
+        )
+      : [];
 
     onChangePlacements({
       ...selectedPlacements,
-      [platformId]: updated,
+      [channel.platformId]: matchedPlacements.length > 0 ? matchedPlacements : (meta?.placements || []),
     });
-  };
 
-  const handleSelectAllPlacements = (platformId: string, selectAll: boolean) => {
-    const meta = getPlatformMeta(platformId);
-    if (!meta) return;
-
-    onChangePlacements({
-      ...selectedPlacements,
-      [platformId]: selectAll ? [...meta.placements] : [],
-    });
+    setExpandedPlatform(channel.platformId);
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 space-y-5">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center space-x-2">
-          <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">
-            2
-          </span>
-          <h2 className="text-base font-bold text-slate-800">
-            검수 대상 매체 및 세부 지면 선택
+    <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-5">
+      {/* Top Header & Summary */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+        <div>
+          <h2 className="text-base font-bold text-slate-900 flex items-center space-x-2">
+            <span>2. 검수 대상 광고 매체 선택</span>
+            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+              {PLATFORMS.length}대 매체 지원
+            </span>
           </h2>
-          <span className="text-xs text-slate-500 font-medium">
+          <span className="text-xs text-slate-500 mt-1 block">
             ({selectedPlatforms.length}/{PLATFORMS.length}개 선택됨)
           </span>
         </div>
@@ -277,7 +390,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           {/* Official Spec Status Badge */}
           <div className="inline-flex items-center space-x-1.5 text-xs font-bold px-2.5 py-1.5 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-800 shadow-2xs">
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-            <span>15대 매체 {totalPlacementsCount}개 지면 공식 규격 탑재</span>
+            <span>{PLATFORMS.length}대 매체 {totalPlacementsCount}개 지면 공식 규격 탑재</span>
           </div>
 
           {/* Toggle All */}
@@ -306,7 +419,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       <div className="p-3.5 bg-blue-50/70 border border-blue-200/80 rounded-xl flex items-start space-x-2.5 text-xs text-blue-900 leading-relaxed">
         <ShieldCheck className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold">15대 주요 광고 매체 {totalPlacementsCount}개 공식 지면 전수 탑재:</span> 각 매체사(네이버, 카카오, 메타, 구글, 토스, 쿠팡 등) 공식 광고 가이드 센터 기준 규격을 바탕으로 검수합니다. 규격 불일치나 신규 지면 추가는 상단 <strong>[💡 건의 / 규격 제보]</strong>를 통해 알려주시면 신속히 반영됩니다.
+          <span className="font-bold">{PLATFORMS.length}대 주요 광고 매체 {totalPlacementsCount}개 공식 지면 전수 탑재:</span> 각 매체사(네이버, 카카오, 메타, 구글, 토스, 쿠팡, 링크드인, 핀터레스트, 데이블, 타불라 등) 공식 광고 가이드 센터 기준 규격을 바탕으로 실시간 검수합니다. 규격 불일치나 신규 지면 추가는 상단 <strong>[💡 건의 / 규격 제보]</strong>를 통해 알려주시면 신속히 반영됩니다.
         </div>
       </div>
 
@@ -314,252 +427,232 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       <div className="p-4 bg-slate-900 rounded-xl text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div className="flex items-center space-x-2.5">
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-inner flex-shrink-0">
-            🎯
+            <Target className="w-4 h-4" />
           </div>
           <div>
             <div className="text-xs font-bold text-white flex items-center space-x-1.5">
-              <span>빠른 세부 지면 선택기 (17대 주요 지면)</span>
-              <span className="text-[10px] bg-blue-500/30 text-blue-300 border border-blue-400/30 px-1.5 py-0.2 rounded font-semibold">
-                원클릭 필터
-              </span>
+              <span>주요 17대 핵심 광고 지면 빠른 선택</span>
+              <span className="text-[10px] bg-blue-500/30 text-blue-300 px-1.5 py-0.2 rounded font-mono">Quick Preset</span>
             </div>
-            <p className="text-[11px] text-slate-400">
-              특정 지면을 선택하면 해당 지면 규격만 정밀 검수되어 타 지면 불일치(오검출)를 방지합니다.
+            <p className="text-[11px] text-slate-400 mt-0.5">
+              실무에서 가장 자주 집행되는 대표 규격(비즈보드, 타임보드, PMax, 피드 1:1 등)만 1초 만에 지정합니다.
             </p>
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 flex-shrink-0">
+        <div className="flex items-center space-x-2">
           <select
             value={selectedChannelId}
-            onChange={(e) => handleSelectChannel(e.target.value)}
-            disabled={isLoading}
-            className="bg-slate-800 text-slate-100 border border-slate-700 hover:border-slate-500 rounded-lg px-3 py-2 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-sm w-full md:w-auto"
+            onChange={(e) => handleChannelSelect(e.target.value)}
+            className="w-full md:w-72 px-3 py-2 text-xs rounded-lg bg-slate-800 border border-slate-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer shadow-inner"
           >
-            <option value="all">전체 매체 검수 (스마트 자동 매칭 권장)</option>
-            <optgroup label="── 17대 주요 세부 지면 ──">
-              {TARGET_CHANNELS.map((ch) => (
-                <option key={ch.id} value={ch.id}>
-                  {selectedChannelId === ch.id ? '✓ ' : ''}{ch.label}
-                </option>
+            <option value="all">⚡ 핵심 4대 매체 기본 검수</option>
+            <optgroup label="네이버 (Naver NOSP & GFA)">
+              {TARGET_CHANNELS.filter(c => c.platformId === 'naver').map(c => (
+                <option key={c.id} value={c.id}>{c.label}</option>
+              ))}
+            </optgroup>
+            <optgroup label="카카오 (Kakao Moment)">
+              {TARGET_CHANNELS.filter(c => c.platformId === 'kakao').map(c => (
+                <option key={c.id} value={c.id}>{c.label}</option>
+              ))}
+            </optgroup>
+            <optgroup label="글로벌 빅매체 (Meta & Google & X)">
+              {TARGET_CHANNELS.filter(c => ['meta', 'google_ads', 'twitter'].includes(c.platformId)).map(c => (
+                <option key={c.id} value={c.id}>{c.label}</option>
+              ))}
+            </optgroup>
+            <optgroup label="커머스 & 금융 & 숏폼 (쿠팡 / 토스 / 당근 / 틱톡)">
+              {TARGET_CHANNELS.filter(c => ['coupang', 'toss', 'daangn', 'tiktok'].includes(c.platformId)).map(c => (
+                <option key={c.id} value={c.id}>{c.label}</option>
               ))}
             </optgroup>
           </select>
-
-          {selectedChannelId !== 'all' && (
-            <button
-              type="button"
-              onClick={() => handleSelectChannel('all')}
-              className="px-2.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-[11px] font-semibold text-slate-300 hover:text-white transition-colors cursor-pointer flex-shrink-0"
-              title="전체 매체 선택으로 초기화"
-            >
-              전체 보기
-            </button>
-          )}
         </div>
       </div>
 
-      {/* Selected Channel Active Notice Banner */}
-      {selectedChannel && (
-        <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl flex items-center justify-between text-xs text-blue-900 animate-fadeIn">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-blue-700">✓ 현재 적용된 지면:</span>
-            <span className="font-extrabold text-blue-900 bg-white px-2 py-0.5 rounded border border-blue-200">
-              {selectedChannel.label}
-            </span>
-            <span className="text-slate-500 hidden sm:inline">
-              ({selectedChannel.description})
-            </span>
-          </div>
-          <button
-            type="button"
-            onClick={() => handleSelectChannel('all')}
-            className="text-blue-600 hover:text-blue-800 font-bold underline cursor-pointer"
-          >
-            모든 매체 보기로 전환
-          </button>
-        </div>
-      )}
+      {/* Auto-Match Option Checkbox */}
+      <div className="flex items-center justify-between bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+        <label className="flex items-center space-x-2 text-xs font-semibold text-slate-700 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={autoMatch}
+            onChange={(e) => onToggleAutoMatch(e.target.checked)}
+            className="rounded text-blue-600 focus:ring-blue-500 w-4 h-4 cursor-pointer"
+          />
+          <span>스마트 자동 매칭 (소재 파일명 및 해상도와 일치하는 지면만 지능형 선별)</span>
+        </label>
+        <span className="text-[11px] text-slate-400 font-medium hidden sm:inline">
+          {autoMatch ? '규격 일치 지면만 깔끔하게 요약' : '선택한 모든 지면 전수 대조'}
+        </span>
+      </div>
 
-      {/* Platform Selection Grid (11 Platforms) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      {/* Platform Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {PLATFORMS.map((platform) => {
           const isSelected = selectedPlatforms.includes(platform.id);
-          const meta = getPlatformMeta(platform.id);
-          const totalPlacements = meta ? meta.placements.length : 0;
-          const currentPlacements = selectedPlacements[platform.id] !== undefined
-            ? selectedPlacements[platform.id]
-            : (meta ? meta.placements : []);
           const isExpanded = expandedPlatform === platform.id;
+          const meta = platformsMetadata.find((m) => m.id === platform.id);
+          const placementsCount = meta?.placements_count || meta?.placements?.length || 0;
+          const platformPlacements = meta?.placements || [];
+          const selectedForThisPlatform = selectedPlacements[platform.id] || [];
 
           return (
             <div
               key={platform.id}
-              className={`relative flex flex-col rounded-xl border-2 transition-all ${
+              className={`rounded-xl border transition-all ${
                 isSelected
-                  ? 'border-blue-500 bg-blue-50/20 shadow-sm'
-                  : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50/40'
-              } ${isLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
+                  ? 'border-blue-500 bg-blue-50/20 shadow-2xs'
+                  : 'border-slate-200 hover:border-slate-300 bg-white'
+              }`}
             >
-              {/* Card Header & Checkbox */}
-              <div
-                onClick={() => !isLoading && handleTogglePlatform(platform.id)}
-                className="p-3.5 cursor-pointer select-none"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xl" role="img" aria-label={platform.name}>
-                      {platform.icon}
-                    </span>
-                    <div>
-                      <h3 className="text-sm font-bold text-slate-800 leading-tight">
+              {/* Card Header */}
+              <div className="p-3.5 flex items-start justify-between gap-2">
+                <div
+                  className="flex items-start space-x-2.5 flex-1 cursor-pointer"
+                  onClick={() => handleTogglePlatform(platform.id)}
+                >
+                  <div className="text-xl flex-shrink-0 mt-0.5">{platform.icon}</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center space-x-1.5 flex-wrap gap-y-1">
+                      <span className="text-xs font-bold text-slate-900 truncate">
                         {platform.name}
-                      </h3>
-                      <p className="text-[11px] text-slate-400 font-medium">
-                        {platform.englishName}
-                      </p>
-                    </div>
-                  </div>
-
-                  <input
-                    type="checkbox"
-                    checked={isSelected}
-                    onChange={() => {}}
-                    disabled={isLoading}
-                    className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer pointer-events-none mt-0.5"
-                  />
-                </div>
-
-                {/* Description */}
-                <p className="text-[11px] text-slate-500 mt-2 line-clamp-1">
-                  {platform.description}
-                </p>
-
-                {/* Official Revision Date & Source Link */}
-                <div className="mt-2.5 space-y-1">
-                  <div className="flex items-center justify-between text-[10px]">
-                    <span className="inline-flex items-center space-x-1 text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-1.5 py-0.5 rounded font-bold">
-                      <Calendar className="w-2.5 h-2.5 text-emerald-600" />
-                      <span>{meta?.official_update_date || '공식 최신 가이드'}</span>
-                    </span>
-
-                    {meta?.official_source_url && (
-                      <a
-                        href={meta.official_source_url}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center space-x-0.5 text-[10px] text-blue-600 hover:text-blue-800 hover:underline font-semibold"
-                        title={`${meta.official_source_name || '공식 가이드'} 원문 보기`}
+                      </span>
+                      <span
+                        className={`text-[10px] font-bold px-1.5 py-0.2 rounded border ${platform.badgeColor}`}
                       >
-                        <span>공식 원문</span>
-                        <ExternalLink className="w-2.5 h-2.5" />
-                      </a>
-                    )}
-                  </div>
-
-                  <div className="text-[10px] text-slate-400 font-mono">
-                    검증일: {meta?.last_verified_date || '2026-11-12'}
+                        {placementsCount}개 지면
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 truncate mt-0.5">
+                      {platform.description}
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              {/* Placement count & Expand Button */}
-              {isSelected && totalPlacements > 0 && (
-                <div className="px-3.5 pb-3 pt-1 border-t border-slate-100 flex items-center justify-between text-xs">
-                  <span className="text-[11px] font-medium text-slate-500">
-                    지면: <strong className="text-blue-600">{currentPlacements.length}</strong>/{totalPlacements}개 선택됨
-                  </span>
+                {/* Right controls: Checkbox + Expand details button */}
+                <div className="flex items-center space-x-1 flex-shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => handleTogglePlatform(platform.id)}
+                    className="p-1 text-slate-400 hover:text-blue-600 cursor-pointer"
+                  >
+                    {isSelected ? (
+                      <CheckSquare className="w-4 h-4 text-blue-600" />
+                    ) : (
+                      <Square className="w-4 h-4 text-slate-300" />
+                    )}
+                  </button>
 
                   <button
                     type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setExpandedPlatform(isExpanded ? null : platform.id);
-                    }}
-                    className="inline-flex items-center space-x-1 text-[11px] font-semibold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-2 py-1 rounded-md transition-colors"
+                    onClick={() =>
+                      setExpandedPlatform(isExpanded ? null : platform.id)
+                    }
+                    className="p-1 text-slate-400 hover:text-slate-600 rounded hover:bg-slate-100 cursor-pointer"
+                    title={isExpanded ? '상세 지면 접기' : '상세 지면 펼치기'}
                   >
-                    <span>{isExpanded ? '접기' : '지면 선택'}</span>
                     {isExpanded ? (
-                      <ChevronUp className="w-3 h-3" />
+                      <ChevronUp className="w-4 h-4" />
                     ) : (
-                      <ChevronDown className="w-3 h-3" />
+                      <ChevronDown className="w-4 h-4" />
                     )}
                   </button>
                 </div>
-              )}
+              </div>
 
               {/* Expanded Placements Drawer */}
-              {isSelected && isExpanded && meta && (
-                <div className="p-3 bg-white border-t border-slate-200 rounded-b-xl space-y-2 text-xs max-h-60 overflow-y-auto">
-                  <div className="flex items-center justify-between pb-1 border-b border-slate-100">
-                    <span className="font-bold text-slate-700 text-[11px]">
-                      세부 지면 목록 ({meta.placements_detail.length}개)
-                    </span>
-                    <div className="flex items-center space-x-2 text-[10px]">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSelectAllPlacements(platform.id, true);
-                        }}
-                        className="text-blue-600 hover:underline font-semibold cursor-pointer"
-                      >
-                        전체
-                      </button>
-                      <span className="text-slate-300">|</span>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleSelectAllPlacements(platform.id, false);
-                        }}
-                        className="text-slate-500 hover:underline font-semibold cursor-pointer"
-                      >
-                        해제
-                      </button>
+              {isExpanded && (
+                <div className="px-3.5 pb-3.5 pt-2 border-t border-slate-100 bg-slate-50/60 rounded-b-xl space-y-2">
+                  {/* Official Guide Metadata Header */}
+                  {meta && (
+                    <div className="p-2 rounded-lg bg-white border border-slate-200 text-[11px] space-y-1">
+                      <div className="flex items-center justify-between text-slate-600">
+                        <span className="flex items-center space-x-1 font-semibold text-slate-800">
+                          <Calendar className="w-3 h-3 text-blue-600" />
+                          <span>{meta.official_update_date || '최신 공식 가이드'}</span>
+                        </span>
+                        <span className="text-[10px] text-slate-400">
+                          검증: {meta.last_verified_date || '2026-11-12'}
+                        </span>
+                      </div>
+                      {meta.official_source_url && (
+                        <div className="pt-0.5">
+                          <a
+                            href={meta.official_source_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center space-x-1 text-blue-600 hover:text-blue-800 font-bold hover:underline"
+                          >
+                            <span>{meta.official_source_name || '공식 제작 가이드 바로가기'}</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </div>
+                      )}
                     </div>
+                  )}
+
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                    <span className="font-semibold text-slate-700">
+                      세부 지면 선택 ({selectedForThisPlatform.length === 0 ? '전체 검수' : `${selectedForThisPlatform.length}개 선택됨`}):
+                    </span>
+                    {selectedForThisPlatform.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          onChangePlacements({
+                            ...selectedPlacements,
+                            [platform.id]: [],
+                          })
+                        }
+                        className="text-[10px] text-blue-600 hover:underline cursor-pointer"
+                      >
+                        지면 초기화
+                      </button>
+                    )}
                   </div>
 
-                  <div className="space-y-1.5 pt-1">
-                    {meta.placements_detail.map((p) => {
-                      const isPlacementChecked = currentPlacements.includes(p.name);
-                      return (
-                        <label
-                          key={p.name}
-                          onClick={(e) => e.stopPropagation()}
-                          className={`flex items-start justify-between p-1.5 rounded-lg border transition-all cursor-pointer ${
-                            isPlacementChecked
-                              ? 'bg-blue-50/40 border-blue-200 text-slate-800'
-                              : 'bg-slate-50/60 border-slate-200 text-slate-400 opacity-60'
-                          }`}
-                        >
-                          <div className="flex items-start space-x-2">
-                            <input
-                              type="checkbox"
-                              checked={isPlacementChecked}
-                              onChange={() => handleTogglePlacement(platform.id, p.name)}
-                              className="w-3.5 h-3.5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 mt-0.5"
-                            />
-                            <div>
-                              <div className="font-semibold text-[11px] leading-tight">
-                                {p.name}
-                              </div>
-                              {p.dimension_str && (
-                                <span className="text-[10px] text-slate-500 font-mono">
-                                  {p.dimension_str}
-                                </span>
-                              )}
+                  <div className="max-h-48 overflow-y-auto space-y-1 pr-1">
+                    {platformPlacements.length === 0 ? (
+                      <div className="text-[11px] text-slate-400 py-1">
+                        등록된 세부 지면이 없습니다.
+                      </div>
+                    ) : (
+                      platformPlacements.map((placementName) => {
+                        const isChecked = selectedForThisPlatform.includes(placementName);
+                        const detail = meta?.placements_detail?.find(
+                          (d) => d.name === placementName
+                        );
+
+                        return (
+                          <label
+                            key={placementName}
+                            className={`flex items-start justify-between p-1.5 rounded-lg text-[11px] cursor-pointer transition-colors ${
+                              isChecked
+                                ? 'bg-blue-100/70 text-blue-900 font-semibold'
+                                : 'hover:bg-slate-200/50 text-slate-700'
+                            }`}
+                          >
+                            <div className="flex items-start space-x-1.5 flex-1 pr-2">
+                              <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={() =>
+                                  handleTogglePlacement(platform.id, placementName)
+                                }
+                                className="rounded text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 mt-0.5 cursor-pointer"
+                              />
+                              <span className="leading-tight">{placementName}</span>
                             </div>
-                          </div>
-                          {p.aspect_ratio_str && (
-                            <span className="text-[10px] font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-slate-200 text-slate-600 flex-shrink-0">
-                              {p.aspect_ratio_str}
-                            </span>
-                          )}
-                        </label>
-                      );
-                    })}
+                            {detail && detail.dimension_str && (
+                              <span className="text-[10px] font-mono text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200 flex-shrink-0">
+                                {detail.dimension_str}
+                              </span>
+                            )}
+                          </label>
+                        );
+                      })
+                    )}
                   </div>
                 </div>
               )}
@@ -568,54 +661,38 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
         })}
       </div>
 
-      {/* Options & Action Row */}
-      <div className="pt-2 border-t border-slate-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          {/* Smart Auto-Matching Toggle (Recommended) */}
-          <label className="flex items-center space-x-2.5 cursor-pointer select-none">
-            <input
-              type="checkbox"
-              checked={autoMatch}
-              onChange={(e) => onToggleAutoMatch(e.target.checked)}
-              disabled={isLoading}
-              className="w-4 h-4 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer"
-            />
-            <div className="flex items-center space-x-1.5">
-              <Target className="w-4 h-4 text-blue-600" />
-              <span className="text-xs font-bold text-blue-900">
-                🎯 규격 기반 지면 자동 매칭 (스마트 검수 권장)
-              </span>
-              <span className="text-[11px] text-slate-400 hidden xl:inline">
-                (이미지 비율·사이즈와 호환되는 지면만 선별 검수)
-              </span>
-            </div>
-          </label>
+      {/* Bottom Start Validation CTA Bar */}
+      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-slate-100">
+        <div className="text-xs text-slate-500">
+          {fileCount > 0 ? (
+            <span className="font-medium text-slate-800">
+              업로드된 <strong>{fileCount}개 소재</strong>를 선택된{' '}
+              <strong>{selectedPlatforms.length}개 매체</strong>의 공식 규격으로 실시간 검수합니다.
+            </span>
+          ) : (
+            <span>소재 파일을 먼저 드래그하거나 선택하여 업로드해주세요.</span>
+          )}
         </div>
 
-        {/* Big Start Button */}
         <button
           type="button"
           onClick={onStartValidation}
           disabled={!canValidate || isLoading}
-          className={`inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-bold text-sm shadow-md transition-all duration-200 ${
+          className={`inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-xl font-bold text-sm shadow-sm transition-all cursor-pointer ${
             canValidate && !isLoading
-              ? 'bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white shadow-blue-500/20 cursor-pointer'
-              : 'bg-slate-200 text-slate-400 shadow-none cursor-not-allowed'
+              ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/20 active:scale-98'
+              : 'bg-slate-200 text-slate-400 cursor-not-allowed'
           }`}
         >
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin text-white" />
-              <span>검수 분석 진행 중...</span>
+              <span>규격 검수 분석 중...</span>
             </>
           ) : (
             <>
-              <Play className="w-4 h-4 fill-current" />
-              <span>
-                {fileCount > 0
-                  ? `${fileCount}개 소재 규격 검수 시작`
-                  : '검수 시작 (이미지를 추가하세요)'}
-              </span>
+              <Play className="w-4 h-4 fill-current text-white" />
+              <span>소재 규격 검수 시작하기</span>
             </>
           )}
         </button>

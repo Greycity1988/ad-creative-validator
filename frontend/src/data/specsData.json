@@ -1,5 +1,117 @@
 [
   {
+    "id": "acetrader",
+    "name": "에이스트레이더 (AceTrader)",
+    "description": "반응형 네이티브 배너, 표준 IAB 디스플레이 배너",
+    "official_update_date": "2026.03 공식 개정",
+    "official_source_name": "NHN ACE 에이스트레이더 공식 가이드",
+    "official_source_url": "https://www.acetrader.co.kr",
+    "revision_summary": "반응형 네이티브 배너 1200×627(최대 4MB), 표준 디스플레이 배너 6종(300×250, 728×90, 320×50 등) 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 6,
+    "placements": [
+      "에이스트레이더 (반응형 네이티브 배너 1.91:1 1200×627)",
+      "에이스트레이더 (고정 배너 300×250)",
+      "에이스트레이더 (고정 배너 728×90)",
+      "에이스트레이더 (고정 배너 320×50)",
+      "에이스트레이더 (고정 배너 320×100)",
+      "에이스트레이더 (고정 배너 300×600)"
+    ],
+    "placements_detail": [
+      {
+        "name": "에이스트레이더 (반응형 네이티브 배너 1.91:1 1200×627)",
+        "aspect_ratio": [
+          1.91,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 1200,
+        "min_height": 627,
+        "recommended_width": 1200,
+        "recommended_height": 627,
+        "max_file_size_kb": 4000,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "에이스트레이더 메인 반응형 네이티브 배너 (최대 4MB)",
+        "dimension_str": "권장 1200×627px",
+        "aspect_ratio_str": "1.91:1"
+      },
+      {
+        "name": "에이스트레이더 (고정 배너 300×250)",
+        "exact_width": 300,
+        "exact_height": 250,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×250px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "에이스트레이더 (고정 배너 728×90)",
+        "exact_width": 728,
+        "exact_height": 90,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "728×90px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "에이스트레이더 (고정 배너 320×50)",
+        "exact_width": 320,
+        "exact_height": 50,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "에이스트레이더 (고정 배너 320×100)",
+        "exact_width": 320,
+        "exact_height": 100,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "에이스트레이더 (고정 배너 300×600)",
+        "exact_width": 300,
+        "exact_height": 600,
+        "max_file_size_kb": 250,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×600px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
     "id": "adison",
     "name": "애디슨 오퍼월",
     "description": "목록 배너 A타입(720×360), B타입(144×144), 상세 배너(720×780)",
@@ -82,6 +194,66 @@
           "jpeg"
         ],
         "dimension_str": "최소 720×720px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "adpopcorn",
+    "name": "애드팝콘 (AdPopcorn)",
+    "description": "모바일 띠배너 (320×50, 320×100), 중형 배너 (300×250)",
+    "official_update_date": "2026.03 공식 개정",
+    "official_source_name": "아이지에이웍스(IGAWorks) 애드팝콘 개발자 가이드",
+    "official_source_url": "https://support.igaworks.com",
+    "revision_summary": "모바일 표준 띠배너 320×50, 320×100 및 중형 배너 300×250 사양 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "애드팝콘 (모바일 띠배너 320×50)",
+      "애드팝콘 (모바일 대형 띠배너 320×100)",
+      "애드팝콘 (중형 직사각형 배너 300×250)"
+    ],
+    "placements_detail": [
+      {
+        "name": "애드팝콘 (모바일 띠배너 320×50)",
+        "exact_width": 320,
+        "exact_height": 50,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "애드팝콘 (모바일 대형 띠배너 320×100)",
+        "exact_width": 320,
+        "exact_height": 100,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "애드팝콘 (중형 직사각형 배너 300×250)",
+        "exact_width": 300,
+        "exact_height": 250,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       }
     ]
@@ -364,6 +536,138 @@
         ],
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "cauly",
+    "name": "카울리 (Cauly)",
+    "description": "모바일 띠배너 (320×50, 320×100), 인라인 직사각형 (300×250)",
+    "official_update_date": "2026.02 공식 개정",
+    "official_source_name": "FSN 카울리 모바일 애드 네트워크 가이드",
+    "official_source_url": "https://cauly.net",
+    "revision_summary": "모바일 표준 띠배너 320×50, 320×100 및 중형 직사각형 300×250 사양 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "카울리 (모바일 표준 띠배너 320×50)",
+      "카울리 (모바일 대형 띠배너 320×100)",
+      "카울리 (중형 직사각형 배너 300×250)"
+    ],
+    "placements_detail": [
+      {
+        "name": "카울리 (모바일 표준 띠배너 320×50)",
+        "exact_width": 320,
+        "exact_height": 50,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "카울리 모바일 앱 상하단 기본 띠배너 규격",
+        "dimension_str": "320×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "카울리 (모바일 대형 띠배너 320×100)",
+        "exact_width": 320,
+        "exact_height": 100,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "카울리 (중형 직사각형 배너 300×250)",
+        "exact_width": 300,
+        "exact_height": 250,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×250px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "chzzk",
+    "name": "네이버 치지직 (CHZZK)",
+    "description": "치지직 채널 상단 배너 (1920×480), 오프라인 대기 화면 (1920×1080), 채널 프로필 (800×800)",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "치지직(CHZZK) 공식 채널 가이드",
+    "official_source_url": "https://chzzk.naver.com",
+    "revision_summary": "채널 상단 대문 배너(1920×480), 오프라인 대기 화면(16:9 1920×1080 FHD), 채널 프로필(1:1 800×800) 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "치지직 (채널 상단 대문 배너 1920×480)",
+      "치지직 (오프라인 대기 화면 16:9 1920×1080)",
+      "치지직 (채널 프로필 1:1 800×800)"
+    ],
+    "placements_detail": [
+      {
+        "name": "치지직 (채널 상단 대문 배너 1920×480)",
+        "exact_width": 1920,
+        "exact_height": 480,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "치지직 채널 메인 상단 와이드 헤더 배너 (최대 5MB)",
+        "dimension_str": "1920×480px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "치지직 (오프라인 대기 화면 16:9 1920×1080)",
+        "aspect_ratio": [
+          16,
+          9
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "exact_width": 1920,
+        "exact_height": 1080,
+        "max_file_size_kb": 10240,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "치지직 방송 대기 및 오프라인 풀HD 화면 (최대 10MB)",
+        "dimension_str": "1920×1080px",
+        "aspect_ratio_str": "16:9"
+      },
+      {
+        "name": "치지직 (채널 프로필 1:1 800×800)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 800,
+        "recommended_width": 800,
+        "recommended_height": 800,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 800×800px",
+        "aspect_ratio_str": "1:1"
       }
     ]
   },
@@ -1223,6 +1527,149 @@
     ]
   },
   {
+    "id": "dable",
+    "name": "데이블 (Dable)",
+    "description": "데이블 네이티브 (4:3, 16:10, 1:1, 2:1), 배너 (4:1, 1:4)",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "데이블 고객센터 공식 광고 가이드",
+    "official_source_url": "https://help.dable.io",
+    "revision_summary": "네이티브 4:3(권장 1600×1200), 16:10(1200×750), 1:1(1200×1200), 2:1(1200×600), 배너 4:1(1200×300), 1:4(300×1200) 규격 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 6,
+    "placements": [
+      "데이블 (네이티브 콘텐츠 4:3 1600×1200)",
+      "데이블 (네이티브 콘텐츠 16:10 1200×750)",
+      "데이블 (네이티브 콘텐츠 1:1 1200×1200)",
+      "데이블 (네이티브 콘텐츠 2:1 1200×600)",
+      "데이블 (배너 와이드 4:1 1200×300)",
+      "데이블 (배너 세로형 1:4 300×1200)"
+    ],
+    "placements_detail": [
+      {
+        "name": "데이블 (네이티브 콘텐츠 4:3 1600×1200)",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 600,
+        "recommended_width": 1600,
+        "recommended_height": 1200,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "데이블 공식 권장 메인 4:3 네이티브 이미지 규격 (최대 5MB)",
+        "dimension_str": "권장 1600×1200px",
+        "aspect_ratio_str": "4:3"
+      },
+      {
+        "name": "데이블 (네이티브 콘텐츠 16:10 1200×750)",
+        "aspect_ratio": [
+          16,
+          10
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 500,
+        "recommended_width": 1200,
+        "recommended_height": 750,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "데이블 기본 노출 비율 16:10 네이티브 규격 (최대 5MB)",
+        "dimension_str": "권장 1200×750px",
+        "aspect_ratio_str": "16:10"
+      },
+      {
+        "name": "데이블 (네이티브 콘텐츠 1:1 1200×1200)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 500,
+        "min_height": 500,
+        "recommended_width": 1200,
+        "recommended_height": 1200,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1200×1200px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "데이블 (네이티브 콘텐츠 2:1 1200×600)",
+        "aspect_ratio": [
+          2,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 400,
+        "recommended_width": 1200,
+        "recommended_height": 600,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1200×600px",
+        "aspect_ratio_str": "2:1"
+      },
+      {
+        "name": "데이블 (배너 와이드 4:1 1200×300)",
+        "aspect_ratio": [
+          4,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 970,
+        "min_height": 250,
+        "recommended_width": 1200,
+        "recommended_height": 300,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1200×300px",
+        "aspect_ratio_str": "4:1"
+      },
+      {
+        "name": "데이블 (배너 세로형 1:4 300×1200)",
+        "aspect_ratio": [
+          1,
+          4
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 160,
+        "min_height": 600,
+        "recommended_width": 300,
+        "recommended_height": 1200,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 300×1200px",
+        "aspect_ratio_str": "1:4"
+      }
+    ]
+  },
+  {
     "id": "google_ads",
     "name": "구글 애즈 (Google Ads)",
     "description": "PMax, Demand Gen (Shorts), GDN 고정 배너 17종",
@@ -1827,6 +2274,108 @@
         ],
         "dimension_str": "720×300px",
         "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "linkedin",
+    "name": "링크드인 (LinkedIn Ads)",
+    "description": "단일 이미지 (1.91:1, 1:1, 4:5), 캐러셀 (1:1), 텍스트 배너",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "LinkedIn Marketing Solutions Advertising Specs",
+    "official_source_url": "https://business.linkedin.com/marketing-solutions/ad-specs",
+    "revision_summary": "단일 이미지 광고 가로형(1.91:1 1200×627), 정방형(1:1 1200×1200), 세로형(4:5 1080×1350) 및 캐러셀 사양 공식 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 4,
+    "placements": [
+      "링크드인 (피드 정방형 Square 1:1 1200×1200)",
+      "링크드인 (피드 가로형 Landscape 1.91:1 1200×627)",
+      "링크드인 (피드 세로형 Portrait 4:5 1080×1350)",
+      "링크드인 (캐러셀 카드 1:1 1080×1080)"
+    ],
+    "placements_detail": [
+      {
+        "name": "링크드인 (피드 정방형 Square 1:1 1200×1200)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 600,
+        "recommended_width": 1200,
+        "recommended_height": 1200,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "링크드인 모바일 및 데스크톱 피드 최적화 1:1 정방형 규격 (최대 5MB)",
+        "dimension_str": "권장 1200×1200px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "링크드인 (피드 가로형 Landscape 1.91:1 1200×627)",
+        "aspect_ratio": [
+          1.91,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 314,
+        "recommended_width": 1200,
+        "recommended_height": 627,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "링크드인 표준 가로형 단일 이미지 규격 (최대 5MB)",
+        "dimension_str": "권장 1200×627px",
+        "aspect_ratio_str": "1.91:1"
+      },
+      {
+        "name": "링크드인 (피드 세로형 Portrait 4:5 1080×1350)",
+        "aspect_ratio": [
+          4,
+          5
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 750,
+        "recommended_width": 1080,
+        "recommended_height": 1350,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "링크드인 모바일 피드 극대화 4:5 세로형 규격 (최대 5MB)",
+        "dimension_str": "권장 1080×1350px",
+        "aspect_ratio_str": "4:5"
+      },
+      {
+        "name": "링크드인 (캐러셀 카드 1:1 1080×1080)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 600,
+        "recommended_width": 1080,
+        "recommended_height": 1080,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1080×1080px",
+        "aspect_ratio_str": "1:1"
       }
     ]
   },
@@ -2481,6 +3030,302 @@
     ]
   },
   {
+    "id": "onestore",
+    "name": "원스토어 애즈 (ONE store Ads)",
+    "description": "스토어 프로모션 그래픽 배너 (1024×578), 대표 아이콘 (512×512)",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "원스토어 개발자 센터 광고 가이드",
+    "official_source_url": "https://ads.onestore.co.kr",
+    "revision_summary": "스토어 프로모션 그래픽 이미지(1024×578) 및 앱 대표 아이콘(512×512) 사양 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 2,
+    "placements": [
+      "원스토어 (프로모션 그래픽 이미지 1024×578)",
+      "원스토어 (앱 대표 아이콘 512×512)"
+    ],
+    "placements_detail": [
+      {
+        "name": "원스토어 (프로모션 그래픽 이미지 1024×578)",
+        "exact_width": 1024,
+        "exact_height": 578,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "원스토어 메인 추천 및 프로모션 대표 그래픽 배너 (최대 2MB)",
+        "dimension_str": "1024×578px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "원스토어 (앱 대표 아이콘 512×512)",
+        "exact_width": 512,
+        "exact_height": 512,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "png",
+          "jpg",
+          "jpeg"
+        ],
+        "description": "원스토어 스토어 전시 및 리스트 대표 앱 아이콘 (PNG 권장)",
+        "dimension_str": "512×512px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "pinterest",
+    "name": "핀터레스트 (Pinterest)",
+    "description": "표준 핀 (2:3), 정방형 핀 (1:1), 롱 핀 (1:2.1)",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "Pinterest Business Creative Specs",
+    "official_source_url": "https://help.pinterest.com/en/business/article/creative-specs-for-pinterest-ads",
+    "revision_summary": "표준 핀(2:3 1000×1500 권장), 정방형(1:1 1000×1000), 롱 핀(1:2.1 1000×2100) 및 20MB 기준 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "핀터레스트 (표준 핀 Standard Pin 2:3 1000×1500)",
+      "핀터레스트 (정방형 핀 Square Pin 1:1 1000×1000)",
+      "핀터레스트 (롱 핀 Long Pin 1:2.1 1000×2100)"
+    ],
+    "placements_detail": [
+      {
+        "name": "핀터레스트 (표준 핀 Standard Pin 2:3 1000×1500)",
+        "aspect_ratio": [
+          2,
+          3
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 900,
+        "recommended_width": 1000,
+        "recommended_height": 1500,
+        "max_file_size_kb": 20480,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "핀터레스트 공식 추천 피드 최적화 2:3 표준 핀 (최대 20MB)",
+        "dimension_str": "권장 1000×1500px",
+        "aspect_ratio_str": "2:3"
+      },
+      {
+        "name": "핀터레스트 (정방형 핀 Square Pin 1:1 1000×1000)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 600,
+        "recommended_width": 1000,
+        "recommended_height": 1000,
+        "max_file_size_kb": 20480,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1000×1000px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "핀터레스트 (롱 핀 Long Pin 1:2.1 1000×2100)",
+        "aspect_ratio": [
+          1,
+          2.1
+        ],
+        "aspect_ratio_tolerance": 0.03,
+        "min_width": 600,
+        "min_height": 1260,
+        "recommended_width": 1000,
+        "recommended_height": 2100,
+        "max_file_size_kb": 20480,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1000×2100px",
+        "aspect_ratio_str": "1:2.1"
+      }
+    ]
+  },
+  {
+    "id": "realclick",
+    "name": "리얼클릭 (RealClick)",
+    "description": "박스형 배너, 와이드형 배너, 띠배너, 세로형 배너",
+    "official_update_date": "2026.02 공식 개정",
+    "official_source_name": "리얼클릭 공식 광고 가이드",
+    "official_source_url": "https://realclick.co.kr",
+    "revision_summary": "박스형 배너(250×250, 240×240), 와이드형(570×240), 띠배너(728×90), 세로형(120×600) 사양 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 5,
+    "placements": [
+      "리얼클릭 (정사각형 박스형 배너 250×250)",
+      "리얼클릭 (정사각형 박스형 배너 240×240)",
+      "리얼클릭 (와이드형 배너 570×240)",
+      "리얼클릭 (표준 띠배너 728×90)",
+      "리얼클릭 (스카이스크래퍼 세로형 120×600)"
+    ],
+    "placements_detail": [
+      {
+        "name": "리얼클릭 (정사각형 박스형 배너 250×250)",
+        "exact_width": 250,
+        "exact_height": 250,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "250×250px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "리얼클릭 (정사각형 박스형 배너 240×240)",
+        "exact_width": 240,
+        "exact_height": 240,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "240×240px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "리얼클릭 (와이드형 배너 570×240)",
+        "exact_width": 570,
+        "exact_height": 240,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "570×240px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "리얼클릭 (표준 띠배너 728×90)",
+        "exact_width": 728,
+        "exact_height": 90,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "728×90px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "리얼클릭 (스카이스크래퍼 세로형 120×600)",
+        "exact_width": 120,
+        "exact_height": 600,
+        "max_file_size_kb": 150,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "120×600px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "reddit",
+    "name": "레딧 (Reddit)",
+    "description": "프로모티드 포스트 (16:9, 4:3, 1:1, 4:5), 캐러셀",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "Reddit Business Help Center Ad Specifications",
+    "official_source_url": "https://business.reddithelp.com",
+    "revision_summary": "프로모티드 포스트 가로형(16:9/4:3 1440×1080), 정방형(1:1 1080×1080), 세로형(4:5 1080×1350) 및 3MB 기준 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "레딧 (프로모티드 가로형 4:3 / 16:9 1440×1080)",
+      "레딧 (프로모티드 정방형 Square 1:1 1080×1080)",
+      "레딧 (프로모티드 세로형 Portrait 4:5 1080×1350)"
+    ],
+    "placements_detail": [
+      {
+        "name": "레딧 (프로모티드 가로형 4:3 / 16:9 1440×1080)",
+        "aspect_ratio": [
+          4,
+          3
+        ],
+        "aspect_ratio_tolerance": 0.05,
+        "min_width": 600,
+        "min_height": 450,
+        "recommended_width": 1440,
+        "recommended_height": 1080,
+        "max_file_size_kb": 3072,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "레딧 공식 추천 데스크톱 및 모바일 표준 가로형 피드 규격 (최대 3MB)",
+        "dimension_str": "권장 1440×1080px",
+        "aspect_ratio_str": "4:3"
+      },
+      {
+        "name": "레딧 (프로모티드 정방형 Square 1:1 1080×1080)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 600,
+        "recommended_width": 1080,
+        "recommended_height": 1080,
+        "max_file_size_kb": 3072,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "권장 1080×1080px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "레딧 (프로모티드 세로형 Portrait 4:5 1080×1350)",
+        "aspect_ratio": [
+          4,
+          5
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 750,
+        "recommended_width": 1080,
+        "recommended_height": 1350,
+        "max_file_size_kb": 3072,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "권장 1080×1350px",
+        "aspect_ratio_str": "4:5"
+      }
+    ]
+  },
+  {
     "id": "rtb_house",
     "name": "RTB House",
     "description": "스태틱 배너 (300×250 등), 프로모보드 (1200×628), 인터스티셜",
@@ -2639,6 +3484,479 @@
     ]
   },
   {
+    "id": "snapchat",
+    "name": "스냅챗 (Snapchat)",
+    "description": "풀스크린 싱글 이미지 (9:16), 스토리 타일",
+    "official_update_date": "2026.03 공식 개정",
+    "official_source_name": "Snapchat Business Help Center Ads Specs",
+    "official_source_url": "https://businesshelp.snapchat.com",
+    "revision_summary": "풀스크린 싱글 이미지(9:16 1080×1920, 최소 720×1280), 스토리 타일(360×600) 및 5MB 기준 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 2,
+    "placements": [
+      "스냅챗 (싱글 이미지/스냅 광고 9:16 1080×1920)",
+      "스냅챗 (스토리 광고 타일 360×600)"
+    ],
+    "placements_detail": [
+      {
+        "name": "스냅챗 (싱글 이미지/스냅 광고 9:16 1080×1920)",
+        "aspect_ratio": [
+          9,
+          16
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 720,
+        "min_height": 1280,
+        "recommended_width": 1080,
+        "recommended_height": 1920,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "스냅챗 풀스크린 세로형 9:16 표준 광고 (최대 5MB)",
+        "dimension_str": "권장 1080×1920px",
+        "aspect_ratio_str": "9:16"
+      },
+      {
+        "name": "스냅챗 (스토리 광고 타일 360×600)",
+        "exact_width": 360,
+        "exact_height": 600,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "360×600px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "soop",
+    "name": "숲 (SOOP, 구 아프리카TV)",
+    "description": "방송국 타이틀 배너 (2320×338), 하단 배너 (720×150), 라이브 썸네일, 채널 프로필",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "SOOP 공식 가이드",
+    "official_source_url": "https://sooplive.com",
+    "revision_summary": "방송국 타이틀 와이드 배너(2320×338 개편 규격), 방송국 하단 배너(720×150), 라이브 썸네일(16:9 1280×720), 채널 프로필(1:1 800×800) 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 4,
+    "placements": [
+      "SOOP (방송국 타이틀 대문 와이드 배너 2320×338)",
+      "SOOP (방송국 하단 배너 720×150)",
+      "SOOP (방송 라이브 썸네일 16:9 1280×720)",
+      "SOOP (채널 프로필 1:1 800×800)"
+    ],
+    "placements_detail": [
+      {
+        "name": "SOOP (방송국 타이틀 대문 와이드 배너 2320×338)",
+        "exact_width": 2320,
+        "exact_height": 338,
+        "max_file_size_kb": 10240,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "SOOP 공식 개편 방송국 메인 상단 타이틀 배너 (최대 10MB)",
+        "dimension_str": "2320×338px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "SOOP (방송국 하단 배너 720×150)",
+        "exact_width": 720,
+        "exact_height": 150,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "SOOP 방송국 홈 하단 정보/스폰서 배너 (최대 200KB)",
+        "dimension_str": "720×150px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "SOOP (방송 라이브 썸네일 16:9 1280×720)",
+        "aspect_ratio": [
+          16,
+          9
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 1280,
+        "min_height": 720,
+        "recommended_width": 1280,
+        "recommended_height": 720,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 1280×720px",
+        "aspect_ratio_str": "16:9"
+      },
+      {
+        "name": "SOOP (채널 프로필 1:1 800×800)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 800,
+        "recommended_width": 800,
+        "recommended_height": 800,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "권장 800×800px",
+        "aspect_ratio_str": "1:1"
+      }
+    ]
+  },
+  {
+    "id": "spotify",
+    "name": "스포티파이 (Spotify)",
+    "description": "컴패니언 디스플레이 배너 (1:1), 리더보드 (728×90)",
+    "official_update_date": "2026.03 공식 개정",
+    "official_source_name": "Spotify Advertising Specs Center",
+    "official_source_url": "https://ads.spotify.com",
+    "revision_summary": "컴패니언 배너 1:1 정방형(640×640, 최소 600×600), 리더보드 오버레이(728×90) 및 200KB 한도 공식 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 2,
+    "placements": [
+      "스포티파이 (컴패니언 디스플레이 배너 1:1 640×640)",
+      "스포티파이 (데스크톱 리더보드 오버레이 728×90)"
+    ],
+    "placements_detail": [
+      {
+        "name": "스포티파이 (컴패니언 디스플레이 배너 1:1 640×640)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 600,
+        "min_height": 600,
+        "recommended_width": 640,
+        "recommended_height": 640,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "스포티파이 오디오/비디오 광고 재생 중 노출되는 1:1 컴패니언 디스플레이 배너 (최대 200KB)",
+        "dimension_str": "권장 640×640px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "스포티파이 (데스크톱 리더보드 오버레이 728×90)",
+        "exact_width": 728,
+        "exact_height": 90,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "728×90px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "syrup",
+    "name": "시럽 / OK캐쉬백 (Planet AD)",
+    "description": "시럽/OK캐쉬백 메인 피드 네이티브 (1.91:1), 오퍼월 정방형 (1:1), 메시지 배너",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "SK플래닛 Planet AD 공식 가이드",
+    "official_source_url": "https://planetad.co.kr",
+    "revision_summary": "메인 피드 네이티브 1200×627(1.91:1), 오퍼월/라이브 720×720(1:1), 오!비즈 420×240 규격 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "시럽/OK캐쉬백 (메인 피드 네이티브 1.91:1 1200×627)",
+      "시럽/OK캐쉬백 (오퍼월/라방 정방형 1:1 720×720)",
+      "OK캐쉬백 (오!비즈 메시지 배너 420×240)"
+    ],
+    "placements_detail": [
+      {
+        "name": "시럽/OK캐쉬백 (메인 피드 네이티브 1.91:1 1200×627)",
+        "aspect_ratio": [
+          1.91,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 800,
+        "min_height": 418,
+        "recommended_width": 1200,
+        "recommended_height": 627,
+        "max_file_size_kb": 2048,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "OK캐쉬백/시럽/T멤버십 통합 메인 피드 네이티브 배너 (최대 2MB)",
+        "dimension_str": "권장 1200×627px",
+        "aspect_ratio_str": "1.91:1"
+      },
+      {
+        "name": "시럽/OK캐쉬백 (오퍼월/라방 정방형 1:1 720×720)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "exact_width": 720,
+        "exact_height": 720,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "720×720px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "OK캐쉬백 (오!비즈 메시지 배너 420×240)",
+        "exact_width": 420,
+        "exact_height": 240,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "420×240px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
+    "id": "taboola",
+    "name": "타불라 (Taboola)",
+    "description": "네이티브 스폰서드 콘텐츠 (16:9, 1:1, 4:3, 1:2)",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "Taboola Help Center Creative Specifications",
+    "official_source_url": "https://help.taboola.com",
+    "revision_summary": "네이티브 스폰서드 콘텐츠 16:9(1200×674 / 1200×628), 1:1(1000×1000), 세로형(300×600) 및 5MB 기준 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 3,
+    "placements": [
+      "타불라 (네이티브 추천 가로형 16:9 1200×674)",
+      "타불라 (네이티브 정방형 Square 1:1 1000×1000)",
+      "타불라 (네이티브 세로형 Vertical 1:2 300×600)"
+    ],
+    "placements_detail": [
+      {
+        "name": "타불라 (네이티브 추천 가로형 16:9 1200×674)",
+        "aspect_ratio": [
+          16,
+          9
+        ],
+        "aspect_ratio_tolerance": 0.05,
+        "min_width": 400,
+        "min_height": 350,
+        "recommended_width": 1200,
+        "recommended_height": 674,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "타불라 공식 베스트 프랙티스 16:9 메인 추천 지면 규격 (최대 5MB)",
+        "dimension_str": "권장 1200×674px",
+        "aspect_ratio_str": "16:9"
+      },
+      {
+        "name": "타불라 (네이티브 정방형 Square 1:1 1000×1000)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "min_width": 400,
+        "min_height": 400,
+        "recommended_width": 1000,
+        "recommended_height": 1000,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "권장 1000×1000px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "타불라 (네이티브 세로형 Vertical 1:2 300×600)",
+        "aspect_ratio": [
+          1,
+          2
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "exact_width": 300,
+        "exact_height": 600,
+        "max_file_size_kb": 5120,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×600px",
+        "aspect_ratio_str": "1:2"
+      }
+    ]
+  },
+  {
+    "id": "targetpick",
+    "name": "타겟픽 (TargetPick)",
+    "description": "모바일 띠배너, 전면/종료 배너, 스플래시, 표준 IAB 배너",
+    "official_update_date": "2026.04 공식 개정",
+    "official_source_name": "CJ메조미디어 타겟픽 공식 가이드",
+    "official_source_url": "https://targetpick.io",
+    "revision_summary": "모바일 띠배너(320×50, 320×100, 640×100), 전면/종료(320×480, 640×960, 750×1200), 스플래시(1200×1000) 및 디스플레이 사양 확정",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 8,
+    "placements": [
+      "타겟픽 (모바일 띠배너 320×50)",
+      "타겟픽 (모바일 띠배너 320×100)",
+      "타겟픽 (고해상도 띠배너 640×100)",
+      "타겟픽 (스플래시 대형 배너 1200×1000)",
+      "타겟픽 (전면/종료 배너 750×1200)",
+      "타겟픽 (전면 배너 640×960)",
+      "타겟픽 (디스플레이 배너 300×250)",
+      "타겟픽 (디스플레이 배너 300×600)"
+    ],
+    "placements_detail": [
+      {
+        "name": "타겟픽 (모바일 띠배너 320×50)",
+        "exact_width": 320,
+        "exact_height": 50,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (모바일 띠배너 320×100)",
+        "exact_width": 320,
+        "exact_height": 100,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (고해상도 띠배너 640×100)",
+        "exact_width": 640,
+        "exact_height": 100,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "640×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (스플래시 대형 배너 1200×1000)",
+        "exact_width": 1200,
+        "exact_height": 1000,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "png",
+          "jpg",
+          "jpeg"
+        ],
+        "description": "타겟픽 앱 실행 스플래시 배너 (배경 투명 PNG 권장, 최대 500KB)",
+        "dimension_str": "1200×1000px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (전면/종료 배너 750×1200)",
+        "exact_width": 750,
+        "exact_height": 1200,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "750×1200px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (전면 배너 640×960)",
+        "exact_width": 640,
+        "exact_height": 960,
+        "max_file_size_kb": 300,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "640×960px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (디스플레이 배너 300×250)",
+        "exact_width": 300,
+        "exact_height": 250,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×250px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "타겟픽 (디스플레이 배너 300×600)",
+        "exact_width": 300,
+        "exact_height": 600,
+        "max_file_size_kb": 300,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×600px",
+        "aspect_ratio_str": ""
+      }
+    ]
+  },
+  {
     "id": "tiktok",
     "name": "틱톡 (TikTok Ads)",
     "description": "인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle",
@@ -2740,6 +4058,140 @@
         ],
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
+      }
+    ]
+  },
+  {
+    "id": "tnk",
+    "name": "티엔케이팩토리 (TNK Factory)",
+    "description": "TNK 가로형 배너, 세로형 배너, 정방형 배너, 띠배너, 아이콘",
+    "official_update_date": "2026.03 공식 개정",
+    "official_source_name": "TNK Factory 공식 광고소재 제작 가이드",
+    "official_source_url": "https://tnkfactory.com",
+    "revision_summary": "세로형(640×1320, 640×960), 가로형(1200×627, 960×640), 정방형(627×627), 띠배너(640×100, 640×200), 아이콘(300×300) 및 100KB 한도 반영",
+    "last_verified_date": "2026-11-12",
+    "placements_count": 8,
+    "placements": [
+      "TNK (가로형 배너 1.91:1 1200×627)",
+      "TNK (가로형 배너 960×640)",
+      "TNK (세로형 전면 배너 640×1320)",
+      "TNK (세로형 배너 640×960)",
+      "TNK (정사각형 배너 1:1 627×627)",
+      "TNK (모바일 띠배너 640×100)",
+      "TNK (모바일 띠배너 640×200)",
+      "TNK (앱 아이콘 1:1 300×300)"
+    ],
+    "placements_detail": [
+      {
+        "name": "TNK (가로형 배너 1.91:1 1200×627)",
+        "aspect_ratio": [
+          1.91,
+          1
+        ],
+        "aspect_ratio_tolerance": 0.02,
+        "exact_width": 1200,
+        "exact_height": 627,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "TNK 공식 가로형 대표 배너 (좌우 150px 여백 권장, 최대 100KB)",
+        "dimension_str": "1200×627px",
+        "aspect_ratio_str": "1.91:1"
+      },
+      {
+        "name": "TNK (가로형 배너 960×640)",
+        "exact_width": 960,
+        "exact_height": 640,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "960×640px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (세로형 전면 배너 640×1320)",
+        "exact_width": 640,
+        "exact_height": 1320,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "description": "TNK 공식 세로형 전면 배너 (상하 180px 여백 권장, 최대 100KB)",
+        "dimension_str": "640×1320px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (세로형 배너 640×960)",
+        "exact_width": 640,
+        "exact_height": 960,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "640×960px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (정사각형 배너 1:1 627×627)",
+        "exact_width": 627,
+        "exact_height": 627,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "627×627px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (모바일 띠배너 640×100)",
+        "exact_width": 640,
+        "exact_height": 100,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "640×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (모바일 띠배너 640×200)",
+        "exact_width": 640,
+        "exact_height": 200,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "dimension_str": "640×200px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "TNK (앱 아이콘 1:1 300×300)",
+        "exact_width": 300,
+        "exact_height": 300,
+        "max_file_size_kb": 100,
+        "allowed_formats": [
+          "png",
+          "jpg",
+          "jpeg"
+        ],
+        "dimension_str": "300×300px",
+        "aspect_ratio_str": ""
       }
     ]
   },

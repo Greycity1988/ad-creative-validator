@@ -1,0 +1,95 @@
+platform: 데이블 (Dable)
+platform_id: dable
+official_update_date: 2026.04 공식 개정
+official_source_name: 데이블 고객센터 공식 광고 가이드
+official_source_url: https://help.dable.io
+revision_summary: 네이티브 4:3(권장 1600×1200), 16:10(1200×750), 1:1(1200×1200), 2:1(1200×600), 배너 4:1(1200×300), 1:4(300×1200) 규격 확정
+last_verified_date: '2026-11-12'
+description: 데이블 네이티브 (4:3, 16:10, 1:1, 2:1), 배너 (4:1, 1:4)
+placements:
+- name: 데이블 (네이티브 콘텐츠 4:3 1600×1200)
+  aspect_ratio:
+  - 4
+  - 3
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 600
+  recommended_width: 1600
+  recommended_height: 1200
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 데이블 공식 권장 메인 4:3 네이티브 이미지 규격 (최대 5MB)
+- name: 데이블 (네이티브 콘텐츠 16:10 1200×750)
+  aspect_ratio:
+  - 16
+  - 10
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 500
+  recommended_width: 1200
+  recommended_height: 750
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 데이블 기본 노출 비율 16:10 네이티브 규격 (최대 5MB)
+- name: 데이블 (네이티브 콘텐츠 1:1 1200×1200)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 500
+  min_height: 500
+  recommended_width: 1200
+  recommended_height: 1200
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 데이블 (네이티브 콘텐츠 2:1 1200×600)
+  aspect_ratio:
+  - 2
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 400
+  recommended_width: 1200
+  recommended_height: 600
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 데이블 (배너 와이드 4:1 1200×300)
+  aspect_ratio:
+  - 4
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 970
+  min_height: 250
+  recommended_width: 1200
+  recommended_height: 300
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 데이블 (배너 세로형 1:4 300×1200)
+  aspect_ratio:
+  - 1
+  - 4
+  aspect_ratio_tolerance: 0.02
+  min_width: 160
+  min_height: 600
+  recommended_width: 300
+  recommended_height: 1200
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

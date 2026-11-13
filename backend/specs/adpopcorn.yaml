@@ -1,0 +1,36 @@
+platform: 애드팝콘 (AdPopcorn)
+platform_id: adpopcorn
+official_update_date: 2026.03 공식 개정
+official_source_name: 아이지에이웍스(IGAWorks) 애드팝콘 개발자 가이드
+official_source_url: https://support.igaworks.com
+revision_summary: 모바일 표준 띠배너 320×50, 320×100 및 중형 배너 300×250 사양 반영
+last_verified_date: '2026-11-12'
+description: 모바일 띠배너 (320×50, 320×100), 중형 배너 (300×250)
+placements:
+- name: 애드팝콘 (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 애드팝콘 (모바일 대형 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 애드팝콘 (중형 직사각형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

@@ -1,0 +1,37 @@
+platform: 카울리 (Cauly)
+platform_id: cauly
+official_update_date: 2026.02 공식 개정
+official_source_name: FSN 카울리 모바일 애드 네트워크 가이드
+official_source_url: https://cauly.net
+revision_summary: 모바일 표준 띠배너 320×50, 320×100 및 중형 직사각형 300×250 사양 반영
+last_verified_date: '2026-11-12'
+description: 모바일 띠배너 (320×50, 320×100), 인라인 직사각형 (300×250)
+placements:
+- name: 카울리 (모바일 표준 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 카울리 모바일 앱 상하단 기본 띠배너 규격
+- name: 카울리 (모바일 대형 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 카울리 (중형 직사각형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

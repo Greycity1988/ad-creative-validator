@@ -1,0 +1,53 @@
+platform: 타불라 (Taboola)
+platform_id: taboola
+official_update_date: 2026.04 공식 개정
+official_source_name: Taboola Help Center Creative Specifications
+official_source_url: https://help.taboola.com
+revision_summary: 네이티브 스폰서드 콘텐츠 16:9(1200×674 / 1200×628), 1:1(1000×1000), 세로형(300×600) 및 5MB 기준 확정
+last_verified_date: '2026-11-12'
+description: 네이티브 스폰서드 콘텐츠 (16:9, 1:1, 4:3, 1:2)
+placements:
+- name: 타불라 (네이티브 추천 가로형 16:9 1200×674)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.05
+  min_width: 400
+  min_height: 350
+  recommended_width: 1200
+  recommended_height: 674
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 타불라 공식 베스트 프랙티스 16:9 메인 추천 지면 규격 (최대 5MB)
+- name: 타불라 (네이티브 정방형 Square 1:1 1000×1000)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 400
+  min_height: 400
+  recommended_width: 1000
+  recommended_height: 1000
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 타불라 (네이티브 세로형 Vertical 1:2 300×600)
+  aspect_ratio:
+  - 1
+  - 2
+  aspect_ratio_tolerance: 0.02
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
