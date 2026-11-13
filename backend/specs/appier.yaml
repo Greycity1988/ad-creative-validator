@@ -103,3 +103,29 @@ placements:
   - jpg
   - jpeg
   - png
+- name: Appier 모바일 전면 인터스티셜 세로 (320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: Appier 모바일 전면 인터스티셜 가로 (480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: Appier 브랜드 로고/아이콘 (144×144)
+  exact_width: 144
+  exact_height: 144
+  max_file_size_kb: 100
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg

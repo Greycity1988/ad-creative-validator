@@ -152,6 +152,29 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+- name: 카카오 DA (디스플레이 와이드 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 1200
+  min_height: 628
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+- name: 카카오 DA (프로필 이미지 300×300)
+  exact_width: 300
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 카카오 DA 네이티브 광고 브랜드 프로필 이미지 (1:1 정사각형)
 - name: 카카오 포커스보드 (PC 배경 1504×336)
   exact_width: 1504
   exact_height: 336

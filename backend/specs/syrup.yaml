@@ -42,3 +42,29 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 시럽/OK캐쉬백 (모바일 띠배너 640×100)
+  exact_width: 640
+  exact_height: 100
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 시럽/OK캐쉬백 (전면 팝업 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 시럽/OK캐쉬백 (브랜드 로고/아이콘 1:1 144×144)
+  exact_width: 144
+  exact_height: 144
+  max_file_size_kb: 100
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 시럽/OK캐쉬백 오퍼월 및 피드 헤더 브랜드 아이콘 규격

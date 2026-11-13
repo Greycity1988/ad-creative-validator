@@ -95,3 +95,21 @@ placements:
   - jpg
   - jpeg
   - gif
+- name: RTB House (모바일 전면 인터스티셜 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 150
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  - gif
+- name: RTB House (빅 빌보드 970×250)
+  exact_width: 970
+  exact_height: 250
+  max_file_size_kb: 250
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  - gif

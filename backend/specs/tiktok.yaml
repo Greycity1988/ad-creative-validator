@@ -89,3 +89,12 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 틱톡 (Brand Takeover 전면 배너 1242×2208)
+  exact_width: 1242
+  exact_height: 2208
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 틱톡 앱 오픈 시 즉시 노출되는 고주목도 풀스크린 정적 이미지 규격 (최대 500KB)

@@ -70,3 +70,33 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 엑스 세로형 피드 확장 (Portrait 4:5 1080×1350)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1350
+  min_width: 600
+  min_height: 750
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 모바일 타임라인 확장 4:5 세로형 이미지 규격 (1080×1350)
+- name: 엑스 다이렉트 메시지 카드 (DM Card 1.91:1 800×418)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 800
+  recommended_height: 418
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 3072
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 대화형 DM 챗봇 연결 카드 이미지 (800×418)

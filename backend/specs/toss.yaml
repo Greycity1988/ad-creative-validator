@@ -95,3 +95,30 @@ placements:
   - jpeg
   - png
   description: 토스 네이티브 한 줄 배너 문구 옆 노출 아이콘 (투명 배경 불가, 최대 10MB)
+- name: 토스 (브랜드 공식 로고 1:1 800×800)
+  exact_width: 800
+  exact_height: 800
+  max_file_size_kb: 5120
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 토스애즈 브랜드 헤더 및 프로필 대표 로고 규격 (PNG 권장, 800×800)
+- name: 토스 (행운퀴즈 대표 이미지 1.91:1 1200×628)
+  exact_width: 1200
+  exact_height: 628
+  max_file_size_kb: 10240
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 토스 행운퀴즈 상단 대표 힌트/홍보 이미지 (1200×628)
+- name: 토스 (라이브마켓 상품 이미지 1:1 1000×1000)
+  exact_width: 1000
+  exact_height: 1000
+  max_file_size_kb: 10240
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 토스 라이브마켓 커머스 메인 상품 연동 규격 (1000×1000)

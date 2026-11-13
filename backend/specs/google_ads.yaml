@@ -235,3 +235,76 @@ placements:
   - jpeg
   - png
   - gif
+- name: GDN Banner 970×250 (빌보드)
+  exact_width: 970
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: GDN 데스크톱 대형 빌보드 배너 (970×250)
+- name: GDN Banner 250×360 (트리플 와이드)
+  exact_width: 250
+  exact_height: 360
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: GDN Banner 580×400 (넷보드)
+  exact_width: 580
+  exact_height: 400
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: PMax/Responsive Vertical (9:16 900×1600)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 900
+  recommended_height: 1600
+  min_width: 600
+  min_height: 1067
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Google Ads 반응형 디스플레이 세로형 9:16 에셋 (900×1600 권장)
+- name: Google Ads Logo (1:1 정사각형 로고)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 1200
+  min_width: 128
+  min_height: 128
+  max_file_size_kb: 5120
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: Google 반응형 디스플레이/디맨드젠 필수 정사각형 로고 (1200×1200 권장, 최소 128×128)
+- name: Google Ads Logo (4:1 가로형 로고)
+  aspect_ratio:
+  - 4
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 300
+  min_width: 512
+  min_height: 128
+  max_file_size_kb: 5120
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: Google 반응형 디스플레이 가로형 브랜드 로고 (1200×300 권장, 최소 512×128)

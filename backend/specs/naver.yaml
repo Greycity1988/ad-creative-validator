@@ -282,3 +282,30 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 네이버 DA (컬렉션/슬라이드 정방형 600×600)
+  exact_width: 600
+  exact_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 네이버 GFA 컬렉션형 및 피드 슬라이드 1:1 정방형 규격 (최대 500KB)
+- name: 네이버 DA (커뮤니케이션 애드 댓글형 112×112)
+  exact_width: 112
+  exact_height: 112
+  max_file_size_kb: 130
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 네이버 카페/블로그 댓글 및 커뮤니케이션 지면 아이콘 규격
+- name: 네이버 DA (브랜드 패키지 로고 140×140)
+  exact_width: 140
+  exact_height: 140
+  max_file_size_kb: 100
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 네이버 파워링크 및 브랜드 패키지 로고 이미지 규격

@@ -34,3 +34,36 @@ placements:
   - jpeg
   - png
   - gif
+- name: 애드팝콘 (캠페인 대표 아이콘 1:1 196×196)
+  exact_width: 196
+  exact_height: 196
+  max_file_size_kb: 200
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 애드팝콘 오퍼월 리스트 캠페인 필수 대표 아이콘 (196×196)
+- name: 애드팝콘 (게임형 홈 메인 배너 360×240)
+  exact_width: 360
+  exact_height: 240
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 애드팝콘 오퍼월 상단 메인 추천 배너 (360×240)
+- name: 애드팝콘 (전면 인터스티셜 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 애드팝콘 모바일 전면 인터스티셜 광고 (1080×1920)

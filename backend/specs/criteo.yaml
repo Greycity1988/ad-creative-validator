@@ -331,3 +331,33 @@ placements:
   - jpeg
   - png
   - gif
+- name: 크리테오 (Commerce Display Spotlight 데스크톱 1400×450)
+  exact_width: 1400
+  exact_height: 450
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450)
+- name: 크리테오 (Commerce Display Grid 데스크톱 1500×1500)
+  exact_width: 1500
+  exact_height: 1500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500)
+- name: 크리테오 (Commerce Display Grid 모바일 1280×400)
+  exact_width: 1280
+  exact_height: 400
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400)

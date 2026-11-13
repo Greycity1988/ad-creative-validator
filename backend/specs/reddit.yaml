@@ -53,3 +53,44 @@ placements:
   - jpeg
   - png
   - gif
+- name: 레딧 (프로모티드 와이드 16:9 1920×1080)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1920
+  recommended_height: 1080
+  min_width: 1280
+  min_height: 720
+  max_file_size_kb: 3072
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 레딧 공식 고해상도 16:9 와이드스크린 피드 규격 (1920×1080)
+- name: 레딧 (대화형 배치 썸네일 4:3 400×300)
+  exact_width: 400
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 레딧 스레드 댓글/대화 영역 노출 소형 썸네일 (400×300)
+- name: 레딧 (캐러셀 카드 1:1 1080×1080)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1080
+  min_width: 600
+  min_height: 600
+  max_file_size_kb: 20480
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 레딧 멀티카드 캐러셀 광고 규격 (카드당 최대 20MB)

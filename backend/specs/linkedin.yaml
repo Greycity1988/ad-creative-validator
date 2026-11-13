@@ -66,3 +66,21 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 링크드인 (텍스트 광고 로고 1:1 100×100)
+  exact_width: 100
+  exact_height: 100
+  max_file_size_kb: 2048
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 링크드인 데스크톱 우측 레일 텍스트 광고 썸네일 로고 (100×100)
+- name: 링크드인 (스포트라이트/메시징 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 링크드인 다이내믹 스포트라이트 및 스폰서드 인메일 메시징 배너 (300×250)

@@ -92,3 +92,65 @@ placements:
   require_transparency: true
   text_ratio_limit: 0.2
   text_ratio_level: error
+- name: 몰로코 (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (모바일 대형 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (중형 직사각형 배너 MREC 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (모바일 전면 인터스티셜 세로 320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (모바일 전면 인터스티셜 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (태블릿 리더보드 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (앱 아이콘 1:1 512×512)
+  exact_width: 512
+  exact_height: 512
+  max_file_size_kb: 500
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg

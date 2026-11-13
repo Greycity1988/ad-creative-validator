@@ -67,3 +67,34 @@ placements:
   - jpeg
   - png
   - gif
+- name: 에이스트레이더 (네이티브 정방형 배너 1:1 627×627)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  exact_width: 627
+  exact_height: 627
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 에이스트레이더 1:1 정방형 네이티브 피드 배너 (627×627)
+- name: 에이스트레이더 (네이티브 브랜드 로고/아이콘 1:1 144×144)
+  exact_width: 144
+  exact_height: 144
+  max_file_size_kb: 100
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 에이스트레이더 네이티브 브랜드 CI 로고/아이콘 (144×144)
+- name: 에이스트레이더 (모바일 전면 배너 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 에이스트레이더 모바일 풀스크린 전면 배너 (640×960)

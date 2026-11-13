@@ -50,3 +50,31 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 핀터레스트 (아이디어 광고 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 20480
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 핀터레스트 풀스크린 세로형 아이디어 핀 및 스토리 광고 규격 (1080×1920)
+- name: 핀터레스트 (컬렉션 보조 카드 1:1 1000×1000)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1000
+  recommended_height: 1000
+  max_file_size_kb: 20480
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 핀터레스트 컬렉션 광고 하단 보조 제품 카드 (1:1 정사각형)

@@ -107,3 +107,56 @@ placements:
   - png
   text_ratio_limit: 0.3
   text_ratio_level: warning
+- name: Meta Audience Network (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 모바일 앱 상하단 띠배너
+- name: Meta Audience Network (중형 직사각형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 인앱 MREC 사각형 배너
+- name: Meta Audience Network (리더보드 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 태블릿/데스크톱 리더보드 배너
+- name: Meta Audience Network (전면 인터스티셜 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 모바일 풀스크린 전면 광고
+- name: Meta Audience Network (네이티브 배너 1.91:1 1200×627)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  exact_width: 1200
+  exact_height: 627
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 퍼블리셔 앱 인피드 네이티브 배너

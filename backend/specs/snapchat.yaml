@@ -30,3 +30,20 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 스냅챗 (컬렉션 제품 썸네일 1:1 160×160)
+  exact_width: 160
+  exact_height: 160
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 스냅챗 컬렉션 광고 하단 4칸 제품 썸네일 타일 (160×160 이상)
+- name: 스냅챗 (AR 정적 필터 945×2048)
+  exact_width: 945
+  exact_height: 2048
+  max_file_size_kb: 300
+  allowed_formats:
+  - png
+  require_transparency: true
+  description: 스냅챗 카메라 오버레이 정적 AR 필터 (투명 PNG 필수, 300KB 이하)

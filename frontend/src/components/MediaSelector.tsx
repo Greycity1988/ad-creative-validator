@@ -361,7 +361,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
   const totalPlacementsCount =
-    platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 230;
+    platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 300;
 
   // Category counts
   const categoryCounts = useMemo(() => {

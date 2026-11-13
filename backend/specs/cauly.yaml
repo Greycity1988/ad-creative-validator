@@ -35,3 +35,21 @@ placements:
   - jpeg
   - png
   - gif
+- name: 카울리 (모바일 전면 배너 3:2 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 카울리 모바일 풀스크린 전면 인터스티셜 배너 (640×960)
+- name: 카울리 (모바일 전면 배너 9:16 720×1280)
+  exact_width: 720
+  exact_height: 1280
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 카울리 고해상도 9:16 전면 배너 (720×1280)
