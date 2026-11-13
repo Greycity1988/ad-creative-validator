@@ -154,7 +154,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      <Analytics />
+      <Analytics scriptSrc="https://va.vercel-scripts.com/v1/script.js" />
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
