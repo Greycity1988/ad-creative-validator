@@ -31,28 +31,89 @@ export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
   return DEFAULT_METADATA;
 };
 
+interface GitHubIssue {
+  id: number;
+  number: number;
+  title: string;
+  user: { login: string; avatar_url?: string };
+  state: 'open' | 'closed';
+  created_at: string;
+  body: string | null;
+  html_url: string;
+  comments: number;
+  labels?: Array<{ name: string; color: string }>;
+}
+
 export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    try {
-      const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
-      if (Array.isArray(response.data)) {
-        return response.data;
+  const items: FeedbackItem[] = [];
+
+  // 1. Fetch real public issues from GitHub Issues API
+  try {
+    const res = await fetch(
+      'https://api.github.com/repos/Greycity1988/ad-creative-validator/issues?state=all&per_page=50',
+      {
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+        },
       }
-    } catch {
-      // ignore
+    );
+
+    if (res.ok) {
+      const githubIssues: GitHubIssue[] = await res.json();
+      if (Array.isArray(githubIssues)) {
+        githubIssues.forEach((issue) => {
+          let category = '신규 규격 제보';
+          let title = issue.title;
+
+          const catMatch = issue.title.match(/^\[(.*?)\]\s*(.*)$/);
+          if (catMatch) {
+            category = catMatch[1];
+            title = catMatch[2] || issue.title;
+          } else if (issue.labels && issue.labels.length > 0) {
+            category = issue.labels[0].name;
+          }
+
+          items.push({
+            id: `gh-${issue.id}`,
+            issue_number: issue.number,
+            title: title,
+            category: category,
+            content: issue.body || '상세 내용 없음',
+            author: `@${issue.user?.login || '익명 제보자'}`,
+            created_at: issue.created_at.split('T')[0],
+            status: issue.state === 'closed' ? '반영 완료' : '검토 및 개발 중',
+            html_url: issue.html_url,
+            is_github: true,
+            comments_count: issue.comments,
+          });
+        });
+      }
     }
+  } catch (err) {
+    console.warn('Failed to fetch GitHub issues:', err);
   }
 
+  // 2. Also merge any locally saved drafts or feedback from this browser
   try {
     const stored = localStorage.getItem('ad_user_feedbacks');
     if (stored) {
-      return JSON.parse(stored);
+      const localList: FeedbackItem[] = JSON.parse(stored);
+      if (Array.isArray(localList)) {
+        localList.forEach((localItem) => {
+          if (!items.some((it) => it.id === localItem.id)) {
+            items.push({
+              ...localItem,
+              status: localItem.status || '이메일 발송됨 (임시 기록)',
+            });
+          }
+        });
+      }
     }
   } catch {
     // ignore
   }
 
-  return [];
+  return items;
 };
 
 export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {

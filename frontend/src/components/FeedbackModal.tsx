@@ -161,21 +161,45 @@ ${contentStr}
     }
   };
 
-  const handleOpenGitHubIssue = async () => {
-    if (!title.trim() && !content.trim()) {
-      window.open(GITHUB_ISSUES_URL, '_blank');
+  const handleOpenGitHubIssue = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!title.trim() || !content.trim()) {
+      setErrorMessage('제목과 상세 내용을 모두 입력해주세요.');
       return;
     }
 
-    const currentTitle = title.trim() || '신규 규격 제보';
-    const bodyText = formatFeedbackBody(currentTitle, category, content.trim(), author.trim(), email.trim());
-    await copyToClipboard(bodyText);
+    try {
+      setIsSubmitting(true);
+      setErrorMessage(null);
 
-    const issueTitle = encodeURIComponent(`[${category}] ${currentTitle}`);
-    const issueBody = encodeURIComponent(bodyText);
-    window.open(`${GITHUB_ISSUES_URL}?title=${issueTitle}&body=${issueBody}`, '_blank');
+      const currentTitle = title.trim();
+      const bodyText = formatFeedbackBody(currentTitle, category, content.trim(), author.trim(), email.trim());
+      await copyToClipboard(bodyText);
 
-    setSuccessMessage('내용이 클립보드에 복사되었으며 GitHub Issues 등록 페이지가 새 탭으로 열렸습니다!');
+      // Save local backup as well
+      await submitFeedback({
+        title: currentTitle,
+        category,
+        content: content.trim(),
+        author: author.trim() || '익명 마케터',
+        email: email.trim() || undefined,
+      });
+
+      const issueTitle = encodeURIComponent(`[${category}] ${currentTitle}`);
+      const issueBody = encodeURIComponent(bodyText);
+      window.open(`${GITHUB_ISSUES_URL}?title=${issueTitle}&body=${issueBody}`, '_blank');
+
+      setSuccessMessage(
+        '제보 내용이 클립보드에 복사되었으며 GitHub Issues 등록 페이지가 새 탭으로 열렸습니다! GitHub에서 Submit 버튼을 누르시면 실시간 공개 보드에 즉시 등록됩니다.'
+      );
+      setTitle('');
+      setContent('');
+      await loadFeedbacks();
+    } catch (err) {
+      console.error('Failed to prepare GitHub issue:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -272,7 +296,7 @@ ${contentStr}
                 : 'border-transparent text-slate-500 hover:text-slate-800'
             }`}
           >
-            <span>내 로컬 작성 히스토리 ({feedbacks.length})</span>
+            <span>실시간 건의 & 반영 내역 ({feedbacks.length})</span>
           </button>
         </div>
 
@@ -293,11 +317,11 @@ ${contentStr}
           )}
 
           {activeTab === 'write' ? (
-            <form onSubmit={handleSubmitEmail} className="space-y-4">
+            <form onSubmit={handleOpenGitHubIssue} className="space-y-4">
               <div className="p-3 bg-blue-50/70 border border-blue-200/80 rounded-xl flex items-start space-x-2 text-xs text-blue-900">
                 <ShieldCheck className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                 <div className="text-[11px] leading-relaxed">
-                  <strong>대외비 소재 보안 보장 원칙:</strong> ACV는 사용자의 광고 소재 유출을 원천 방지하기 위해 일체의 중앙 데이터베이스 서버를 두지 않습니다. 따라서 작성하신 제보는 <strong>개발자 이메일(mailto)</strong> 또는 <strong>공식 GitHub Issues</strong>를 통해 개발팀에 유실 없이 즉시 직결됩니다.
+                  <strong>대외비 소재 보안 및 실시간 공개 보드 원칙:</strong> ACV는 소재 유출 방지를 위해 일체의 중앙 데이터베이스 서버를 두지 않습니다. 작성하신 제보는 <strong>GitHub 공식 저장소</strong>에 등록되어 모든 사용자와 개발자가 실시간으로 진행 현황을 함께 확인하게 됩니다. (GitHub 계정이 없으신 경우 이메일로 보내주시면 개발팀에서 검토 후 공개 보드에 등록해 드립니다)
                 </div>
               </div>
 
@@ -378,16 +402,16 @@ ${contentStr}
                 />
               </div>
 
-              {/* Action Buttons: Email vs GitHub */}
+              {/* Action Buttons: GitHub vs Email */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5">
                 <button
-                  type="button"
-                  onClick={handleOpenGitHubIssue}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-1.5 px-3.5 py-2 text-xs font-bold rounded-lg border border-slate-300 hover:border-slate-400 bg-white hover:bg-slate-50 text-slate-700 cursor-pointer transition-colors shadow-2xs"
-                  title="GitHub Issues 템플릿에 내용을 자동 채워 등록합니다."
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-1.5 px-4 py-2.5 text-xs font-bold rounded-lg bg-slate-900 hover:bg-black text-white shadow-sm cursor-pointer transition-colors"
+                  title="GitHub Issues 템플릿에 내용을 자동 채워 실시간 공개 보드에 등록합니다."
                 >
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-500" />
-                  <span>GitHub Issues로 제보하기</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-blue-400" />
+                  <span>🐙 GitHub Issues로 공개 등록하기 (추천)</span>
                 </button>
 
                 <div className="w-full sm:w-auto flex items-center justify-end space-x-2">
@@ -397,17 +421,19 @@ ${contentStr}
                       setTitle('');
                       setContent('');
                     }}
-                    className="px-3.5 py-2 text-xs font-semibold rounded-lg border border-slate-200 text-slate-600 hover:bg-slate-50 cursor-pointer"
+                    className="px-3 py-2 text-xs font-semibold rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-50 cursor-pointer"
                   >
-                    내용 비우기
+                    초기화
                   </button>
                   <button
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmitEmail}
                     disabled={isSubmitting}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1.5 px-5 py-2 text-xs font-bold rounded-lg bg-blue-600 hover:bg-blue-700 text-white shadow-sm disabled:opacity-50 cursor-pointer transition-colors"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1.5 px-4 py-2 text-xs font-bold rounded-lg border border-blue-600 bg-blue-50 hover:bg-blue-100 text-blue-700 shadow-2xs disabled:opacity-50 cursor-pointer transition-colors"
+                    title="GitHub 계정이 없는 경우 개발자 이메일로 1:1 전송합니다."
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    <span>{isSubmitting ? '처리 중...' : '이메일로 제보 전송하기'}</span>
+                    <span>이메일로 1:1 전송</span>
                   </button>
                 </div>
               </div>
@@ -415,7 +441,12 @@ ${contentStr}
           ) : (
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs text-slate-500 pb-1">
-                <span>내 브라우저 작성 기록 (최근순)</span>
+                <div className="flex items-center space-x-1.5">
+                  <span className="font-bold text-slate-800">실시간 공개 제보 & 개발 반영 현황</span>
+                  <span className="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-semibold border border-blue-100">
+                    GitHub 연동
+                  </span>
+                </div>
                 <button
                   type="button"
                   onClick={loadFeedbacks}
@@ -428,58 +459,92 @@ ${contentStr}
 
               {feedbacks.length === 0 ? (
                 <div className="text-center py-10 px-4 text-slate-500 text-xs space-y-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-700">작성된 제보 내역이 없습니다.</p>
+                  <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mx-auto text-lg">
+                    💬
+                  </div>
+                  <p className="font-bold text-slate-700">현재 등록된 공개 건의 및 제보 내역이 없습니다.</p>
                   <p className="text-slate-500 text-[11px] leading-relaxed max-w-md mx-auto">
-                    새로운 매체 지면 추가나 규격 변경 제보는 상단 <strong>[건의 / 규격 제보 작성]</strong> 탭을 이용하시거나,
-                    개발자 공식 이메일 또는 GitHub Issues를 통해 제보해주실 수 있습니다.
+                    새로운 매체 지면 추가나 규격 변경 제보는 상단 <strong>[건의 / 규격 제보 작성]</strong> 탭을 이용해 등록해 주시면,
+                    GitHub 공식 저장소와 이 보드에 실시간으로 등록되어 모든 사용자가 개발 진행 상태를 함께 확인하실 수 있습니다.
                   </p>
                   <div className="pt-1 flex items-center justify-center gap-2">
                     <button
                       type="button"
                       onClick={() => setActiveTab('write')}
-                      className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-2xs cursor-pointer"
+                      className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-2xs cursor-pointer"
                     >
-                      <Sparkles className="w-3 h-3" />
-                      <span>새 제보 작성하기</span>
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>첫 번째 제보 작성하기</span>
                     </button>
                     <a
-                      href="https://github.com/Greycity1988/ad-creative-validator/issues"
+                      href={GITHUB_ISSUES_URL}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-colors shadow-2xs"
+                      className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-slate-800 text-white text-xs font-bold hover:bg-slate-900 transition-colors shadow-2xs"
                     >
                       <span>GitHub Issues 열기</span>
-                      <ExternalLink className="w-3 h-3" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 </div>
               ) : (
                 feedbacks.map((item) => {
+                  const isClosed = item.status === '반영 완료';
                   return (
                     <div
                       key={item.id}
-                      className="p-4 rounded-xl border border-slate-200 bg-white shadow-2xs space-y-2 hover:border-slate-300 transition-colors"
+                      className="p-4 rounded-xl border border-slate-200 bg-white shadow-2xs space-y-2 hover:border-blue-200 transition-colors"
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <div className="space-y-1">
+                        <div className="space-y-1 flex-1 min-w-0">
                           <div className="flex items-center space-x-2 flex-wrap gap-y-1">
                             <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
                               {item.category}
                             </span>
-                            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                              제보 등록됨
+                            <span
+                              className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                                isClosed
+                                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                  : 'bg-amber-50 text-amber-700 border border-amber-200'
+                              }`}
+                            >
+                              {item.status}
                             </span>
+                            {item.issue_number && (
+                              <span className="text-[10px] font-mono font-semibold text-slate-400">
+                                #{item.issue_number}
+                              </span>
+                            )}
                             <span className="text-[11px] text-slate-400">
                               {item.author} • {item.created_at}
                             </span>
                           </div>
-                          <h4 className="text-xs font-bold text-slate-800">{item.title}</h4>
+                          <h4 className="text-xs font-bold text-slate-800 mt-1">{item.title}</h4>
                         </div>
+
+                        {item.html_url && (
+                          <a
+                            href={item.html_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center space-x-1 text-[11px] font-semibold text-blue-600 hover:text-blue-800 hover:underline flex-shrink-0 cursor-pointer"
+                            title="GitHub에서 상세 토론 보기"
+                          >
+                            <span>상세 보기</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
                       </div>
 
                       <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap">
                         {item.content}
                       </p>
+
+                      {item.comments_count !== undefined && item.comments_count > 0 && (
+                        <div className="text-[11px] text-blue-700 font-semibold pt-1">
+                          💬 개발팀 답변 / 댓글 {item.comments_count}개
+                        </div>
+                      )}
 
                       <div className="pt-1 flex items-center justify-end space-x-2">
                         <button

@@ -117,6 +117,10 @@ export interface FeedbackItem {
   created_at: string;
   status: string;
   reply?: string;
+  html_url?: string;
+  issue_number?: number;
+  is_github?: boolean;
+  comments_count?: number;
 }
 
 export interface FeedbackCreateRequest {
