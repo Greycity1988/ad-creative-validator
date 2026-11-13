@@ -150,8 +150,10 @@ placements:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 1200
-  min_height: 1200
+  min_width: 800
+  min_height: 800
+  recommended_width: 1200
+  recommended_height: 1200
   max_file_size_kb: 1024
   allowed_formats:
   - jpg
@@ -172,8 +174,10 @@ placements:
   - 1.91
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 1200
-  min_height: 628
+  min_width: 800
+  min_height: 418
+  recommended_width: 1200
+  recommended_height: 628
   max_file_size_kb: 1024
   allowed_formats:
   - jpg
@@ -309,3 +313,50 @@ placements:
   - jpg
   - jpeg
   description: 네이버 파워링크 및 브랜드 패키지 로고 이미지 규격
+- name: 네이버 NOSP (PC 메인 롤링보드 고해상도 700×560)
+  exact_width: 700
+  exact_height: 560
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: NOSP PC 메인 롤링보드 2배수 레티나 규격 (노출 시 350×280 축소)
+- name: 네이버 NOSP (PC 메인 브릿지보드 1080×100)
+  exact_width: 1080
+  exact_height: 100
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: NOSP PC 메인 브릿지보드 와이드 배너 (1080×100)
+- name: 네이버 NOSP (PC 메인 브릿지보드 기본 540×50)
+  exact_width: 540
+  exact_height: 50
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: NOSP PC 메인 브릿지보드 기본 규격 (540×50)
+- name: 네이버 DA (스마트채널 고해상도 1500×560 투명 PNG)
+  exact_width: 1500
+  exact_height: 560
+  max_file_size_kb: 350
+  allowed_formats:
+  - png
+  require_transparency: true
+  description: 네이버 스마트채널 2배수 레티나 규격 (1500×560 투명 PNG 필수)
+- name: 네이버 NOSP (모바일 롤링보드 고해상도 1500×800)
+  exact_width: 1500
+  exact_height: 800
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: NOSP 모바일 롤링보드 2배수 고해상도 규격 (1500×800)

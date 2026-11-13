@@ -93,3 +93,26 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 데이블 (네이티브 콘텐츠 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 800
+  min_height: 418
+  recommended_width: 1200
+  recommended_height: 628
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 데이블 (인라인 박스형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

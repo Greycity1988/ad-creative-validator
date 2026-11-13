@@ -52,3 +52,21 @@ placements:
   - jpeg
   - png
   - gif
+- name: 리얼클릭 (중형 박스형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (와이드 스카이스크래퍼 160×600)
+  exact_width: 160
+  exact_height: 600
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

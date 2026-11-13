@@ -98,5 +98,21 @@ placements:
   allowed_formats:
   - jpg
   - jpeg
+- name: 엑스 프로필 헤더 배너 (3:1 1500×500)
+  exact_width: 1500
+  exact_height: 500
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
   - png
-  description: 엑스 대화형 DM 챗봇 연결 카드 이미지 (800×418)
+  description: 엑스 공식 비즈니스 프로필 상단 헤더 와이드 배너 (1500×500)
+- name: 엑스 프로필 사진 (1:1 400×400)
+  exact_width: 400
+  exact_height: 400
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 공식 프로필 대표 원형/정방형 아바타 (400×400)

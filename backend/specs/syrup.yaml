@@ -68,3 +68,58 @@ placements:
   - jpg
   - jpeg
   description: 시럽/OK캐쉬백 오퍼월 및 피드 헤더 브랜드 아이콘 규격
+- name: 시럽/OK캐쉬백 (메인 피드 네이티브 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 800
+  min_height: 418
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 시럽/OK캐쉬백 (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 시럽/OK캐쉬백 (모바일 대형 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 시럽/OK캐쉬백 (중형 직사각형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 시럽/OK캐쉬백 (모바일 전면 풀스크린 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

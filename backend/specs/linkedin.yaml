@@ -84,3 +84,27 @@ placements:
   - jpeg
   - png
   description: 링크드인 다이내믹 스포트라이트 및 스폰서드 인메일 메시징 배너 (300×250)
+- name: 링크드인 (피드 가로형 Landscape 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  min_width: 600
+  min_height: 314
+  recommended_width: 1200
+  recommended_height: 628
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 링크드인 표준 가로형 단일 이미지 규격 (1200×628 호환)
+- name: 링크드인 (기업 페이지 공식 로고 1:1 300×300)
+  exact_width: 300
+  exact_height: 300
+  max_file_size_kb: 3072
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 링크드인 기업 및 브랜드 공식 프로필 로고 (300×300)

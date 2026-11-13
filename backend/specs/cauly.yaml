@@ -53,3 +53,58 @@ placements:
   - jpeg
   - png
   description: 카울리 고해상도 9:16 전면 배너 (720×1280)
+- name: 카울리 (모바일 전면 배너 세로 320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 카울리 (모바일 전면 배너 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 카울리 (고해상도 띠배너 640×100)
+  exact_width: 640
+  exact_height: 100
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 카울리 (모바일 풀스크린 전면 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 카울리 (네이티브 피드 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

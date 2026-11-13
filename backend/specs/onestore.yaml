@@ -25,3 +25,21 @@ placements:
   - jpg
   - jpeg
   description: 원스토어 스토어 전시 및 리스트 대표 앱 아이콘 (PNG 권장)
+- name: 원스토어 (피처드 배너 720×300)
+  exact_width: 720
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 원스토어 스토어 상단 추천 피처드 배너 (720×300)
+- name: 원스토어 (고해상도 피처드 배너 1080×450)
+  exact_width: 1080
+  exact_height: 450
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 원스토어 스토어 상단 고해상도 피처드 배너 (1080×450)

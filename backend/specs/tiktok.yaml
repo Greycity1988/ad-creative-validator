@@ -98,3 +98,48 @@ placements:
   - jpeg
   - png
   description: 틱톡 앱 오픈 시 즉시 노출되는 고주목도 풀스크린 정적 이미지 규격 (최대 500KB)
+- name: 틱톡 Pangle (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 틱톡 Pangle (중형 배너 MREC 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 틱톡 Pangle (태블릿 리더보드 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 틱톡 Pangle (모바일 전면 인터스티셜 세로 320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 틱톡 Pangle (모바일 전면 인터스티셜 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

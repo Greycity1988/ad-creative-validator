@@ -94,3 +94,19 @@ placements:
   - png
   - gif
   description: 레딧 멀티카드 캐러셀 광고 규격 (카드당 최대 20MB)
+- name: 레딧 (프로모티드 링크 배너 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 3072
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 레딧 외부 링크 프로모티드 포스트 1.91:1 표준 규격

@@ -7,13 +7,13 @@ revision_summary: 토스 공식 GitBook 기준 가로형(1200×628), 정사각�
 last_verified_date: '2026-11-12'
 description: 토스 피드 (1:1, 1.91:1, 2:1), 세로형 전면 (9:16), 한 줄 배너 아이콘 (1:1)
 placements:
-- name: 토스 (정사각형 배너 1:1 1000×1000 이상)
+- name: 토스 (정사각형 배너 1:1 1000×1000)
   aspect_ratio:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 1000
-  min_height: 1000
+  min_width: 800
+  min_height: 800
   recommended_width: 1000
   recommended_height: 1000
   max_file_size_kb: 10240
@@ -21,7 +21,7 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 토스애즈 공식 정사각형 배너 (1000×1000 이상, 최대 10MB)
+  description: 토스애즈 공식 정사각형 배너 (1000×1000 권장, 최소 800×800, 최대 10MB)
 - name: 토스 (가로형 배너 1.91:1 1200×628 이상)
   aspect_ratio:
   - 1.91

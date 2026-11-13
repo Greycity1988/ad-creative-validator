@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p className="text-xs text-slate-400 font-medium">
-              Ad Creative Guideline Validator — 32대 국내외 광고 매체 & 330+ 공식 지면 원클릭 규격 검수
+              Ad Creative Guideline Validator — 32대 국내외 광고 매체 & 430+ 공식 지면 원클릭 규격 검수
             </p>
           </div>
         </div>

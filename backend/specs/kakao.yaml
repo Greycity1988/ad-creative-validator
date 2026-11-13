@@ -240,3 +240,57 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 카카오 비즈보드 (고해상도 1920×600 16:5)
+  aspect_ratio:
+  - 16
+  - 5
+  aspect_ratio_tolerance: 0.01
+  exact_width: 1920
+  exact_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - png
+  require_transparency: true
+  text_ratio_limit: 0.2
+  text_ratio_level: error
+  description: 카카오 비즈보드 2배수 레티나 규격 (1920×600 투명 PNG 필수)
+- name: 다음 PC (초기배너 / 브릿지 1080×150)
+  exact_width: 1080
+  exact_height: 150
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Daum PC 메인 초기 상단 와이드 배너 (1080×150)
+- name: 다음 PC (사이드 배너 250×250)
+  exact_width: 250
+  exact_height: 250
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Daum PC 우측 사이드 정방형 배너 (250×250)
+- name: 다음 PC (서브 배너 170×128)
+  exact_width: 170
+  exact_height: 128
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Daum PC 뉴스/콘텐츠 서브 배너 (170×128)
+- name: 다음 모바일 (메인 탑 배너 720×150)
+  exact_width: 720
+  exact_height: 150
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Daum 모바일 웹/앱 상단 띠배너 (720×150)

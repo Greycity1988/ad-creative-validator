@@ -154,3 +154,48 @@ placements:
   - png
   - jpg
   - jpeg
+- name: 몰로코 (스카이스크래퍼 160×600)
+  exact_width: 160
+  exact_height: 600
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (하프페이지 대형 배너 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 250
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (빅 빌보드 970×250)
+  exact_width: 970
+  exact_height: 250
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (태블릿 인터스티셜 세로 768×1024)
+  exact_width: 768
+  exact_height: 1024
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 몰로코 (태블릿 인터스티셜 가로 1024×768)
+  exact_width: 1024
+  exact_height: 768
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

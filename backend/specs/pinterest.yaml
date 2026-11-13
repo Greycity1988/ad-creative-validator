@@ -78,3 +78,32 @@ placements:
   - jpeg
   - png
   description: 핀터레스트 컬렉션 광고 하단 보조 제품 카드 (1:1 정사각형)
+- name: 핀터레스트 (세로형 핀 4:5 1080×1350)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1350
+  min_width: 600
+  min_height: 750
+  max_file_size_kb: 20480
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 핀터레스트 모바일 최적화 4:5 세로형 핀
+- name: 핀터레스트 (가로형 핀 16:9 1920×1080)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1920
+  recommended_height: 1080
+  min_width: 1280
+  min_height: 720
+  max_file_size_kb: 20480
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

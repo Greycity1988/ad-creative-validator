@@ -83,3 +83,28 @@ placements:
   - png
   - gif
   description: 타불라 1.91:1 모바일 피드형 네이티브 배너 (1200×628 권장)
+- name: 타불라 (모바일 세로형 Stories 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 타불라 모바일 스토리 및 세로형 풀스크린 피드 규격
+- name: 타불라 (인라인 추천 위젯 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif

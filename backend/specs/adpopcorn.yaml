@@ -67,3 +67,52 @@ placements:
   - jpeg
   - png
   description: 애드팝콘 모바일 전면 인터스티셜 광고 (1080×1920)
+- name: 애드팝콘 (모바일 전면 인터스티셜 세로 320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 애드팝콘 (모바일 전면 인터스티셜 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 애드팝콘 (태블릿 리더보드 배너 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 애드팝콘 (모바일 전면 배너 2:3 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: 애드팝콘 (네이티브 피드 배너 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
