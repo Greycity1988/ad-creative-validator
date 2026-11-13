@@ -1123,13 +1123,13 @@
   {
     "id": "criteo",
     "name": "크리테오 (Criteo)",
-    "description": "표준 IAB 배너 13종, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너, 타이머 배너",
+    "description": "표준 IAB 배너 18종, 모바일 인터스티셜/풀스크린 6종, 제휴 네트워크 배너, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너, 타이머 및 로고존 에셋 규격 완비",
     "official_update_date": "2026.03 공식 개정",
     "official_source_name": "Criteo Advertising Guidelines (Help Center)",
     "official_source_url": "https://help.criteo.com",
-    "revision_summary": "표준 IAB 디스플레이 배너 13종(300×250, 728×90, 160×600, 970×250 등), 플래그십/쇼케이스 빅배너, 어댑티브 마스터, 빅쿠폰 및 타이머 규격 완비",
-    "last_verified_date": "2026-11-12",
-    "placements_count": 38,
+    "revision_summary": "표준 IAB 디스플레이 배너 18종 및 모바일 풀스크린/인터스티셜, 제휴 네트워크 배너, 플래그십/쇼케이스 빅배너, 어댑티브 마스터, 빅쿠폰, 타이머 및 로고존 에셋 전 규격 완비",
+    "last_verified_date": "2026-11-13",
+    "placements_count": 68,
     "placements": [
       "크리테오 (플래그십 데스크톱 빅배너 FS_300 576×300)",
       "크리테오 (플래그십 데스크톱 빅배너 FS_200 576×200)",
@@ -1150,6 +1150,23 @@
       "크리테오 (표준 디스플레이 배너 468×60)",
       "크리테오 (표준 디스플레이 배너 250×250)",
       "크리테오 (표준 디스플레이 배너 200×200)",
+      "크리테오 (표준 디스플레이 배너 240×240)",
+      "크리테오 (네트워크 서브 배너 170×128)",
+      "크리테오 (모바일 전면 배너 세로 320×480)",
+      "크리테오 (모바일 전면 배너 가로 480×320)",
+      "크리테오 (모바일 풀스크린 배너 320×568)",
+      "크리테오 (모바일 풀스크린 배너 360×640)",
+      "크리테오 (모바일 와이드 배너 640×360)",
+      "크리테오 (표준 모바일 배너 300×50)",
+      "크리테오 (정방형 대형 배너 500×500)",
+      "크리테오 (정방형 대형 배너 600×600)",
+      "크리테오 (중형 직사각형 배너 360×300)",
+      "크리테오 (하프 배너 234×60)",
+      "크리테오 (직사각형 배너 300×100)",
+      "크리테오 (세로형 소형 배너 120×240)",
+      "크리테오 (포트레이트 대형 배너 300×1050)",
+      "크리테오 (태블릿 전면 배너 세로 768×1024)",
+      "크리테오 (태블릿 전면 배너 가로 1024×768)",
       "크리테오 (어댑티브 Square 1:1 1200×1200)",
       "크리테오 (어댑티브 Landscape 1.91:1 1200×628)",
       "크리테오 (어댑티브 Portrait 2:3 800×1200)",
@@ -1166,6 +1183,19 @@
       "크리테오 (타이머 배너 1200×628)",
       "크리테오 (타이머 배너 320×100)",
       "크리테오 (타이머 배너 320×50)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 100×100)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 105×50)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 120×60)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 130×90)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 160×56)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 200×32)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 300×40)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 300×54)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 336×48)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 180×250)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 180×34)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 360×57)",
+      "크리테오 (타이머/쿠폰 로고존 에셋 320×57)",
       "크리테오 (Commerce Display Spotlight 데스크톱 1400×450)",
       "크리테오 (Commerce Display Grid 데스크톱 1500×1500)",
       "크리테오 (Commerce Display Grid 모바일 1280×400)"
@@ -1432,6 +1462,244 @@
         "aspect_ratio_str": ""
       },
       {
+        "name": "크리테오 (표준 디스플레이 배너 240×240)",
+        "exact_width": 240,
+        "exact_height": 240,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "240×240px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (네트워크 서브 배너 170×128)",
+        "exact_width": 170,
+        "exact_height": 128,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "170×128px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (모바일 전면 배너 세로 320×480)",
+        "exact_width": 320,
+        "exact_height": 480,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×480px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (모바일 전면 배너 가로 480×320)",
+        "exact_width": 480,
+        "exact_height": 320,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "480×320px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (모바일 풀스크린 배너 320×568)",
+        "exact_width": 320,
+        "exact_height": 568,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "320×568px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (모바일 풀스크린 배너 360×640)",
+        "exact_width": 360,
+        "exact_height": 640,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "360×640px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (모바일 와이드 배너 640×360)",
+        "exact_width": 640,
+        "exact_height": 360,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "640×360px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (표준 모바일 배너 300×50)",
+        "exact_width": 300,
+        "exact_height": 50,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (정방형 대형 배너 500×500)",
+        "exact_width": 500,
+        "exact_height": 500,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "500×500px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (정방형 대형 배너 600×600)",
+        "exact_width": 600,
+        "exact_height": 600,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "600×600px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (중형 직사각형 배너 360×300)",
+        "exact_width": 360,
+        "exact_height": 300,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "360×300px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (하프 배너 234×60)",
+        "exact_width": 234,
+        "exact_height": 60,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "234×60px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (직사각형 배너 300×100)",
+        "exact_width": 300,
+        "exact_height": 100,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (세로형 소형 배너 120×240)",
+        "exact_width": 120,
+        "exact_height": 240,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "120×240px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (포트레이트 대형 배너 300×1050)",
+        "exact_width": 300,
+        "exact_height": 1050,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "300×1050px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (태블릿 전면 배너 세로 768×1024)",
+        "exact_width": 768,
+        "exact_height": 1024,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "768×1024px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (태블릿 전면 배너 가로 1024×768)",
+        "exact_width": 1024,
+        "exact_height": 768,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "dimension_str": "1024×768px",
+        "aspect_ratio_str": ""
+      },
+      {
         "name": "크리테오 (어댑티브 Square 1:1 1200×1200)",
         "aspect_ratio": [
           1,
@@ -1669,6 +1937,201 @@
           "gif"
         ],
         "dimension_str": "320×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 100×100)",
+        "exact_width": 100,
+        "exact_height": 100,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100)",
+        "dimension_str": "100×100px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 105×50)",
+        "exact_width": 105,
+        "exact_height": 50,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50)",
+        "dimension_str": "105×50px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 120×60)",
+        "exact_width": 120,
+        "exact_height": 60,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60)",
+        "dimension_str": "120×60px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 130×90)",
+        "exact_width": 130,
+        "exact_height": 90,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90)",
+        "dimension_str": "130×90px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 160×56)",
+        "exact_width": 160,
+        "exact_height": 56,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56)",
+        "dimension_str": "160×56px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 200×32)",
+        "exact_width": 200,
+        "exact_height": 32,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32)",
+        "dimension_str": "200×32px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 300×40)",
+        "exact_width": 300,
+        "exact_height": 40,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40)",
+        "dimension_str": "300×40px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 300×54)",
+        "exact_width": 300,
+        "exact_height": 54,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54)",
+        "dimension_str": "300×54px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 336×48)",
+        "exact_width": 336,
+        "exact_height": 48,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48)",
+        "dimension_str": "336×48px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 180×250)",
+        "exact_width": 180,
+        "exact_height": 250,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250)",
+        "dimension_str": "180×250px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 180×34)",
+        "exact_width": 180,
+        "exact_height": 34,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34)",
+        "dimension_str": "180×34px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 360×57)",
+        "exact_width": 360,
+        "exact_height": 57,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57)",
+        "dimension_str": "360×57px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 (타이머/쿠폰 로고존 에셋 320×57)",
+        "exact_width": 320,
+        "exact_height": 57,
+        "max_file_size_kb": 1024,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57)",
+        "dimension_str": "320×57px",
         "aspect_ratio_str": ""
       },
       {

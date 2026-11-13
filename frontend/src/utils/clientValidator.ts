@@ -166,6 +166,12 @@ export function isPlacementMatchedByFilename(placement: SpecPlacement, filename:
       const targetRatio = placement.aspect_ratio[0] / placement.aspect_ratio[1];
       const fileRatio = fw / fh;
       if (Math.abs(fileRatio - targetRatio) / targetRatio <= 0.03) {
+        if (placement.min_width && placement.min_height) {
+          if (fw >= placement.min_width * 0.9 && fh >= placement.min_height * 0.9) {
+            return true;
+          }
+          return false;
+        }
         return true;
       }
     }
