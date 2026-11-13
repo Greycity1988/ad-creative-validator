@@ -10,6 +10,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { SafeZoneSpec } from '../types';
+import { track } from '@vercel/analytics';
 
 interface SafeZoneModalProps {
   isOpen: boolean;
@@ -75,6 +76,15 @@ export const SafeZoneModal: React.FC<SafeZoneModalProps> = ({
   const handleExportAnnotated = async () => {
     try {
       setIsExporting(true);
+      try {
+        track('SafeZone Exported', {
+          platform: platformName,
+          placement: placementName,
+          resolution: `${actualWidth}x${actualHeight}`,
+        });
+      } catch {
+        // ignore
+      }
       const canvas = document.createElement('canvas');
       canvas.width = actualWidth;
       canvas.height = actualHeight;

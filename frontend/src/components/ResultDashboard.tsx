@@ -21,6 +21,7 @@ import { ResultCard } from './ResultCard';
 import { BatchSummaryView } from './BatchSummaryView';
 import { SafeZoneModal } from './SafeZoneModal';
 import { downloadExcelReport } from '../api/validator';
+import { track } from '@vercel/analytics';
 
 interface ResultDashboardProps {
   results: ValidationItem[];
@@ -77,6 +78,14 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
     try {
       setIsExporting(true);
       setExportError(null);
+      try {
+        track('Excel Report Downloaded', {
+          total_files: results.length,
+          total_placements: totalPlacementsCount,
+        });
+      } catch {
+        // ignore
+      }
       await downloadExcelReport(results, `ad_creative_report_${Date.now()}.xlsx`);
     } catch (err: unknown) {
       console.error('Failed to export excel:', err);

@@ -11,6 +11,7 @@
     "monitor:specs": "../backend/.venv/bin/python ../scripts/monitor_specs.py"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "axios": "^1.7.9",
     "lucide-react": "^0.460.0",
     "qrcode.react": "^4.2.0",

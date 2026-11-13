@@ -11,6 +11,8 @@ import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
+import { track } from '@vercel/analytics';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
@@ -101,6 +103,18 @@ export const App: React.FC = () => {
       setIsLoading(true);
       setErrorMessage(null);
 
+      // Track private validation metric for project owner
+      try {
+        track('Validation Executed', {
+          file_count: files.length,
+          platform_count: selectedPlatforms.length,
+          platforms: selectedPlatforms.slice(0, 8).join(','),
+          auto_match: autoMatch ? 'enabled' : 'disabled',
+        });
+      } catch {
+        // ignore tracking failures
+      }
+
       const rawFiles = files.map((f) => f.file);
       const response = await validateImages(
         rawFiles,
@@ -140,6 +154,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+      <Analytics />
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
