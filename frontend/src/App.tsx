@@ -12,7 +12,7 @@ import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
-import { track } from '@vercel/analytics';
+import { track, pageview } from '@vercel/analytics';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
@@ -94,6 +94,9 @@ export const App: React.FC = () => {
     setFiles([]);
     setResults(null);
     setErrorMessage(null);
+    if (window.location.pathname !== '/') {
+      window.history.replaceState({}, '', '/');
+    }
   };
 
   const handleStartValidation = async () => {
@@ -103,8 +106,15 @@ export const App: React.FC = () => {
       setIsLoading(true);
       setErrorMessage(null);
 
-      // Track private validation metric for project owner
+      // Track validation metrics for project owner
       try {
+        // 1. Virtual pageview: tracks under "Pages" (/validated) completely free on Vercel Hobby plan
+        pageview({ route: '/validated', path: '/validated' });
+        if (window.location.pathname !== '/validated') {
+          window.history.pushState({}, '', '/validated');
+        }
+
+        // 2. Custom event: logged if Pro plan is active
         track('Validation Executed', {
           file_count: files.length,
           platform_count: selectedPlatforms.length,
