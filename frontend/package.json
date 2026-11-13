@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "sync:specs": "../backend/.venv/bin/python ../scripts/sync_specs.py"
+    "sync:specs": "../backend/.venv/bin/python ../scripts/sync_specs.py",
+    "monitor:specs": "../backend/.venv/bin/python ../scripts/monitor_specs.py"
   },
   "dependencies": {
     "axios": "^1.7.9",

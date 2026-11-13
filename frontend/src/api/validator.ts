@@ -105,7 +105,7 @@ export const updateAllSpecs = async (): Promise<{
 
   return {
     success: true,
-    message: `15개 주요 매체(${totalPlatforms}개 공식 가이드 센터, ${totalPlacements}개 세부 지면) 규격 검증 완료 (최종 검증일: ${verifiedDate})`,
+    message: `${totalPlatforms}대 주요 광고 매체(${totalPlacements}개 공식 세부 지면) 규격 검증 완료 (최종 검증일: ${verifiedDate})`,
     updated_at: verifiedDate,
     total_platforms: totalPlatforms,
     total_placements: totalPlacements,

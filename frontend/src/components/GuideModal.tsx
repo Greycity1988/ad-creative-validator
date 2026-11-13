@@ -185,7 +185,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
                 <h4 className="font-bold text-slate-800 mt-1">지면 또는 매체 선택</h4>
                 <p className="text-[11px] text-slate-500">
-                  상단 <strong>[17대 주요 지면 셀렉터]</strong>에서 카카오 DA, 네이버 타임보드 등 원하는 지면을 선택합니다.
+                  상단 <strong>[32대 주요 매체 셀렉터]</strong>에서 카카오 DA, 네이버 타임보드 등 원하는 지면을 선택합니다.
                 </p>
               </div>
 

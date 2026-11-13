@@ -418,11 +418,22 @@ export const SafeZoneModal: React.FC<SafeZoneModalProps> = ({
             </div>
           </div>
 
-          <div className="p-2.5 bg-amber-50/70 border border-amber-200 rounded-lg flex items-start space-x-2 text-[11px] text-amber-900">
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <span>
-              <strong>디자이너 팁:</strong> 상하좌우 붉은색 테두리 영역(위험 영역)에 배치된 카피나 로고는 디바이스 해상도에 따라 잘리거나 매체사 시스템 UI(AD 마크 등)에 가려질 수 있습니다. 핵심 정보는 반드시 <strong>중앙 녹색 안전 영역(Safe Zone)</strong> 내부에 배치하세요.
-            </span>
+          <div className="space-y-2 pt-1 text-[11px]">
+            <div className="p-2.5 bg-amber-50/80 border border-amber-200 rounded-lg flex items-start space-x-2 text-amber-900">
+              <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <p>
+                  <strong>디자이너 유의사항:</strong> 주요 요소(텍스트, 로고, 필수고지문구, 메인 오브젝트 등)는 상/하 및 좌/우 외곽 여백 영역이 아닌 <strong>중앙 녹색 안전 영역(Safe Zone)</strong> 내부에 배치하도록 제작해야 합니다. 특히 이미지의 우측 하단은 시스템 광고UI(AD 마크, 더보기 버튼 등)에 가려질 수 있어 주요 요소 배치를 지양할 것을 강력 권장합니다.
+                </p>
+                <p className="text-[10px] text-amber-800">
+                  ※ SAFE ZONE의 px값은 공식 가이드 기본 사이즈 기준이며, 기본 사이즈보다 큰 이미지를 사용할 경우 동일한 비율로 확대 적용됩니다. (위 미리보기는 현재 소재 해상도에 맞춰 비례 반영됨)
+                </p>
+              </div>
+            </div>
+            <div className="p-2 bg-slate-50 border border-slate-200 rounded-lg text-slate-500 text-[10px] flex items-center space-x-1.5">
+              <span>ℹ️</span>
+              <span>노출되는 게재지면 및 모바일 디바이스 해상도에 따라 실제 노출 면적과 상이할 수 있으며, 시스템 정책에 따라 AD(Sponsored) 마크가 자동 표기됩니다.</span>
+            </div>
           </div>
         </div>
       </div>

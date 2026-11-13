@@ -97,19 +97,19 @@ placements:
   text_ratio_limit: 0.2
   text_ratio_level: warning
   safe_zone:
-    description: "주요 요소(텍스트, 로고, 필수고지문구)는 상/하 100px 및 좌측 40px 영역 이외 중앙에 배치 (우하단 광고UI 가림 영역)"
+    description: "공식 제작가이드: 주요 요소(텍스트, 로고, 필수고지문구, 메인 오브젝트 등)는 상/하 100px 및 좌측 40px 영역이 아닌 중앙 안전 영역에 배치해야 하며, 우측 하단은 광고UI 요소(AD 마크 등)에 가려질 수 있어 주요 요소 배치 지양 권장"
     base_width: 1200
     base_height: 600
     top_px: 100
     bottom_px: 100
     left_px: 40
-    right_px: 40
+    right_px: 0
     ui_elements:
     - name: "우하단 광고UI / AD 마크"
       position: "bottom-right"
-      width_ratio: 0.14
-      height_ratio: 0.14
-      description: "시스템 자동 노출 AD 마크 및 더보기 버튼"
+      width_ratio: 0.16
+      height_ratio: 0.16
+      description: "시스템 자동 노출 AD 마크 및 더보기 버튼 (주요 요소 배치 금지 권장)"
 - name: 카카오 DA (디스플레이 네이티브 1:1)
   aspect_ratio:
   - 1

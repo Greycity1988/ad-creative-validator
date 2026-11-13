@@ -408,11 +408,17 @@ export function evaluatePlacement(
     const scaledLeft = Math.round((sz.left_px || 0) * scaleX);
     const scaledRight = Math.round((sz.right_px || 0) * scaleX);
 
+    const marginDetails: string[] = [];
+    if (scaledTop > 0 || scaledBottom > 0) marginDetails.push(`상하 ${scaledTop}px`);
+    if (scaledLeft > 0) marginDetails.push(`좌측 ${scaledLeft}px`);
+    if (scaledRight > 0) marginDetails.push(`우측 ${scaledRight}px`);
+    const marginStr = marginDetails.length > 0 ? marginDetails.join(', ') + ' 외곽 여백' : '중앙 안전 마진';
+
     checks.push({
       name: 'safe_zone',
       status: 'pass',
-      message: `세이프존(Safe Zone) 공식 가이드 탑재: 상단 ${scaledTop}px, 하단 ${scaledBottom}px, 좌측 ${scaledLeft}px, 우측 ${scaledRight}px 외곽 여백 준수 권장 [📐 인스펙터로 실시간 대조 가능]`,
-      expected: `상하 ${scaledTop}/${scaledBottom}px, 좌우 ${scaledLeft}/${scaledRight}px 안전 마진`,
+      message: `세이프존(Safe Zone) 공식 가이드 탑재: ${marginStr} 준수 권장 [📐 세이프존 인스펙터로 실시간 대조 가능]`,
+      expected: `${marginStr} 및 주요 오브젝트 중앙 배치`,
       actual: `가이드라인 대조 준비 완료`,
     });
   }
