@@ -16,7 +16,7 @@ import {
   Layers,
   RefreshCw,
 } from 'lucide-react';
-import { PlatformOption, PlatformMetadata } from '../types';
+import { PlatformOption, PlatformMetadata, PlacementDetail } from '../types';
 import { TARGET_CHANNELS } from '../constants/channels';
 
 export const PLATFORMS: PlatformOption[] = [
@@ -358,6 +358,28 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   const [selectedChannelId, setSelectedChannelId] = useState<string>('all');
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [hoveredPlacement, setHoveredPlacement] = useState<{
+    name: string;
+    detail?: PlacementDetail;
+    rect: { top: number; bottom: number; left: number; width: number };
+  } | null>(null);
+
+  const handlePlacementMouseEnter = (
+    e: React.MouseEvent<HTMLElement>,
+    name: string,
+    detail?: PlacementDetail
+  ) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    setHoveredPlacement({
+      name,
+      detail,
+      rect: { top: r.top, bottom: r.bottom, left: r.left, width: r.width },
+    });
+  };
+
+  const handlePlacementMouseLeave = () => {
+    setHoveredPlacement(null);
+  };
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
   const totalPlacementsCount =
@@ -818,13 +840,18 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                           return (
                             <label
                               key={placementName}
-                              className={`flex items-start justify-between p-1.5 rounded-lg text-[11px] cursor-pointer transition-colors ${
+                              onMouseEnter={(e) =>
+                                handlePlacementMouseEnter(e, placementName, detail)
+                              }
+                              onMouseLeave={handlePlacementMouseLeave}
+                              title={`${placementName}${detail?.dimension_str ? ` (${detail.dimension_str})` : ''}`}
+                              className={`flex items-start justify-between p-1.5 rounded-lg text-[11px] cursor-pointer transition-colors relative group/item ${
                                 isChecked
                                   ? 'bg-blue-100/70 text-blue-900 font-semibold'
                                   : 'hover:bg-slate-200/50 text-slate-700'
                               }`}
                             >
-                              <div className="flex items-start space-x-1.5 flex-1 pr-2 min-w-0">
+                              <div className="flex items-start space-x-1.5 flex-1 pr-1.5 min-w-0">
                                 <input
                                   type="checkbox"
                                   checked={isChecked}
@@ -833,7 +860,9 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                                   }
                                   className="rounded text-blue-600 focus:ring-blue-500 w-3.5 h-3.5 mt-0.5 cursor-pointer flex-shrink-0"
                                 />
-                                <span className="leading-tight truncate">{placementName}</span>
+                                <span className="leading-tight truncate block" title={placementName}>
+                                  {placementName}
+                                </span>
                               </div>
                               {detail && detail.dimension_str && (
                                 <span className="text-[10px] font-mono text-slate-500 bg-white px-1.5 py-0.5 rounded border border-slate-200 flex-shrink-0 ml-1">
@@ -897,6 +926,70 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           )}
         </button>
       </div>
+
+      {/* ── 7. Floating Placement Detail Hover Tooltip ── */}
+      {hoveredPlacement && (
+        <div
+          className="fixed z-50 pointer-events-none transition-opacity duration-150 animate-fadeIn"
+          style={{
+            left: `${Math.min(Math.max(hoveredPlacement.rect.left, 16), window.innerWidth - 340)}px`,
+            top:
+              hoveredPlacement.rect.top < 110
+                ? `${hoveredPlacement.rect.bottom + 8}px`
+                : `${hoveredPlacement.rect.top - 8}px`,
+            transform: hoveredPlacement.rect.top < 110 ? 'none' : 'translateY(-100%)',
+          }}
+        >
+          <div className="bg-slate-900/95 backdrop-blur-md text-white px-3 py-2.5 rounded-xl shadow-2xl border border-slate-700/80 max-w-sm w-max space-y-1.5 ring-1 ring-black/20">
+            {/* Title / Name */}
+            <div className="font-bold text-slate-100 text-xs flex items-center gap-1.5 leading-snug">
+              <span className="text-blue-400 flex-shrink-0">📍</span>
+              <span className="text-white font-semibold">{hoveredPlacement.name}</span>
+            </div>
+
+            {/* Spec Badges */}
+            {hoveredPlacement.detail && (
+              <div className="flex items-center gap-1.5 text-[10px] text-slate-300 font-mono flex-wrap pt-1 border-t border-slate-800">
+                {hoveredPlacement.detail.dimension_str && (
+                  <span className="bg-blue-950/80 text-blue-300 border border-blue-800/60 px-1.5 py-0.5 rounded font-bold">
+                    📐 {hoveredPlacement.detail.dimension_str}
+                  </span>
+                )}
+                {hoveredPlacement.detail.max_file_size_kb && (
+                  <span className="bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 px-1.5 py-0.5 rounded">
+                    💾 최대{' '}
+                    {hoveredPlacement.detail.max_file_size_kb >= 1024
+                      ? `${(hoveredPlacement.detail.max_file_size_kb / 1024).toFixed(1)}MB`
+                      : `${hoveredPlacement.detail.max_file_size_kb}KB`}
+                  </span>
+                )}
+                {hoveredPlacement.detail.allowed_formats &&
+                  hoveredPlacement.detail.allowed_formats.length > 0 && (
+                    <span className="bg-slate-800/80 text-slate-300 border border-slate-700 px-1.5 py-0.5 rounded uppercase">
+                      🖼️ {hoveredPlacement.detail.allowed_formats.join(', ')}
+                    </span>
+                  )}
+              </div>
+            )}
+
+            {/* Description if available */}
+            {hoveredPlacement.detail?.description && (
+              <p className="text-[10px] text-slate-300 font-sans leading-relaxed pt-0.5">
+                {hoveredPlacement.detail.description}
+              </p>
+            )}
+
+            {/* Triangle pointer */}
+            <div
+              className={`absolute left-6 border-4 border-transparent ${
+                hoveredPlacement.rect.top < 110
+                  ? 'bottom-full -mb-1 border-b-slate-900/95'
+                  : 'top-full -mt-1 border-t-slate-900/95'
+              }`}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

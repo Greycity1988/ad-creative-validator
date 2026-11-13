@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   Clock,
   Layers,
+  Monitor,
 } from 'lucide-react';
 
 interface GuideModalProps {
@@ -72,6 +73,26 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
             <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
               ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>매일 새벽 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
             </p>
+          </div>
+
+          {/* ── PC Environment Notice Callout Banner ── */}
+          <div className="p-3.5 rounded-xl border border-indigo-200/90 bg-indigo-50/50 flex items-start space-x-3 text-xs shadow-2xs">
+            <div className="p-2 bg-indigo-600 text-white rounded-lg shadow-xs flex-shrink-0 mt-0.5">
+              <Monitor className="w-4 h-4" />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <h4 className="font-bold text-indigo-950 text-xs sm:text-sm">
+                  🖥️ PC(데스크톱) 환경 최적화 안내
+                </h4>
+                <span className="text-[10px] bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-bold border border-indigo-200">
+                  권장 환경
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
+                본 광고 소재 검수 시스템은 <strong>고해상도 광고 소재의 픽셀 단위 정밀 대조, 세이프존(Safe Zone) 오버레이 시각화, 대용량 다중 파일 드래그앤드롭 및 엑셀 리포트 익스포트</strong> 등 전문 마케팅·디자인 업무 환경에 맞춰 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 원활한 검수 작업을 위해 PC 환경에서의 이용을 권장해 드립니다.
+              </p>
+            </div>
           </div>
 
           {/* Section 1: Why is this needed? */}

@@ -73,6 +73,9 @@ export interface PlacementDetail {
   aspect_ratio_str: string;
   allowed_formats: string[];
   safe_zone?: SafeZoneSpec;
+  max_file_size_kb?: number | null;
+  description?: string;
+  notes?: string[];
 }
 
 export interface PlatformMetadata {
