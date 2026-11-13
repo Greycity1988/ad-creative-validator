@@ -69,6 +69,7 @@ export interface PlatformOption {
   icon: string;
   badgeColor: string;
   description: string;
+  category: 'portal' | 'network' | 'commerce' | 'reward' | 'global';
 }
 
 export interface UploadedFileItem {
