@@ -14,6 +14,7 @@ import {
   X,
   Sparkles,
   Layers,
+  RefreshCw,
 } from 'lucide-react';
 import { PlatformOption, PlatformMetadata } from '../types';
 import { TARGET_CHANNELS } from '../constants/channels';
@@ -490,9 +491,13 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
               <span>{totalPlacementsCount}개 공식 지면 전수 탑재</span>
             </div>
+            <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800" title="매일 새벽 06:00 KST 공식 가이드 자동 변경 감지 가동 중">
+              <RefreshCw className="w-3.5 h-3.5 text-blue-600" />
+              <span>매일 새벽 공식 가이드 자동 점검</span>
+            </div>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            원하는 광고 매체를 선택하세요. 현재{' '}
+            원하는 광고 매체를 선택하세요. 모든 규격은 매체 공식 배포 가이드 100% 원문 기준이며, 현재{' '}
             <strong className="text-blue-600 font-bold">{selectedPlatforms.length}개</strong> 매체 (
             {PLATFORMS.length}개 중)가 검수 대상으로 지정되었습니다.
           </p>

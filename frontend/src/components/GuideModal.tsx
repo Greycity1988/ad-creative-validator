@@ -1,5 +1,15 @@
 import React from 'react';
-import { X, BookOpen, AlertTriangle, Sparkles, ShieldCheck } from 'lucide-react';
+import {
+  X,
+  BookOpen,
+  AlertTriangle,
+  Sparkles,
+  ShieldCheck,
+  RefreshCw,
+  CheckCircle2,
+  Clock,
+  Layers,
+} from 'lucide-react';
 
 interface GuideModalProps {
   isOpen: boolean;
@@ -43,6 +53,27 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
 
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 text-slate-700">
+          {/* ── Key Trust & Reliability Callout Banner ── */}
+          <div className="p-4 rounded-xl border border-blue-200/90 bg-gradient-to-br from-blue-50 via-indigo-50/50 to-slate-50 space-y-2.5 shadow-2xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center space-x-2">
+                <div className="p-1.5 bg-blue-600 text-white rounded-lg shadow-xs flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight">
+                  100% 매체사 공식 가이드 직접 수록 & 매일 새벽 자동 변경 감지
+                </h3>
+              </div>
+              <span className="inline-flex items-center space-x-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 self-start sm:self-auto">
+                <RefreshCw className="w-3 h-3 text-emerald-600" />
+                <span>매일 06:00 KST 가이드 자동 점검</span>
+              </span>
+            </div>
+            <p className="text-[11px] text-slate-600 leading-relaxed font-medium">
+              ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>매일 새벽 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
+            </p>
+          </div>
+
           {/* Section 1: Why is this needed? */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
@@ -150,7 +181,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                     매체별 공식 개정 규격이 헷갈리거나 확인이 필요할 때
                   </h4>
                   <p className="text-[11px] text-slate-500 mt-0.5 leading-relaxed">
-                    카카오 비즈보드 960×300 단일화, 네이버 NOSP 타임보드 1660×260, 스페셜DA 1250×520 등 2026년 최신 공식 가이드라인 개정일과 세부 규격을 확인하고 싶을 때.
+                    카카오 비즈보드 960×300 단일화, 네이버 NOSP 타임보드 1660×260(300KB), 스페셜DA 1250×520 등 2026년 최신 공식 가이드라인 개정일과 세부 규격을 확인하고 싶을 때.
                   </p>
                 </div>
               </div>
@@ -200,6 +231,50 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
           </div>
+
+          {/* Section 4: Official Source & Daily Dawn Monitoring Guarantee */}
+          <div className="space-y-3 pt-2 border-t border-slate-100">
+            <div className="flex items-center space-x-2">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">
+                🛡️
+              </span>
+              <h3 className="text-sm font-bold text-slate-900">
+                4. 규격 무결성 및 신뢰성 보장 (공식 출처 & 매일 새벽 점검)
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                <div className="font-bold text-slate-800 flex items-center space-x-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                  <span>100% 매체 공식 가이드 직접 수록</span>
+                </div>
+                <p className="text-slate-500 leading-relaxed text-[11px]">
+                  개인 블로그나 비공식 요약글을 일절 배제하고, 네이버 NOSP, 카카오모먼트, 메타 비즈니스 헬프센터, 구글 애즈 공식 센터 등 각 매체사 공식 배포 규격서 원문만을 직접 대조하여 탑재했습니다. (예: NOSP 타임보드 최신 300KB 개정 스펙 완벽 반영)
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                <div className="font-bold text-slate-800 flex items-center space-x-1.5">
+                  <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>매일 새벽(06:00 KST) 자동 변경 감지</span>
+                </div>
+                <p className="text-slate-500 leading-relaxed text-[11px]">
+                  매체사의 갑작스러운 규격 개정(용량 증액, 신규 비율 도입 등)에 즉각 대응하기 위해, 32개 매체 공식 가이드 URL을 매일 새벽 자동 크롤링하고 콘텐츠 무결성 해시(SHA-256)를 대조하여 변동을 감지 및 신속 반영합니다.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-slate-200 bg-white space-y-1.5">
+                <div className="font-bold text-slate-800 flex items-center space-x-1.5">
+                  <Layers className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>세이프존(Safe Zone) 공식 연동</span>
+                </div>
+                <p className="text-slate-500 leading-relaxed text-[11px]">
+                  단순 해상도·용량 검수를 넘어 상하좌우 안전 여백과 우하단 시스템 AD 마크 차폐 위험 구역을 시각화하며, <em>"기본 사이즈보다 큰 이미지 사용 시 동일 비율 확대 적용"</em> 공식 원칙에 따라 실시간 비례 스케일링을 지원합니다.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Footer */}
@@ -219,3 +294,4 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
