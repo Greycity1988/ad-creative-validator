@@ -39,9 +39,12 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-[11px] font-semibold text-ink-tertiary bg-canvas-subtle border border-line px-2 py-0.5 rounded-full">
                 v2.1 Pro
               </span>
+              <span className="hidden sm:inline-flex items-center space-x-1 bg-canvas-subtle text-ink-secondary text-[11px] px-2 py-0.5 rounded-full font-medium border border-line" title="본 검수 시스템은 정밀 픽셀 대조 및 세이프존 시각화를 위해 PC 환경에 최적화되어 있습니다.">
+                💻 PC 환경 최적화
+              </span>
             </div>
             <p className="text-[12px] text-ink-muted font-normal mt-0.5 hidden sm:block">
-              Ad Creative Guideline Validator — 15대 주요 광고 매체 & 160+ 공식 지면 정밀 검수
+              Ad Creative Guideline Validator — 32대 국내외 광고 매체 & 430+ 공식 지면 원클릭 규격 검수
             </p>
           </div>
         </div>

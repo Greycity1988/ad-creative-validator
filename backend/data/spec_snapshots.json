@@ -1,0 +1,222 @@
+{
+  "acetrader": {
+    "id": "acetrader",
+    "name": "에이스트레이더 (AceTrader)",
+    "url": "https://www.acetrader.co.kr",
+    "content_hash": "ea3327222592777c71d633e6145b7e74b088d132b2f8be4af8fe221d9c2a63db",
+    "content_length": 5249,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:45"
+  },
+  "adison": {
+    "id": "adison",
+    "name": "애디슨 오퍼월",
+    "url": "https://adison.co",
+    "content_hash": "900760969a7926480aff80c5a42bf4014895c7d05be630cb951dc61c85877458",
+    "content_length": 236397,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:45"
+  },
+  "appier": {
+    "id": "appier",
+    "name": "애피어 (Appier)",
+    "url": "https://www.appier.com",
+    "content_hash": "7aa94aa648588470a6cc50b50c3df25ff8cd784b2dae8a2570940258ec1e3d0d",
+    "content_length": 160955,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:45"
+  },
+  "cauly": {
+    "id": "cauly",
+    "name": "카울리 (Cauly)",
+    "url": "https://cauly.net",
+    "content_hash": "6d2d62598fdfa8647ed9dc91acf9bcdb714663c4e356328da713324c04ad1204",
+    "content_length": 6588,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:46"
+  },
+  "chzzk": {
+    "id": "chzzk",
+    "name": "네이버 치지직 (CHZZK)",
+    "url": "https://chzzk.naver.com",
+    "content_hash": "f20434ba3605724b801dbf0618399df31ef6fe01067b09eceaf33b2cee2619c8",
+    "content_length": 5543,
+    "etag": "\"6af51fa1-15a7\"",
+    "last_modified": "Thu, 12 Nov 2026 02:08:33 GMT",
+    "last_checked": "2026-11-13 19:00:46"
+  },
+  "criteo": {
+    "id": "criteo",
+    "name": "크리테오",
+    "url": "https://help.criteo.com",
+    "content_hash": "c805839285ddc204529bd6ca92fcdebe68b9e930784a27ab7833739c9e3267b7",
+    "content_length": 426053,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:47"
+  },
+  "daangn": {
+    "id": "daangn",
+    "name": "당근 (Karrot Ads)",
+    "url": "https://business.daangn.com",
+    "content_hash": "6dba50fe2133845e9dbb0bfd3cda1b4389fa9ff94cc5e8d0f3f1658eb2bb55dc",
+    "content_length": 113226,
+    "etag": "\"16udiqfpkwf2dbg\"",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:47"
+  },
+  "google_ads": {
+    "id": "google_ads",
+    "name": "Google Ads",
+    "url": "https://support.google.com/google-ads/answer/1722096",
+    "content_hash": "44ddbaf2b1516bc407b48c4e0d1b803e8ef957a4157a58b1fdd306f7ce2ef851",
+    "content_length": 1745221,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:48"
+  },
+  "kakao": {
+    "id": "kakao",
+    "name": "카카오모먼트",
+    "url": "https://kakaobusiness.gitbook.io/main/ad/moment/performance/talkboard/content-guide",
+    "content_hash": "425342cd4ff992068fc430b65a59232951cd7aa92055962f2539ae7a726062df",
+    "content_length": 2317520,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:49"
+  },
+  "naver": {
+    "id": "naver",
+    "name": "네이버 (GFA / NOSP)",
+    "url": "https://ads.naver.com/guide/da",
+    "content_hash": "67bc2d4f298662dd0c7fd8ab65df306e317a79b0253b6aa307cf060119337b05",
+    "content_length": 261296,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:52"
+  },
+  "reddit": {
+    "id": "reddit",
+    "name": "레딧 (Reddit)",
+    "url": "https://business.reddithelp.com",
+    "content_hash": "3ddad62a7c17cde593a319f181976a78396c69aba163f86c7091b048a0b8069f",
+    "content_length": 544402,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:55"
+  },
+  "rtb_house": {
+    "id": "rtb_house",
+    "name": "RTB 하우스",
+    "url": "https://www.rtbhouse.com",
+    "content_hash": "0a3cc991bca873a0f3c95a7290c1dbc343f872387ab9e6bd7d669a9254f66fdf",
+    "content_length": 176575,
+    "etag": "\"11y3nf0vwov3s69\"",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:56"
+  },
+  "snapchat": {
+    "id": "snapchat",
+    "name": "스냅챗 (Snapchat)",
+    "url": "https://businesshelp.snapchat.com",
+    "content_hash": "57eb8a619c29c021d4b636c7433da29b1b82f996e384128b5f14018a5172e711",
+    "content_length": 737650,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:57"
+  },
+  "soop": {
+    "id": "soop",
+    "name": "숲 (SOOP, 구 아프리카TV)",
+    "url": "https://sooplive.com",
+    "content_hash": "b67c1ff5b6421c6798f866257746276604bec8915d393d5e467f90dfba5deb17",
+    "content_length": 14643,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:57"
+  },
+  "spotify": {
+    "id": "spotify",
+    "name": "스포티파이 (Spotify)",
+    "url": "https://ads.spotify.com",
+    "content_hash": "6467816c8c8caec5748e09e7b4cef21d600d32ee3fcf5d67021a6c483488686d",
+    "content_length": 207569,
+    "etag": "\"emtlij9hsi4g2q\"",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:58"
+  },
+  "taboola": {
+    "id": "taboola",
+    "name": "타불라 (Taboola)",
+    "url": "https://help.taboola.com",
+    "content_hash": "25911344614ff419db842a9b725426f00cc46d639dc33df219c52eacf572d5cb",
+    "content_length": 77576,
+    "etag": "W/\"25911344614ff419db842a9b725426f0\"",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:01:00"
+  },
+  "targetpick": {
+    "id": "targetpick",
+    "name": "타겟픽 (TargetPick)",
+    "url": "https://targetpick.io",
+    "content_hash": "e8b091cd09fa4d89ac869ff5aa1e3dfdba5d31cd5f4b2a09f28a4a35e281a49a",
+    "content_length": 15904,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:01:00"
+  },
+  "tiktok": {
+    "id": "tiktok",
+    "name": "틱톡 (TikTok)",
+    "url": "https://ads.tiktok.com/help/",
+    "content_hash": "45951da373d467a447f062743154ef4eb60dffa7f066004ebb59694adf4a4f7e",
+    "content_length": 1629460,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:01:02"
+  },
+  "tnk": {
+    "id": "tnk",
+    "name": "티엔케이팩토리 (TNK Factory)",
+    "url": "https://tnkfactory.com",
+    "content_hash": "f69c45a295350b93e4211d763421e6b78a6ff8116947d825938f1c7928e4bb03",
+    "content_length": 46,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:01:02"
+  },
+  "toss": {
+    "id": "toss",
+    "name": "토스 (Toss Ads)",
+    "url": "https://toss-ads.gitbook.io/guide",
+    "content_hash": "92e2752f9f564e04ed3f1be8a17dcfd127d24dd9d87c720c7ef67f8e1151c788",
+    "content_length": 602357,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:01:02"
+  },
+  "coupang": {
+    "id": "coupang",
+    "name": "쿠팡 (Coupang Ads)",
+    "url": "https://advertising.coupang.com",
+    "content_hash": "ac7b531ef0f187b8fd18e0cc0646b12f81dcfafcff842a37ebfe4904ce7a9c1b",
+    "content_length": 775696,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:46"
+  },
+  "meta": {
+    "id": "meta",
+    "name": "Meta (Facebook/Instagram)",
+    "url": "https://www.facebook.com/business/ads-guide",
+    "content_hash": "cfe9b96792200d655638c410e6274ed50d2bc9360224cfe271df18891bac3246",
+    "content_length": 485884,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-13 19:00:52"
+  }
+}

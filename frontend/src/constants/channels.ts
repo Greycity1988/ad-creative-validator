@@ -132,7 +132,7 @@ export const TARGET_CHANNELS: TargetChannelOption[] = [
     platformId: 'google_ads',
     categoryName: '구글 애즈',
     keywords: ['google', 'gdn', 'pmax', 'demand gen'],
-    description: 'PMax 1.91:1/1:1/4:5, Demand Gen (Shorts), GDN 고정 배너 17종',
+    description: 'PMax, Demand Gen (Shorts 9:16), GDN/AdMob 고정 배너 전 규격(23종)',
   },
   {
     id: 'meta',

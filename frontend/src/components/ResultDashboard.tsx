@@ -10,12 +10,14 @@ import {
   FileText,
   ArrowLeft,
 } from 'lucide-react';
-import { ValidationItem } from '../types';
+import { ValidationItem, SafeZoneSpec } from '../types';
 import { ImagePreview } from './ImagePreview';
 import { TextRatioGauge } from './TextRatioGauge';
 import { ResultCard } from './ResultCard';
 import { BatchSummaryView } from './BatchSummaryView';
+import { SafeZoneModal } from './SafeZoneModal';
 import { downloadCsvReport } from '../api/validator';
+import { track } from '@vercel/analytics';
 
 interface ResultDashboardProps {
   results: ValidationItem[];
@@ -34,6 +36,11 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
   const [exportError, setExportError] = useState<string | null>(null);
   const [platformFilter, setPlatformFilter] = useState<string>('all');
   const [viewMode, setViewMode] = useState<'target' | 'pass' | 'all'>('target');
+  const [activeSafeZone, setActiveSafeZone] = useState<{
+    placementName: string;
+    platformName: string;
+    safeZone: SafeZoneSpec;
+  } | null>(null);
 
   if (!results || results.length === 0) {
     return null;
@@ -72,6 +79,14 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
     try {
       setIsExporting(true);
       setExportError(null);
+      try {
+        track('Excel Report Downloaded', {
+          total_files: results.length,
+          total_placements: totalPlacementsCount,
+        });
+      } catch {
+        // ignore
+      }
       await downloadCsvReport(results, `ad_creative_report_${Date.now()}.csv`);
     } catch (err: unknown) {
       console.error('Failed to export CSV:', err);
@@ -111,7 +126,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               소재 규격 검수 종합 결과
             </h2>
             <p className="text-sm text-ink-secondary mt-1.5 leading-relaxed">
-              총 <strong className="text-ink-primary font-mono">{results.length}개</strong> 소재에 대한 15대 매체사 규격 검증이 완료되었습니다.
+              총 <strong className="text-ink-primary font-mono">{results.length}개</strong> 소재에 대한 32대 매체사 규격 검증이 완료되었습니다.
             </p>
           </div>
 
@@ -405,11 +420,45 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {filteredPlatformResults.map((pResult, index) => (
-                <ResultCard key={index} platformResult={pResult} viewMode={viewMode} />
+                <ResultCard
+                  key={index}
+                  platformResult={pResult}
+                  viewMode={viewMode}
+                  imageUrl={filePreviews[currentItem.filename] || ''}
+                  imageInfo={{
+                    width: currentItem.image_info.width,
+                    height: currentItem.image_info.height,
+                    filename: currentItem.filename,
+                  }}
+                  onOpenSafeZone={(placementName, platformName, safeZone) => {
+                    setActiveSafeZone({
+                      placementName,
+                      platformName,
+                      safeZone,
+                    });
+                  }}
+                />
               ))}
             </div>
           </div>
         </div>
+      )}
+
+      {/* Safe Zone Visual Inspector Modal */}
+      {activeSafeZone && (
+        <SafeZoneModal
+          isOpen={!!activeSafeZone}
+          onClose={() => setActiveSafeZone(null)}
+          imageUrl={filePreviews[currentItem.filename] || ''}
+          imageInfo={{
+            width: currentItem.image_info.width,
+            height: currentItem.image_info.height,
+            filename: currentItem.filename,
+          }}
+          placementName={activeSafeZone.placementName}
+          platformName={activeSafeZone.platformName}
+          safeZone={activeSafeZone.safeZone}
+        />
       )}
 
       {/* Bottom Action Footer */}

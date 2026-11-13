@@ -72,6 +72,25 @@ placements:
   - png
   text_ratio_limit: 0.3
   text_ratio_level: warning
+  safe_zone:
+    description: "상단 250px 및 하단 350px 세이프존 필수 준수 (상단 계정 프로필/헤더 및 하단 CTA 버튼 가림 영역)"
+    base_width: 1080
+    base_height: 1920
+    top_px: 250
+    bottom_px: 350
+    left_px: 60
+    right_px: 60
+    ui_elements:
+    - name: "인스타그램 프로필 / 닫기 헤더"
+      position: "top"
+      width_ratio: 1.0
+      height_ratio: 0.13
+      description: "프로필 이미지, 계정명, 사운드 토글, 닫기 버튼"
+    - name: "하단 CTA 버튼 (더 알아보기)"
+      position: "bottom-center"
+      width_ratio: 0.65
+      height_ratio: 0.08
+      description: "하단 고정 스와이프업 CTA 액션 버튼"
 - name: Carousel (1:1)
   aspect_ratio:
   - 1
@@ -88,3 +107,116 @@ placements:
   - png
   text_ratio_limit: 0.3
   text_ratio_level: warning
+- name: Meta Audience Network (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 모바일 앱 상하단 띠배너
+- name: Meta Audience Network (중형 직사각형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 인앱 MREC 사각형 배너
+- name: Meta Audience Network (리더보드 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 태블릿/데스크톱 리더보드 배너
+- name: Meta Audience Network (전면 인터스티셜 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 모바일 풀스크린 전면 광고
+- name: Meta Audience Network (네이티브 배너 1.91:1 1200×627)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  exact_width: 1200
+  exact_height: 627
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Meta 오디언스 네트워크 퍼블리셔 앱 인피드 네이티브 배너
+- name: Meta Facebook 우측 칼럼 (1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 315
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Facebook 데스크톱 우측 칼럼 가로형 배너
+- name: Meta Instagram 탐색 탭 (1:1 1080×1080)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1080
+  min_width: 600
+  min_height: 600
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Instagram 탐색 탭 및 탐색 홈 그리드 정방형 배너
+- name: Meta Instagram 탐색 탭 세로형 (4:5 1080×1350)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1350
+  min_width: 600
+  min_height: 750
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Instagram 탐색 피드 4:5 세로형 배너
+- name: Meta 마켓플레이스 (1:1 1080×1080)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1080
+  min_width: 600
+  min_height: 600
+  max_file_size_kb: 30720
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Facebook 마켓플레이스 커머스 피드 배너

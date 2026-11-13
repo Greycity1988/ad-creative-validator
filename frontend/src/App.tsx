@@ -12,6 +12,8 @@ import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
+import { track, pageview } from '@vercel/analytics';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
@@ -93,6 +95,9 @@ export const App: React.FC = () => {
     setFiles([]);
     setResults(null);
     setErrorMessage(null);
+    if (window.location.pathname !== '/') {
+      window.history.replaceState({}, '', '/');
+    }
   };
 
   const handleStartValidation = async () => {
@@ -101,6 +106,25 @@ export const App: React.FC = () => {
     try {
       setIsLoading(true);
       setErrorMessage(null);
+
+      // Track validation metrics for project owner
+      try {
+        // 1. Virtual pageview: tracks under "Pages" (/validated) completely free on Vercel Hobby plan
+        pageview({ route: '/validated', path: '/validated' });
+        if (window.location.pathname !== '/validated') {
+          window.history.pushState({}, '', '/validated');
+        }
+
+        // 2. Custom event: logged if Pro plan is active
+        track('Validation Executed', {
+          file_count: files.length,
+          platform_count: selectedPlatforms.length,
+          platforms: selectedPlatforms.slice(0, 8).join(','),
+          auto_match: autoMatch ? 'enabled' : 'disabled',
+        });
+      } catch {
+        // ignore tracking failures
+      }
 
       const rawFiles = files.map((f) => f.file);
       const response = await validateImages(
@@ -146,6 +170,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-canvas text-ink-primary font-sans antialiased flex flex-col selection:bg-accent/15 selection:text-accent">
+      <Analytics scriptSrc="https://va.vercel-scripts.com/v1/script.js" />
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
@@ -158,6 +183,7 @@ export const App: React.FC = () => {
         <OverviewHero
           files={files}
           selectedPlatformCount={selectedPlatforms.length}
+          totalPlatformCount={platformsMetadata.length}
           totalPlacementCount={totalPlacementsCount}
           onScrollToUpload={() => {
             const el = document.getElementById('step-upload');
@@ -242,7 +268,7 @@ export const App: React.FC = () => {
           are deeply appreciated!
         </p>
         <p className="text-[11px] text-ink-muted">
-          ACV (Ad Creative Validator) • 15 Major Advertising Platforms & 160+ Official Placements Supported
+          ACV (Ad Creative Validator) • 32 Major Advertising Platforms & 430+ Official Placements Supported • PC 환경 최적화
         </p>
       </footer>
 

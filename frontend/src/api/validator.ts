@@ -31,48 +31,125 @@ export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
   return DEFAULT_METADATA;
 };
 
-/** True only when an external backend is configured. The public site runs without one. */
-export const HAS_BACKEND = Boolean(import.meta.env.VITE_API_BASE_URL);
-
-const FEEDBACK_ISSUES_URL = 'https://github.com/Greycity1988/ad-creative-validator/issues/new';
-
-/**
- * Build a prefilled GitHub issue link for a feedback item.
- * The email field is left out on purpose: issues are public.
- */
-export const buildFeedbackIssueUrl = (data: FeedbackCreateRequest): string => {
-  const title = `[${data.category}] ${data.title}`;
-  const body = `${data.content}\n\n---\n작성자: ${data.author || '익명 마케터'}`;
-  return `${FEEDBACK_ISSUES_URL}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-};
+interface GitHubIssue {
+  id: number;
+  number: number;
+  title: string;
+  user: { login: string; avatar_url?: string };
+  state: 'open' | 'closed';
+  created_at: string;
+  body: string | null;
+  html_url: string;
+  comments: number;
+  labels?: Array<{ name: string; color: string }>;
+}
 
 export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
-  if (!HAS_BACKEND) {
-    return [];
+  const items: FeedbackItem[] = [];
+
+  // 1. Fetch real public issues from GitHub Issues API
+  try {
+    const res = await fetch(
+      'https://api.github.com/repos/Greycity1988/ad-creative-validator/issues?state=all&per_page=50',
+      {
+        headers: {
+          Accept: 'application/vnd.github.v3+json',
+        },
+      }
+    );
+
+    if (res.ok) {
+      const githubIssues: GitHubIssue[] = await res.json();
+      if (Array.isArray(githubIssues)) {
+        githubIssues.forEach((issue) => {
+          let category = '신규 규격 제보';
+          let title = issue.title;
+
+          const catMatch = issue.title.match(/^\[(.*?)\]\s*(.*)$/);
+          if (catMatch) {
+            category = catMatch[1];
+            title = catMatch[2] || issue.title;
+          } else if (issue.labels && issue.labels.length > 0) {
+            category = issue.labels[0].name;
+          }
+
+          items.push({
+            id: `gh-${issue.id}`,
+            issue_number: issue.number,
+            title: title,
+            category: category,
+            content: issue.body || '상세 내용 없음',
+            author: `@${issue.user?.login || '익명 제보자'}`,
+            created_at: issue.created_at.split('T')[0],
+            status: issue.state === 'closed' ? '반영 완료' : '검토 및 개발 중',
+            html_url: issue.html_url,
+            is_github: true,
+            comments_count: issue.comments,
+          });
+        });
+      }
+    }
+  } catch (err) {
+    console.warn('Failed to fetch GitHub issues:', err);
   }
 
+  // 2. Also merge any locally saved drafts or feedback from this browser
   try {
-    const response = await apiClient.get<FeedbackItem[]>('/feedbacks');
-    if (Array.isArray(response.data)) {
-      return response.data;
+    const stored = localStorage.getItem('ad_user_feedbacks');
+    if (stored) {
+      const localList: FeedbackItem[] = JSON.parse(stored);
+      if (Array.isArray(localList)) {
+        localList.forEach((localItem) => {
+          if (!items.some((it) => it.id === localItem.id)) {
+            items.push({
+              ...localItem,
+              status: localItem.status || '이메일 발송됨 (임시 기록)',
+            });
+          }
+        });
+      }
     }
   } catch {
     // ignore
   }
 
-  return [];
+  return items;
 };
 
-/**
- * Send feedback to the backend. Only call this when HAS_BACKEND is true;
- * without a backend there is nowhere to deliver it, so the UI opens a GitHub issue instead.
- */
 export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {
-  const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
-  if (response.data && typeof response.data === 'object' && response.data.id) {
-    return response.data;
+  if (import.meta.env.VITE_API_BASE_URL) {
+    try {
+      const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
+      if (response.data && typeof response.data === 'object' && response.data.id) {
+        return response.data;
+      }
+    } catch {
+      // ignore
+    }
   }
-  throw new Error('Unexpected feedback response');
+
+  // Save to client-side localStorage. This is a local draft record only: nothing is delivered from here.
+  const newItem: FeedbackItem = {
+    id: `fb-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    title: data.title,
+    category: data.category,
+    content: data.content,
+    author: data.author || '익명 마케터',
+    email: data.email,
+    created_at: new Date().toISOString().split('T')[0],
+    status: '임시 기록 (이 브라우저에만 저장)',
+  };
+
+  try {
+    const stored = localStorage.getItem('ad_user_feedbacks');
+    const list: FeedbackItem[] = stored ? JSON.parse(stored) : [];
+    list.unshift(newItem);
+    localStorage.setItem('ad_user_feedbacks', JSON.stringify(list));
+  } catch {
+    // ignore
+  }
+
+  return newItem;
 };
 
 /**

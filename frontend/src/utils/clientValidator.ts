@@ -1,4 +1,4 @@
-import { ValidationResponse, ValidationItem, PlatformResult, PlacementResult, CheckItem, ImageInfo } from '../types';
+import { ValidationResponse, ValidationItem, PlatformResult, PlacementResult, CheckItem, ImageInfo, SafeZoneSpec } from '../types';
 import specsData from '../data/specsData.json';
 
 export interface SpecPlacement {
@@ -21,6 +21,7 @@ export interface SpecPlacement {
   text_ratio_level?: string;
   description?: string;
   notes?: string[];
+  safe_zone?: SafeZoneSpec;
 }
 
 export interface SpecPlatform {
@@ -187,6 +188,12 @@ export function isPlacementMatchedByFilename(placement: SpecPlacement, filename:
       const targetRatio = placement.aspect_ratio[0] / placement.aspect_ratio[1];
       const fileRatio = fw / fh;
       if (Math.abs(fileRatio - targetRatio) / targetRatio <= 0.03) {
+        if (placement.min_width && placement.min_height) {
+          if (fw >= placement.min_width * 0.9 && fh >= placement.min_height * 0.9) {
+            return true;
+          }
+          return false;
+        }
         return true;
       }
     }
@@ -428,6 +435,36 @@ export function evaluatePlacement(
     });
   }
 
+  // 7. Safe Zone check
+  if (placement.safe_zone) {
+    const sz = placement.safe_zone;
+    let scaleX = 1;
+    let scaleY = 1;
+    if (sz.base_width && sz.base_height) {
+      scaleX = w / sz.base_width;
+      scaleY = h / sz.base_height;
+    }
+    const scaledTop = Math.round((sz.top_px || 0) * scaleY);
+    const scaledBottom = Math.round((sz.bottom_px || 0) * scaleY);
+    const scaledLeft = Math.round((sz.left_px || 0) * scaleX);
+    const scaledRight = Math.round((sz.right_px || 0) * scaleX);
+
+    const marginDetails: string[] = [];
+    if (scaledTop > 0 || scaledBottom > 0) marginDetails.push(`상하 ${scaledTop}px`);
+    if (scaledLeft > 0) marginDetails.push(`좌측 ${scaledLeft}px`);
+    if (scaledRight > 0) marginDetails.push(`우측 ${scaledRight}px`);
+    const marginStr = marginDetails.length > 0 ? marginDetails.join(', ') + ' 외곽 여백' : '중앙 안전 마진';
+
+    checks.push({
+      name: 'safe_zone',
+      // Margin intrusion is not measured automatically, so this is a manual check like text ratio.
+      status: 'manual',
+      message: `자동 측정 미지원: ${marginStr} 준수 여부는 세이프존 인스펙터에서 직접 확인해주세요.`,
+      expected: `${marginStr} 및 주요 오브젝트 중앙 배치`,
+      actual: '수동 확인 필요',
+    });
+  }
+
   // Calculate overall status
   const hasFail = checks.some((c) => c.status === 'fail');
   const hasWarning = checks.some((c) => c.status === 'warning');
@@ -446,6 +483,7 @@ export function evaluatePlacement(
     overall,
     checks,
     is_matched_target: isMatched,
+    safe_zone: placement.safe_zone,
   };
 }
 

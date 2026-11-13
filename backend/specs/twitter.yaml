@@ -70,3 +70,49 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 엑스 세로형 피드 확장 (Portrait 4:5 1080×1350)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1350
+  min_width: 600
+  min_height: 750
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 모바일 타임라인 확장 4:5 세로형 이미지 규격 (1080×1350)
+- name: 엑스 다이렉트 메시지 카드 (DM Card 1.91:1 800×418)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 800
+  recommended_height: 418
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 3072
+  allowed_formats:
+  - jpg
+  - jpeg
+- name: 엑스 프로필 헤더 배너 (3:1 1500×500)
+  exact_width: 1500
+  exact_height: 500
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 공식 비즈니스 프로필 상단 헤더 와이드 배너 (1500×500)
+- name: 엑스 프로필 사진 (1:1 400×400)
+  exact_width: 400
+  exact_height: 400
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 엑스 공식 프로필 대표 원형/정방형 아바타 (400×400)

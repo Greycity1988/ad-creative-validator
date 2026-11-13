@@ -8,14 +8,21 @@ import {
   Info,
   Target,
 } from 'lucide-react';
-import { PlatformResult, PlacementResult, CheckItem } from '../types';
+import { PlatformResult, PlacementResult, CheckItem, SafeZoneSpec } from '../types';
 
 interface ResultCardProps {
   platformResult: PlatformResult;
   viewMode?: 'target' | 'pass' | 'all';
+  imageUrl?: string;
+  imageInfo?: { width: number; height: number; filename?: string };
+  onOpenSafeZone?: (placementName: string, platformName: string, safeZone: SafeZoneSpec) => void;
 }
 
-export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode = 'target' }) => {
+export const ResultCard: React.FC<ResultCardProps> = ({
+  platformResult,
+  viewMode = 'target',
+  onOpenSafeZone,
+}) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const [expandedPlacements, setExpandedPlacements] = useState<Record<number, boolean>>({});
 
@@ -156,6 +163,9 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
         return '투명도(Alpha)';
       case 'text_ratio':
         return '텍스트 비율';
+      case 'safe_zone':
+      case 'safezone':
+        return '세이프존(안전영역)';
       default:
         return name;
     }
@@ -238,22 +248,35 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
                     onClick={() => togglePlacement(pIdx)}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-canvas-subtle/70 cursor-pointer transition-colors"
                   >
-                    <div className="flex items-center space-x-2.5 min-w-0 pr-2">
-                      <div className="text-ink-muted">
+                    <div className="flex items-center space-x-2.5 flex-1 min-w-0 pr-2">
+                      <div className="text-ink-muted flex-shrink-0">
                         {isPlacementOpen ? (
                           <ChevronDown className="w-3.5 h-3.5" />
                         ) : (
                           <ChevronRight className="w-3.5 h-3.5" />
                         )}
                       </div>
-                      <div className="truncate">
-                        <span className="text-xs font-bold text-ink-primary truncate">
+                      <div className="flex items-center flex-wrap gap-x-1.5 gap-y-1 min-w-0">
+                        <span className="text-xs font-bold text-ink-primary">
                           {placement.name}
                         </span>
                         {placement.is_matched_target && (
-                          <span className="ml-1.5 text-[9px] font-mono font-semibold bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.2 rounded-full">
+                          <span className="text-[9px] font-mono font-semibold bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.2 rounded-full flex-shrink-0">
                             타겟 매칭
                           </span>
+                        )}
+                        {placement.safe_zone && onOpenSafeZone && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onOpenSafeZone(placement.name, platformResult.platform, placement.safe_zone!);
+                            }}
+                            className="inline-flex items-center space-x-1 text-[10px] font-semibold text-accent bg-accent-light hover:bg-accent/10 border border-accent/20 px-2 py-0.5 rounded-full transition-colors cursor-pointer flex-shrink-0"
+                            title="공식 세이프존 가이드라인 및 앱 UI 차폐 영역 실시간 시뮬레이터 열기"
+                          >
+                            <span>📐 세이프존 가이드 대조</span>
+                          </button>
                         )}
                       </div>
                     </div>
@@ -273,7 +296,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
                         >
                           <div className="flex items-center space-x-2 min-w-0">
                             {getCheckIcon(chk.status)}
-                            <span className="font-semibold text-ink-secondary">
+                            <span className="font-semibold text-ink-secondary flex-shrink-0 whitespace-nowrap">
                               {getCheckNameKorean(chk.name)}:
                             </span>
                             <span className="text-ink-muted truncate">
@@ -281,9 +304,23 @@ export const ResultCard: React.FC<ResultCardProps> = ({ platformResult, viewMode
                             </span>
                           </div>
                           {chk.expected && (
-                            <span className="font-mono text-[10px] text-ink-muted bg-canvas-subtle px-1.5 py-0.5 rounded border border-line flex-shrink-0">
+                            <span
+                              title={`기준: ${chk.expected}`}
+                              className="font-mono text-[10px] text-ink-muted bg-canvas-subtle px-1.5 py-0.5 rounded border border-line max-w-[45%] truncate"
+                            >
                               기준: {chk.expected}
                             </span>
+                          )}
+                          {chk.name === 'safe_zone' && placement.safe_zone && onOpenSafeZone && (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                onOpenSafeZone(placement.name, platformResult.platform, placement.safe_zone!)
+                              }
+                              className="text-[10px] font-semibold text-accent hover:underline flex-shrink-0 cursor-pointer"
+                            >
+                              인스펙터 열기
+                            </button>
                           )}
                         </div>
                       ))}

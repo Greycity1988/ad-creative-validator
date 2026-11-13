@@ -1,0 +1,45 @@
+platform: 원스토어 애즈 (ONE store Ads)
+platform_id: onestore
+official_update_date: 2026.04 공식 개정
+official_source_name: 원스토어 개발자 센터 광고 가이드
+official_source_url: https://ads.onestore.co.kr
+revision_summary: 스토어 프로모션 그래픽 이미지(1024×578) 및 앱 대표 아이콘(512×512) 사양 확정
+last_verified_date: '2026-11-12'
+description: 스토어 프로모션 그래픽 배너 (1024×578), 대표 아이콘 (512×512)
+placements:
+- name: 원스토어 (프로모션 그래픽 이미지 1024×578)
+  exact_width: 1024
+  exact_height: 578
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 원스토어 메인 추천 및 프로모션 대표 그래픽 배너 (최대 2MB)
+- name: 원스토어 (앱 대표 아이콘 512×512)
+  exact_width: 512
+  exact_height: 512
+  max_file_size_kb: 1024
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: 원스토어 스토어 전시 및 리스트 대표 앱 아이콘 (PNG 권장)
+- name: 원스토어 (피처드 배너 720×300)
+  exact_width: 720
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 원스토어 스토어 상단 추천 피처드 배너 (720×300)
+- name: 원스토어 (고해상도 피처드 배너 1080×450)
+  exact_width: 1080
+  exact_height: 450
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 원스토어 스토어 상단 고해상도 피처드 배너 (1080×450)

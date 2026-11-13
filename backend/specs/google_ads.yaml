@@ -1,12 +1,11 @@
 platform: Google Ads
 platform_id: google_ads
-official_update_date: 2026.02 공식 개정
+official_update_date: 2026.04 공식 개정
 official_source_name: Google Ads 고객센터 광고 사양
 official_source_url: https://support.google.com/google-ads/answer/1722096
-revision_summary: Demand Gen(유튜브 Shorts 연동 9:16 버티컬 1080×1920) 권장 강화, PMax 반응형 에셋
-  체계, GDN 150KB 기준 확정
-last_verified_date: '2026-11-12'
-description: PMax, Demand Gen (Shorts), GDN 고정 배너 17종
+revision_summary: GDN 고정 이미지 배너 전 규격(23종), AdMob/앱 전면 및 태블릿 인터스티셜, PMax 및 Demand Gen(유튜브 Shorts 9:16), 로고 에셋 전 규격 완비
+last_verified_date: '2026-11-13'
+description: GDN 고정 배너 전 규격(23종), AdMob 모바일/태블릿 인터스티셜, PMax/반응형 디스플레이, Demand Gen (Shorts 9:16), App 프로모션 캠페인 에셋
 placements:
 - name: PMax/Responsive Landscape (1.91:1)
   aspect_ratio:
@@ -72,6 +71,25 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+  safe_zone:
+    description: "상단 120px, 하단 320px, 우측 120px 세이프존 준수 (유튜브 Shorts 인터랙션 UI 차폐 영역)"
+    base_width: 1080
+    base_height: 1920
+    top_px: 120
+    bottom_px: 320
+    left_px: 40
+    right_px: 120
+    ui_elements:
+    - name: "Shorts 우측 반응 버튼"
+      position: "right"
+      width_ratio: 0.14
+      height_ratio: 0.40
+      description: "좋아요/댓글/공유 수직 버튼"
+    - name: "Shorts 하단 채널명 & CTA"
+      position: "bottom-left"
+      width_ratio: 0.70
+      height_ratio: 0.16
+      description: "채널 프로필 및 사이트 방문 CTA"
 - name: GDN Banner 300×250
   exact_width: 300
   exact_height: 250
@@ -216,3 +234,232 @@ placements:
   - jpeg
   - png
   - gif
+- name: GDN Banner 970×250 (빌보드)
+  exact_width: 970
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: GDN 데스크톱 대형 빌보드 배너 (970×250)
+- name: GDN Banner 250×360 (트리플 와이드)
+  exact_width: 250
+  exact_height: 360
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: GDN Banner 580×400 (넷보드)
+  exact_width: 580
+  exact_height: 400
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: GDN Banner 930×180 (탑 배너)
+  exact_width: 930
+  exact_height: 180
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google Ads 공식 데스크톱 탑 배너 (930×180)
+- name: GDN / AdMob 모바일 인터스티셜 세로 (320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google AdMob / GDN 인앱 전면 인터스티셜 세로형 (320×480)
+- name: GDN / AdMob 모바일 인터스티셜 가로 (480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google AdMob / GDN 인앱 전면 인터스티셜 가로형 (480×320)
+- name: GDN / AdMob 태블릿 인터스티셜 세로 (768×1024)
+  exact_width: 768
+  exact_height: 1024
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google Ads Editor / AdMob 태블릿 전면 인터스티셜 세로형 (768×1024)
+- name: GDN / AdMob 태블릿 인터스티셜 가로 (1024×768)
+  exact_width: 1024
+  exact_height: 768
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google Ads Editor / AdMob 태블릿 전면 인터스티셜 가로형 (1024×768)
+- name: GDN Banner 480×32 (모바일 랜드스케이프 띠배너)
+  exact_width: 480
+  exact_height: 32
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Google AdMob 모바일 가로모드 전용 소형 띠배너 (480×32)
+- name: Demand Gen Landscape (1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+  description: Google 디맨드젠(Demand Gen) 캠페인 공식 가로형 1.91:1 에셋
+- name: Demand Gen Square (1:1 1200×1200)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 1200
+  min_width: 300
+  min_height: 300
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+  description: Google 디맨드젠(Demand Gen) 캠페인 공식 정방형 1:1 에셋
+- name: Demand Gen Portrait (4:5 960×1200)
+  aspect_ratio:
+  - 4
+  - 5
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 960
+  recommended_height: 1200
+  min_width: 480
+  min_height: 600
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  text_ratio_limit: 0.2
+  text_ratio_level: warning
+  description: Google 디맨드젠(Demand Gen) 캠페인 공식 세로형 4:5 에셋
+- name: Google App 캠페인 가로형 (1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 628
+  min_width: 600
+  min_height: 314
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Google 앱 프로모션(AC) 캠페인 이미지 에셋 가로형
+- name: Google App 캠페인 정사각형 (1:1 1200×1200)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 1200
+  min_width: 300
+  min_height: 300
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Google 앱 프로모션(AC) 캠페인 이미지 에셋 정방형
+- name: Google App 캠페인 세로형 (9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 600
+  min_height: 1067
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Google 앱 프로모션(AC) 캠페인 풀스크린 세로형 이미지 에셋
+- name: PMax/Responsive Vertical (9:16 900×1600)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 900
+  recommended_height: 1600
+  min_width: 600
+  min_height: 1067
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: Google Ads 반응형 디스플레이 세로형 9:16 에셋 (900×1600 권장)
+- name: Google Ads Logo (1:1 정사각형 로고)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 1200
+  min_width: 128
+  min_height: 128
+  max_file_size_kb: 5120
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: Google 반응형 디스플레이/디맨드젠 필수 정사각형 로고 (1200×1200 권장, 최소 128×128)
+- name: Google Ads Logo (4:1 가로형 로고)
+  aspect_ratio:
+  - 4
+  - 1
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1200
+  recommended_height: 300
+  min_width: 512
+  min_height: 128
+  max_file_size_kb: 5120
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+  description: Google 반응형 디스플레이 가로형 브랜드 로고 (1200×300 권장, 최소 512×128)

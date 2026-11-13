@@ -1,0 +1,132 @@
+platform: 티엔케이팩토리 (TNK Factory)
+platform_id: tnk
+official_update_date: 2026.03 공식 개정
+official_source_name: TNK Factory 공식 광고소재 제작 가이드
+official_source_url: https://tnkfactory.com
+revision_summary: 세로형(640×1320, 640×960), 가로형(1200×627, 960×640), 정방형(627×627), 띠배너(640×100, 640×200), 아이콘(300×300) 및 100KB 한도 반영
+last_verified_date: '2026-11-12'
+description: TNK 가로형 배너, 세로형 배너, 정방형 배너, 띠배너, 아이콘
+placements:
+- name: TNK (가로형 배너 1.91:1 1200×627)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  exact_width: 1200
+  exact_height: 627
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: TNK 공식 가로형 대표 배너 (좌우 150px 여백 권장, 최대 100KB)
+- name: TNK (가로형 배너 960×640)
+  exact_width: 960
+  exact_height: 640
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (세로형 전면 배너 640×1320)
+  exact_width: 640
+  exact_height: 1320
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: TNK 공식 세로형 전면 배너 (상하 180px 여백 권장, 최대 100KB)
+- name: TNK (세로형 배너 640×960)
+  exact_width: 640
+  exact_height: 960
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (정사각형 배너 1:1 627×627)
+  exact_width: 627
+  exact_height: 627
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (모바일 띠배너 640×100)
+  exact_width: 640
+  exact_height: 100
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (모바일 띠배너 640×200)
+  exact_width: 640
+  exact_height: 200
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (앱 아이콘 1:1 300×300)
+  exact_width: 300
+  exact_height: 300
+  max_file_size_kb: 100
+  allowed_formats:
+  - png
+  - jpg
+  - jpeg
+- name: TNK (모바일 띠배너 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: TNK (모바일 대형 띠배너 320×100)
+  exact_width: 320
+  exact_height: 100
+  max_file_size_kb: 100
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: TNK (중형 배너 MREC 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: TNK (가로형 배너 1.91:1 1200×628)
+  aspect_ratio:
+  - 1.91
+  - 1
+  aspect_ratio_tolerance: 0.02
+  exact_width: 1200
+  exact_height: 628
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+- name: TNK (모바일 풀스크린 9:16 1080×1920)
+  aspect_ratio:
+  - 9
+  - 16
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1920
+  min_width: 720
+  min_height: 1280
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png

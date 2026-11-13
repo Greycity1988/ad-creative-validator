@@ -105,3 +105,37 @@ placements:
   - jpg
   - jpeg
   - png
+- name: 쿠팡 CM (카테고리 인기상품 중단 배너 PC 2040×200)
+  exact_width: 2040
+  exact_height: 200
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 쿠팡 카테고리 인기상품 페이지 PC 중단 와이드 배너 (2040×200)
+- name: 쿠팡 CM (카테고리 인기상품 중단 배너 모바일 828×172)
+  exact_width: 828
+  exact_height: 172
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 쿠팡 카테고리 모바일 중단 배너 (828×172)
+- name: 쿠팡 W1 (메인 윙배너 PC Only 102×120)
+  exact_width: 102
+  exact_height: 120
+  max_file_size_kb: 50
+  allowed_formats:
+  - png
+  description: 쿠팡 PC 메인 우측 날개 윙배너 (PNG 필수)
+- name: 쿠팡 R1 (로켓배송 PC Item 배너 522×58)
+  exact_width: 522
+  exact_height: 58
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  description: 쿠팡 로켓배송 PC 상세 페이지 아이템 배너 (522×58)

@@ -1,5 +1,16 @@
 import React from 'react';
-import { X, BookOpen, AlertTriangle, Sparkles, ShieldCheck } from 'lucide-react';
+import {
+  X,
+  BookOpen,
+  AlertTriangle,
+  Sparkles,
+  ShieldCheck,
+  RefreshCw,
+  CheckCircle2,
+  Clock,
+  Layers,
+  Monitor,
+} from 'lucide-react';
 
 interface GuideModalProps {
   isOpen: boolean;
@@ -43,6 +54,47 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
 
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 text-ink-secondary">
+          {/* ── Key Trust & Reliability Callout Banner ── */}
+          <div className="p-4 rounded-2xl border border-line bg-canvas-subtle/60 space-y-2.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center space-x-2">
+                <div className="p-1.5 bg-accent text-white rounded-lg shadow-soft-xs flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
+                <h3 className="text-xs sm:text-sm font-bold text-ink-primary tracking-tight">
+                  100% 매체사 공식 가이드 직접 수록 & 매일 새벽 자동 변경 감지
+                </h3>
+              </div>
+              <span className="inline-flex items-center space-x-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent-light text-accent border border-accent/20 self-start sm:self-auto">
+                <RefreshCw className="w-3 h-3 text-accent" />
+                <span>매일 06:00 KST 가이드 자동 점검</span>
+              </span>
+            </div>
+            <p className="text-[11px] text-ink-secondary leading-relaxed">
+              ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>매일 새벽 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
+            </p>
+          </div>
+
+          {/* ── PC Environment Notice Callout Banner ── */}
+          <div className="p-3.5 rounded-2xl border border-line bg-surface flex items-start space-x-3 text-xs">
+            <div className="p-2 bg-canvas-subtle border border-line text-accent rounded-lg flex-shrink-0 mt-0.5">
+              <Monitor className="w-4 h-4" />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center space-x-2">
+                <h4 className="font-bold text-ink-primary text-xs sm:text-sm">
+                  🖥️ PC(데스크톱) 환경 최적화 안내
+                </h4>
+                <span className="text-[10px] bg-canvas-subtle text-ink-secondary px-2 py-0.5 rounded-full font-semibold border border-line">
+                  권장 환경
+                </span>
+              </div>
+              <p className="text-[11px] text-ink-secondary leading-relaxed">
+                본 광고 소재 검수 시스템은 <strong>고해상도 광고 소재의 픽셀 단위 정밀 대조, 세이프존(Safe Zone) 오버레이 시각화, 대용량 다중 파일 드래그앤드롭 및 CSV 리포트(엑셀 호환) 내보내기</strong> 등 전문 마케팅·디자인 업무 환경에 맞춰 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 원활한 검수 작업을 위해 PC 환경에서의 이용을 권장해 드립니다.
+              </p>
+            </div>
+          </div>
+
           {/* Section 1: Why is this needed? */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
@@ -100,7 +152,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
 
             <div className="space-y-2.5 text-xs">
               <div className="flex items-start space-x-3.5 p-3.5 rounded-2xl bg-canvas-subtle/60 border border-line">
-                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-2xs">
+                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-soft-xs">
                   1
                 </div>
                 <div>
@@ -114,7 +166,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div className="flex items-start space-x-3.5 p-3.5 rounded-2xl bg-canvas-subtle/60 border border-line">
-                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-2xs">
+                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-soft-xs">
                   2
                 </div>
                 <div>
@@ -128,7 +180,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div className="flex items-start space-x-3.5 p-3.5 rounded-2xl bg-canvas-subtle/60 border border-line">
-                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-2xs">
+                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-soft-xs">
                   3
                 </div>
                 <div>
@@ -137,6 +189,20 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                   </h4>
                   <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
                     검수 완료 후 <strong>[CSV 다운로드 (엑셀 호환)]</strong>를 눌러 불합격 사유가 일목요연하게 정리된 시트를 메신저로 공유할 때.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3.5 p-3.5 rounded-2xl bg-canvas-subtle/60 border border-line">
+                <div className="w-6 h-6 rounded-lg bg-surface border border-line text-accent font-mono font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5 shadow-soft-xs">
+                  4
+                </div>
+                <div>
+                  <h4 className="font-bold text-ink-primary">
+                    매체별 공식 개정 규격이 헷갈리거나 확인이 필요할 때
+                  </h4>
+                  <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
+                    카카오 비즈보드 960×300 단일화, 네이버 NOSP 타임보드 1660×260(300KB), 스페셜DA 1250×520 등 2026년 최신 공식 가이드라인 개정일과 세부 규격을 확인하고 싶을 때.
                   </p>
                 </div>
               </div>
@@ -171,7 +237,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
                 <h4 className="font-bold text-ink-primary mt-1">지면 또는 매체 선택</h4>
                 <p className="text-[11px] text-ink-secondary">
-                  원클릭 필터 또는 15개 매체 카드에서 타겟 지면을 확인합니다.
+                  상단 <strong>[32대 주요 매체 셀렉터]</strong>에서 카카오 DA, 네이버 타임보드 등 원하는 지면을 선택합니다.
                 </p>
               </div>
 
@@ -182,6 +248,50 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 <h4 className="font-bold text-ink-primary mt-1">정밀 검수 & CSV 리포트</h4>
                 <p className="text-[11px] text-ink-secondary">
                   검수 시작을 누르고 1초 만에 판정 결과와 CSV 파일을 수령합니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4: Official Source & Daily Dawn Monitoring Guarantee */}
+          <div className="space-y-3 pt-2 border-t border-line-subtle">
+            <div className="flex items-center space-x-2">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent/10 text-accent text-xs font-bold">
+                🛡️
+              </span>
+              <h3 className="text-sm font-bold text-ink-primary">
+                4. 규격 무결성 및 신뢰성 보장 (공식 출처 & 매일 새벽 점검)
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
+                <div className="font-bold text-ink-primary flex items-center space-x-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
+                  <span>100% 매체 공식 가이드 직접 수록</span>
+                </div>
+                <p className="text-ink-tertiary leading-relaxed text-[11px]">
+                  개인 블로그나 비공식 요약글을 일절 배제하고, 네이버 NOSP, 카카오모먼트, 메타 비즈니스 헬프센터, 구글 애즈 공식 센터 등 각 매체사 공식 배포 규격서 원문만을 직접 대조하여 탑재했습니다. (예: NOSP 타임보드 최신 300KB 개정 스펙 완벽 반영)
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
+                <div className="font-bold text-ink-primary flex items-center space-x-1.5">
+                  <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>매일 새벽(06:00 KST) 자동 변경 감지</span>
+                </div>
+                <p className="text-ink-tertiary leading-relaxed text-[11px]">
+                  매체사의 갑작스러운 규격 개정(용량 증액, 신규 비율 도입 등)에 즉각 대응하기 위해, 32개 매체 공식 가이드 URL을 매일 새벽 자동 크롤링하고 콘텐츠 무결성 해시(SHA-256)를 대조하여 변동을 감지 및 신속 반영합니다.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
+                <div className="font-bold text-ink-primary flex items-center space-x-1.5">
+                  <Layers className="w-3.5 h-3.5 text-accent" />
+                  <span>세이프존(Safe Zone) 공식 연동</span>
+                </div>
+                <p className="text-ink-tertiary leading-relaxed text-[11px]">
+                  단순 해상도·용량 검수를 넘어 상하좌우 안전 여백과 우하단 시스템 AD 마크 차폐 위험 구역을 시각화하며, <em>"기본 사이즈보다 큰 이미지 사용 시 동일 비율 확대 적용"</em> 공식 원칙에 따라 실시간 비례 스케일링을 지원합니다.
                 </p>
               </div>
             </div>
@@ -205,3 +315,4 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+

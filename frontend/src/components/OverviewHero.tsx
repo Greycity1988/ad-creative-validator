@@ -5,6 +5,7 @@ import { UploadedFileItem } from '../types';
 interface OverviewHeroProps {
   files: UploadedFileItem[];
   selectedPlatformCount: number;
+  totalPlatformCount: number;
   totalPlacementCount: number;
   onScrollToUpload?: () => void;
 }
@@ -12,6 +13,7 @@ interface OverviewHeroProps {
 export const OverviewHero: React.FC<OverviewHeroProps> = ({
   files,
   selectedPlatformCount,
+  totalPlatformCount,
   totalPlacementCount,
   onScrollToUpload,
 }) => {
@@ -46,7 +48,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
             광고 소재 원클릭 통합 규격 검수
           </h2>
           <p className="text-sm text-ink-secondary mt-1.5 max-w-2xl leading-relaxed">
-            이미지를 업로드하면 네이버·카카오·메타·구글 등 15대 매체 160+개 공식 지면의 해상도, 용량, 포맷, 안전영역 적합성을 브라우저에서 100% 즉시 판정합니다.
+            이미지를 업로드하면 네이버·카카오·메타·구글 등 32대 매체 430+개 공식 지면의 해상도, 용량, 포맷, 안전영역 적합성을 브라우저에서 100% 즉시 판정합니다.
           </p>
         </div>
 
@@ -103,7 +105,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary font-mono mt-1 flex items-baseline gap-1.5">
             <span>{selectedPlatformCount}</span>
-            <span className="text-xs font-sans text-ink-tertiary font-normal">/ 15 매체</span>
+            <span className="text-xs font-sans text-ink-tertiary font-normal">/ {totalPlatformCount > 0 ? totalPlatformCount : 32} 매체</span>
           </div>
           <div className="text-[11px] text-ink-muted mt-1">
             주요 매체 사전 선택됨
@@ -116,7 +118,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
             동시대조 검수 지면
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{totalPlacementCount > 0 ? totalPlacementCount : '160+'}</span>
+            <span>{totalPlacementCount > 0 ? totalPlacementCount : '430+'}</span>
             <span className="text-xs font-sans text-ink-tertiary font-normal">개 지면</span>
           </div>
           <div className="text-[11px] text-ink-muted mt-1">

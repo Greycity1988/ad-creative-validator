@@ -3,11 +3,9 @@ platform_id: criteo
 official_update_date: 2026.03 공식 개정
 official_source_name: Criteo Advertising Guidelines (Help Center)
 official_source_url: https://help.criteo.com
-revision_summary: 표준 IAB 디스플레이 배너 13종(300×250, 728×90, 160×600, 970×250 등), 플래그십/쇼케이스
-  빅배너, 어댑티브 마스터, 빅쿠폰 및 타이머 규격 완비
-last_verified_date: '2026-11-12'
-description: 표준 IAB 배너 13종, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3),
-  빅쿠폰 배너, 타이머 배너
+revision_summary: 표준 IAB 디스플레이 배너 18종 및 모바일 풀스크린/인터스티셜, 제휴 네트워크 배너, 플래그십/쇼케이스 빅배너, 어댑티브 마스터, 빅쿠폰, 타이머 및 로고존 에셋 전 규격 완비
+last_verified_date: '2026-11-13'
+description: 표준 IAB 배너 18종, 모바일 인터스티셜/풀스크린 6종, 제휴 네트워크 배너, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너, 타이머 및 로고존 에셋 규격 완비
 placements:
 - name: 크리테오 (플래그십 데스크톱 빅배너 FS_300 576×300)
   exact_width: 576
@@ -174,6 +172,159 @@ placements:
   - jpeg
   - png
   - gif
+- name: 크리테오 (표준 디스플레이 배너 240×240)
+  exact_width: 240
+  exact_height: 240
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (네트워크 서브 배너 170×128)
+  exact_width: 170
+  exact_height: 128
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 전면 배너 세로 320×480)
+  exact_width: 320
+  exact_height: 480
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 전면 배너 가로 480×320)
+  exact_width: 480
+  exact_height: 320
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 풀스크린 배너 320×568)
+  exact_width: 320
+  exact_height: 568
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 풀스크린 배너 360×640)
+  exact_width: 360
+  exact_height: 640
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (모바일 와이드 배너 640×360)
+  exact_width: 640
+  exact_height: 360
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (표준 모바일 배너 300×50)
+  exact_width: 300
+  exact_height: 50
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (정방형 대형 배너 500×500)
+  exact_width: 500
+  exact_height: 500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (정방형 대형 배너 600×600)
+  exact_width: 600
+  exact_height: 600
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (중형 직사각형 배너 360×300)
+  exact_width: 360
+  exact_height: 300
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (하프 배너 234×60)
+  exact_width: 234
+  exact_height: 60
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (직사각형 배너 300×100)
+  exact_width: 300
+  exact_height: 100
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (세로형 소형 배너 120×240)
+  exact_width: 120
+  exact_height: 240
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (포트레이트 대형 배너 300×1050)
+  exact_width: 300
+  exact_height: 1050
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (태블릿 전면 배너 세로 768×1024)
+  exact_width: 768
+  exact_height: 1024
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 크리테오 (태블릿 전면 배너 가로 1024×768)
+  exact_width: 1024
+  exact_height: 768
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
 - name: 크리테오 (어댑티브 Square 1:1 1200×1200)
   aspect_ratio:
   - 1
@@ -331,3 +482,163 @@ placements:
   - jpeg
   - png
   - gif
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 100×100)
+  exact_width: 100
+  exact_height: 100
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 105×50)
+  exact_width: 105
+  exact_height: 50
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 120×60)
+  exact_width: 120
+  exact_height: 60
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 130×90)
+  exact_width: 130
+  exact_height: 90
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 160×56)
+  exact_width: 160
+  exact_height: 56
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 200×32)
+  exact_width: 200
+  exact_height: 32
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 300×40)
+  exact_width: 300
+  exact_height: 40
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 300×54)
+  exact_width: 300
+  exact_height: 54
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 336×48)
+  exact_width: 336
+  exact_height: 48
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 180×250)
+  exact_width: 180
+  exact_height: 250
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 180×34)
+  exact_width: 180
+  exact_height: 34
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 360×57)
+  exact_width: 360
+  exact_height: 57
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57)
+- name: 크리테오 (타이머/쿠폰 로고존 에셋 320×57)
+  exact_width: 320
+  exact_height: 57
+  max_file_size_kb: 1024
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57)
+- name: 크리테오 (Commerce Display Spotlight 데스크톱 1400×450)
+  exact_width: 1400
+  exact_height: 450
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450)
+- name: 크리테오 (Commerce Display Grid 데스크톱 1500×1500)
+  exact_width: 1500
+  exact_height: 1500
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500)
+- name: 크리테오 (Commerce Display Grid 모바일 1280×400)
+  exact_width: 1280
+  exact_height: 400
+  max_file_size_kb: 300
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400)

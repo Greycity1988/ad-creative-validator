@@ -1,0 +1,72 @@
+platform: 리얼클릭 (RealClick)
+platform_id: realclick
+official_update_date: 2026.02 공식 개정
+official_source_name: 리얼클릭 공식 광고 가이드
+official_source_url: https://realclick.co.kr
+revision_summary: 박스형 배너(250×250, 240×240), 와이드형(570×240), 띠배너(728×90), 세로형(120×600) 사양 반영
+last_verified_date: '2026-11-12'
+description: 박스형 배너, 와이드형 배너, 띠배너, 세로형 배너
+placements:
+- name: 리얼클릭 (정사각형 박스형 배너 250×250)
+  exact_width: 250
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (정사각형 박스형 배너 240×240)
+  exact_width: 240
+  exact_height: 240
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (와이드형 배너 570×240)
+  exact_width: 570
+  exact_height: 240
+  max_file_size_kb: 200
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (표준 띠배너 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (스카이스크래퍼 세로형 120×600)
+  exact_width: 120
+  exact_height: 600
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (중형 박스형 배너 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+- name: 리얼클릭 (와이드 스카이스크래퍼 160×600)
+  exact_width: 160
+  exact_height: 600
+  max_file_size_kb: 150
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
