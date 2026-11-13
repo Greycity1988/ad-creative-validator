@@ -20,7 +20,7 @@ interface FeedbackModalProps {
   onClose: () => void;
 }
 
-const DEV_EMAIL = 'greycity1988@gmail.com';
+const DEV_EMAIL = 'laplui2@me.com';
 const GITHUB_ISSUES_URL = 'https://github.com/Greycity1988/ad-creative-validator/issues/new';
 
 export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
