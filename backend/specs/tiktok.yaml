@@ -24,6 +24,25 @@ placements:
   - png
   text_ratio_limit: 0.3
   text_ratio_level: warning
+  safe_zone:
+    description: "상단 130px, 하단 384px, 우측 130px 세이프존 필수 (우측 인터랙션 아이콘 및 하단 캡션/사운드 영역)"
+    base_width: 1080
+    base_height: 1920
+    top_px: 130
+    bottom_px: 384
+    left_px: 40
+    right_px: 130
+    ui_elements:
+    - name: "우측 반응 버튼 (좋아요/댓글/공유)"
+      position: "right"
+      width_ratio: 0.15
+      height_ratio: 0.45
+      description: "우측 수직 액션 아이콘 바"
+    - name: "하단 계정명 & 광고 캡션"
+      position: "bottom-left"
+      width_ratio: 0.75
+      height_ratio: 0.18
+      description: "하단 텍스트 및 사운드 디스크"
 - name: 틱톡 정사각형 (1:1)
   aspect_ratio:
   - 1

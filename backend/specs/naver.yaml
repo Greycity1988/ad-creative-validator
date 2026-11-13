@@ -93,6 +93,20 @@ placements:
   text_ratio_limit: 0.2
   text_ratio_level: error
   description: GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB)
+  safe_zone:
+    description: "상/하 50px 및 좌/우 40px 외곽 여백 준수 (우측 하단 네이버 공식 AD 마크 영역)"
+    base_width: 750
+    base_height: 280
+    top_px: 50
+    bottom_px: 50
+    left_px: 40
+    right_px: 40
+    ui_elements:
+    - name: "네이버 AD 마크"
+      position: "bottom-right"
+      width_ratio: 0.12
+      height_ratio: 0.15
+      description: "우측 하단 네이버 기본 AD 배지"
 - name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
   exact_width: 750
   exact_height: 200
@@ -102,6 +116,19 @@ placements:
   - png
   require_transparency: true
   description: GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG)
+  safe_zone:
+    description: "상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)"
+    base_width: 750
+    base_height: 200
+    top_px: 35
+    bottom_px: 35
+    left_px: 35
+    right_px: 35
+    ui_elements:
+    - name: "네이버 AD 마크"
+      position: "bottom-right"
+      width_ratio: 0.12
+      height_ratio: 0.16
 - name: 네이버 DA (모바일 DA 1250×560)
   exact_width: 1250
   exact_height: 560
@@ -110,6 +137,14 @@ placements:
   - jpg
   - jpeg
   - png
+  safe_zone:
+    description: "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 광고 마크)"
+    base_width: 1250
+    base_height: 560
+    top_px: 60
+    bottom_px: 60
+    left_px: 50
+    right_px: 50
 - name: 네이버 DA (네이티브 피드 Square 1:1)
   aspect_ratio:
   - 1
@@ -124,6 +159,14 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  safe_zone:
+    description: "외곽 상하좌우 60px 여백 준수 (모바일 피드 라운딩 모서리 보호)"
+    base_width: 1200
+    base_height: 1200
+    top_px: 60
+    bottom_px: 60
+    left_px: 60
+    right_px: 60
 - name: 네이버 DA (네이티브 피드 Landscape 1.91:1)
   aspect_ratio:
   - 1.91
@@ -138,6 +181,14 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  safe_zone:
+    description: "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 AD 배지 보호)"
+    base_width: 1200
+    base_height: 628
+    top_px: 60
+    bottom_px: 60
+    left_px: 50
+    right_px: 50
 - name: 네이버 DA (네이티브 피드 Vertical 2:3)
   aspect_ratio:
   - 2

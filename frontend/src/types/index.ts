@@ -1,3 +1,28 @@
+export interface SafeZoneUIElement {
+  name: string;
+  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'bottom-center' | 'right' | 'top';
+  width_ratio?: number;
+  height_ratio?: number;
+  width_px?: number;
+  height_px?: number;
+  description?: string;
+}
+
+export interface SafeZoneSpec {
+  description: string;
+  base_width?: number;
+  base_height?: number;
+  top_px?: number;
+  bottom_px?: number;
+  left_px?: number;
+  right_px?: number;
+  top_percent?: number;
+  bottom_percent?: number;
+  left_percent?: number;
+  right_percent?: number;
+  ui_elements?: SafeZoneUIElement[];
+}
+
 export interface CheckItem {
   name: string;
   status: 'pass' | 'fail' | 'warning' | string;
@@ -11,6 +36,7 @@ export interface PlacementResult {
   overall: 'pass' | 'fail' | 'warning' | string;
   checks: CheckItem[];
   is_matched_target?: boolean;
+  safe_zone?: SafeZoneSpec;
 }
 
 export interface PlatformResult {
@@ -46,6 +72,7 @@ export interface PlacementDetail {
   dimension_str: string;
   aspect_ratio_str: string;
   allowed_formats: string[];
+  safe_zone?: SafeZoneSpec;
 }
 
 export interface PlatformMetadata {

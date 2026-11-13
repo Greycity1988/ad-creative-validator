@@ -72,6 +72,25 @@ placements:
   - png
   text_ratio_limit: 0.3
   text_ratio_level: warning
+  safe_zone:
+    description: "상단 250px 및 하단 350px 세이프존 필수 준수 (상단 계정 프로필/헤더 및 하단 CTA 버튼 가림 영역)"
+    base_width: 1080
+    base_height: 1920
+    top_px: 250
+    bottom_px: 350
+    left_px: 60
+    right_px: 60
+    ui_elements:
+    - name: "인스타그램 프로필 / 닫기 헤더"
+      position: "top"
+      width_ratio: 1.0
+      height_ratio: 0.13
+      description: "프로필 이미지, 계정명, 사운드 토글, 닫기 버튼"
+    - name: "하단 CTA 버튼 (더 알아보기)"
+      position: "bottom-center"
+      width_ratio: 0.65
+      height_ratio: 0.08
+      description: "하단 고정 스와이프업 CTA 액션 버튼"
 - name: Carousel (1:1)
   aspect_ratio:
   - 1

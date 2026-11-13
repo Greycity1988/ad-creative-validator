@@ -14,11 +14,12 @@ import {
   FileText,
   ArrowLeft,
 } from 'lucide-react';
-import { ValidationItem } from '../types';
+import { ValidationItem, SafeZoneSpec } from '../types';
 import { ImagePreview } from './ImagePreview';
 import { TextRatioGauge } from './TextRatioGauge';
 import { ResultCard } from './ResultCard';
 import { BatchSummaryView } from './BatchSummaryView';
+import { SafeZoneModal } from './SafeZoneModal';
 import { downloadExcelReport } from '../api/validator';
 
 interface ResultDashboardProps {
@@ -38,6 +39,11 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
   const [exportError, setExportError] = useState<string | null>(null);
   const [platformFilter, setPlatformFilter] = useState<string>('all');
   const [viewMode, setViewMode] = useState<'target' | 'pass' | 'all'>('target');
+  const [activeSafeZone, setActiveSafeZone] = useState<{
+    placementName: string;
+    platformName: string;
+    safeZone: SafeZoneSpec;
+  } | null>(null);
 
   if (!results || results.length === 0) {
     return null;
@@ -406,11 +412,45 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {filteredPlatformResults.map((pResult, index) => (
-                <ResultCard key={index} platformResult={pResult} viewMode={viewMode} />
+                <ResultCard
+                  key={index}
+                  platformResult={pResult}
+                  viewMode={viewMode}
+                  imageUrl={filePreviews[currentItem.filename] || ''}
+                  imageInfo={{
+                    width: currentItem.image_info.width,
+                    height: currentItem.image_info.height,
+                    filename: currentItem.filename,
+                  }}
+                  onOpenSafeZone={(placementName, platformName, safeZone) => {
+                    setActiveSafeZone({
+                      placementName,
+                      platformName,
+                      safeZone,
+                    });
+                  }}
+                />
               ))}
             </div>
           </div>
         </div>
+      )}
+
+      {/* Safe Zone Visual Inspector Modal */}
+      {activeSafeZone && (
+        <SafeZoneModal
+          isOpen={!!activeSafeZone}
+          onClose={() => setActiveSafeZone(null)}
+          imageUrl={filePreviews[currentItem.filename] || ''}
+          imageInfo={{
+            width: currentItem.image_info.width,
+            height: currentItem.image_info.height,
+            filename: currentItem.filename,
+          }}
+          placementName={activeSafeZone.placementName}
+          platformName={activeSafeZone.platformName}
+          safeZone={activeSafeZone.safeZone}
+        />
       )}
 
       {/* Bottom Action Footer */}

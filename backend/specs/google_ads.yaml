@@ -72,6 +72,25 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+  safe_zone:
+    description: "상단 120px, 하단 320px, 우측 120px 세이프존 준수 (유튜브 Shorts 인터랙션 UI 차폐 영역)"
+    base_width: 1080
+    base_height: 1920
+    top_px: 120
+    bottom_px: 320
+    left_px: 40
+    right_px: 120
+    ui_elements:
+    - name: "Shorts 우측 반응 버튼"
+      position: "right"
+      width_ratio: 0.14
+      height_ratio: 0.40
+      description: "좋아요/댓글/공유 수직 버튼"
+    - name: "Shorts 하단 채널명 & CTA"
+      position: "bottom-left"
+      width_ratio: 0.70
+      height_ratio: 0.16
+      description: "채널 프로필 및 사이트 방문 CTA"
 - name: GDN Banner 300×250
   exact_width: 300
   exact_height: 250

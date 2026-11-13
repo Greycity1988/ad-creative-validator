@@ -1787,6 +1787,31 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "warning",
+        "safe_zone": {
+          "description": "상단 120px, 하단 320px, 우측 120px 세이프존 준수 (유튜브 Shorts 인터랙션 UI 차폐 영역)",
+          "base_width": 1080,
+          "base_height": 1920,
+          "top_px": 120,
+          "bottom_px": 320,
+          "left_px": 40,
+          "right_px": 120,
+          "ui_elements": [
+            {
+              "name": "Shorts 우측 반응 버튼",
+              "position": "right",
+              "width_ratio": 0.14,
+              "height_ratio": 0.4,
+              "description": "좋아요/댓글/공유 수직 버튼"
+            },
+            {
+              "name": "Shorts 하단 채널명 & CTA",
+              "position": "bottom-left",
+              "width_ratio": 0.7,
+              "height_ratio": 0.16,
+              "description": "채널 프로필 및 사이트 방문 CTA"
+            }
+          ]
+        },
         "dimension_str": "권장 1080×1920px",
         "aspect_ratio_str": "9:16"
       },
@@ -2059,6 +2084,24 @@
         "require_transparency": true,
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "safe_zone": {
+          "description": "상/하 30px 및 좌/우 40px 외곽 여백 준수 (우하단 더보기/구매하기 버튼 UI 차폐 영역)",
+          "base_width": 960,
+          "base_height": 300,
+          "top_px": 30,
+          "bottom_px": 30,
+          "left_px": 40,
+          "right_px": 40,
+          "ui_elements": [
+            {
+              "name": "우하단 구매/앱설치 버튼",
+              "position": "bottom-right",
+              "width_ratio": 0.16,
+              "height_ratio": 0.18,
+              "description": "카카오모먼트 시스템 구매/더보기 버튼"
+            }
+          ]
+        },
         "dimension_str": "960×300px",
         "aspect_ratio_str": "16:5"
       },
@@ -2072,6 +2115,23 @@
         ],
         "require_transparency": true,
         "description": "카카오 비즈보드 클래식 규격 (배경 투명 필수 PNG)",
+        "safe_zone": {
+          "description": "상/하 25px 및 좌/우 40px 외곽 여백 준수 (우하단 버튼 UI 차폐 영역)",
+          "base_width": 1029,
+          "base_height": 258,
+          "top_px": 25,
+          "bottom_px": 25,
+          "left_px": 40,
+          "right_px": 40,
+          "ui_elements": [
+            {
+              "name": "우하단 광고 버튼",
+              "position": "bottom-right",
+              "width_ratio": 0.15,
+              "height_ratio": 0.2
+            }
+          ]
+        },
         "dimension_str": "1029×258px",
         "aspect_ratio_str": ""
       },
@@ -2091,6 +2151,23 @@
         "require_transparency": true,
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "safe_zone": {
+          "description": "상/하 30px 및 좌/우 40px 외곽 여백 준수 (우하단 광고UI 차폐 영역)",
+          "base_width": 960,
+          "base_height": 300,
+          "top_px": 30,
+          "bottom_px": 30,
+          "left_px": 40,
+          "right_px": 40,
+          "ui_elements": [
+            {
+              "name": "우하단 앱설치/구매 버튼",
+              "position": "bottom-right",
+              "width_ratio": 0.16,
+              "height_ratio": 0.18
+            }
+          ]
+        },
         "dimension_str": "960×300px",
         "aspect_ratio_str": "16:5"
       },
@@ -2111,6 +2188,24 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "warning",
+        "safe_zone": {
+          "description": "주요 요소(텍스트, 로고, 필수고지문구)는 상/하 100px 및 좌측 40px 영역 이외 중앙에 배치 (우하단 광고UI 가림 영역)",
+          "base_width": 1200,
+          "base_height": 600,
+          "top_px": 100,
+          "bottom_px": 100,
+          "left_px": 40,
+          "right_px": 40,
+          "ui_elements": [
+            {
+              "name": "우하단 광고UI / AD 마크",
+              "position": "bottom-right",
+              "width_ratio": 0.14,
+              "height_ratio": 0.14,
+              "description": "시스템 자동 노출 AD 마크 및 더보기 버튼"
+            }
+          ]
+        },
         "dimension_str": "최소 1200×600px",
         "aspect_ratio_str": "2:1"
       },
@@ -2482,6 +2577,31 @@
         ],
         "text_ratio_limit": 0.3,
         "text_ratio_level": "warning",
+        "safe_zone": {
+          "description": "상단 250px 및 하단 350px 세이프존 필수 준수 (상단 계정 프로필/헤더 및 하단 CTA 버튼 가림 영역)",
+          "base_width": 1080,
+          "base_height": 1920,
+          "top_px": 250,
+          "bottom_px": 350,
+          "left_px": 60,
+          "right_px": 60,
+          "ui_elements": [
+            {
+              "name": "인스타그램 프로필 / 닫기 헤더",
+              "position": "top",
+              "width_ratio": 1.0,
+              "height_ratio": 0.13,
+              "description": "프로필 이미지, 계정명, 사운드 토글, 닫기 버튼"
+            },
+            {
+              "name": "하단 CTA 버튼 (더 알아보기)",
+              "position": "bottom-center",
+              "width_ratio": 0.65,
+              "height_ratio": 0.08,
+              "description": "하단 고정 스와이프업 CTA 액션 버튼"
+            }
+          ]
+        },
         "dimension_str": "권장 1080×1920px",
         "aspect_ratio_str": "9:16"
       },
@@ -2813,6 +2933,24 @@
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
         "description": "GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB)",
+        "safe_zone": {
+          "description": "상/하 50px 및 좌/우 40px 외곽 여백 준수 (우측 하단 네이버 공식 AD 마크 영역)",
+          "base_width": 750,
+          "base_height": 280,
+          "top_px": 50,
+          "bottom_px": 50,
+          "left_px": 40,
+          "right_px": 40,
+          "ui_elements": [
+            {
+              "name": "네이버 AD 마크",
+              "position": "bottom-right",
+              "width_ratio": 0.12,
+              "height_ratio": 0.15,
+              "description": "우측 하단 네이버 기본 AD 배지"
+            }
+          ]
+        },
         "dimension_str": "750×280px",
         "aspect_ratio_str": ""
       },
@@ -2827,6 +2965,23 @@
         ],
         "require_transparency": true,
         "description": "GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG)",
+        "safe_zone": {
+          "description": "상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)",
+          "base_width": 750,
+          "base_height": 200,
+          "top_px": 35,
+          "bottom_px": 35,
+          "left_px": 35,
+          "right_px": 35,
+          "ui_elements": [
+            {
+              "name": "네이버 AD 마크",
+              "position": "bottom-right",
+              "width_ratio": 0.12,
+              "height_ratio": 0.16
+            }
+          ]
+        },
         "dimension_str": "750×200px",
         "aspect_ratio_str": ""
       },
@@ -2840,6 +2995,15 @@
           "jpeg",
           "png"
         ],
+        "safe_zone": {
+          "description": "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 광고 마크)",
+          "base_width": 1250,
+          "base_height": 560,
+          "top_px": 60,
+          "bottom_px": 60,
+          "left_px": 50,
+          "right_px": 50
+        },
         "dimension_str": "1250×560px",
         "aspect_ratio_str": ""
       },
@@ -2860,6 +3024,15 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "safe_zone": {
+          "description": "외곽 상하좌우 60px 여백 준수 (모바일 피드 라운딩 모서리 보호)",
+          "base_width": 1200,
+          "base_height": 1200,
+          "top_px": 60,
+          "bottom_px": 60,
+          "left_px": 60,
+          "right_px": 60
+        },
         "dimension_str": "최소 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -2880,6 +3053,15 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "safe_zone": {
+          "description": "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 AD 배지 보호)",
+          "base_width": 1200,
+          "base_height": 628,
+          "top_px": 60,
+          "bottom_px": 60,
+          "left_px": 50,
+          "right_px": 50
+        },
         "dimension_str": "최소 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3992,6 +4174,31 @@
         ],
         "text_ratio_limit": 0.3,
         "text_ratio_level": "warning",
+        "safe_zone": {
+          "description": "상단 130px, 하단 384px, 우측 130px 세이프존 필수 (우측 인터랙션 아이콘 및 하단 캡션/사운드 영역)",
+          "base_width": 1080,
+          "base_height": 1920,
+          "top_px": 130,
+          "bottom_px": 384,
+          "left_px": 40,
+          "right_px": 130,
+          "ui_elements": [
+            {
+              "name": "우측 반응 버튼 (좋아요/댓글/공유)",
+              "position": "right",
+              "width_ratio": 0.15,
+              "height_ratio": 0.45,
+              "description": "우측 수직 액션 아이콘 바"
+            },
+            {
+              "name": "하단 계정명 & 광고 캡션",
+              "position": "bottom-left",
+              "width_ratio": 0.75,
+              "height_ratio": 0.18,
+              "description": "하단 텍스트 및 사운드 디스크"
+            }
+          ]
+        },
         "dimension_str": "권장 1080×1920px",
         "aspect_ratio_str": "9:16"
       },

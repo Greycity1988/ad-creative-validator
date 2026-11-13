@@ -1,4 +1,4 @@
-import { ValidationResponse, ValidationItem, PlatformResult, PlacementResult, CheckItem, ImageInfo } from '../types';
+import { ValidationResponse, ValidationItem, PlatformResult, PlacementResult, CheckItem, ImageInfo, SafeZoneSpec } from '../types';
 import specsData from '../data/specsData.json';
 
 export interface SpecPlacement {
@@ -20,6 +20,7 @@ export interface SpecPlacement {
   max_text_ratio?: number | null;
   description?: string;
   notes?: string[];
+  safe_zone?: SafeZoneSpec;
 }
 
 export interface SpecPlatform {
@@ -393,6 +394,29 @@ export function evaluatePlacement(
     }
   }
 
+  // 6. Safe Zone check
+  if (placement.safe_zone) {
+    const sz = placement.safe_zone;
+    let scaleX = 1;
+    let scaleY = 1;
+    if (sz.base_width && sz.base_height) {
+      scaleX = w / sz.base_width;
+      scaleY = h / sz.base_height;
+    }
+    const scaledTop = Math.round((sz.top_px || 0) * scaleY);
+    const scaledBottom = Math.round((sz.bottom_px || 0) * scaleY);
+    const scaledLeft = Math.round((sz.left_px || 0) * scaleX);
+    const scaledRight = Math.round((sz.right_px || 0) * scaleX);
+
+    checks.push({
+      name: 'safe_zone',
+      status: 'pass',
+      message: `세이프존(Safe Zone) 공식 가이드 탑재: 상단 ${scaledTop}px, 하단 ${scaledBottom}px, 좌측 ${scaledLeft}px, 우측 ${scaledRight}px 외곽 여백 준수 권장 [📐 인스펙터로 실시간 대조 가능]`,
+      expected: `상하 ${scaledTop}/${scaledBottom}px, 좌우 ${scaledLeft}/${scaledRight}px 안전 마진`,
+      actual: `가이드라인 대조 준비 완료`,
+    });
+  }
+
   // Calculate overall status
   const hasFail = checks.some((c) => c.status === 'fail');
   const hasWarning = checks.some((c) => c.status === 'warning');
@@ -411,6 +435,7 @@ export function evaluatePlacement(
     overall,
     checks,
     is_matched_target: isMatched,
+    safe_zone: placement.safe_zone,
   };
 }
 

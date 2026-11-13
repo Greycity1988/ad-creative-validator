@@ -21,6 +21,20 @@ placements:
   require_transparency: true
   text_ratio_limit: 0.2
   text_ratio_level: error
+  safe_zone:
+    description: "상/하 30px 및 좌/우 40px 외곽 여백 준수 (우하단 더보기/구매하기 버튼 UI 차폐 영역)"
+    base_width: 960
+    base_height: 300
+    top_px: 30
+    bottom_px: 30
+    left_px: 40
+    right_px: 40
+    ui_elements:
+    - name: "우하단 구매/앱설치 버튼"
+      position: "bottom-right"
+      width_ratio: 0.16
+      height_ratio: 0.18
+      description: "카카오모먼트 시스템 구매/더보기 버튼"
 - name: 카카오 비즈보드 (클래식 1029×258)
   exact_width: 1029
   exact_height: 258
@@ -29,6 +43,19 @@ placements:
   - png
   require_transparency: true
   description: 카카오 비즈보드 클래식 규격 (배경 투명 필수 PNG)
+  safe_zone:
+    description: "상/하 25px 및 좌/우 40px 외곽 여백 준수 (우하단 버튼 UI 차폐 영역)"
+    base_width: 1029
+    base_height: 258
+    top_px: 25
+    bottom_px: 25
+    left_px: 40
+    right_px: 40
+    ui_elements:
+    - name: "우하단 광고 버튼"
+      position: "bottom-right"
+      width_ratio: 0.15
+      height_ratio: 0.20
 - name: New 카카오 비즈보드 (확장/오브젝트형 960×300)
   aspect_ratio:
   - 16
@@ -42,6 +69,19 @@ placements:
   require_transparency: true
   text_ratio_limit: 0.2
   text_ratio_level: error
+  safe_zone:
+    description: "상/하 30px 및 좌/우 40px 외곽 여백 준수 (우하단 광고UI 차폐 영역)"
+    base_width: 960
+    base_height: 300
+    top_px: 30
+    bottom_px: 30
+    left_px: 40
+    right_px: 40
+    ui_elements:
+    - name: "우하단 앱설치/구매 버튼"
+      position: "bottom-right"
+      width_ratio: 0.16
+      height_ratio: 0.18
 - name: 카카오 DA (디스플레이 네이티브 2:1)
   aspect_ratio:
   - 2
@@ -56,6 +96,20 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+  safe_zone:
+    description: "주요 요소(텍스트, 로고, 필수고지문구)는 상/하 100px 및 좌측 40px 영역 이외 중앙에 배치 (우하단 광고UI 가림 영역)"
+    base_width: 1200
+    base_height: 600
+    top_px: 100
+    bottom_px: 100
+    left_px: 40
+    right_px: 40
+    ui_elements:
+    - name: "우하단 광고UI / AD 마크"
+      position: "bottom-right"
+      width_ratio: 0.14
+      height_ratio: 0.14
+      description: "시스템 자동 노출 AD 마크 및 더보기 버튼"
 - name: 카카오 DA (디스플레이 네이티브 1:1)
   aspect_ratio:
   - 1
