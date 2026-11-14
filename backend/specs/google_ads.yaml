@@ -10,7 +10,7 @@ description: GDN 고정 배너 전 규격(23종), AdMob 모바일/태블릿 인�
 verification:
   status: verified
   checked_on: '2026-11-15'
-  method: support.google.com/google-ads 캠페인별 사양 페이지 대조
+  method: support.google.com/google-ads 캠페인별 사양 페이지 대조 · 근거 기준일 = 2026-11-15 조회한 현행 공식 페이지(게시일 미표기)
 placements:
 - name: PMax/Responsive Landscape (1.91:1)
   aspect_ratio:
@@ -31,6 +31,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 628
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: PMax/Responsive Square (1:1)
   aspect_ratio:
   - 1
@@ -50,6 +52,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: PMax/Responsive Portrait (4:5)
   aspect_ratio:
   - 4
@@ -69,6 +73,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 960
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Responsive Display Vertical (9:16 900×1600)
   aspect_ratio:
   - 9
@@ -88,6 +94,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 900
   recommended_height: 1600
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 300×250
   exact_width: 300
   exact_height: 250
@@ -100,6 +108,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 300×250 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 336×280
   exact_width: 336
   exact_height: 280
@@ -112,6 +122,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 336×280 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 728×90
   exact_width: 728
   exact_height: 90
@@ -124,6 +136,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 728×90 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 300×600
   exact_width: 300
   exact_height: 600
@@ -136,6 +150,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 300×600 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 320×100
   exact_width: 320
   exact_height: 100
@@ -148,6 +164,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 320×100 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 200×200
   exact_width: 200
   exact_height: 200
@@ -160,6 +178,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 200×200 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 250×250
   exact_width: 250
   exact_height: 250
@@ -172,6 +192,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 250×250 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 240×400
   exact_width: 240
   exact_height: 400
@@ -184,6 +206,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 240×400 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 468×60
   exact_width: 468
   exact_height: 60
@@ -196,6 +220,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 468×60 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 970×90
   exact_width: 970
   exact_height: 90
@@ -208,6 +234,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 970×90 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 980×120
   exact_width: 980
   exact_height: 120
@@ -220,6 +248,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 980×120 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 120×600
   exact_width: 120
   exact_height: 600
@@ -232,6 +262,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 120×600 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 160×600
   exact_width: 160
   exact_height: 600
@@ -244,6 +276,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 160×600 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 300×1050
   exact_width: 300
   exact_height: 1050
@@ -256,6 +290,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 300×1050 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 320×50
   exact_width: 320
   exact_height: 50
@@ -268,6 +304,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 320×50 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 300×50
   exact_width: 300
   exact_height: 50
@@ -280,6 +318,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 300×50 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 970×250 (빌보드)
   exact_width: 970
   exact_height: 250
@@ -292,6 +332,8 @@ placements:
   description: GDN 데스크톱 대형 빌보드 배너 (970×250)
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 250×360 (트리플 와이드)
   exact_width: 250
   exact_height: 360
@@ -304,6 +346,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 250×360 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 580×400 (넷보드)
   exact_width: 580
   exact_height: 400
@@ -316,6 +360,8 @@ placements:
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
   description: 업로드 이미지 광고 580×400 (최대 150KB, GIF 애니메이션은 5fps 미만)
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 930×180 (탑 배너)
   exact_width: 930
   exact_height: 180
@@ -328,6 +374,8 @@ placements:
   description: Google Ads 공식 데스크톱 탑 배너 (930×180)
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 750×100 (폴란드 더블 빌보드)
   exact_width: 750
   exact_height: 100
@@ -340,6 +388,8 @@ placements:
   description: '지역 한정 규격: 폴란드 더블 빌보드 (최대 150KB)'
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 750×200 (폴란드 트리플 빌보드)
   exact_width: 750
   exact_height: 200
@@ -352,6 +402,8 @@ placements:
   description: '지역 한정 규격: 폴란드 트리플 빌보드 (최대 150KB)'
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: GDN Banner 750×300 (폴란드 파노라마)
   exact_width: 750
   exact_height: 300
@@ -364,6 +416,8 @@ placements:
   description: '지역 한정 규격: 폴란드 파노라마 (최대 150KB)'
   verified: true
   source: https://support.google.com/google-ads/answer/1722096
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Demand Gen Landscape (1.91:1 1200×628)
   aspect_ratio:
   - 1.91
@@ -384,6 +438,8 @@ placements:
   - max_file_size
   recommended_width: 1200
   recommended_height: 628
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Demand Gen Square (1:1 1200×1200)
   aspect_ratio:
   - 1
@@ -404,6 +460,8 @@ placements:
   - max_file_size
   recommended_width: 1200
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Demand Gen Portrait (4:5 960×1200)
   aspect_ratio:
   - 4
@@ -424,6 +482,8 @@ placements:
   - max_file_size
   recommended_width: 960
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Google App 캠페인 가로형 (1.91:1 1200×628)
   aspect_ratio:
   - 1.91
@@ -443,6 +503,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 628
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Google App 캠페인 정사각형 (1:1 1200×1200)
   aspect_ratio:
   - 1
@@ -462,6 +524,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Google App 캠페인 세로형 (4:5 1200×1500)
   aspect_ratio:
   - 4
@@ -481,6 +545,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 1500
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Google Ads Logo (1:1 정사각형 로고)
   aspect_ratio:
   - 1
@@ -500,6 +566,8 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 1200
+  source_type: official_page
+  source_date: '2026-11-15'
 - name: Google Ads Logo (4:1 가로형 로고)
   aspect_ratio:
   - 4
@@ -519,3 +587,5 @@ placements:
   - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 300
+  source_type: official_page
+  source_date: '2026-11-15'

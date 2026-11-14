@@ -85,8 +85,19 @@ def test_schema_and_dimensions():
             max_mb = p.get("max_file_size_mb")
             if max_kb is None and max_mb is None and "max_file_size" not in (p.get("unstated") or []):
                 errors.append(f"{yf.name} - '{name}': no max_file_size defined (mark unstated: [max_file_size] if the official document has none)")
-            if p.get("verified") and not p.get("source"):
-                errors.append(f"{yf.name} - '{name}': verified placement without a source URL")
+            if p.get("verified"):
+                if not p.get("source"):
+                    errors.append(f"{yf.name} - '{name}': verified placement without a source URL")
+                if p.get("source_type") not in ("official_page", "official_document", "media_confirmed"):
+                    errors.append(f"{yf.name} - '{name}': verified placement needs source_type")
+                if not p.get("source_date"):
+                    errors.append(f"{yf.name} - '{name}': verified placement needs source_date")
+                elif p.get("source_type") == "official_document" and not p.get("needs_confirmation"):
+                    # A document older than a year may be outdated (Naver's 2023 timeboard guide was): confirm first
+                    from datetime import date
+                    age = (date.today() - date.fromisoformat(str(p["source_date"])[:10])).days
+                    if age > 365:
+                        errors.append(f"{yf.name} - '{name}': source document is {age} days old; set needs_confirmation or confirm with the publisher")
                 
             # Safe zone check if exists
             sz = p.get("safe_zone")

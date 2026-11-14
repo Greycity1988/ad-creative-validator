@@ -2941,7 +2941,7 @@
     "verification": {
       "status": "verified",
       "checked_on": "2026-11-15",
-      "method": "support.google.com/google-ads 캠페인별 사양 페이지 대조"
+      "method": "support.google.com/google-ads 캠페인별 사양 페이지 대조 · 근거 기준일 = 2026-11-15 조회한 현행 공식 페이지(게시일 미표기)"
     },
     "placements_count": 35,
     "placements": [
@@ -3005,6 +3005,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 628,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3031,6 +3033,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3057,6 +3061,8 @@
         ],
         "recommended_width": 960,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 960×1200px",
         "aspect_ratio_str": "4:5"
       },
@@ -3083,6 +3089,8 @@
         ],
         "recommended_width": 900,
         "recommended_height": 1600,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 900×1600px",
         "aspect_ratio_str": "9:16"
       },
@@ -3100,6 +3108,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 300×250 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       },
@@ -3117,6 +3127,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 336×280 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "336×280px",
         "aspect_ratio_str": ""
       },
@@ -3134,6 +3146,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 728×90 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "728×90px",
         "aspect_ratio_str": ""
       },
@@ -3151,6 +3165,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 300×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "300×600px",
         "aspect_ratio_str": ""
       },
@@ -3168,6 +3184,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 320×100 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
       },
@@ -3185,6 +3203,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 200×200 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "200×200px",
         "aspect_ratio_str": ""
       },
@@ -3202,6 +3222,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 250×250 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "250×250px",
         "aspect_ratio_str": ""
       },
@@ -3219,6 +3241,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 240×400 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "240×400px",
         "aspect_ratio_str": ""
       },
@@ -3236,6 +3260,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 468×60 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "468×60px",
         "aspect_ratio_str": ""
       },
@@ -3253,6 +3279,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 970×90 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "970×90px",
         "aspect_ratio_str": ""
       },
@@ -3270,6 +3298,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 980×120 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "980×120px",
         "aspect_ratio_str": ""
       },
@@ -3287,6 +3317,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 120×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "120×600px",
         "aspect_ratio_str": ""
       },
@@ -3304,6 +3336,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 160×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "160×600px",
         "aspect_ratio_str": ""
       },
@@ -3321,6 +3355,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 300×1050 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "300×1050px",
         "aspect_ratio_str": ""
       },
@@ -3338,6 +3374,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 320×50 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "320×50px",
         "aspect_ratio_str": ""
       },
@@ -3355,6 +3393,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 300×50 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "300×50px",
         "aspect_ratio_str": ""
       },
@@ -3372,6 +3412,8 @@
         "description": "GDN 데스크톱 대형 빌보드 배너 (970×250)",
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "970×250px",
         "aspect_ratio_str": ""
       },
@@ -3389,6 +3431,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 250×360 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "250×360px",
         "aspect_ratio_str": ""
       },
@@ -3406,6 +3450,8 @@
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
         "description": "업로드 이미지 광고 580×400 (최대 150KB, GIF 애니메이션은 5fps 미만)",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "580×400px",
         "aspect_ratio_str": ""
       },
@@ -3423,6 +3469,8 @@
         "description": "Google Ads 공식 데스크톱 탑 배너 (930×180)",
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "930×180px",
         "aspect_ratio_str": ""
       },
@@ -3440,6 +3488,8 @@
         "description": "지역 한정 규격: 폴란드 더블 빌보드 (최대 150KB)",
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "750×100px",
         "aspect_ratio_str": ""
       },
@@ -3457,6 +3507,8 @@
         "description": "지역 한정 규격: 폴란드 트리플 빌보드 (최대 150KB)",
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "750×200px",
         "aspect_ratio_str": ""
       },
@@ -3474,6 +3526,8 @@
         "description": "지역 한정 규격: 폴란드 파노라마 (최대 150KB)",
         "verified": true,
         "source": "https://support.google.com/google-ads/answer/1722096",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "750×300px",
         "aspect_ratio_str": ""
       },
@@ -3501,6 +3555,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 628,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3528,6 +3584,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3555,6 +3613,8 @@
         ],
         "recommended_width": 960,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 960×1200px",
         "aspect_ratio_str": "4:5"
       },
@@ -3581,6 +3641,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 628,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3607,6 +3669,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3633,6 +3697,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 1500,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×1500px",
         "aspect_ratio_str": "4:5"
       },
@@ -3659,6 +3725,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 1200,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3685,6 +3753,8 @@
         ],
         "recommended_width": 1200,
         "recommended_height": 300,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1200×300px",
         "aspect_ratio_str": "4:1"
       }
@@ -4329,7 +4399,7 @@
     "verification": {
       "status": "verified",
       "checked_on": "2026-11-15",
-      "method": "placement별 공식 페이지(facebook.com/business/ads-guide/update/...)의 Technical requirements 대조"
+      "method": "placement별 공식 페이지(facebook.com/business/ads-guide/update/...)의 Technical requirements 대조 · 근거 기준일 = 2026-11-15 조회한 현행 공식 페이지(게시일 미표기)"
     },
     "placements_count": 11,
     "placements": [
@@ -4366,6 +4436,8 @@
         "description": "페이스북·인스타그램 피드 권장 비율 4:5 (권장 1440×1800, 최대 30MB)",
         "verified": true,
         "source": "https://www.facebook.com/business/ads-guide/update/image/facebook-feed",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1440×1800px",
         "aspect_ratio_str": "4:5"
       },
@@ -4390,6 +4462,8 @@
         "unstated": [
           "recommended_size"
         ],
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 600×600px",
         "aspect_ratio_str": "1:1"
       },
@@ -4414,6 +4488,8 @@
         "unstated": [
           "recommended_size"
         ],
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 600×315px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -4462,6 +4538,8 @@
             }
           ]
         },
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1440×2560px",
         "aspect_ratio_str": "9:16"
       },
@@ -4483,6 +4561,8 @@
         "description": "페이스북 피드 캐러셀 카드 1:1, 최소 1080×1080 (카드 2~10장, 최대 30MB)",
         "verified": true,
         "source": "https://www.facebook.com/business/ads-guide/update/carousel/facebook-feed",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 1080×1080px",
         "aspect_ratio_str": "1:1"
       },
@@ -4504,6 +4584,8 @@
         "description": "인스타그램 피드 이미지 전용 캐러셀 4:5 (카드 2~10장, 최대 30MB). 공식 문서의 최소 해상도는 1080×1080으로 적혀 있어 4:5에 맞춰 1080×1350 적용",
         "verified": true,
         "source": "https://www.facebook.com/business/ads-guide/update/carousel/instagram-feed",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 1080×1350px",
         "aspect_ratio_str": "4:5"
       },
@@ -4520,6 +4602,8 @@
         "description": "Audience Network 이미지 최소 398×208 (최대 30MB). 공식 권장 비율은 9:16",
         "verified": true,
         "source": "https://www.facebook.com/business/ads-guide/update/image/audience-network-native",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 398×208px",
         "aspect_ratio_str": ""
       },
@@ -4547,6 +4631,8 @@
           "max_file_size",
           "aspect_ratio_tolerance"
         ],
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1080×1080px",
         "aspect_ratio_str": "1:1"
       },
@@ -4571,6 +4657,8 @@
         "unstated": [
           "recommended_size"
         ],
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 500×500px",
         "aspect_ratio_str": "1:1"
       },
@@ -4594,6 +4682,8 @@
         "description": "탐색 탭 권장 4:5 (권장 1440×1800, 최대 30MB)",
         "verified": true,
         "source": "https://www.facebook.com/business/ads-guide/update/image/instagram-explore-home",
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "권장 1440×1800px",
         "aspect_ratio_str": "4:5"
       },
@@ -4618,6 +4708,8 @@
         "unstated": [
           "aspect_ratio_tolerance"
         ],
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
         "dimension_str": "최소 1080×1080px",
         "aspect_ratio_str": "1:1"
       }
@@ -4949,15 +5041,17 @@
     "id": "naver",
     "name": "네이버 성과형 DA & GFA",
     "description": "스마트채널, 네이버 DA, NOSP 타임보드, 스페셜DA, 더블크라운, 롤링보드",
-    "official_update_date": "2026.04 공식 개정",
-    "official_source_name": "네이버 디스플레이 광고(N Ads / NOSP) 공식 가이드",
-    "official_source_url": "https://ads.naver.com/guide/da",
+    "official_update_date": "네이버 상품소개서 2026-10 기준 (지면별 제작가이드 날짜 상이)",
+    "official_source_name": "네이버 디스플레이 광고 상품소개서 (공식, PDF)",
+    "official_source_url": "https://displayad.naver.com/download/Naver_Display_AD.pdf",
     "revision_summary": "NOSP 타임보드 300KB 허용 기준 반영, 모바일 스페셜DA(1250×520 300KB), 스마트채널(750×280 투명PNG 250KB 및 750×200/160), 네이티브 피드 사양 최신화",
-    "last_verified_date": "2026-11-12",
+    "last_verified_date": "2026-11-15",
     "verification": {
-      "status": "unverified"
+      "status": "partial",
+      "checked_on": "2026-11-15",
+      "method": "네이버 공식 PDF(상품소개서 2026-10, 지면별 제작가이드) 대조. 기준일 12개월 넘은 자료는 반영하지 않고 매체 확인 중으로 표시. 타임보드 용량은 매체 확인"
     },
-    "placements_count": 31,
+    "placements_count": 33,
     "placements": [
       "네이버 NOSP (PC 타임보드 고해상도 1660×260)",
       "네이버 NOSP (PC 타임보드 기본형 830×130)",
@@ -4989,7 +5083,9 @@
       "네이버 NOSP (PC 메인 브릿지보드 1080×100)",
       "네이버 NOSP (PC 메인 브릿지보드 기본 540×50)",
       "네이버 DA (스마트채널 고해상도 1500×560 투명 PNG)",
-      "네이버 NOSP (모바일 롤링보드 고해상도 1500×800)"
+      "네이버 NOSP (모바일 롤링보드 고해상도 1500×800)",
+      "네이버 NOSP (모바일 스페셜DA 520 오브젝트·썸네일 750×220 투명 PNG)",
+      "네이버 NOSP (모바일 스페셜DA 520 텍스트 1020×300 투명 PNG)"
     ],
     "placements_detail": [
       {
@@ -5005,7 +5101,11 @@
         ],
         "text_ratio_limit": 0.25,
         "text_ratio_level": "warning",
-        "description": "NOSP PC 타임보드 레티나 대응 규격 (노출 시 830×130 축소, NOSP 콘솔 최대 300KB 허용)",
+        "description": "PC 메인 타임보드 1660×260 (화면에는 830×130으로 표시). 용량 300KB는 매체 확인(2026-11-15), 크기·포맷은 공식 가이드(2023-04)",
+        "verified": true,
+        "source_type": "media_confirmed",
+        "source_date": "2026-11-15",
+        "source": "https://nosp.da.naver.com/center/api/dafile/download?fileNm=Naver_PC_Timeboard_Rollingboard_Image_Guide.pdf",
         "dimension_str": "1660×260px",
         "aspect_ratio_str": ""
       },
@@ -5020,6 +5120,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 2023-04 가이드상 830×130은 화면 표시 크기이고 업로드는 1660×260]",
         "dimension_str": "830×130px",
         "aspect_ratio_str": ""
       },
@@ -5035,6 +5137,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 2026-04 제작가이드 520에 1250×520 업로드 규격 없음]",
         "dimension_str": "1250×520px",
         "aspect_ratio_str": ""
       },
@@ -5044,12 +5148,16 @@
         "exact_height": 280,
         "max_file_size_kb": 250,
         "allowed_formats": [
-          "jpg",
-          "jpeg",
           "png"
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "require_transparency": true,
+        "verified": true,
+        "source_type": "official_document",
+        "source_date": "2026-05-27",
+        "source": "https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip",
+        "description": "모바일 메인 스페셜DA 기본형 750×280, 투명 배경 PNG만, 최대 250KB, 텍스트 영역 상하좌우 40px 여백 (스페셜DA 제작가이드 280, 2026-05)",
         "dimension_str": "750×280px",
         "aspect_ratio_str": ""
       },
@@ -5065,6 +5173,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1250×520px",
         "aspect_ratio_str": ""
       },
@@ -5078,6 +5188,8 @@
           "jpg",
           "jpeg"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1340×200px",
         "aspect_ratio_str": ""
       },
@@ -5090,6 +5202,8 @@
           "png"
         ],
         "require_transparency": true,
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "960×160px",
         "aspect_ratio_str": ""
       },
@@ -5105,6 +5219,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1250×520px",
         "aspect_ratio_str": ""
       },
@@ -5119,7 +5235,7 @@
         "require_transparency": true,
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
-        "description": "GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB)",
+        "description": "GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "safe_zone": {
           "description": "상/하 50px 및 좌/우 40px 외곽 여백 준수 (우측 하단 네이버 공식 AD 마크 영역)",
           "base_width": 750,
@@ -5138,6 +5254,7 @@
             }
           ]
         },
+        "needs_confirmation": true,
         "dimension_str": "750×280px",
         "aspect_ratio_str": ""
       },
@@ -5151,7 +5268,7 @@
           "png"
         ],
         "require_transparency": true,
-        "description": "GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG)",
+        "description": "GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "safe_zone": {
           "description": "상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)",
           "base_width": 750,
@@ -5169,6 +5286,7 @@
             }
           ]
         },
+        "needs_confirmation": true,
         "dimension_str": "750×200px",
         "aspect_ratio_str": ""
       },
@@ -5191,6 +5309,8 @@
           "left_px": 50,
           "right_px": 50
         },
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 2025-04 가이드는 50~250KB, 투명 배경 불가, 좌우 225px 여백]",
         "dimension_str": "1250×560px",
         "aspect_ratio_str": ""
       },
@@ -5222,6 +5342,8 @@
           "left_px": 60,
           "right_px": 60
         },
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -5253,6 +5375,8 @@
           "left_px": 50,
           "right_px": 50
         },
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -5273,6 +5397,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "error",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "최소 1200×1800px",
         "aspect_ratio_str": "2:3"
       },
@@ -5286,6 +5412,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "342×228px",
         "aspect_ratio_str": ""
       },
@@ -5301,6 +5429,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "warning",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "750×500px",
         "aspect_ratio_str": ""
       },
@@ -5317,6 +5447,8 @@
         ],
         "text_ratio_limit": 0.25,
         "text_ratio_level": "warning",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 2023-04 가이드는 840×480·200KB]",
         "dimension_str": "350×280px",
         "aspect_ratio_str": ""
       },
@@ -5332,6 +5464,8 @@
         ],
         "text_ratio_limit": 0.2,
         "text_ratio_level": "warning",
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "750×400px",
         "aspect_ratio_str": ""
       },
@@ -5345,6 +5479,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "300×150px",
         "aspect_ratio_str": ""
       },
@@ -5358,6 +5494,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1000×500px",
         "aspect_ratio_str": ""
       },
@@ -5371,6 +5509,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1000×1000px",
         "aspect_ratio_str": ""
       },
@@ -5384,6 +5524,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1000×1000px",
         "aspect_ratio_str": ""
       },
@@ -5397,6 +5539,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
         "dimension_str": "1200×600px",
         "aspect_ratio_str": ""
       },
@@ -5410,7 +5554,8 @@
           "jpeg",
           "png"
         ],
-        "description": "네이버 GFA 컬렉션형 및 피드 슬라이드 1:1 정방형 규격 (최대 500KB)",
+        "description": "네이버 GFA 컬렉션형 및 피드 슬라이드 1:1 정방형 규격 (최대 500KB) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "600×600px",
         "aspect_ratio_str": ""
       },
@@ -5424,7 +5569,8 @@
           "jpeg",
           "png"
         ],
-        "description": "네이버 카페/블로그 댓글 및 커뮤니케이션 지면 아이콘 규격",
+        "description": "네이버 카페/블로그 댓글 및 커뮤니케이션 지면 아이콘 규격 [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "112×112px",
         "aspect_ratio_str": ""
       },
@@ -5438,7 +5584,8 @@
           "jpg",
           "jpeg"
         ],
-        "description": "네이버 파워링크 및 브랜드 패키지 로고 이미지 규격",
+        "description": "네이버 파워링크 및 브랜드 패키지 로고 이미지 규격 [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "140×140px",
         "aspect_ratio_str": ""
       },
@@ -5453,7 +5600,8 @@
           "png",
           "gif"
         ],
-        "description": "NOSP PC 메인 롤링보드 2배수 레티나 규격 (노출 시 350×280 축소)",
+        "description": "NOSP PC 메인 롤링보드 2배수 레티나 규격 (노출 시 350×280 축소) [매체 확인 중: 2023-04 가이드는 840×480·200KB]",
+        "needs_confirmation": true,
         "dimension_str": "700×560px",
         "aspect_ratio_str": ""
       },
@@ -5468,7 +5616,8 @@
           "png",
           "gif"
         ],
-        "description": "NOSP PC 메인 브릿지보드 와이드 배너 (1080×100)",
+        "description": "NOSP PC 메인 브릿지보드 와이드 배너 (1080×100) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "1080×100px",
         "aspect_ratio_str": ""
       },
@@ -5483,7 +5632,8 @@
           "png",
           "gif"
         ],
-        "description": "NOSP PC 메인 브릿지보드 기본 규격 (540×50)",
+        "description": "NOSP PC 메인 브릿지보드 기본 규격 (540×50) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "540×50px",
         "aspect_ratio_str": ""
       },
@@ -5496,7 +5646,8 @@
           "png"
         ],
         "require_transparency": true,
-        "description": "네이버 스마트채널 2배수 레티나 규격 (1500×560 투명 PNG 필수)",
+        "description": "네이버 스마트채널 2배수 레티나 규격 (1500×560 투명 PNG 필수) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "1500×560px",
         "aspect_ratio_str": ""
       },
@@ -5510,8 +5661,43 @@
           "jpeg",
           "png"
         ],
-        "description": "NOSP 모바일 롤링보드 2배수 고해상도 규격 (1500×800)",
+        "description": "NOSP 모바일 롤링보드 2배수 고해상도 규격 (1500×800) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]",
+        "needs_confirmation": true,
         "dimension_str": "1500×800px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "네이버 NOSP (모바일 스페셜DA 520 오브젝트·썸네일 750×220 투명 PNG)",
+        "exact_width": 750,
+        "exact_height": 220,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "png"
+        ],
+        "require_transparency": true,
+        "verified": true,
+        "source_type": "official_document",
+        "source_date": "2026-04-29",
+        "source": "https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip",
+        "description": "스페셜DA 520형 오브젝트/썸네일 이미지 750×220, 투명 배경 PNG, 최대 200KB, 좌 64px·우 30px·상 30px 여백 (제작가이드 520, 2026-04)",
+        "dimension_str": "750×220px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "네이버 NOSP (모바일 스페셜DA 520 텍스트 1020×300 투명 PNG)",
+        "exact_width": 1020,
+        "exact_height": 300,
+        "max_file_size_kb": 200,
+        "allowed_formats": [
+          "png"
+        ],
+        "require_transparency": true,
+        "verified": true,
+        "source_type": "official_document",
+        "source_date": "2026-04-29",
+        "source": "https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip",
+        "description": "스페셜DA 520형 광고 문구·로고 이미지 1020×300, 투명 배경 PNG, 최대 200KB, 라이트·다크 2장, 좌우 48px·상단 34px 여백 (제작가이드 520, 2026-04)",
+        "dimension_str": "1020×300px",
         "aspect_ratio_str": ""
       }
     ]

@@ -40,6 +40,8 @@ export interface PlacementResult {
   // true only when this placement's rule was checked against the publisher's official document
   verified?: boolean;
   source?: string;
+  // the source is old or contradicted, so the value is being confirmed with the publisher
+  needs_confirmation?: boolean;
 }
 
 export interface PlatformResult {
@@ -81,6 +83,9 @@ export interface PlacementDetail {
   notes?: string[];
   verified?: boolean;
   source?: string;
+  source_type?: 'official_page' | 'official_document' | 'media_confirmed';
+  source_date?: string;
+  needs_confirmation?: boolean;
   unstated?: string[];
 }
 

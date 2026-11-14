@@ -24,6 +24,9 @@ export interface SpecPlacement {
   safe_zone?: SafeZoneSpec;
   verified?: boolean;
   source?: string;
+  source_type?: 'official_page' | 'official_document' | 'media_confirmed';
+  source_date?: string;
+  needs_confirmation?: boolean;
   unstated?: string[];
 }
 
@@ -489,6 +492,7 @@ export function evaluatePlacement(
     safe_zone: placement.safe_zone,
     verified: placement.verified === true,
     source: placement.source,
+    needs_confirmation: placement.needs_confirmation === true,
   };
 }
 
