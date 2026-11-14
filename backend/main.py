@@ -1,5 +1,6 @@
 """Main FastAPI application entry point."""
 
+import os
 from datetime import datetime
 from pathlib import Path
 from fastapi import FastAPI
@@ -18,13 +19,19 @@ app = FastAPI(
     version="1.2.0",
 )
 
-# CORS setup (no cookies or auth headers are used, so credentials stay off with the wildcard origin)
+# CORS: only the deployed frontend and local dev may call this API from a browser.
+# Add origins with CORS_ORIGINS (comma separated) when the frontend moves.
+DEFAULT_CORS_ORIGINS = (
+    "https://ad-creative-validator.vercel.app,"
+    "http://localhost:5173,http://127.0.0.1:5173"
+)
+CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", DEFAULT_CORS_ORIGINS).split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=CORS_ORIGINS,
     allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 # Include routers

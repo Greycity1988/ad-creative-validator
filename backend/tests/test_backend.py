@@ -356,3 +356,13 @@ def test_validate_rejects_oversized_upload(monkeypatch):
         data={"analyze_text": "false"},
     )
     assert res.status_code == 413
+
+
+def test_cors_allows_only_known_origins():
+    from fastapi.testclient import TestClient
+    from main import app
+    client = TestClient(app)
+    ok = client.options("/api/platforms", headers={"Origin": "https://ad-creative-validator.vercel.app", "Access-Control-Request-Method": "POST"})
+    assert ok.headers.get("access-control-allow-origin") == "https://ad-creative-validator.vercel.app"
+    bad = client.options("/api/platforms", headers={"Origin": "https://evil.example", "Access-Control-Request-Method": "POST"})
+    assert "access-control-allow-origin" not in bad.headers
