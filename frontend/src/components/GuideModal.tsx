@@ -277,7 +277,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
 
               <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
-                  <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                  <Clock className="w-3.5 h-3.5 text-violet-600" />
                   <span>주기적 변경 감지</span>
                 </div>
                 <p className="text-ink-tertiary leading-relaxed text-[11px]">

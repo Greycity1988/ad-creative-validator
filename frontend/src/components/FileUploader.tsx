@@ -119,14 +119,14 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         )}
       </div>
 
-      {/* Security Privacy Callout - Lifemed Soft Sage */}
-      <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#E8F7F0] border border-[#A7F3D0] text-xs text-[#065F46] leading-relaxed shadow-soft-xs">
-        <div className="w-6 h-6 rounded-lg bg-white border border-[#A7F3D0] flex items-center justify-center text-[#10B981] flex-shrink-0 mt-0.5 shadow-soft-xs">
+      {/* Security Privacy Callout - Lifemed Style */}
+      <div className="flex items-start gap-3 p-4 rounded-2xl bg-neutral-50/80 border border-black/[0.06] text-xs text-ink-secondary leading-relaxed shadow-soft-xs">
+        <div className="w-6 h-6 rounded-lg bg-white border border-violet-200/80 flex items-center justify-center text-violet-600 flex-shrink-0 mt-0.5 shadow-soft-xs">
           <ShieldCheck className="w-3.5 h-3.5" />
         </div>
         <div>
-          <span className="font-bold text-[#065F46]">100% 무저장 안심 보안 확인: </span>
-          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold underline decoration-[#10B981] decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
+          <span className="font-bold text-ink-primary">100% 무저장 안심 보안 확인: </span>
+          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-violet-700 underline decoration-violet-400 decoration-1.5 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
         </div>
       </div>
 

@@ -251,8 +251,8 @@ ${contentStr}
             >
               {emailCopied ? (
                 <>
-                  <Check className="w-3 h-3 text-emerald-600" />
-                  <span className="text-emerald-700 font-bold">복사됨!</span>
+                  <Check className="w-3 h-3 text-violet-600" />
+                  <span className="text-violet-700 font-bold">복사됨!</span>
                 </>
               ) : (
                 <>
@@ -304,8 +304,8 @@ ${contentStr}
         {/* Body */}
         <div className="flex-1 overflow-y-auto p-5 space-y-4">
           {successMessage && (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start space-x-2 text-xs text-emerald-800 animate-fadeIn">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+            <div className="p-3 bg-violet-50 border border-violet-200 rounded-xl flex items-start space-x-2 text-xs text-violet-800 animate-fadeIn">
+              <CheckCircle2 className="w-4 h-4 text-violet-600 flex-shrink-0 mt-0.5" />
               <div className="leading-relaxed">{successMessage}</div>
             </div>
           )}
@@ -505,7 +505,7 @@ ${contentStr}
                             <span
                               className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
                                 isClosed
-                                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                  ? 'bg-violet-50 text-violet-700 border border-violet-200'
                                   : 'bg-amber-50 text-amber-700 border border-amber-200'
                               }`}
                             >

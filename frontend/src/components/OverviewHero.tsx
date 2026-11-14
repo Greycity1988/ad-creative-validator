@@ -52,24 +52,24 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           </p>
         </div>
 
-        {/* Local Security Badge - Lifemed Soft Sage (Image 1 style) */}
-        <div className="flex-shrink-0 bg-[#E8F7F0] p-4 rounded-2xl border border-[#A7F3D0] flex items-center space-x-3.5 max-w-sm shadow-soft-xs">
-          <div className="w-10 h-10 rounded-xl bg-white border border-[#A7F3D0]/80 flex items-center justify-center flex-shrink-0 shadow-soft-xs">
-            <ShieldCheck className="w-5 h-5 text-[#10B981]" />
+        {/* Local Security Badge - Lifemed Violet Theme (줄바꿈 없는 깔끔한 너비) */}
+        <div className="flex-shrink-0 bg-white p-4 rounded-2xl border border-violet-200/80 flex items-center space-x-3.5 max-w-md shadow-soft-xs">
+          <div className="w-10 h-10 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center flex-shrink-0 shadow-soft-xs">
+            <ShieldCheck className="w-5 h-5 text-violet-600" />
           </div>
-          <div className="text-xs">
-            <div className="font-bold text-[#065F46]">100% 브라우저 메모리 로컬 검증</div>
-            <p className="text-[#065F46]/80 text-[11px] mt-0.5 leading-snug">
+          <div className="text-xs min-w-0">
+            <div className="font-bold text-ink-primary">100% 브라우저 메모리 로컬 검증</div>
+            <p className="text-ink-secondary text-[11px] mt-0.5 leading-snug">
               대외비 소재가 외부 서버로 절대 전송되지 않아 안심하고 검수할 수 있습니다.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Metric Cards Grid - Lifemed Dashboard Layout (Image 0 & 1 style) */}
+      {/* Metric Cards Grid - Lifemed Dashboard Layout */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
         {/* Metric 1: Uploaded Creatives */}
-        <div className="bg-neutral-50/70 rounded-2xl p-4.5 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
+        <div className="bg-white/80 rounded-2xl p-4.5 border border-black/[0.06] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/20">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
             업로드된 소재
           </div>
@@ -99,7 +99,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         </div>
 
         {/* Metric 2: Selected Platforms */}
-        <div className="bg-neutral-50/70 rounded-2xl p-4.5 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
+        <div className="bg-white/80 rounded-2xl p-4.5 border border-black/[0.06] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/20">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
             선택된 매체
           </div>
@@ -113,7 +113,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         </div>
 
         {/* Metric 3: Supported Placements */}
-        <div className="bg-neutral-50/70 rounded-2xl p-4.5 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
+        <div className="bg-white/80 rounded-2xl p-4.5 border border-black/[0.06] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/20">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
             검수 가능 지면 수
           </div>
@@ -126,16 +126,16 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           </div>
         </div>
 
-        {/* Metric 4: Safety & Privacy - Lifemed Signature Sage Card (Image 1 style) */}
-        <div className="bg-[#E8F7F0] rounded-2xl p-4.5 border border-[#A7F3D0] transition-all hover:shadow-soft-sm">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-[#065F46]/80">
+        {/* Metric 4: Safety & Privacy - Lifemed Violet Highlight Card */}
+        <div className="bg-violet-50/70 rounded-2xl p-4.5 border border-violet-200/80 transition-all hover:shadow-soft-sm hover:border-violet-300">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-violet-700">
             보안 및 데이터 정책
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#065F46] font-mono mt-1 flex items-baseline gap-1.5">
+          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-violet-900 font-mono mt-1 flex items-baseline gap-1.5">
             <span>0</span>
-            <span className="text-xs font-sans text-[#065F46]/80 font-normal">Byte 전송</span>
+            <span className="text-xs font-sans text-violet-700 font-normal">Byte 전송</span>
           </div>
-          <div className="text-[11px] text-[#065F46] font-bold mt-1">
+          <div className="text-[11px] text-violet-700 font-bold mt-1">
             로컬 브라우저 100% 검증
           </div>
         </div>
