@@ -783,12 +783,17 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                         <div className="flex items-center justify-between text-ink-secondary">
                           <span className="flex items-center space-x-1 font-semibold text-ink-primary">
                             <Calendar className="w-3 h-3 text-accent" />
-                            <span>{meta.official_update_date || '최신 공식 가이드'}</span>
+                            <span>{meta.official_update_date || '공식 가이드 미확인'}</span>
                           </span>
                           <span className="text-[10px] text-ink-muted">
-                            검증: {meta.last_verified_date || '2026-11-12'}
+                            검증: {meta.last_verified_date || '미확인'}
                           </span>
                         </div>
+                        {!meta.official_source_url && (
+                          <div className="pt-0.5 text-ink-tertiary font-semibold">
+                            {meta.official_source_name || '공식 출처 확인 불가 (매체 담당자 확인 필요)'}
+                          </div>
+                        )}
                         {meta.official_source_url && (
                           <div className="pt-0.5">
                             <a

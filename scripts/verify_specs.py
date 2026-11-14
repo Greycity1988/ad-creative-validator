@@ -38,9 +38,11 @@ def test_schema_and_dimensions():
         if not pid or not pname:
             errors.append(f"{yf.name}: missing platform or platform_id")
             
-        url = data.get("official_source_url")
-        if not url:
+        # An empty URL is allowed only when the source name says why (e.g. the publisher's site is gone)
+        if "official_source_url" not in data:
             errors.append(f"{yf.name}: missing official_source_url")
+        elif not data["official_source_url"] and "확인 불가" not in str(data.get("official_source_name", "")):
+            errors.append(f"{yf.name}: empty official_source_url without a reason in official_source_name")
             
         placements = data.get("placements", [])
         if not placements:

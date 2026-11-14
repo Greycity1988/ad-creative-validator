@@ -206,7 +206,7 @@ def run_monitor(update_baseline: bool = False) -> int:
                 "changes_count": len(changes),
                 "changes": changes,
                 # Pages that could not be checked: dead links, blocked requests, JavaScript-only pages
-                "unchecked": [r for r in results if r["status"] in ("ERROR", "UNREADABLE")],
+                "unchecked": [r for r in results if r["status"] in ("ERROR", "UNREADABLE", "SKIPPED")],
             },
             f,
             ensure_ascii=False,

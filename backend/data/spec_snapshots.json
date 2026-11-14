@@ -7,7 +7,17 @@
     "content_length": 3263,
     "etag": "",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:06"
+    "last_checked": "2026-11-15 03:14:19"
+  },
+  "adpopcorn": {
+    "id": "adpopcorn",
+    "name": "애드팝콘 (AdPopcorn)",
+    "url": "https://www.adpopcorn.com/",
+    "content_hash": "d56c799ff735f98131f9433bf4f08b6aaaea7d056ad91f1d9b775fc264fade5c",
+    "content_length": 1362,
+    "etag": "\"1badce0af8d271e660f2d735c8682863\"",
+    "last_modified": "Thu, 09 Jul 2026 05:38:19 GMT",
+    "last_checked": "2026-11-15 03:14:20"
   },
   "appier": {
     "id": "appier",
@@ -17,7 +27,17 @@
     "content_length": 9851,
     "etag": "",
     "last_modified": "Fri, 13 Nov 2026 04:12:19 GMT",
-    "last_checked": "2026-11-15 03:01:07"
+    "last_checked": "2026-11-15 03:14:20"
+  },
+  "buzzvil": {
+    "id": "buzzvil",
+    "name": "버즈빌 (Buzzvil)",
+    "url": "https://www.buzzvil.com/ko",
+    "content_hash": "1458a28d0a2d6c6a07ab649c421e0a8a079cdf5d9f0ad6e7a80b705fa7dec94b",
+    "content_length": 1635,
+    "etag": "\"b161bf8b81256179dcc74caa41fd61bf\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:14:20"
   },
   "coupang": {
     "id": "coupang",
@@ -25,9 +45,9 @@
     "url": "https://advertising.coupang.com",
     "content_hash": "e32b35b414e5bf31bc39d34cd57af8b40c6bdee8a7ee485f8d973b89d686c574",
     "content_length": 204,
-    "etag": "\"16f8wydmdzscjsv\"",
+    "etag": "\"efonh9qfbccjsv\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:08"
+    "last_checked": "2026-11-15 03:14:20"
   },
   "criteo": {
     "id": "criteo",
@@ -35,9 +55,9 @@
     "url": "https://help.criteo.com",
     "content_hash": "e8a10db130a6084d76e24325bb4d33311f6ad7fbcac2e30673d78780628f020b",
     "content_length": 915,
-    "etag": "W/\"63082-AOl7DAiqdf+scOwWXBZ3SD7aUyY\"",
+    "etag": "W/\"63093-FKg8lkr8vVJ6PdrcwZhr2aAiSwM\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:09"
+    "last_checked": "2026-11-15 03:14:23"
   },
   "daangn": {
     "id": "daangn",
@@ -47,7 +67,17 @@
     "content_length": 1901,
     "etag": "\"13y5wvo2xnh2dbg\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:10"
+    "last_checked": "2026-11-15 03:14:23"
+  },
+  "dable": {
+    "id": "dable",
+    "name": "데이블 (Dable)",
+    "url": "https://dable.io/ko",
+    "content_hash": "851c03cb1920445c8d3bbe7a576cd2b9c8107d45e0f0d6cc682d39e4d94d4894",
+    "content_length": 2106,
+    "etag": "\"s4knli3dqu2hy7\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:14:23"
   },
   "google_ads": {
     "id": "google_ads",
@@ -57,7 +87,7 @@
     "content_length": 14104,
     "etag": "",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:11"
+    "last_checked": "2026-11-15 03:14:25"
   },
   "kakao": {
     "id": "kakao",
@@ -67,7 +97,17 @@
     "content_length": 21154,
     "etag": "\"1c2738f079ef52d6143ebd05243ebdcc\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:12"
+    "last_checked": "2026-11-15 03:14:26"
+  },
+  "linkedin": {
+    "id": "linkedin",
+    "name": "링크드인 (LinkedIn)",
+    "url": "https://business.linkedin.com/advertise/ads/sponsored-content/single-image-ads/specs",
+    "content_hash": "5b527fa6cd209a6b020fc2a80951c2230250c8fc94a220746ad2279f35ef0986",
+    "content_length": 5353,
+    "etag": "W/\"3388c-660337fdd7aa5-gzip\"",
+    "last_modified": "Sat, 14 Nov 2026 02:42:45 GMT",
+    "last_checked": "2026-11-15 03:14:26"
   },
   "meta": {
     "id": "meta",
@@ -77,7 +117,7 @@
     "content_length": 694,
     "etag": "",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:15"
+    "last_checked": "2026-11-15 03:14:28"
   },
   "naver": {
     "id": "naver",
@@ -87,7 +127,17 @@
     "content_length": 1694,
     "etag": "",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:15"
+    "last_checked": "2026-11-15 03:14:29"
+  },
+  "pinterest": {
+    "id": "pinterest",
+    "name": "핀터레스트 (Pinterest)",
+    "url": "https://help.pinterest.com/en/business/article/pinterest-product-specs",
+    "content_hash": "fabbb422d0b527addcf675d7a4b5dd050a03c88205f5a5d77043b990f1a87c68",
+    "content_length": 19585,
+    "etag": "\"1794680070\"",
+    "last_modified": "Sat, 14 Nov 2026 18:14:30 GMT",
+    "last_checked": "2026-11-15 03:14:31"
   },
   "rtb_house": {
     "id": "rtb_house",
@@ -97,7 +147,7 @@
     "content_length": 5641,
     "etag": "\"npl8iy5l123s1c\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:20"
+    "last_checked": "2026-11-15 03:14:35"
   },
   "spotify": {
     "id": "spotify",
@@ -105,9 +155,19 @@
     "url": "https://ads.spotify.com",
     "content_hash": "5d44135876aa27fbe278cf0484bcecfcbefd8bf8b98a7d1a1e61ec48d2c74c7c",
     "content_length": 3736,
-    "etag": "\"do9w3x6ulc4g2w\"",
+    "etag": "\"x3tfjgoefr4g2u\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:23"
+    "last_checked": "2026-11-15 03:14:37"
+  },
+  "syrup": {
+    "id": "syrup",
+    "name": "시럽 / OK캐쉬백 (Planet AD)",
+    "url": "https://www.skplanet.com/",
+    "content_hash": "a1cb706831f9b333bdafc0d9a67f18f4e1b5f49fe1b3121a624cccd2b835166e",
+    "content_length": 2176,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:14:38"
   },
   "taboola": {
     "id": "taboola",
@@ -115,9 +175,9 @@
     "url": "https://help.taboola.com",
     "content_hash": "ec2b3c26afe7a16fbc84ab30295ba20d43e12e222df7afbb01db09926dab4cc6",
     "content_length": 976,
-    "etag": "W/\"9bfa07800e1a4651bf61f8919a861fdf\"",
+    "etag": "W/\"4441e4f8a005decbf0a92d379d6070f1\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:24"
+    "last_checked": "2026-11-15 03:14:40"
   },
   "targetpick": {
     "id": "targetpick",
@@ -127,7 +187,7 @@
     "content_length": 1499,
     "etag": "",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:25"
+    "last_checked": "2026-11-15 03:14:40"
   },
   "tiktok": {
     "id": "tiktok",
@@ -137,7 +197,7 @@
     "content_length": 4786,
     "etag": "\"1866c0-gnstulDQfI5w0CsDZxBk3NDAoJ0\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:27"
+    "last_checked": "2026-11-15 03:14:42"
   },
   "toss": {
     "id": "toss",
@@ -147,6 +207,6 @@
     "content_length": 2218,
     "etag": "\"7170fae263ef061ae2daba5f1baa7465\"",
     "last_modified": "",
-    "last_checked": "2026-11-15 03:01:27"
+    "last_checked": "2026-11-15 03:14:43"
   }
 }
