@@ -786,7 +786,11 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                             <span>{meta.official_update_date || '공식 가이드 미확인'}</span>
                           </span>
                           <span className="text-[10px] text-ink-muted">
-                            검증: {meta.last_verified_date || '미확인'}
+                            {meta.verification?.status === 'verified'
+                              ? `공식 문서 대조: ${meta.verification.checked_on}`
+                              : meta.verification?.status === 'partial'
+                                ? `일부 대조: ${meta.verification.checked_on}`
+                                : '공식 문서 미대조 (참고용)'}
                           </span>
                         </div>
                         {!meta.official_source_url && (

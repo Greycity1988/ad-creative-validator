@@ -88,6 +88,7 @@ def sync_specs():
                 "official_source_url": spec.get("official_source_url", ""),
                 "revision_summary": spec.get("revision_summary", ""),
                 "last_verified_date": spec.get("last_verified_date", "미확인"),
+                "verification": spec.get("verification", {"status": "unverified"}),
                 "placements_count": len(placements_detail),
                 "placements": [p["name"] for p in placements_detail],
                 "placements_detail": placements_detail,

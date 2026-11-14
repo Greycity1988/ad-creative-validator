@@ -83,8 +83,10 @@ def test_schema_and_dimensions():
             # File size limit
             max_kb = p.get("max_file_size_kb")
             max_mb = p.get("max_file_size_mb")
-            if max_kb is None and max_mb is None:
-                errors.append(f"{yf.name} - '{name}': no max_file_size defined")
+            if max_kb is None and max_mb is None and "max_file_size" not in (p.get("unstated") or []):
+                errors.append(f"{yf.name} - '{name}': no max_file_size defined (mark unstated: [max_file_size] if the official document has none)")
+            if p.get("verified") and not p.get("source"):
+                errors.append(f"{yf.name} - '{name}': verified placement without a source URL")
                 
             # Safe zone check if exists
             sz = p.get("safe_zone")

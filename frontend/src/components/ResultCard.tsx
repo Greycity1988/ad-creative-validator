@@ -260,6 +260,14 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                         <span className="text-xs font-bold text-ink-primary">
                           {placement.name}
                         </span>
+                        {!placement.verified && (
+                          <span
+                            className="text-[9px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 px-1.5 py-0.2 rounded-full flex-shrink-0"
+                            title="이 지면 규격은 아직 매체 공식 문서와 대조하지 않았습니다. 집행 전 매체 가이드를 확인하세요."
+                          >
+                            공식 문서 미대조
+                          </span>
+                        )}
                         {placement.is_matched_target && (
                           <span className="text-[9px] font-mono font-semibold bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.2 rounded-full flex-shrink-0">
                             매칭 지면

@@ -22,6 +22,9 @@ export interface SpecPlacement {
   description?: string;
   notes?: string[];
   safe_zone?: SafeZoneSpec;
+  verified?: boolean;
+  source?: string;
+  unstated?: string[];
 }
 
 export interface SpecPlatform {
@@ -484,6 +487,8 @@ export function evaluatePlacement(
     checks,
     is_matched_target: isMatched,
     safe_zone: placement.safe_zone,
+    verified: placement.verified === true,
+    source: placement.source,
   };
 }
 

@@ -1,222 +1,155 @@
-platform: Meta (Facebook/Instagram)
+platform: META (인스타그램 / 페이스북)
 platform_id: meta
-official_update_date: 2026.03 공식 개정
-official_source_name: Meta 비즈니스 광고 가이드
-official_source_url: https://www.facebook.com/business/ads-guide
-revision_summary: 모바일 퍼스트 4:5 피드(1080×1350) 메인 표준, 릴스 9:16(1080×1920) 상단 14%/하단 35%
-  세이프존 기준 확정
-last_verified_date: '2026-11-12'
-description: 피드 (1:1, 4:5), 스토리·릴스 (9:16), 캐러셀
+official_update_date: Meta 광고 가이드 (게시일 미표기)
+official_source_name: Meta 광고 가이드 — 이미지 광고 사양 (공식)
+official_source_url: 'https://www.facebook.com/business/ads-guide/update/image'
+revision_summary: 2026-11-15 공식 가이드 placement별 대조. 피드 권장 4:5 1440×1800, 스토리·릴스 9:16 1440×2560(상단 14%·하단 35%·좌우 6% 여백), 우측 칼럼 1:1, 최대 30MB. 공식에 없는 텍스트 비율 기준과 광고주가 올릴 수 없는 Audience Network 배너 규격 삭제
+last_verified_date: '2026-11-15'
+description: 피드 (4:5, 1:1, 1.91:1), 스토리·릴스 (9:16), 캐러셀, 우측 칼럼, 마켓플레이스, 탐색 탭, Audience Network
+verification:
+  status: verified
+  checked_on: '2026-11-15'
+  method: placement별 공식 페이지(facebook.com/business/ads-guide/update/...)의 Technical requirements 대조
+# Feed placements combine Facebook and Instagram feed: the stricter of the two values is used
+# (minimum width 600px from Facebook, ratio tolerance 1% from Instagram).
 placements:
 - name: Feed Vertical (4:5)
-  aspect_ratio:
-  - 4
-  - 5
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1350
+  aspect_ratio: [4, 5]
+  aspect_ratio_tolerance: 0.01
   min_width: 600
   min_height: 750
+  recommended_width: 1440
+  recommended_height: 1800
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.3
-  text_ratio_level: warning
+  allowed_formats: [jpg, jpeg, png]
+  description: 페이스북·인스타그램 피드 권장 비율 4:5 (권장 1440×1800, 최대 30MB)
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/facebook-feed'
 - name: Feed Square (1:1)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1080
+  aspect_ratio: [1, 1]
+  aspect_ratio_tolerance: 0.01
   min_width: 600
   min_height: 600
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.3
-  text_ratio_level: warning
+  allowed_formats: [jpg, jpeg, png]
+  description: 피드 허용 비율 범위(4:5~1.91:1) 안의 1:1 (최대 30MB). 공식 권장 비율은 4:5
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/instagram-feed'
+  unstated: [recommended_size]
 - name: Feed Landscape (1.91:1)
-  aspect_ratio:
-  - 1.91
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1200
-  recommended_height: 628
+  aspect_ratio: [1.91, 1]
+  aspect_ratio_tolerance: 0.01
   min_width: 600
   min_height: 315
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.3
-  text_ratio_level: warning
+  allowed_formats: [jpg, jpeg, png]
+  description: 피드 허용 비율 범위(4:5~1.91:1)의 가로 끝 1.91:1 (최대 30MB). 공식 권장 비율은 4:5
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/instagram-feed'
+  unstated: [recommended_size]
 - name: Stories/Reels (9:16)
-  aspect_ratio:
-  - 9
-  - 16
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1920
+  aspect_ratio: [9, 16]
+  aspect_ratio_tolerance: 0.01
   min_width: 500
   min_height: 889
+  recommended_width: 1440
+  recommended_height: 2560
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.3
-  text_ratio_level: warning
+  allowed_formats: [jpg, jpeg, png]
+  description: 페이스북·인스타그램 스토리, 릴스 9:16 (권장 1440×2560, 최대 30MB). 상단 14%·하단 35%·좌우 6%는 텍스트·로고를 피할 것
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/instagram-story'
   safe_zone:
-    description: "상단 250px 및 하단 350px 세이프존 필수 준수 (상단 계정 프로필/헤더 및 하단 CTA 버튼 가림 영역)"
+    description: 상단 14%, 하단 35%, 좌우 각 6%에는 텍스트·로고·핵심 요소를 두지 않을 것 (프로필 아이콘·CTA에 가려짐)
     base_width: 1080
     base_height: 1920
-    top_px: 250
-    bottom_px: 350
-    left_px: 60
-    right_px: 60
+    top_px: 269
+    bottom_px: 672
+    left_px: 65
+    right_px: 65
     ui_elements:
-    - name: "인스타그램 프로필 / 닫기 헤더"
-      position: "top"
+    - name: 상단 프로필·헤더 영역 (14%)
+      position: top
       width_ratio: 1.0
-      height_ratio: 0.13
-      description: "프로필 이미지, 계정명, 사운드 토글, 닫기 버튼"
-    - name: "하단 CTA 버튼 (더 알아보기)"
-      position: "bottom-center"
-      width_ratio: 0.65
-      height_ratio: 0.08
-      description: "하단 고정 스와이프업 CTA 액션 버튼"
+      height_ratio: 0.14
+      description: 프로필 이미지, 계정명, 닫기 버튼
+    - name: 하단 캡션·CTA 영역 (35%)
+      position: bottom-center
+      width_ratio: 1.0
+      height_ratio: 0.35
+      description: 광고 문구, CTA 버튼
 - name: Carousel (1:1)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
+  aspect_ratio: [1, 1]
+  aspect_ratio_tolerance: 0.03
+  min_width: 1080
+  min_height: 1080
+  max_file_size_kb: 30720
+  allowed_formats: [jpg, jpeg, png]
+  description: 페이스북 피드 캐러셀 카드 1:1, 최소 1080×1080 (카드 2~10장, 최대 30MB)
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/carousel/facebook-feed'
+- name: Instagram Carousel (4:5)
+  aspect_ratio: [4, 5]
+  aspect_ratio_tolerance: 0.01
+  min_width: 1080
+  min_height: 1350
+  max_file_size_kb: 30720
+  allowed_formats: [jpg, jpeg, png]
+  description: 인스타그램 피드 이미지 전용 캐러셀 4:5 (카드 2~10장, 최대 30MB). 공식 문서의 최소 해상도는 1080×1080으로 적혀 있어 4:5에 맞춰 1080×1350 적용
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/carousel/instagram-feed'
+- name: Meta Audience Network (네이티브·배너·전면)
+  min_width: 398
+  min_height: 208
+  max_file_size_kb: 30720
+  allowed_formats: [jpg, jpeg, png]
+  description: Audience Network 이미지 최소 398×208 (최대 30MB). 공식 권장 비율은 9:16
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/audience-network-native'
+- name: Meta Facebook 우측 칼럼 (1:1)
+  aspect_ratio: [1, 1]
+  aspect_ratio_tolerance: 0.03
+  min_width: 254
+  min_height: 133
   recommended_width: 1080
   recommended_height: 1080
-  min_width: 600
-  min_height: 600
-  max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.3
-  text_ratio_level: warning
-- name: Meta Audience Network (모바일 띠배너 320×50)
-  exact_width: 320
-  exact_height: 50
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Meta 오디언스 네트워크 모바일 앱 상하단 띠배너
-- name: Meta Audience Network (중형 직사각형 배너 300×250)
-  exact_width: 300
-  exact_height: 250
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Meta 오디언스 네트워크 인앱 MREC 사각형 배너
-- name: Meta Audience Network (리더보드 728×90)
-  exact_width: 728
-  exact_height: 90
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Meta 오디언스 네트워크 태블릿/데스크톱 리더보드 배너
-- name: Meta Audience Network (전면 인터스티셜 9:16 1080×1920)
-  aspect_ratio:
-  - 9
-  - 16
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1920
-  max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Meta 오디언스 네트워크 모바일 풀스크린 전면 광고
-- name: Meta Audience Network (네이티브 배너 1.91:1 1200×627)
-  aspect_ratio:
-  - 1.91
-  - 1
-  aspect_ratio_tolerance: 0.02
-  exact_width: 1200
-  exact_height: 627
-  max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Meta 오디언스 네트워크 퍼블리셔 앱 인피드 네이티브 배너
-- name: Meta Facebook 우측 칼럼 (1.91:1 1200×628)
-  aspect_ratio:
-  - 1.91
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1200
-  recommended_height: 628
-  min_width: 600
-  min_height: 315
-  max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Facebook 데스크톱 우측 칼럼 가로형 배너
+  max_file_size_kb: null
+  allowed_formats: [jpg, jpeg, png]
+  description: 데스크톱 전용 우측 칼럼 1:1 (권장 1080×1080 이상, 최소 254×133). 공식 문서에 최대 용량 표기 없음
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/facebook-right-hand-column'
+  unstated: [max_file_size, aspect_ratio_tolerance]
 - name: Meta Instagram 탐색 탭 (1:1 1080×1080)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1080
-  min_width: 600
-  min_height: 600
+  aspect_ratio: [1, 1]
+  aspect_ratio_tolerance: 0.01
+  min_width: 500
+  min_height: 500
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Instagram 탐색 탭 및 탐색 홈 그리드 정방형 배너
+  allowed_formats: [jpg, jpeg, png]
+  description: 탐색 탭 허용 비율 범위(4:5~1.91:1) 안의 1:1 (최대 30MB). 공식 권장 비율은 4:5
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/instagram-explore-home'
+  unstated: [recommended_size]
 - name: Meta Instagram 탐색 탭 세로형 (4:5 1080×1350)
-  aspect_ratio:
-  - 4
-  - 5
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1350
-  min_width: 600
-  min_height: 750
+  aspect_ratio: [4, 5]
+  aspect_ratio_tolerance: 0.01
+  min_width: 500
+  min_height: 625
+  recommended_width: 1440
+  recommended_height: 1800
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Instagram 탐색 피드 4:5 세로형 배너
+  allowed_formats: [jpg, jpeg, png]
+  description: 탐색 탭 권장 4:5 (권장 1440×1800, 최대 30MB)
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/instagram-explore-home'
 - name: Meta 마켓플레이스 (1:1 1080×1080)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1080
-  min_width: 600
-  min_height: 600
+  aspect_ratio: [1, 1]
+  aspect_ratio_tolerance: 0.03
+  min_width: 1080
+  min_height: 1080
   max_file_size_kb: 30720
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  description: Facebook 마켓플레이스 커머스 피드 배너
+  allowed_formats: [jpg, jpeg, png]
+  description: 마켓플레이스 1:1, 1080×1080 이상 (최대 30MB)
+  verified: true
+  source: 'https://www.facebook.com/business/ads-guide/update/image/facebook-marketplace'
+  unstated: [aspect_ratio_tolerance]
