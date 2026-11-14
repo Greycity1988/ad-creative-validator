@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageSquare, Coffee, BookOpen, TrendingUp, ExternalLink } from 'lucide-react';
 import { ACVLogo } from './ACVLogo';
+import { OTT_URL } from '../constants/links';
 
 interface HeaderProps {
   onOpenFeedback: () => void;
@@ -89,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* OTT Trend Tracker Inter-service Switcher */}
           <a
-            href="https://greycity1988.github.io/omni-trend-tracker/"
+            href={OTT_URL}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full border border-accent/25 bg-accent text-white hover:bg-accent/90 text-xs font-bold transition-all cursor-pointer shadow-soft-xs"
