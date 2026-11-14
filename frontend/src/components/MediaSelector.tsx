@@ -383,7 +383,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
   const isAllSelected = selectedPlatforms.length === PLATFORMS.length;
   const totalPlacementsCount =
-    platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0) || 300;
+    platformsMetadata.reduce((sum, p) => sum + (p.placements_count || 0), 0);
 
   // Category counts
   const categoryCounts = useMemo(() => {
@@ -511,7 +511,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
             </span>
             <div className="hidden sm:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-violet-50 border border-violet-200/80 text-violet-700">
               <CheckCircle2 className="w-3.5 h-3.5 text-violet-600" />
-              <span>{totalPlacementsCount}개 공식 지면 전수 탑재</span>
+              <span>{totalPlacementsCount}개 지면 수록</span>
             </div>
             <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-black/[0.04] border border-black/[0.08] text-neutral-700" title="공식 가이드 주기적 변경 감지">
               <RefreshCw className="w-3.5 h-3.5 text-neutral-500" />
@@ -519,7 +519,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
             </div>
           </div>
           <p className="text-xs text-ink-tertiary mt-1">
-            원하는 광고 매체를 선택하세요. 모든 규격은 매체 공식 배포 가이드 100% 원문 기준이며, 현재{' '}
+            원하는 광고 매체를 선택하세요. 규격은 매체 공식 가이드를 기준으로 정리했고, 공식 문서와 대조하지 않은 지면은 결과에 따로 표시합니다. 현재{' '}
             <strong className="text-violet-700 font-bold">{selectedPlatforms.length}개</strong> 매체 (
             {PLATFORMS.length}개 중)가 검수 대상으로 지정되었습니다.
           </p>

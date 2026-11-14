@@ -42,13 +42,13 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         <div>
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-violet-50 border border-violet-200/80 text-xs font-semibold text-violet-700 mb-3">
             <span className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-pulse" />
-            <span>2026년 11월 공식 매체사 규격 전수 감사 완료</span>
+            <span>지면별 공식 문서 대조 여부 표시</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary">
             광고 소재 원클릭 통합 규격 검수
           </h2>
           <p className="text-sm text-ink-secondary mt-1.5 max-w-2xl leading-relaxed">
-            이미지를 업로드하면 네이버·카카오·메타·구글 등 32대 매체 430+개 공식 지면의 해상도, 용량, 포맷, 안전영역 적합성을 브라우저에서 100% 즉시 판정합니다.
+            이미지를 업로드하면 네이버·카카오·메타·구글 등 {totalPlatformCount}개 매체 {totalPlacementCount}개 지면의 해상도, 용량, 포맷, 안전영역 적합성을 브라우저에서 즉시 판정합니다.
           </p>
         </div>
 

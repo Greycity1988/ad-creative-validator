@@ -267,7 +267,7 @@ export const App: React.FC = () => {
           are deeply appreciated!
         </p>
         <p className="text-[11px] text-ink-muted">
-          ACV (Ad Creative Validator) • 32 Major Advertising Platforms & 430+ Official Placements Supported • PC 환경 최적화
+          ACV (Ad Creative Validator) • {platformsMetadata.length} Advertising Platforms & {totalPlacementsCount} Placements • PC 환경 최적화
         </p>
       </footer>
 

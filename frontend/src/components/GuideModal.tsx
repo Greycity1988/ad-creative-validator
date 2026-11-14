@@ -62,7 +62,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <h3 className="text-xs sm:text-sm font-bold text-ink-primary tracking-tight">
-                  100% 매체사 공식 가이드 직접 수록 & 주기적 변경 감지
+                  매체 공식 가이드 기준 & 공식 문서 대조 여부 표시
                 </h3>
               </div>
               <span className="inline-flex items-center space-x-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent-light text-accent border border-accent/20 self-start sm:self-auto">
@@ -71,7 +71,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               </span>
             </div>
             <p className="text-[11px] text-ink-secondary leading-relaxed">
-              ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>주기적으로 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
+              ACV는 개인 블로그나 비공식 요약글이 아니라 네이버, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 고객센터 등 <strong>매체 공식 가이드</strong>를 기준으로 규격을 정리합니다. 지면마다 공식 문서와 직접 대조했는지 기록하고, <strong>대조하지 않은 지면은 결과에 "공식 문서 미대조"로 표시</strong>합니다. 공개 규격 문서가 없는 매체도 있으니 집행 전에는 매체 가이드를 함께 확인하세요. 공식 가이드 페이지는 매주 자동으로 확인해 내용이 바뀌면 사람이 검토해 반영합니다.
             </p>
           </div>
 
@@ -268,10 +268,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-accent" />
-                  <span>100% 매체 공식 가이드 직접 수록</span>
+                  <span>매체 공식 가이드 기준 · 대조 여부 표시</span>
                 </div>
                 <p className="text-ink-tertiary leading-relaxed text-[11px]">
-                  개인 블로그나 비공식 요약글을 일절 배제하고, 네이버 NOSP, 카카오모먼트, 메타 비즈니스 헬프센터, 구글 애즈 공식 센터 등 각 매체사 공식 배포 규격서 원문만을 직접 대조하여 탑재했습니다. (예: NOSP 타임보드 최신 300KB 개정 스펙 완벽 반영)
+                  개인 블로그나 비공식 요약글이 아니라 각 매체 공식 가이드를 기준으로 정리합니다. 지면마다 공식 문서 대조 여부와 근거 페이지를 기록하며, 대조 전인 지면은 검수 결과에 표시됩니다.
                 </p>
               </div>
 
@@ -281,7 +281,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                   <span>주기적 변경 감지</span>
                 </div>
                 <p className="text-ink-tertiary leading-relaxed text-[11px]">
-                  매체사의 갑작스러운 규격 개정(용량 증액, 신규 비율 도입 등)에 즉각 대응하기 위해, 32개 매체 공식 가이드 URL을 주기적으로 크롤링하고 콘텐츠 무결성 해시(SHA-256)를 대조하여 변동을 감지 및 신속 반영합니다.
+                  매주 공식 가이드 페이지의 내용 변화를 자동으로 확인하고, 바뀐 곳은 사람이 검토해 규격에 반영합니다. 로그인이나 스크립트가 필요한 페이지, 공개 문서가 없는 매체는 자동 확인 대상에서 빠지며 따로 기록합니다.
                 </p>
               </div>
 
