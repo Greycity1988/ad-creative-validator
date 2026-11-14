@@ -2933,20 +2933,22 @@
     "id": "google_ads",
     "name": "구글 애즈 (Google Ads)",
     "description": "GDN 고정 배너 전 규격(23종), AdMob 모바일/태블릿 인터스티셜, PMax/반응형 디스플레이, Demand Gen (Shorts 9:16), App 프로모션 캠페인 에셋",
-    "official_update_date": "2026.04 공식 개정",
-    "official_source_name": "Google Ads 고객센터 광고 사양",
-    "official_source_url": "https://support.google.com/google-ads/answer/1722096",
-    "revision_summary": "GDN 고정 이미지 배너 전 규격(23종), AdMob/앱 전면 및 태블릿 인터스티셜, PMax 및 Demand Gen(유튜브 Shorts 9:16), 로고 에셋 전 규격 완비",
-    "last_verified_date": "2026-11-13",
+    "official_update_date": "Google Ads 고객센터 (게시일 미표기)",
+    "official_source_name": "Google Ads 사양: 광고 형식·크기 (공식 고객센터)",
+    "official_source_url": "https://support.google.com/google-ads/answer/13676244",
+    "revision_summary": "2026-11-15 공식 고객센터 대조. 업로드 이미지 20종 + 지역 한정 3종(150KB), PMax·반응형·디맨드젠·앱 캠페인 이미지와 로고 권장·최소 크기. 앱 캠페인 세로형은 9:16→4:5(1200×1500), 정사각형 최소 200×200. 공식에 없는 텍스트 20% 기준, 디맨드젠 9:16 이미지, AdMob 인터스티셜·480×32 규격 삭제",
+    "last_verified_date": "2026-11-15",
     "verification": {
-      "status": "unverified"
+      "status": "verified",
+      "checked_on": "2026-11-15",
+      "method": "support.google.com/google-ads 캠페인별 사양 페이지 대조"
     },
-    "placements_count": 38,
+    "placements_count": 35,
     "placements": [
       "PMax/Responsive Landscape (1.91:1)",
       "PMax/Responsive Square (1:1)",
       "PMax/Responsive Portrait (4:5)",
-      "Demand Gen Vertical (9:16)",
+      "Responsive Display Vertical (9:16 900×1600)",
       "GDN Banner 300×250",
       "GDN Banner 336×280",
       "GDN Banner 728×90",
@@ -2967,18 +2969,15 @@
       "GDN Banner 250×360 (트리플 와이드)",
       "GDN Banner 580×400 (넷보드)",
       "GDN Banner 930×180 (탑 배너)",
-      "GDN / AdMob 모바일 인터스티셜 세로 (320×480)",
-      "GDN / AdMob 모바일 인터스티셜 가로 (480×320)",
-      "GDN / AdMob 태블릿 인터스티셜 세로 (768×1024)",
-      "GDN / AdMob 태블릿 인터스티셜 가로 (1024×768)",
-      "GDN Banner 480×32 (모바일 랜드스케이프 띠배너)",
+      "GDN Banner 750×100 (폴란드 더블 빌보드)",
+      "GDN Banner 750×200 (폴란드 트리플 빌보드)",
+      "GDN Banner 750×300 (폴란드 파노라마)",
       "Demand Gen Landscape (1.91:1 1200×628)",
       "Demand Gen Square (1:1 1200×1200)",
       "Demand Gen Portrait (4:5 960×1200)",
       "Google App 캠페인 가로형 (1.91:1 1200×628)",
       "Google App 캠페인 정사각형 (1:1 1200×1200)",
-      "Google App 캠페인 세로형 (9:16 1080×1920)",
-      "PMax/Responsive Vertical (9:16 900×1600)",
+      "Google App 캠페인 세로형 (4:5 1200×1500)",
       "Google Ads Logo (1:1 정사각형 로고)",
       "Google Ads Logo (4:1 가로형 로고)"
     ],
@@ -2990,8 +2989,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 628,
         "min_width": 600,
         "min_height": 314,
         "max_file_size_kb": 5120,
@@ -3000,8 +2997,14 @@
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
+        "description": "PMax·반응형 디스플레이 가로형 (권장 1200×628, 최소 600×314, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091269",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 628,
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3012,8 +3015,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 1200,
         "min_width": 300,
         "min_height": 300,
         "max_file_size_kb": 5120,
@@ -3022,8 +3023,14 @@
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
+        "description": "PMax·반응형 디스플레이 정사각형 (권장 1200×1200, 최소 300×300, 최대 5MB). 반응형 디스플레이 사양 페이지는 권장 600×600으로 표기",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091269",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 1200,
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3034,8 +3041,6 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 960,
-        "recommended_height": 1200,
         "min_width": 480,
         "min_height": 600,
         "max_file_size_kb": 5120,
@@ -3044,20 +3049,24 @@
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
+        "description": "PMax 세로형 4:5 (권장 960×1200, 최소 480×600, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091269",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 960,
+        "recommended_height": 1200,
         "dimension_str": "권장 960×1200px",
         "aspect_ratio_str": "4:5"
       },
       {
-        "name": "Demand Gen Vertical (9:16)",
+        "name": "Responsive Display Vertical (9:16 900×1600)",
         "aspect_ratio": [
           9,
           16
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1080,
-        "recommended_height": 1920,
         "min_width": 600,
         "min_height": 1067,
         "max_file_size_kb": 5120,
@@ -3066,34 +3075,15 @@
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
-        "safe_zone": {
-          "description": "상단 120px, 하단 320px, 우측 120px 세이프존 준수 (유튜브 Shorts 인터랙션 UI 차폐 영역)",
-          "base_width": 1080,
-          "base_height": 1920,
-          "top_px": 120,
-          "bottom_px": 320,
-          "left_px": 40,
-          "right_px": 120,
-          "ui_elements": [
-            {
-              "name": "Shorts 우측 반응 버튼",
-              "position": "right",
-              "width_ratio": 0.14,
-              "height_ratio": 0.4,
-              "description": "좋아요/댓글/공유 수직 버튼"
-            },
-            {
-              "name": "Shorts 하단 채널명 & CTA",
-              "position": "bottom-left",
-              "width_ratio": 0.7,
-              "height_ratio": 0.16,
-              "description": "채널 프로필 및 사이트 방문 CTA"
-            }
-          ]
-        },
-        "dimension_str": "권장 1080×1920px",
+        "description": "반응형 디스플레이 세로형 9:16 (권장 900×1600, 최소 600×1067, 최대 5MB). 반응형 디스플레이 사양 페이지에는 없고 권장사항 페이지에만 있음",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/9823397",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 900,
+        "recommended_height": 1600,
+        "dimension_str": "권장 900×1600px",
         "aspect_ratio_str": "9:16"
       },
       {
@@ -3107,6 +3097,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 300×250 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       },
@@ -3121,6 +3114,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 336×280 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "336×280px",
         "aspect_ratio_str": ""
       },
@@ -3135,6 +3131,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 728×90 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "728×90px",
         "aspect_ratio_str": ""
       },
@@ -3149,6 +3148,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 300×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "300×600px",
         "aspect_ratio_str": ""
       },
@@ -3163,6 +3165,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 320×100 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
       },
@@ -3177,6 +3182,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 200×200 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "200×200px",
         "aspect_ratio_str": ""
       },
@@ -3191,6 +3199,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 250×250 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "250×250px",
         "aspect_ratio_str": ""
       },
@@ -3205,6 +3216,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 240×400 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "240×400px",
         "aspect_ratio_str": ""
       },
@@ -3219,6 +3233,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 468×60 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "468×60px",
         "aspect_ratio_str": ""
       },
@@ -3233,6 +3250,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 970×90 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "970×90px",
         "aspect_ratio_str": ""
       },
@@ -3247,6 +3267,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 980×120 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "980×120px",
         "aspect_ratio_str": ""
       },
@@ -3261,6 +3284,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 120×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "120×600px",
         "aspect_ratio_str": ""
       },
@@ -3275,6 +3301,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 160×600 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "160×600px",
         "aspect_ratio_str": ""
       },
@@ -3289,6 +3318,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 300×1050 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "300×1050px",
         "aspect_ratio_str": ""
       },
@@ -3303,6 +3335,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 320×50 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "320×50px",
         "aspect_ratio_str": ""
       },
@@ -3317,6 +3352,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 300×50 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "300×50px",
         "aspect_ratio_str": ""
       },
@@ -3332,6 +3370,8 @@
           "gif"
         ],
         "description": "GDN 데스크톱 대형 빌보드 배너 (970×250)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
         "dimension_str": "970×250px",
         "aspect_ratio_str": ""
       },
@@ -3346,6 +3386,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 250×360 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "250×360px",
         "aspect_ratio_str": ""
       },
@@ -3360,6 +3403,9 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "description": "업로드 이미지 광고 580×400 (최대 150KB, GIF 애니메이션은 5fps 미만)",
         "dimension_str": "580×400px",
         "aspect_ratio_str": ""
       },
@@ -3375,13 +3421,15 @@
           "gif"
         ],
         "description": "Google Ads 공식 데스크톱 탑 배너 (930×180)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
         "dimension_str": "930×180px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "GDN / AdMob 모바일 인터스티셜 세로 (320×480)",
-        "exact_width": 320,
-        "exact_height": 480,
+        "name": "GDN Banner 750×100 (폴란드 더블 빌보드)",
+        "exact_width": 750,
+        "exact_height": 100,
         "max_file_size_kb": 150,
         "allowed_formats": [
           "jpg",
@@ -3389,14 +3437,16 @@
           "png",
           "gif"
         ],
-        "description": "Google AdMob / GDN 인앱 전면 인터스티셜 세로형 (320×480)",
-        "dimension_str": "320×480px",
+        "description": "지역 한정 규격: 폴란드 더블 빌보드 (최대 150KB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "dimension_str": "750×100px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "GDN / AdMob 모바일 인터스티셜 가로 (480×320)",
-        "exact_width": 480,
-        "exact_height": 320,
+        "name": "GDN Banner 750×200 (폴란드 트리플 빌보드)",
+        "exact_width": 750,
+        "exact_height": 200,
         "max_file_size_kb": 150,
         "allowed_formats": [
           "jpg",
@@ -3404,14 +3454,16 @@
           "png",
           "gif"
         ],
-        "description": "Google AdMob / GDN 인앱 전면 인터스티셜 가로형 (480×320)",
-        "dimension_str": "480×320px",
+        "description": "지역 한정 규격: 폴란드 트리플 빌보드 (최대 150KB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "dimension_str": "750×200px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "GDN / AdMob 태블릿 인터스티셜 세로 (768×1024)",
-        "exact_width": 768,
-        "exact_height": 1024,
+        "name": "GDN Banner 750×300 (폴란드 파노라마)",
+        "exact_width": 750,
+        "exact_height": 300,
         "max_file_size_kb": 150,
         "allowed_formats": [
           "jpg",
@@ -3419,38 +3471,10 @@
           "png",
           "gif"
         ],
-        "description": "Google Ads Editor / AdMob 태블릿 전면 인터스티셜 세로형 (768×1024)",
-        "dimension_str": "768×1024px",
-        "aspect_ratio_str": ""
-      },
-      {
-        "name": "GDN / AdMob 태블릿 인터스티셜 가로 (1024×768)",
-        "exact_width": 1024,
-        "exact_height": 768,
-        "max_file_size_kb": 150,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png",
-          "gif"
-        ],
-        "description": "Google Ads Editor / AdMob 태블릿 전면 인터스티셜 가로형 (1024×768)",
-        "dimension_str": "1024×768px",
-        "aspect_ratio_str": ""
-      },
-      {
-        "name": "GDN Banner 480×32 (모바일 랜드스케이프 띠배너)",
-        "exact_width": 480,
-        "exact_height": 32,
-        "max_file_size_kb": 150,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png",
-          "gif"
-        ],
-        "description": "Google AdMob 모바일 가로모드 전용 소형 띠배너 (480×32)",
-        "dimension_str": "480×32px",
+        "description": "지역 한정 규격: 폴란드 파노라마 (최대 150KB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/1722096",
+        "dimension_str": "750×300px",
         "aspect_ratio_str": ""
       },
       {
@@ -3460,19 +3484,23 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 628,
         "min_width": 600,
         "min_height": 314,
-        "max_file_size_kb": 5120,
+        "max_file_size_kb": null,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
-        "description": "Google 디맨드젠(Demand Gen) 캠페인 공식 가로형 1.91:1 에셋",
+        "description": "디맨드젠 가로형 (권장 1200×628, 최소 600×314)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091672",
+        "unstated": [
+          "aspect_ratio_tolerance",
+          "max_file_size"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 628,
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3483,19 +3511,23 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 1200,
         "min_width": 300,
         "min_height": 300,
-        "max_file_size_kb": 5120,
+        "max_file_size_kb": null,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
-        "description": "Google 디맨드젠(Demand Gen) 캠페인 공식 정방형 1:1 에셋",
+        "description": "디맨드젠 정사각형 (권장 1200×1200, 최소 300×300)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091672",
+        "unstated": [
+          "aspect_ratio_tolerance",
+          "max_file_size"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 1200,
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3506,19 +3538,23 @@
           5
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 960,
-        "recommended_height": 1200,
         "min_width": 480,
         "min_height": 600,
-        "max_file_size_kb": 5120,
+        "max_file_size_kb": null,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "text_ratio_limit": 0.2,
-        "text_ratio_level": "warning",
-        "description": "Google 디맨드젠(Demand Gen) 캠페인 공식 세로형 4:5 에셋",
+        "description": "디맨드젠 세로형 4:5 (권장 960×1200, 최소 480×600)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091672",
+        "unstated": [
+          "aspect_ratio_tolerance",
+          "max_file_size"
+        ],
+        "recommended_width": 960,
+        "recommended_height": 1200,
         "dimension_str": "권장 960×1200px",
         "aspect_ratio_str": "4:5"
       },
@@ -3529,8 +3565,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 628,
         "min_width": 600,
         "min_height": 314,
         "max_file_size_kb": 5120,
@@ -3539,7 +3573,14 @@
           "jpeg",
           "png"
         ],
-        "description": "Google 앱 프로모션(AC) 캠페인 이미지 에셋 가로형",
+        "description": "앱 캠페인 가로형 (권장 1200×628, 최소 600×314, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091671",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 628,
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -3550,61 +3591,50 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 1200,
-        "min_width": 300,
-        "min_height": 300,
+        "min_width": 200,
+        "min_height": 200,
         "max_file_size_kb": 5120,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "description": "Google 앱 프로모션(AC) 캠페인 이미지 에셋 정방형",
+        "description": "앱 캠페인 정사각형 (권장 1200×1200, 최소 200×200, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091671",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 1200,
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
       {
-        "name": "Google App 캠페인 세로형 (9:16 1080×1920)",
+        "name": "Google App 캠페인 세로형 (4:5 1200×1500)",
         "aspect_ratio": [
-          9,
-          16
+          4,
+          5
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1080,
-        "recommended_height": 1920,
-        "min_width": 600,
-        "min_height": 1067,
+        "min_width": 320,
+        "min_height": 400,
         "max_file_size_kb": 5120,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "description": "Google 앱 프로모션(AC) 캠페인 풀스크린 세로형 이미지 에셋",
-        "dimension_str": "권장 1080×1920px",
-        "aspect_ratio_str": "9:16"
-      },
-      {
-        "name": "PMax/Responsive Vertical (9:16 900×1600)",
-        "aspect_ratio": [
-          9,
-          16
+        "description": "앱 캠페인 세로형 4:5 (권장 1200×1500, 최소 320×400, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091671",
+        "unstated": [
+          "aspect_ratio_tolerance"
         ],
-        "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 900,
-        "recommended_height": 1600,
-        "min_width": 600,
-        "min_height": 1067,
-        "max_file_size_kb": 5120,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png"
-        ],
-        "description": "Google Ads 반응형 디스플레이 세로형 9:16 에셋 (900×1600 권장)",
-        "dimension_str": "권장 900×1600px",
-        "aspect_ratio_str": "9:16"
+        "recommended_width": 1200,
+        "recommended_height": 1500,
+        "dimension_str": "권장 1200×1500px",
+        "aspect_ratio_str": "4:5"
       },
       {
         "name": "Google Ads Logo (1:1 정사각형 로고)",
@@ -3613,8 +3643,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 1200,
         "min_width": 128,
         "min_height": 128,
         "max_file_size_kb": 5120,
@@ -3623,7 +3651,14 @@
           "jpg",
           "jpeg"
         ],
-        "description": "Google 반응형 디스플레이/디맨드젠 필수 정사각형 로고 (1200×1200 권장, 최소 128×128)",
+        "description": "정사각형 로고 (권장 1200×1200, 최소 128×128, 최대 5MB). 디맨드젠은 최소 144×144",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091269",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 1200,
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -3634,8 +3669,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 300,
         "min_width": 512,
         "min_height": 128,
         "max_file_size_kb": 5120,
@@ -3644,7 +3677,14 @@
           "jpg",
           "jpeg"
         ],
-        "description": "Google 반응형 디스플레이 가로형 브랜드 로고 (1200×300 권장, 최소 512×128)",
+        "description": "가로형 로고 (권장 1200×300, 최소 512×128, 최대 5MB)",
+        "verified": true,
+        "source": "https://support.google.com/google-ads/answer/17091269",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "recommended_width": 1200,
+        "recommended_height": 300,
         "dimension_str": "권장 1200×300px",
         "aspect_ratio_str": "4:1"
       }

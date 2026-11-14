@@ -159,13 +159,14 @@ def test_real_banner_packs():
         if not any(matches_placement(p, w, h) for p in criteo_placements):
             failures.append(f"Criteo missing timer asset {w}×{h}")
             
-    # 3. Google Ads / GDN 28 pack
+    # 3. Google Ads: the 20 uploaded image sizes + 3 regional sizes (support.google.com/google-ads/answer/1722096)
+    #    and the recommended asset sizes (answers 17091269, 17091671, 9823397), checked 2026-11-15
     gdn_pack = [
         (300, 250), (336, 280), (728, 90), (300, 600), (160, 600), (120, 600),
         (320, 100), (320, 50), (200, 200), (250, 250), (970, 90), (970, 250),
         (468, 60), (300, 50), (240, 400), (930, 180), (580, 400), (980, 120),
-        (250, 360), (300, 1050), (320, 480), (480, 320), (768, 1024), (1024, 768),
-        (1200, 628), (1200, 1200), (960, 1200), (1080, 1920)
+        (250, 360), (300, 1050), (750, 100), (750, 200), (750, 300),
+        (1200, 628), (1200, 1200), (960, 1200), (1200, 1500), (900, 1600)
     ]
     gdn_spec = specs_map.get("google_ads", {})
     gdn_placements = gdn_spec.get("placements_detail", [])
