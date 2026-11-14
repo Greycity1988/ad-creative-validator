@@ -23,74 +23,81 @@ export default {
         mono: ['JetBrains Mono', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       colors: {
-        // Northpoint Scandinavian Minimalist Palette
+        // Lifemed High-End Healthcare & AI Modernist Palette
         canvas: {
-          DEFAULT: '#F8F8F6',
-          subtle: '#F2F2EF',
-          muted: '#EAEAE6',
+          DEFAULT: '#FFFFFF',
+          subtle: '#F8FAFC',
+          muted: '#F1F5F9',
         },
         surface: {
           DEFAULT: '#FFFFFF',
           raised: '#FFFFFF',
-          sunken: '#F7F7F5',
+          sunken: '#F8FAFC',
+          glass: 'rgba(255, 255, 255, 0.85)',
+          sage: '#E8F7F0', // Lifemed Signature Soft Recovered Sage
         },
         ink: {
-          primary: '#111215',
-          secondary: '#4B4F58',
-          tertiary: '#767C89',
-          muted: '#9CA3AF',
-          faint: '#D1D5DB',
+          primary: '#0A0A0A',
+          secondary: '#52525B',
+          tertiary: '#71717A',
+          muted: '#A1A1AA',
+          faint: '#E4E4E7',
         },
         line: {
-          DEFAULT: '#E8E8E4',
-          subtle: '#EEEEEC',
-          strong: '#D5D5CE',
+          DEFAULT: 'rgba(0, 0, 0, 0.06)',
+          subtle: 'rgba(0, 0, 0, 0.04)',
+          strong: 'rgba(0, 0, 0, 0.12)',
         },
         accent: {
-          DEFAULT: '#143126', // Deep Scandinavian Forest Pine
-          hover: '#1B3F32',
-          light: '#EBF4F0',
-          mint: '#10B981',
-          neon: '#059669',
+          DEFAULT: '#0A0A0A', // Lifemed Jet Black
+          hover: '#262626',
+          violet: '#8B5CF6',  // Lifemed Signature Violet Ring
+          indigo: '#6366F1',  // Lifemed Active Tab / Periwinkle
+          blue: '#2563EB',    // Lifemed Metric Subtitle Electric Blue
+          sky: '#38BDF8',     // Lifemed Bar Sky Blue
+          sage: '#E8F7F0',    // Lifemed Soft Metric Surface
+          mint: '#10B981',    // Lifemed Clean Sage Dot
+          light: '#F4F4F5',
         },
-        // Functional Status Colors (Refined Soft Tints)
+        // Functional Status Colors (Lifemed Refined Soft Tints)
         status: {
           pass: {
-            bg: '#F0FDF4',
-            border: '#BBF7D0',
-            text: '#166534',
-            dot: '#22C55E',
+            bg: '#E8F7F0',
+            border: '#A7F3D0',
+            text: '#065F46',
+            dot: '#10B981',
           },
           warn: {
-            bg: '#FFFBEB',
+            bg: '#FEF3C7',
             border: '#FDE68A',
             text: '#92400E',
             dot: '#F59E0B',
           },
           fail: {
-            bg: '#FEF2F2',
-            border: '#FECACA',
-            text: '#991B1B',
-            dot: '#EF4444',
+            bg: '#FFE4E6',
+            border: '#FECDD3',
+            text: '#9F1239',
+            dot: '#F43F5E',
           },
           skip: {
-            bg: '#F3F4F6',
-            border: '#E5E7EB',
-            text: '#4B5563',
-            dot: '#9CA3AF',
+            bg: '#F8FAFC',
+            border: 'rgba(0, 0, 0, 0.08)',
+            text: '#475569',
+            dot: '#94A3B8',
           },
         },
-        primary: '#143126',
+        primary: '#0A0A0A',
         success: '#10B981',
         warning: '#F59E0B',
-        error: '#EF4444',
+        error: '#F43F5E',
       },
       boxShadow: {
-        'soft-xs': '0 1px 2px rgba(0, 0, 0, 0.03)',
-        'soft-sm': '0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02)',
-        'soft-md': '0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02)',
-        'soft-lg': '0 12px 28px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03)',
-        'soft-xl': '0 20px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04)',
+        'soft-xs': '0 1px 2px rgba(0, 0, 0, 0.02)',
+        'soft-sm': '0 4px 14px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02)',
+        'soft-md': '0 8px 26px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02)',
+        'soft-lg': '0 16px 36px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.03)',
+        'soft-xl': '0 24px 50px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.03)',
+        'lifemed': '0 8px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02)',
       },
       borderRadius: {
         '2xl': '1rem',
