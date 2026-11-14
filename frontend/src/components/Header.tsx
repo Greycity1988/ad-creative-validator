@@ -98,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center space-x-2 h-9 px-4.5 rounded-full bg-[#0A0A0A] hover:bg-neutral-800 text-white text-xs font-bold transition-all shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap flex-shrink-0"
-              title="네이버·구글·핀터레스트·메타 4대 채널 통합 키워드 트렌드 추적 도구(OTT)로 이동"
+              title="키워드 트렌드 도구(OTT)로 이동"
             >
               <TrendingUp className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
               <span className="font-mono">OTT</span>

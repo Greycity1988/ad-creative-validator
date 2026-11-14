@@ -101,42 +101,41 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         {/* Metric 2: Selected Platforms */}
         <div className="bg-white/80 rounded-2xl p-4.5 border border-black/[0.06] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/20">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-            선택된 매체
+            선택된 광고 매체
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-violet-700 font-mono mt-1 flex items-baseline gap-1.5">
             <span>{selectedPlatformCount}</span>
-            <span className="text-xs font-sans text-ink-tertiary font-normal">/ {totalPlatformCount}개</span>
+            <span className="text-xs font-sans text-ink-tertiary font-normal">/ {totalPlatformCount > 0 ? totalPlatformCount : 32} 매체</span>
           </div>
           <div className="text-[11px] text-violet-600 font-medium mt-1">
-            주요 포털 & SNS 우선 선택
+            주요 매체 사전 선택됨
           </div>
         </div>
 
         {/* Metric 3: Supported Placements */}
         <div className="bg-white/80 rounded-2xl p-4.5 border border-black/[0.06] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/20">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-            검수 가능 지면 수
+            동시대조 검수 지면
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary font-mono mt-1 flex items-baseline gap-1.5">
             <span>{totalPlacementCount}</span>
             <span className="text-xs font-sans text-ink-tertiary font-normal">개 지면</span>
           </div>
           <div className="text-[11px] text-blue-600 font-medium mt-1">
-            DA, 피드, 숏폼 전면 지원
+            DA·비즈보드·피드·스토리 등
           </div>
         </div>
 
         {/* Metric 4: Safety & Privacy - Lifemed Violet Highlight Card */}
         <div className="bg-violet-50/70 rounded-2xl p-4.5 border border-violet-200/80 transition-all hover:shadow-soft-sm hover:border-violet-300">
           <div className="text-[11px] font-bold uppercase tracking-wider text-violet-700">
-            보안 및 데이터 정책
+            시스템 준비 상태
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-violet-900 font-mono mt-1 flex items-baseline gap-1.5">
             <span>0</span>
-            <span className="text-xs font-sans text-violet-700 font-normal">Byte 전송</span>
           </div>
           <div className="text-[11px] text-violet-700 font-bold mt-1">
-            로컬 브라우저 100% 검증
+            {hasFiles ? '검수 시작 가능' : '소재 업로드 대기 중'}
           </div>
         </div>
       </div>
