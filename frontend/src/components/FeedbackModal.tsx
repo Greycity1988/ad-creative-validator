@@ -188,7 +188,7 @@ ${contentStr}
 
       const issueTitle = encodeURIComponent(`[${category}] ${currentTitle}`);
       const issueBody = encodeURIComponent(bodyText);
-      window.open(`${GITHUB_ISSUES_URL}?title=${issueTitle}&body=${issueBody}`, '_blank');
+      window.open(`${GITHUB_ISSUES_URL}?title=${issueTitle}&body=${issueBody}`, '_blank', 'noopener,noreferrer');
 
       setSuccessMessage(
         '제보 내용이 클립보드에 복사되었으며 GitHub Issues 등록 페이지가 새 탭으로 열렸습니다! GitHub에서 Submit 버튼을 누르시면 실시간 공개 보드에 즉시 등록됩니다.'

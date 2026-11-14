@@ -196,6 +196,12 @@ export const validateImages = async (
   return validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
 };
 
+// Quote a CSV cell; a leading = + - @ (or tab/CR) would make Excel evaluate it as a formula.
+const csvCell = (value: string): string => {
+  const safe = /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+  return `"${safe.replace(/"/g, '""')}"`;
+};
+
 export const downloadCsvReport = async (
   results: ValidationItem[],
   customFilename: string = 'ad_creative_validation_report.csv'
@@ -214,14 +220,14 @@ export const downloadCsvReport = async (
       for (const pl of pr.placements) {
         const checkSummary = pl.checks.map((c) => `[${c.name}] ${c.message}`).join(' | ');
         const row = [
-          `"${item.filename.replace(/"/g, '""')}"`,
-          `"${dim}"`,
-          `"${size}"`,
-          `"${ratio}"`,
-          `"${pr.platform.replace(/"/g, '""')}"`,
-          `"${pl.name.replace(/"/g, '""')}"`,
-          `"${pl.overall.toUpperCase()}"`,
-          `"${checkSummary.replace(/"/g, '""')}"`,
+          csvCell(item.filename),
+          csvCell(dim),
+          csvCell(size),
+          csvCell(ratio),
+          csvCell(pr.platform),
+          csvCell(pl.name),
+          csvCell(pl.overall.toUpperCase()),
+          csvCell(checkSummary),
         ];
         rows.push(row.join(','));
       }

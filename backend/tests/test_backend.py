@@ -230,8 +230,11 @@ def test_criteo_iab_and_timer_banners():
     assert res_160.overall == CheckStatus.PASS.value
 
 
-def test_feedback_api():
+def test_feedback_api(tmp_path, monkeypatch):
     """Verify feedback list and feedback submission API."""
+    from routers import feedback
+    monkeypatch.setattr(feedback, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(feedback, "FEEDBACKS_FILE", tmp_path / "feedbacks.json")
     # 1. GET feedbacks
     res_get = client.get("/api/feedbacks")
     assert res_get.status_code == 200
