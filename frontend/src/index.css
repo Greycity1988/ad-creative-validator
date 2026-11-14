@@ -7,10 +7,11 @@
     @apply bg-canvas text-ink-primary font-sans;
     letter-spacing: -0.025em;
     background-image: 
-      radial-gradient(at 12% 12%, rgba(232, 213, 255, 0.40) 0px, transparent 48%),
-      radial-gradient(at 88% 14%, rgba(254, 215, 226, 0.35) 0px, transparent 48%),
-      radial-gradient(at 50% 28%, rgba(224, 242, 254, 0.45) 0px, transparent 55%),
-      radial-gradient(at 82% 78%, rgba(243, 232, 255, 0.25) 0px, transparent 48%);
+      radial-gradient(at 10% 8%, rgba(192, 132, 252, 0.28) 0px, transparent 45%),
+      radial-gradient(at 90% 12%, rgba(244, 114, 182, 0.22) 0px, transparent 45%),
+      radial-gradient(at 50% 25%, rgba(186, 230, 253, 0.35) 0px, transparent 55%),
+      radial-gradient(at 85% 75%, rgba(216, 180, 254, 0.20) 0px, transparent 45%),
+      radial-gradient(at 15% 85%, rgba(199, 210, 254, 0.25) 0px, transparent 45%);
     background-attachment: fixed;
     background-color: #FFFFFF;
   }
@@ -25,9 +26,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.10);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.20);
 }

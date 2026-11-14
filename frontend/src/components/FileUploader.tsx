@@ -96,8 +96,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               <h2 className="text-lg sm:text-xl font-bold tracking-tight text-ink-primary">
                 소재 이미지 업로드
               </h2>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-black/[0.04] border border-black/[0.06] text-ink-secondary">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-violet-50 border border-violet-200/80 text-violet-700">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
                 <span>서버 미저장 · 100% 보안 안심</span>
               </span>
             </div>
@@ -119,14 +119,14 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         )}
       </div>
 
-      {/* Security Privacy Callout */}
-      <div className="flex items-start gap-3 p-4 rounded-2xl bg-neutral-50/80 border border-black/[0.05] text-xs text-ink-secondary leading-relaxed shadow-soft-xs">
-        <div className="w-6 h-6 rounded-lg bg-white border border-black/[0.06] flex items-center justify-center text-emerald-600 flex-shrink-0 mt-0.5 shadow-soft-xs">
+      {/* Security Privacy Callout - Lifemed Soft Sage */}
+      <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#E8F7F0] border border-[#A7F3D0] text-xs text-[#065F46] leading-relaxed shadow-soft-xs">
+        <div className="w-6 h-6 rounded-lg bg-white border border-[#A7F3D0] flex items-center justify-center text-[#10B981] flex-shrink-0 mt-0.5 shadow-soft-xs">
           <ShieldCheck className="w-3.5 h-3.5" />
         </div>
         <div>
-          <span className="font-bold text-ink-primary">100% 무저장 안심 보안 확인: </span>
-          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-ink-primary underline decoration-emerald-500 decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
+          <span className="font-bold text-[#065F46]">100% 무저장 안심 보안 확인: </span>
+          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold underline decoration-[#10B981] decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
         </div>
       </div>
 
