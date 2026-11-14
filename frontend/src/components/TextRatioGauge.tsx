@@ -44,7 +44,7 @@ export const TextRatioGauge: React.FC<TextRatioGaugeProps> = ({ ratio }) => {
     <div className="bg-surface rounded-2xl p-4 border border-line shadow-soft-xs space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-bold text-ink-primary">텍스트 점유율:</span>
+          <span className="text-xs font-bold text-ink-primary">텍스트 면적 비율:</span>
           <span className="text-xs font-bold font-mono text-ink-primary bg-canvas-subtle px-2 py-0.5 rounded-md border border-line">
             {formattedPercent}%
           </span>
@@ -67,7 +67,7 @@ export const TextRatioGauge: React.FC<TextRatioGaugeProps> = ({ ratio }) => {
         <div
           className="absolute top-0 bottom-0 w-0.5 bg-amber-500/70 z-10"
           style={{ left: '20%' }}
-          title="20% 네이버 상한선"
+          title="20% 네이버 상한 기준선"
         />
         <div
           className="absolute top-0 bottom-0 w-0.5 bg-status-fail/80 z-10"

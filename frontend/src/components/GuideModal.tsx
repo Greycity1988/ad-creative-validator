@@ -39,7 +39,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
               </div>
               <p className="text-xs text-ink-secondary mt-0.5">
-                실무에서 불필요한 소재 심사 반려를 0%로 줄이는 검수 워크플로우 안내
+                이 도구가 왜 필요한지, 그리고 실무에서 언제 어떻게 쓰면 가장 효과적인지 안내해 드립니다.
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
               </div>
               <p className="text-[11px] text-ink-secondary leading-relaxed">
-                본 광고 소재 검수 시스템은 <strong>고해상도 광고 소재의 픽셀 단위 정밀 대조, 세이프존(Safe Zone) 오버레이 시각화, 대용량 다중 파일 드래그앤드롭 및 CSV 리포트(엑셀 호환) 내보내기</strong> 등 전문 마케팅·디자인 업무 환경에 맞춰 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 원활한 검수 작업을 위해 PC 환경에서의 이용을 권장해 드립니다.
+                본 광고 소재 검수 시스템은 <strong>고해상도 광고 소재의 픽셀 단위 정밀 대조, 세이프존(Safe Zone) 오버레이 시각화, 대용량 다중 파일 드래그앤드롭 및 CSV 리포트(엑셀 호환) 익스포트</strong> 등 전문 마케팅·디자인 업무 환경에 맞춰 <strong>PC(데스크톱) 브라우저 환경에 최적화</strong>되어 있습니다. 원활한 검수 작업을 위해 PC 환경에서의 이용을 권장해 드립니다.
               </p>
             </div>
           </div>
@@ -110,27 +110,27 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               <div className="p-4 rounded-2xl border border-line bg-canvas-subtle/50 space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
                   <AlertTriangle className="w-3.5 h-3.5 text-status-fail" />
-                  <span>심사 반려(Reject) 사전 차단</span>
+                  <span>잦은 심사 반려(Reject) 방지</span>
                 </div>
                 <p className="text-ink-secondary leading-relaxed text-[11px]">
-                  매체마다 해상도(단 1px 차이), 용량(KB), 비율, 알파 채널(투명 PNG) 요구가 제각각이라, 등록 후 반려 시 캠페인 라이브가 1~2일 지연됩니다.
+                  매체마다 해상도(단 1px 차이), 용량(KB), 비율, 알파 채널(투명 PNG) 요구가 제각각이라, 등록 후 심사 반려되면 캠페인 라이브 일정이 1~2일씩 지연됩니다.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl border border-line bg-canvas-subtle/50 space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-accent-mint" />
-                  <span>투명 배경 & 포맷 바이너리 검증</span>
+                  <span>투명 배경(누끼) & 바이너리 포맷 검증</span>
                 </div>
                 <p className="text-ink-secondary leading-relaxed text-[11px]">
-                  카카오 비즈보드, 네이버 스마트채널 등 투명 배경(Alpha PNG)이 필수인 지면의 누끼 여부와 파일 확장자 위장 여부를 정밀 분석합니다.
+                  카카오 비즈보드, 네이버 스마트채널 등 투명 배경(Alpha PNG)이 필수인 지면의 누끼 여부와 파일명 확장자 위장 여부를 브라우저 캔버스와 매직 바이트로 정밀 판정합니다.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl border border-line bg-canvas-subtle/50 space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-accent" />
-                  <span>수십 개 매체 가이드 전수 대조</span>
+                  <span>수십 개 가이드 뒤적임 종결</span>
                 </div>
                 <p className="text-ink-secondary leading-relaxed text-[11px]">
                   카카오, 네이버, 메타, 구글, 크리테오 등 수십 페이지짜리 매체 가이드 PDF를 찾아볼 필요 없이, 이미지만 올리면 모든 규격을 1초 만에 전수 대조합니다.
@@ -146,7 +146,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 02
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
-                실무 활용 시점 권장
+                실무에서 어떨 때 사용하면 가장 좋나요?
               </h3>
             </div>
 
@@ -160,7 +160,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                     캠페인 라이브 D-1 또는 당일 소재 일괄 등록 전
                   </h4>
                   <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
-                    디자이너로부터 전달받은 대량의 배너 에셋을 매체사 어드민에 업로드하기 직전, 단 한 번의 드래그앤드롭으로 불일치 소재를 사전 적발할 때.
+                    디자이너로부터 전달받은 대량의 배너 에셋(수십~수백 개)을 매체사 어드민에 업로드하기 직전, 단 한 번의 드래그앤드롭으로 불일치 소재를 사전 적발할 때.
                   </p>
                 </div>
               </div>
@@ -174,7 +174,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                     디자인 제작/익스포트 완료 직후 자가 검증 시
                   </h4>
                   <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
-                    피그마나 포토샵에서 내보낸 PNG 파일의 배경 투명도(Alpha 누끼)가 제대로 적용되었는지, 용량이 기준 한도 내에 들어왔는지 즉시 자가 체크할 때.
+                    피그마나 포토샵에서 내보낸 PNG 파일의 배경 투명도(Alpha 누끼)가 제대로 적용되었는지, 용량이 300KB/500KB 한도 내에 들어왔는지 디자이너가 즉시 자가 체크할 때.
                   </p>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                     디자이너 ↔ 마케터 간 수정 요청 커뮤니케이션 시
                   </h4>
                   <p className="text-[11px] text-ink-secondary mt-0.5 leading-relaxed">
-                    검수 완료 후 <strong>[CSV 다운로드 (엑셀 호환)]</strong>를 눌러 불합격 사유가 일목요연하게 정리된 시트를 메신저로 공유할 때.
+                    "이 소재 수정해주세요"라고 말로 설명할 필요 없이, 검수 완료 후 <strong>[CSV 리포트 다운로드]</strong>를 눌러 불합격 사유가 일목요연하게 정리된 시트를 슬랙/잔디에 공유할 때.
                   </p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 </span>
                 <h4 className="font-bold text-ink-primary mt-1">소재 파일 업로드</h4>
                 <p className="text-[11px] text-ink-secondary">
-                  검수할 이미지(JPG, PNG, GIF, WebP)를 드래그앤드롭합니다.
+                  검수할 이미지(JPG, PNG, GIF, WebP)를 점선 영역에 끌어다 놓습니다.
                 </p>
               </div>
 
@@ -245,9 +245,9 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 <span className="text-[10px] font-mono font-bold text-accent bg-surface px-2 py-0.5 rounded-md border border-line">
                   STEP 03
                 </span>
-                <h4 className="font-bold text-ink-primary mt-1">정밀 검수 & CSV 리포트</h4>
+                <h4 className="font-bold text-ink-primary mt-1">검수 시작 & 리포트</h4>
                 <p className="text-[11px] text-ink-secondary">
-                  검수 시작을 누르고 1초 만에 판정 결과와 CSV 파일을 수령합니다.
+                  <strong>[검수 시작]</strong> 버튼을 누르고 결과 확인 및 CSV 다운로드를 진행합니다.
                 </p>
               </div>
             </div>
@@ -301,7 +301,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
         {/* Footer */}
         <div className="p-5 border-t border-line bg-canvas-subtle/50 flex items-center justify-between text-xs">
           <span className="text-ink-muted text-[11px]">
-            궁금한 점이나 추가 규격 제보는 상단의 <strong>[건의 / 제보]</strong>를 이용해주세요.
+            궁금한 점이나 추가 규격 제보는 헤더의 <strong>[건의 / 규격 제보]</strong>를 이용해주세요!
           </span>
           <button
             type="button"

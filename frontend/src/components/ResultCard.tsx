@@ -62,7 +62,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
   if (isPlatformNA || activePlacements.length === 0) {
     overallBadge = {
-      label: '해당 규격 없음',
+      label: '해당 규격 없음 (N/A)',
       dotColor: 'bg-ink-muted',
       bgColor: 'bg-canvas-subtle',
       textColor: 'text-ink-muted',
@@ -262,7 +262,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                         </span>
                         {placement.is_matched_target && (
                           <span className="text-[9px] font-mono font-semibold bg-accent/10 text-accent border border-accent/20 px-1.5 py-0.2 rounded-full flex-shrink-0">
-                            타겟 매칭
+                            매칭 지면
                           </span>
                         )}
                         {placement.safe_zone && onOpenSafeZone && (

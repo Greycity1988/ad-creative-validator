@@ -98,11 +98,11 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               </h2>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-canvas-subtle border border-line text-ink-secondary">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
-                <span>100% 로컬 보안 판정</span>
+                <span>서버 미저장 · 100% 보안 안심</span>
               </span>
             </div>
             <p className="text-xs text-ink-muted mt-0.5">
-              JPG, PNG, GIF, WebP 다중 파일 선택 지원 (단일 파일 최대 30MB)
+              (JPG, PNG, GIF, WebP 다중 선택 가능)
             </p>
           </div>
         </div>
@@ -125,8 +125,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           <ShieldCheck className="w-3.5 h-3.5 text-accent-mint" />
         </div>
         <div>
-          <span className="font-bold text-ink-primary">클라이언트 메모리 실시간 판정: </span>
-          업로드하신 광고 소재는 외부 서버로 전송되지 않으며, 사용자 브라우저의 샌드박스 메모리에서 즉시 픽셀・용량・세이프존을 정밀 검수합니다. 런칭 전 대외비 캠페인 에셋도 안전하게 테스트하세요.
+          <span className="font-bold text-ink-primary">100% 무저장 안심 보안 확인: </span>
+          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-ink-primary underline decoration-accent-mint decoration-2 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
         </div>
       </div>
 
@@ -159,10 +159,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           </div>
           <div>
             <p className="text-sm font-semibold text-ink-primary">
-              이미지를 드래그하거나 클릭하여 추가
+              이미지를 드래그하거나 클릭하여 업로드
             </p>
             <p className="text-xs text-ink-muted mt-1">
-              드래그앤드롭으로 여러 이미지를 한 번에 일괄 등록할 수 있습니다.
+              최대 용량 30MB • 다중 파일 일괄 검수 가능
             </p>
           </div>
         </div>
@@ -173,7 +173,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         <div className="space-y-3 pt-1">
           <div className="flex items-center justify-between text-xs font-semibold text-ink-secondary">
             <span className="tracking-wide">
-              등록된 소재 에셋 ({files.length}개)
+              선택된 이미지 ({files.length}개)
             </span>
             <span className="text-ink-muted text-[11px]">
               지면별 적합도 자동 판정 준비 완료
@@ -247,7 +247,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               className="flex flex-col items-center justify-center p-3 rounded-2xl border border-dashed border-line-strong text-ink-secondary hover:border-accent hover:text-accent hover:bg-canvas-subtle/70 transition-all min-h-[76px] text-xs font-semibold cursor-pointer group"
             >
               <Plus className="w-4 h-4 mb-1 text-ink-muted group-hover:text-accent group-hover:scale-110 transition-all" />
-              <span>소재 추가</span>
+              <span>추가 업로드</span>
             </button>
           </div>
         </div>

@@ -87,7 +87,7 @@ export const LogoModal: React.FC<LogoModalProps> = ({ isOpen, onClose }) => {
                   <span>Accuracy & Ad</span>
                 </div>
                 <p className="text-[11px] text-ink-secondary leading-relaxed">
-                  삼각형의 정점을 형성하며, 가로바를 <strong>규격 측정 빔</strong> 형태로 변형하여 픽셀 오차 없는 정밀성을 상징합니다.
+                  삼각형의 정점을 형성하며, 가로바를 <strong>레이저 스캐너 규격 측정 빔</strong> 형태로 변형하여 픽셀 오차 없는 정밀성을 상징합니다.
                 </p>
               </div>
 
@@ -98,7 +98,7 @@ export const LogoModal: React.FC<LogoModalProps> = ({ isOpen, onClose }) => {
                   <span>Creative & Framing</span>
                 </div>
                 <p className="text-[11px] text-ink-secondary leading-relaxed">
-                  좌하단을 감싸는 곡선에 <strong>바운딩 박스 크롭 가이드</strong>를 결합하여 디스플레이 광고 소재의 뷰파인더를 표현했습니다.
+                  좌하단을 감싸는 곡선에 <strong>바운딩 박스 크롭 가이드(⌜)</strong>를 결합하여 디스플레이 광고 소재의 뷰파인더 프레이밍을 표현했습니다.
                 </p>
               </div>
 

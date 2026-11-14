@@ -222,7 +222,7 @@ export const App: React.FC = () => {
           <div className="p-5 bg-red-50/80 border border-red-200/90 rounded-2xl flex items-start space-x-3 text-red-800 shadow-soft-xs">
             <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-600" />
             <div className="text-sm">
-              <span className="font-bold">검수 처리 오류: </span>
+              <span className="font-bold">검수 오류: </span>
               <span className="text-red-700">{errorMessage}</span>
             </div>
           </div>

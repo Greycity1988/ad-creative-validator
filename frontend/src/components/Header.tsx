@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({
             title="새로운 광고 매체/지면 추가 요청이나 의견을 남겨주세요."
           >
             <MessageSquare className="w-3.5 h-3.5 text-ink-tertiary" />
-            <span className="font-medium">규격 제보</span>
+            <span className="font-medium">건의 / 규격 제보</span>
           </button>
 
           <button
@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
             title="개발자에게 커피 한 잔을 선물하여 도구 운영을 응원해주세요!"
           >
             <Coffee className="w-3.5 h-3.5 text-amber-600" />
-            <span>커피 후원</span>
+            <span>커피 후원하기</span>
           </button>
         </div>
       </div>

@@ -54,7 +54,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
           <div className="bg-canvas-subtle/70 p-3 rounded-xl border border-line">
-            <span className="text-[10px] text-ink-muted font-bold block uppercase tracking-wider">해상도</span>
+            <span className="text-[10px] text-ink-muted font-bold block uppercase tracking-wider">해상도 (W×H)</span>
             <span className="font-bold text-ink-primary font-mono text-xs sm:text-sm mt-0.5 block">
               {imageInfo.width} × {imageInfo.height}
             </span>
@@ -85,12 +85,12 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
               {imageInfo.has_alpha ? (
                 <>
                   <CheckCircle2 className="w-3.5 h-3.5 text-accent-mint inline" />
-                  <span className="text-accent-mint font-semibold text-xs ml-1">투명 배경</span>
+                  <span className="text-accent-mint font-semibold text-xs ml-1">포함 (투명)</span>
                 </>
               ) : (
                 <>
                   <AlertCircle className="w-3.5 h-3.5 text-ink-muted inline" />
-                  <span className="text-ink-secondary font-medium text-xs ml-1">불투명</span>
+                  <span className="text-ink-secondary font-medium text-xs ml-1">미포함 (불투명)</span>
                 </>
               )}
             </span>

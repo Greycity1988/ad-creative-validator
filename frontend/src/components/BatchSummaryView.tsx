@@ -175,11 +175,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
             <span className="tracking-wider text-[11px] font-bold text-ink-muted uppercase block">
-              TOTAL ASSETS
+              검수 대상 소재
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-ink-primary">{totalFiles}</span>
-              <span className="text-xs text-ink-secondary">개 소재</span>
+              <span className="text-xs text-ink-secondary">개 파일</span>
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-canvas-subtle border border-line flex items-center justify-center text-ink-secondary">
@@ -198,11 +198,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         >
           <div>
             <span className="tracking-wider text-[11px] font-bold text-accent-mint uppercase block">
-              FULLY QUALIFIED
+              전체 통과 (적합)
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-accent-mint">{passFiles.length}</span>
-              <span className="text-xs text-accent-mint font-semibold">개 통과</span>
+              <span className="text-xs text-accent-mint font-semibold">개 파일</span>
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-accent-mint/10 border border-accent-mint/20 flex items-center justify-center text-accent-mint">
@@ -221,11 +221,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         >
           <div>
             <span className="tracking-wider text-[11px] font-bold text-status-fail uppercase block">
-              ACTION REQUIRED
+              불일치 / 반려 위험
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-status-fail">{failFiles.length}</span>
-              <span className="text-xs text-status-fail font-semibold">개 반려 위험</span>
+              <span className="text-xs text-status-fail font-semibold">개 파일</span>
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-status-fail">
@@ -237,11 +237,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
             <span className="tracking-wider text-[11px] font-bold text-amber-600 uppercase block">
-              OPTIMIZATION NEEDED
+              수정 권장 (주의)
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-amber-700">{warnFiles.length}</span>
-              <span className="text-xs text-amber-600 font-semibold">개 주의</span>
+              <span className="text-xs text-amber-600 font-semibold">개 파일</span>
             </div>
           </div>
           <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600">
@@ -256,34 +256,34 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
           <div className="flex items-center space-x-2 text-rose-800">
             <AlertTriangle className="w-4 h-4 flex-shrink-0 text-rose-600" />
             <h4 className="text-xs font-bold uppercase tracking-wider">
-              검수 통과 실패 원인 요약 (즉시 수정 권장)
+              검수 통과 실패 원인 요약 (즉시 수정 필요)
             </h4>
           </div>
 
           <div className="flex flex-wrap gap-2 text-xs">
             {dimFailCount > 0 && (
               <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
-                📐 해상도 / 비율 불일치: <strong className="font-mono">{dimFailCount}개</strong>
+                📐 해상도 / 비율 불일치: <strong className="font-mono">{dimFailCount}개 파일</strong>
               </span>
             )}
             {sizeFailCount > 0 && (
               <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
-                💾 파일 용량 초과: <strong className="font-mono">{sizeFailCount}개</strong>
+                💾 파일 용량 초과: <strong className="font-mono">{sizeFailCount}개 파일</strong>
               </span>
             )}
             {formatFailCount > 0 && (
               <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
-                📄 미지원 확장자: <strong className="font-mono">{formatFailCount}개</strong>
+                📄 지원하지 않는 확장자/포맷: <strong className="font-mono">{formatFailCount}개 파일</strong>
               </span>
             )}
             {transFailCount > 0 && (
               <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
-                🔳 투명 배경(누끼) 미적용: <strong className="font-mono">{transFailCount}개</strong>
+                🔳 투명 배경(누끼) 미적용: <strong className="font-mono">{transFailCount}개 파일</strong>
               </span>
             )}
             {textRatioFailCount > 0 && (
               <span className="bg-surface border border-rose-500/20 text-rose-700 px-3 py-1.5 rounded-full font-medium shadow-2xs">
-                ✍️ 텍스트 비율 기준 초과: <strong className="font-mono">{textRatioFailCount}개</strong>
+                ✍️ 텍스트 비율 기준 초과: <strong className="font-mono">{textRatioFailCount}개 파일</strong>
               </span>
             )}
           </div>
@@ -350,7 +350,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                 <th className="py-3 px-4 min-w-[140px]">매칭 타겟 지면</th>
                 <th className="py-3 px-4 min-w-[110px] text-center">종합 판정</th>
                 <th className="py-3 px-4 min-w-[280px]">검수 결과 및 불일치 사유 요약</th>
-                <th className="py-3 px-4 w-24 text-center">상세</th>
+                <th className="py-3 px-4 w-24 text-center">상세보기</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-line/60">
