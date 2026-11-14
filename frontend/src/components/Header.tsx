@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, Coffee, BookOpen } from 'lucide-react';
+import { MessageSquare, Coffee, BookOpen, TrendingUp, ExternalLink } from 'lucide-react';
 import { ACVLogo } from './ACVLogo';
 
 interface HeaderProps {
@@ -86,6 +86,20 @@ export const Header: React.FC<HeaderProps> = ({
             <Coffee className="w-3.5 h-3.5 text-amber-600" />
             <span>☕ 커피 후원하기</span>
           </button>
+
+          {/* OTT Trend Tracker Inter-service Switcher */}
+          <a
+            href="http://localhost:5174"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-full border border-accent/25 bg-accent text-white hover:bg-accent/90 text-xs font-bold transition-all cursor-pointer shadow-soft-xs"
+            title="네이버·구글·핀터레스트·메타 4대 채널 통합 키워드 트렌드 추적 도구(OTT)로 이동"
+          >
+            <TrendingUp className="w-3.5 h-3.5 text-accent-mint" />
+            <span className="font-mono">OTT</span>
+            <span className="hidden sm:inline">트렌드 분석</span>
+            <ExternalLink className="w-3 h-3 text-white/80" />
+          </a>
         </div>
       </div>
     </header>
