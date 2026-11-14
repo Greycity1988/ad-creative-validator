@@ -62,16 +62,16 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <h3 className="text-xs sm:text-sm font-bold text-ink-primary tracking-tight">
-                  100% 매체사 공식 가이드 직접 수록 & 매일 새벽 자동 변경 감지
+                  100% 매체사 공식 가이드 직접 수록 & 주기적 변경 감지
                 </h3>
               </div>
               <span className="inline-flex items-center space-x-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-accent-light text-accent border border-accent/20 self-start sm:self-auto">
                 <RefreshCw className="w-3 h-3 text-accent" />
-                <span>매일 06:00 KST 가이드 자동 점검</span>
+                <span>공식 가이드 주기적 점검</span>
               </span>
             </div>
             <p className="text-[11px] text-ink-secondary leading-relaxed">
-              ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>매일 새벽 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
+              ACV는 개인 블로그나 비공식 요약글을 일절 배제합니다. 네이버 NOSP, 카카오모먼트, 메타 비즈니스 고객센터, 구글 애즈 공식 센터 등 <strong>32개 매체사가 공식 배포한 최신 가이드라인 원문</strong>만을 100% 수록했습니다. 또한 매체사의 갑작스러운 규격 개정에 즉각 대응하기 위해 <strong>주기적으로 공식 가이드 웹페이지의 변경 사항을 자동 크롤링·해싱 검사</strong>하고 있습니다.
             </p>
           </div>
 
@@ -260,7 +260,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
                 🛡️
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
-                4. 규격 무결성 및 신뢰성 보장 (공식 출처 & 매일 새벽 점검)
+                4. 규격 무결성 및 신뢰성 보장 (공식 출처 & 주기적 점검)
               </h3>
             </div>
 
@@ -278,10 +278,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
               <div className="p-3.5 rounded-xl border border-line bg-surface space-y-1.5">
                 <div className="font-bold text-ink-primary flex items-center space-x-1.5">
                   <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>매일 새벽(06:00 KST) 자동 변경 감지</span>
+                  <span>주기적 변경 감지</span>
                 </div>
                 <p className="text-ink-tertiary leading-relaxed text-[11px]">
-                  매체사의 갑작스러운 규격 개정(용량 증액, 신규 비율 도입 등)에 즉각 대응하기 위해, 32개 매체 공식 가이드 URL을 매일 새벽 자동 크롤링하고 콘텐츠 무결성 해시(SHA-256)를 대조하여 변동을 감지 및 신속 반영합니다.
+                  매체사의 갑작스러운 규격 개정(용량 증액, 신규 비율 도입 등)에 즉각 대응하기 위해, 32개 매체 공식 가이드 URL을 주기적으로 크롤링하고 콘텐츠 무결성 해시(SHA-256)를 대조하여 변동을 감지 및 신속 반영합니다.
                 </p>
               </div>
 

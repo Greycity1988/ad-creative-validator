@@ -1,7 +1,7 @@
 import React from 'react';
 import { MessageSquare, Coffee, BookOpen, TrendingUp, ExternalLink } from 'lucide-react';
 import { ACVLogo } from './ACVLogo';
-import { OTT_URL } from '../constants/links';
+import { OTT_URL, SHOW_OTT_LINK } from '../constants/links';
 
 interface HeaderProps {
   onOpenFeedback: () => void;
@@ -89,6 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           {/* OTT Trend Tracker Inter-service Switcher */}
+          {SHOW_OTT_LINK && (
           <a
             href={OTT_URL}
             target="_blank"
@@ -101,6 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline">트렌드 분석</span>
             <ExternalLink className="w-3 h-3 text-white/80" />
           </a>
+          )}
         </div>
       </div>
     </header>

@@ -513,9 +513,9 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
               <span>{totalPlacementsCount}개 공식 지면 전수 탑재</span>
             </div>
-            <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-accent-light border border-accent/20 text-accent" title="매일 새벽 06:00 KST 공식 가이드 자동 변경 감지 가동 중">
+            <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-accent-light border border-accent/20 text-accent" title="공식 가이드 주기적 변경 감지">
               <RefreshCw className="w-3.5 h-3.5 text-accent" />
-              <span>매일 새벽 공식 가이드 자동 점검</span>
+              <span>공식 가이드 주기적 점검</span>
             </div>
           </div>
           <p className="text-xs text-ink-tertiary mt-1">
