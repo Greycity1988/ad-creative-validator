@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   ValidationResponse,
   ValidationItem,
@@ -9,27 +8,9 @@ import {
 import specsData from '../data/specsData.json';
 import { validateImagesLocally } from '../utils/clientValidator';
 
-const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '',
-  timeout: 10000,
-});
-
 const DEFAULT_METADATA = specsData as unknown as PlatformMetadata[];
 
-export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    try {
-      const response = await apiClient.get<{ platforms: PlatformMetadata[] }>('/platforms');
-      if (response.data && typeof response.data === 'object' && Array.isArray(response.data.platforms) && response.data.platforms.length > 0) {
-        return response.data.platforms;
-      }
-    } catch (err) {
-      console.warn('Custom backend API /platforms unreachable, falling back to built-in specs:', err);
-    }
-  }
-
-  return DEFAULT_METADATA;
-};
+export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => DEFAULT_METADATA;
 
 interface GitHubIssue {
   id: number;
@@ -103,7 +84,7 @@ export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
           if (!items.some((it) => it.id === localItem.id)) {
             items.push({
               ...localItem,
-              status: localItem.status || '이메일 발송됨 (임시 기록)',
+              status: localItem.status || '임시 기록 (이 브라우저에만 저장)',
             });
           }
         });
@@ -117,17 +98,6 @@ export const fetchFeedbacks = async (): Promise<FeedbackItem[]> => {
 };
 
 export const submitFeedback = async (data: FeedbackCreateRequest): Promise<FeedbackItem> => {
-  if (import.meta.env.VITE_API_BASE_URL) {
-    try {
-      const response = await apiClient.post<FeedbackItem>('/feedbacks', data);
-      if (response.data && typeof response.data === 'object' && response.data.id) {
-        return response.data;
-      }
-    } catch {
-      // ignore
-    }
-  }
-
   // Save to client-side localStorage. This is a local draft record only: nothing is delivered from here.
   const newItem: FeedbackItem = {
     id: `fb-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
@@ -135,7 +105,6 @@ export const submitFeedback = async (data: FeedbackCreateRequest): Promise<Feedb
     category: data.category,
     content: data.content,
     author: data.author || '익명 마케터',
-    email: data.email,
     created_at: new Date().toISOString().split('T')[0],
     status: '임시 기록 (이 브라우저에만 저장)',
   };
@@ -154,47 +123,14 @@ export const submitFeedback = async (data: FeedbackCreateRequest): Promise<Feedb
 
 /**
  * Validate images against advertising specifications.
- * ZERO-NETWORK-TRANSFER GUARANTEE:
- * When running in client-mode (default on Vercel), files are processed 100% locally
- * in browser memory without sending a single byte over the network.
+ * Files are processed in browser memory only; nothing is sent over the network.
  */
 export const validateImages = async (
   files: File[],
   platforms: string[],
   selectedPlacements: Record<string, string[]>,
-  _analyzeText: boolean = false,
   autoMatch: boolean = true
-): Promise<ValidationResponse> => {
-  // 1. Guaranteed 100% local client-side evaluation if no external backend base URL is provided
-  if (!import.meta.env.VITE_API_BASE_URL) {
-    return validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
-  }
-
-  // 2. If an enterprise backend is explicitly configured via VITE_API_BASE_URL
-  try {
-    const formData = new FormData();
-    files.forEach((file) => {
-      formData.append('files', file);
-    });
-    formData.append('platforms', JSON.stringify(platforms));
-    formData.append('placements', JSON.stringify(selectedPlacements));
-    formData.append('auto_match', autoMatch ? 'true' : 'false');
-
-    const response = await apiClient.post<ValidationResponse>('/validate', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-
-    if (response.data && typeof response.data === 'object' && Array.isArray(response.data.results) && response.data.results.length > 0) {
-      return response.data;
-    }
-  } catch (err) {
-    console.warn('Backend /validate unavailable, falling back to local client engine:', err);
-  }
-
-  return validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
-};
+): Promise<ValidationResponse> => validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
 
 // Quote a CSV cell; a leading = + - @ (or tab/CR) would make Excel evaluate it as a formula.
 const csvCell = (value: string): string => {

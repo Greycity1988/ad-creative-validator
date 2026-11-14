@@ -90,26 +90,28 @@
 ## ⚠️ 알려진 제한
 
 - **규격 데이터는 수동으로 관리합니다.** 각 매체의 `last_verified_date`는 사람이 공식 가이드를 확인한 날짜이며, 공식 문서와 자동으로 대조하는 기능은 없습니다. 집행 전에는 매체 공식 가이드를 함께 확인하세요.
-- **공개 사이트(브라우저 단독 모드)는 텍스트 비율을 측정하지 않습니다.** 텍스트 비율 기준이 있는 지면에는 "직접 확인" 안내만 표시됩니다. 자동 측정(OCR)은 백엔드를 함께 실행할 때만 동작합니다.
-- **공개 사이트의 리포트는 CSV 파일입니다.** 서식이 들어간 엑셀(.xlsx) 리포트는 백엔드 API(`/api/report/excel`)에서만 생성됩니다.
+- **텍스트 비율은 자동 측정하지 않습니다.** 텍스트 비율 기준이 있는 지면에는 "직접 확인" 안내만 표시됩니다.
+- **리포트는 CSV 파일입니다.** 엑셀에서 바로 열립니다(UTF-8 BOM).
 
 ---
 
 ## 🚀 로컬 실행 방법
 
-```bash
-cd ~/Downloads/ad-creative-validator
-./run.sh
-```
-
-- 프론트엔드 (개발): **[http://localhost:5173](http://localhost:5173)**
-- 백엔드 API & 프로덕션 통합: **[http://localhost:8000](http://localhost:8000)**
-
----
-
-## 🌐 웹사이트 배포 (Docker & Production)
+검수는 전부 브라우저 안에서 이뤄지며 서버가 필요 없습니다.
 
 ```bash
-docker compose up -d --build
+cd frontend
+npm install
+npm run dev   # http://localhost:5173
 ```
-실행 후 `http://your-server-ip:8000`으로 접속하면 프론트엔드와 백엔드가 단일 포트에서 서비스됩니다.
+
+## 🗂 규격 데이터 관리
+
+- 원본: `backend/specs/*.yaml` (매체별 1파일)
+- 화면용 데이터 생성: `pip install -r scripts/requirements.txt` 후 `npm run sync:specs` → `frontend/src/data/specsData.json`
+- 무결성 점검: `npm run verify:specs`
+- 공식 가이드 페이지 변경 감지: `npm run monitor:specs` (GitHub Actions 에서 주 1회 실행)
+
+## 🌐 배포
+
+Vercel 이 `frontend/` 를 빌드해 배포합니다. 설정과 보안 헤더는 `frontend/vercel.json` 에 있습니다.

@@ -7,12 +7,10 @@ import {
   AlertCircle,
   RefreshCw,
   ExternalLink,
-  Mail,
   Copy,
-  Check,
   ShieldCheck,
 } from 'lucide-react';
-import { FeedbackItem, FeedbackCreateRequest } from '../types';
+import { FeedbackItem } from '../types';
 import { fetchFeedbacks, submitFeedback } from '../api/validator';
 
 interface FeedbackModalProps {
@@ -20,7 +18,6 @@ interface FeedbackModalProps {
   onClose: () => void;
 }
 
-const DEV_EMAIL = 'laplui2@me.com';
 const GITHUB_ISSUES_URL = 'https://github.com/Greycity1988/ad-creative-validator/issues/new';
 
 export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
@@ -30,14 +27,12 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
   const [activeTab, setActiveTab] = useState<'write' | 'list'>('write');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [emailCopied, setEmailCopied] = useState(false);
 
   // Form states
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('신규 매체 추가');
   const [content, setContent] = useState('');
   const [author, setAuthor] = useState('');
-  const [email, setEmail] = useState('');
 
   const loadFeedbacks = async () => {
     try {
@@ -63,15 +58,12 @@ export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose })
     titleStr: string,
     catStr: string,
     contentStr: string,
-    authorStr: string,
-    emailStr?: string
+    authorStr: string
   ) => {
-    // The reply address goes into the 1:1 mail only. GitHub issues are public, so that path passes no email.
-    const emailLine = emailStr ? `\n• 회신 이메일: ${emailStr}` : '';
     return `[ACV 건의 및 규격 제보]
 • 분류: ${catStr}
 • 제목: ${titleStr}
-• 작성자: ${authorStr || '익명 마케터'}${emailLine}
+• 작성자: ${authorStr || '익명 마케터'}
 • 작성 일시: ${new Date().toLocaleString('ko-KR')}
 
 [상세 제보 내용]
@@ -101,67 +93,6 @@ ${contentStr}
     }
   };
 
-  const handleCopyEmail = async () => {
-    const success = await copyToClipboard(DEV_EMAIL);
-    if (success) {
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 3000);
-    }
-  };
-
-  const handleSubmitEmail = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title.trim() || !content.trim()) {
-      setErrorMessage('제목과 내용을 모두 입력해주세요.');
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-      setErrorMessage(null);
-
-      const reqData: FeedbackCreateRequest = {
-        title: title.trim(),
-        category,
-        content: content.trim(),
-        author: author.trim() || '익명 마케터',
-        email: email.trim() || undefined,
-      };
-
-      // 1. Save local record for user history
-      await submitFeedback(reqData);
-
-      // 2. Prepare formatted email
-      const bodyText = formatFeedbackBody(
-        reqData.title,
-        reqData.category,
-        reqData.content,
-        reqData.author || '',
-        reqData.email
-      );
-
-      // 3. Copy to clipboard
-      await copyToClipboard(bodyText);
-
-      // 4. Trigger mailto
-      const subject = encodeURIComponent(`[ACV ${category}] ${title.trim()}`);
-      const body = encodeURIComponent(bodyText);
-      window.location.href = `mailto:${DEV_EMAIL}?subject=${subject}&body=${body}`;
-
-      setSuccessMessage(
-        `제보 내용이 클립보드에 복사되었으며 이메일 창이 열렸습니다. 메일을 발송하시면 개발팀에서 확인 후 신속히 반영합니다! (${DEV_EMAIL})`
-      );
-      setTitle('');
-      setContent('');
-      await loadFeedbacks();
-    } catch (err) {
-      console.error('Failed to submit feedback:', err);
-      setErrorMessage('제보 처리 중 오류가 발생했습니다. 아래 개발자 이메일로 직접 보내주세요.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const handleOpenGitHubIssue = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!title.trim() || !content.trim()) {
@@ -183,7 +114,6 @@ ${contentStr}
         category,
         content: content.trim(),
         author: author.trim() || '익명 마케터',
-        email: email.trim() || undefined,
       });
 
       const issueTitle = encodeURIComponent(`[${category}] ${currentTitle}`);
@@ -237,32 +167,8 @@ ${contentStr}
           </button>
         </div>
 
-        {/* Developer Contact Quick Bar */}
-        <div className="bg-canvas-subtle/90 border-b border-line px-5 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
-          <div className="flex items-center space-x-2 text-ink-secondary">
-            <Mail className="w-3.5 h-3.5 text-accent" />
-            <span>개발자 직통 이메일:</span>
-            <strong className="text-ink-primary font-mono text-[11px]">{DEV_EMAIL}</strong>
-            <button
-              type="button"
-              onClick={handleCopyEmail}
-              className="inline-flex items-center space-x-1 px-2 py-0.5 rounded border border-line bg-surface hover:bg-canvas-muted text-[10px] text-ink-secondary font-semibold cursor-pointer transition-colors"
-              title="이메일 주소 복사"
-            >
-              {emailCopied ? (
-                <>
-                  <Check className="w-3 h-3 text-violet-600" />
-                  <span className="text-violet-700 font-bold">복사됨!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3 h-3 text-ink-muted" />
-                  <span>주소 복사</span>
-                </>
-              )}
-            </button>
-          </div>
-
+        {/* Public board link */}
+        <div className="bg-canvas-subtle/90 border-b border-line px-5 py-2.5 flex flex-wrap items-center justify-end gap-2 text-xs">
           <a
             href="https://github.com/Greycity1988/ad-creative-validator/issues"
             target="_blank"
@@ -362,7 +268,7 @@ ${contentStr}
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3">
                 <div>
                   <label className="block text-xs font-bold text-ink-secondary mb-1">
                     작성자 (선택)
@@ -372,18 +278,6 @@ ${contentStr}
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                     placeholder="익명 마케터"
-                    className="w-full px-3 py-2 text-xs rounded-lg border border-line-strong focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-transparent"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-ink-secondary mb-1">
-                    이메일 (답변 수신용, 선택)
-                  </label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="user@example.com"
                     className="w-full px-3 py-2 text-xs rounded-lg border border-line-strong focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-transparent"
                   />
                 </div>
@@ -403,7 +297,7 @@ ${contentStr}
                 />
               </div>
 
-              {/* Action Buttons: GitHub vs Email */}
+              {/* Action Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-2.5">
                 <button
                   type="submit"
@@ -425,16 +319,6 @@ ${contentStr}
                     className="px-3 py-2 text-xs font-semibold rounded-lg border border-line text-ink-tertiary hover:bg-canvas-subtle cursor-pointer"
                   >
                     초기화
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleSubmitEmail}
-                    disabled={isSubmitting}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center space-x-1.5 px-4 py-2 text-xs font-bold rounded-lg border border-accent bg-accent-light hover:bg-accent/10 text-accent shadow-soft-xs disabled:opacity-50 cursor-pointer transition-colors"
-                    title="GitHub 계정이 없는 경우 개발자 이메일로 1:1 전송합니다."
-                  >
-                    <Mail className="w-3.5 h-3.5" />
-                    <span>이메일로 1:1 전송</span>
                   </button>
                 </div>
               </div>
@@ -552,7 +436,7 @@ ${contentStr}
                           type="button"
                           onClick={() => {
                             copyToClipboard(
-                              formatFeedbackBody(item.title, item.category, item.content, item.author, item.email)
+                              formatFeedbackBody(item.title, item.category, item.content, item.author)
                             );
                             setSuccessMessage('해당 건의 내용이 클립보드에 복사되었습니다.');
                           }}
@@ -572,7 +456,7 @@ ${contentStr}
 
         {/* Footer */}
         <div className="p-3 border-t border-line-subtle bg-canvas-subtle text-center text-[11px] text-ink-muted">
-          마케터 및 디자이너분들의 의견을 바탕으로 상시 업데이트되고 있습니다. (문의: {DEV_EMAIL})
+          마케터 및 디자이너분들의 의견을 바탕으로 상시 업데이트되고 있습니다.
         </div>
       </div>
     </div>

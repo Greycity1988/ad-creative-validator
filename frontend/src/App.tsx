@@ -131,7 +131,6 @@ export const App: React.FC = () => {
         rawFiles,
         selectedPlatforms,
         selectedPlacements,
-        false,
         autoMatch
       );
 

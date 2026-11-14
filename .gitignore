@@ -15,3 +15,8 @@ frontend/dist/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Spec monitor output (snapshots are kept; run reports are not)
+backend/data/detected_changes.json
+backend/data/audit_reports/
+backend/data/feedbacks.json
