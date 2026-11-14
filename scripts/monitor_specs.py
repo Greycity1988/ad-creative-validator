@@ -15,7 +15,8 @@ from pathlib import Path
 from datetime import datetime
 import urllib.request
 import urllib.error
-import ssl
+import re
+from html.parser import HTMLParser
 import yaml
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -24,71 +25,65 @@ DATA_DIR = ROOT_DIR / "backend" / "data"
 SNAPSHOT_FILE = DATA_DIR / "spec_snapshots.json"
 CHANGES_FILE = DATA_DIR / "detected_changes.json"
 
-USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+# Identify honestly; no browser impersonation.
+USER_AGENT = "ACV-spec-monitor/1.0 (+https://github.com/Greycity1988/ad-creative-validator)"
 
-# Create SSL context that allows standard public certificates
-SSL_CONTEXT = ssl.create_default_context()
-SSL_CONTEXT.check_hostname = False
-SSL_CONTEXT.verify_mode = ssl.CERT_NONE
+MIN_TEXT_CHARS = 200  # below this the page is a JavaScript shell; its hash says nothing
+
+_SKIP_TAGS = {"script", "style", "noscript", "svg", "template", "head"}
 
 
-def fetch_url_content(url: str, timeout: int = 10) -> dict:
-    """Fetch URL and return status, hash, etag, and last-modified."""
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Sec-Ch-Ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
-            "Sec-Ch-Ua-Mobile": "?0",
-            "Sec-Ch-Ua-Platform": '"macOS"',
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "none",
-            "Sec-Fetch-User": "?1",
-            "Upgrade-Insecure-Requests": "1",
-        },
-    )
+class _TextExtractor(HTMLParser):
+    """Collects the visible text of a page, so markup, scripts and tokens do not count as changes."""
 
+    def __init__(self):
+        super().__init__()
+        self.parts = []
+        self._skip = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in _SKIP_TAGS:
+            self._skip += 1
+
+    def handle_endtag(self, tag):
+        if tag in _SKIP_TAGS and self._skip:
+            self._skip -= 1
+
+    def handle_data(self, data):
+        if not self._skip:
+            self.parts.append(data)
+
+
+def visible_text(body: bytes, charset: str) -> str:
+    parser = _TextExtractor()
+    parser.feed(body.decode(charset or "utf-8", errors="replace"))
+    # Digits change with dates, counters and view counts; spec numbers live in the YAML anyway
+    text = re.sub(r"\d+", "#", " ".join(parser.parts))
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def fetch_url_content(url: str, timeout: int = 15) -> dict:
+    """Fetch URL (TLS verified) and hash its visible text."""
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "text/html"})
     try:
-        with urllib.request.urlopen(req, timeout=timeout, context=SSL_CONTEXT) as response:
-            status = response.status
-            headers = dict(response.headers)
+        with urllib.request.urlopen(req, timeout=timeout) as response:
             body = response.read()
-
-            # Hash the raw body bytes
-            content_hash = hashlib.sha256(body).hexdigest()
-
+            text = visible_text(body, response.headers.get_content_charset())
             return {
-                "status": status,
+                "status": response.status,
                 "success": True,
-                "content_hash": content_hash,
-                "content_length": len(body),
-                "etag": headers.get("etag", ""),
-                "last_modified": headers.get("last-modified", ""),
+                "content_hash": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "content_length": len(text),
+                "etag": response.headers.get("etag", ""),
+                "last_modified": response.headers.get("last-modified", ""),
                 "error": None,
             }
     except urllib.error.HTTPError as err:
-        return {
-            "status": err.code,
-            "success": False,
-            "content_hash": None,
-            "content_length": 0,
-            "etag": "",
-            "last_modified": "",
-            "error": f"HTTP {err.code}: {err.reason}",
-        }
+        return {"status": err.code, "success": False, "content_hash": None, "content_length": 0,
+                "etag": "", "last_modified": "", "error": f"HTTP {err.code}: {err.reason}"}
     except Exception as err:
-        return {
-            "status": 0,
-            "success": False,
-            "content_hash": None,
-            "content_length": 0,
-            "etag": "",
-            "last_modified": "",
-            "error": str(err),
-        }
+        return {"status": 0, "success": False, "content_hash": None, "content_length": 0,
+                "etag": "", "last_modified": "", "error": type(err).__name__}
 
 
 def load_snapshots() -> dict:
@@ -149,6 +144,16 @@ def run_monitor(update_baseline: bool = False) -> int:
             })
             continue
 
+        if res["content_length"] < MIN_TEXT_CHARS:
+            results.append({
+                "id": pid,
+                "name": pname,
+                "status": "UNREADABLE",
+                "message": f"visible text {res['content_length']} chars (page needs JavaScript)",
+                "url": url,
+            })
+            continue
+
         is_new = prev is None
         has_changed = False
 
@@ -200,6 +205,8 @@ def run_monitor(update_baseline: bool = False) -> int:
                 "total_monitored": len(results),
                 "changes_count": len(changes),
                 "changes": changes,
+                # Pages that could not be checked: dead links, blocked requests, JavaScript-only pages
+                "unchecked": [r for r in results if r["status"] in ("ERROR", "UNREADABLE")],
             },
             f,
             ensure_ascii=False,

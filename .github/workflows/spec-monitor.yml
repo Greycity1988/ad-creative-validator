@@ -1,0 +1,57 @@
+name: Spec monitor
+
+# Weekly check of the official guide pages behind backend/specs/*.yaml.
+# Opens (or updates) one issue when a page changed or could not be checked.
+# The baseline (backend/data/spec_snapshots.json) is updated by hand after a person reviews the change:
+#   python3 scripts/monitor_specs.py --update-baseline
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"   # Monday 09:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scripts/requirements.txt
+      - name: Verify spec files and frontend data are in sync
+        run: python scripts/verify_specs.py
+      - name: Check official guide pages
+        run: python scripts/monitor_specs.py
+      - name: Open or update the monitor issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const data = JSON.parse(fs.readFileSync('backend/data/detected_changes.json', 'utf8'));
+            const unchecked = data.unchecked || [];
+            if (data.changes_count === 0 && unchecked.length === 0) {
+              core.info('No changes, every page checked.');
+              return;
+            }
+            let body = `점검 시각(UTC): ${data.checked_at}\n\n`;
+            body += `### 내용이 바뀐 공식 가이드 (${data.changes_count})\n`;
+            body += data.changes.length ? data.changes.map(c => `- ${c.name}: ${c.url}`).join('\n') : '- 없음';
+            body += `\n\n### 점검하지 못한 페이지 (${unchecked.length})\n`;
+            body += unchecked.length ? unchecked.map(u => `- ${u.name}: ${u.url || ''} — ${u.message}`).join('\n') : '- 없음';
+            body += `\n\n바뀐 페이지는 규격을 확인해 \`backend/specs/*.yaml\` 을 고친 뒤 \`python3 scripts/monitor_specs.py --update-baseline\` 으로 기준을 갱신합니다.`;
+            const label = 'spec-monitor';
+            const { data: open } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: label, per_page: 1,
+            });
+            const title = `[규격 감시] 변경 ${data.changes_count}건 · 점검 불가 ${unchecked.length}건`;
+            if (open.length) {
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: open[0].number, title, body });
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, body, labels: [label] });
+            }

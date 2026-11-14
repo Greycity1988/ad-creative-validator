@@ -1,0 +1,152 @@
+{
+  "adison": {
+    "id": "adison",
+    "name": "애디슨 오퍼월",
+    "url": "https://adison.co",
+    "content_hash": "71ada306ce16e41852e7ed227e2d265e574a1a8971db2397c244593425f325ba",
+    "content_length": 3263,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:06"
+  },
+  "appier": {
+    "id": "appier",
+    "name": "애피어 (Appier)",
+    "url": "https://www.appier.com",
+    "content_hash": "c02ae533a0f438bb6ee31bb85c972f0c591302b7838ed343ad1954ba1c7c6ea7",
+    "content_length": 9851,
+    "etag": "",
+    "last_modified": "Fri, 13 Nov 2026 04:12:19 GMT",
+    "last_checked": "2026-11-15 03:01:07"
+  },
+  "coupang": {
+    "id": "coupang",
+    "name": "쿠팡 (Coupang Ads)",
+    "url": "https://advertising.coupang.com",
+    "content_hash": "e32b35b414e5bf31bc39d34cd57af8b40c6bdee8a7ee485f8d973b89d686c574",
+    "content_length": 204,
+    "etag": "\"16f8wydmdzscjsv\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:08"
+  },
+  "criteo": {
+    "id": "criteo",
+    "name": "크리테오",
+    "url": "https://help.criteo.com",
+    "content_hash": "e8a10db130a6084d76e24325bb4d33311f6ad7fbcac2e30673d78780628f020b",
+    "content_length": 915,
+    "etag": "W/\"63082-AOl7DAiqdf+scOwWXBZ3SD7aUyY\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:09"
+  },
+  "daangn": {
+    "id": "daangn",
+    "name": "당근 (Karrot Ads)",
+    "url": "https://business.daangn.com",
+    "content_hash": "a91a719a3a4bf38b161c3707298522f83e9c4a8956ead126244aca87f6874bcd",
+    "content_length": 1901,
+    "etag": "\"13y5wvo2xnh2dbg\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:10"
+  },
+  "google_ads": {
+    "id": "google_ads",
+    "name": "Google Ads",
+    "url": "https://support.google.com/google-ads/answer/1722096",
+    "content_hash": "40efef1cb6f8166872a3710e914d50e11fd95f8e1f0b6986e7830b4f7ae15ca4",
+    "content_length": 14104,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:11"
+  },
+  "kakao": {
+    "id": "kakao",
+    "name": "카카오모먼트",
+    "url": "https://kakaobusiness.gitbook.io/main/ad/moment/performance/talkboard/content-guide",
+    "content_hash": "3228716acc6db38d7a2402e42cd3050064980760e4179083acfb2ae4d9438144",
+    "content_length": 21154,
+    "etag": "\"1c2738f079ef52d6143ebd05243ebdcc\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:12"
+  },
+  "meta": {
+    "id": "meta",
+    "name": "Meta (Facebook/Instagram)",
+    "url": "https://www.facebook.com/business/ads-guide",
+    "content_hash": "e0afddffb3857e6482cb6cc10d403be121c7f578936ebd44bd027278eebb82fb",
+    "content_length": 694,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:15"
+  },
+  "naver": {
+    "id": "naver",
+    "name": "네이버 (GFA / NOSP)",
+    "url": "https://ads.naver.com/guide/da",
+    "content_hash": "7429b578b321d82ef9bedf7cc28f59f6d543a264d456bb130e5469ee035e67a1",
+    "content_length": 1694,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:15"
+  },
+  "rtb_house": {
+    "id": "rtb_house",
+    "name": "RTB 하우스",
+    "url": "https://www.rtbhouse.com",
+    "content_hash": "c2a8d8983fcf5243425fe9bfc0811ab77b0737406b9044ef8d25f3212b25e57e",
+    "content_length": 5641,
+    "etag": "\"npl8iy5l123s1c\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:20"
+  },
+  "spotify": {
+    "id": "spotify",
+    "name": "스포티파이 (Spotify)",
+    "url": "https://ads.spotify.com",
+    "content_hash": "5d44135876aa27fbe278cf0484bcecfcbefd8bf8b98a7d1a1e61ec48d2c74c7c",
+    "content_length": 3736,
+    "etag": "\"do9w3x6ulc4g2w\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:23"
+  },
+  "taboola": {
+    "id": "taboola",
+    "name": "타불라 (Taboola)",
+    "url": "https://help.taboola.com",
+    "content_hash": "ec2b3c26afe7a16fbc84ab30295ba20d43e12e222df7afbb01db09926dab4cc6",
+    "content_length": 976,
+    "etag": "W/\"9bfa07800e1a4651bf61f8919a861fdf\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:24"
+  },
+  "targetpick": {
+    "id": "targetpick",
+    "name": "타겟픽 (TargetPick)",
+    "url": "https://targetpick.io",
+    "content_hash": "b26bc601c86216a8e855d00177d1f41425f02a2723899252e810fa8412a46fda",
+    "content_length": 1499,
+    "etag": "",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:25"
+  },
+  "tiktok": {
+    "id": "tiktok",
+    "name": "틱톡 (TikTok)",
+    "url": "https://ads.tiktok.com/help/",
+    "content_hash": "a95201988e990d24de3dd621847a59c52055d8acd24a4ea85af5456e672e2da2",
+    "content_length": 4786,
+    "etag": "\"1866c0-gnstulDQfI5w0CsDZxBk3NDAoJ0\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:27"
+  },
+  "toss": {
+    "id": "toss",
+    "name": "토스 (Toss Ads)",
+    "url": "https://toss-ads.gitbook.io/guide",
+    "content_hash": "91e810904947e42aac54de000586c4433991474c41ee85eaf28100fdea04babb",
+    "content_length": 2218,
+    "etag": "\"7170fae263ef061ae2daba5f1baa7465\"",
+    "last_modified": "",
+    "last_checked": "2026-11-15 03:01:27"
+  }
+}
