@@ -146,7 +146,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               ) : (
                 <>
                   <Download className="w-4 h-4" />
-                  <span>CSV 리포트 다운로드 (엑셀 호환)</span>
+                  <span>📥 CSV 다운로드 (엑셀 호환)</span>
                 </>
               )}
             </button>
@@ -224,7 +224,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
             }`}
           >
             <LayoutGrid className="w-4 h-4" />
-            <span>전체 파일 일괄 종합 리포트</span>
+            <span>📊 전체 파일 일괄 종합 리포트</span>
             <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-canvas-subtle border border-line text-ink-muted">
               {results.length}개 파일
             </span>
@@ -240,7 +240,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
             }`}
           >
             <FileText className="w-4 h-4" />
-            <span>파일별 개별 상세 검수</span>
+            <span>🖼️ 파일별 개별 상세 검수</span>
             <span className="text-[11px] text-ink-muted font-normal hidden md:inline truncate max-w-[150px]">
               (현재: {currentItem.filename})
             </span>

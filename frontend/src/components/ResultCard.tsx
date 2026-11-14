@@ -319,7 +319,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                               }
                               className="text-[10px] font-semibold text-accent hover:underline flex-shrink-0 cursor-pointer"
                             >
-                              인스펙터 열기
+                              [인스펙터 열기]
                             </button>
                           )}
                         </div>

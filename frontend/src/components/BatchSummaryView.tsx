@@ -198,7 +198,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         >
           <div>
             <span className="tracking-wider text-[11px] font-bold text-accent-mint uppercase block">
-              전체 통과 (적합)
+              ✅ 전체 통과 (적합)
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-accent-mint">{passFiles.length}</span>
@@ -221,7 +221,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         >
           <div>
             <span className="tracking-wider text-[11px] font-bold text-status-fail uppercase block">
-              불일치 / 반려 위험
+              ❌ 불일치 / 반려 위험
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-status-fail">{failFiles.length}</span>
@@ -237,7 +237,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
         <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
             <span className="tracking-wider text-[11px] font-bold text-amber-600 uppercase block">
-              수정 권장 (주의)
+              ⚠️ 수정 권장 (주의)
             </span>
             <div className="flex items-baseline space-x-1.5 mt-1">
               <span className="text-3xl font-extrabold font-mono text-amber-700">{warnFiles.length}</span>
@@ -256,7 +256,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
           <div className="flex items-center space-x-2 text-rose-800">
             <AlertTriangle className="w-4 h-4 flex-shrink-0 text-rose-600" />
             <h4 className="text-xs font-bold uppercase tracking-wider">
-              검수 통과 실패 원인 요약 (즉시 수정 필요)
+              🚨 검수 통과 실패 원인 요약 (즉시 수정 필요)
             </h4>
           </div>
 

@@ -99,10 +99,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
-                01
+                !
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
-                왜 이 검수 시스템이 필요한가요?
+                1. 왜 이 검수 시스템이 필요한가요?
               </h3>
             </div>
 
@@ -143,10 +143,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           <div className="space-y-3 pt-2 border-t border-line/60">
             <div className="flex items-center space-x-2">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
-                02
+                ★
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
-                실무에서 어떨 때 사용하면 가장 좋나요?
+                2. 실무에서 어떨 때 사용하면 가장 좋나요?
               </h3>
             </div>
 
@@ -213,10 +213,10 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           <div className="space-y-3 pt-2 border-t border-line/60">
             <div className="flex items-center space-x-2">
               <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
-                03
+                ✓
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
-                3단계 초간단 사용 방법
+                3. 3단계 초간단 사용 방법
               </h3>
             </div>
 
