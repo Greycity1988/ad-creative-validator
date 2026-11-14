@@ -5,11 +5,18 @@
 @layer base {
   body {
     @apply bg-canvas text-ink-primary font-sans;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.025em;
+    background-image: 
+      radial-gradient(at 12% 12%, rgba(232, 213, 255, 0.40) 0px, transparent 48%),
+      radial-gradient(at 88% 14%, rgba(254, 215, 226, 0.35) 0px, transparent 48%),
+      radial-gradient(at 50% 28%, rgba(224, 242, 254, 0.45) 0px, transparent 55%),
+      radial-gradient(at 82% 78%, rgba(243, 232, 255, 0.25) 0px, transparent 48%);
+    background-attachment: fixed;
+    background-color: #FFFFFF;
   }
 }
 
-/* Custom Minimalist Scrollbars */
+/* Lifemed Minimalist Ultra-Clean Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -18,9 +25,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D5D5CE;
+  background: rgba(0, 0, 0, 0.12);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8A8A0;
+  background: rgba(0, 0, 0, 0.22);
 }

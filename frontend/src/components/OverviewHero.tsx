@@ -37,11 +37,11 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
   );
 
   return (
-    <div className="bg-surface rounded-3xl border border-line shadow-soft-sm p-6 sm:p-8 transition-all">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-line/60">
+    <div className="bg-white/85 backdrop-blur-xl rounded-3xl border border-black/[0.06] shadow-lifemed p-6 sm:p-8 transition-all">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-black/[0.05]">
         <div>
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-canvas-subtle border border-line text-xs font-semibold text-ink-secondary mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-black/[0.04] border border-black/[0.06] text-xs font-semibold text-ink-secondary mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span>2026년 11월 공식 매체사 규격 전수 감사 완료</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary">
@@ -53,9 +53,9 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         </div>
 
         {/* Local Security Badge */}
-        <div className="flex-shrink-0 bg-canvas p-4 rounded-2xl border border-line/80 flex items-center space-x-3.5 max-w-sm">
-          <div className="w-10 h-10 rounded-xl bg-status-pass-bg border border-status-pass-border flex items-center justify-center flex-shrink-0 text-status-pass-dot">
-            <ShieldCheck className="w-5 h-5 text-accent-neon" />
+        <div className="flex-shrink-0 bg-neutral-50/80 p-4 rounded-2xl border border-black/[0.05] flex items-center space-x-3.5 max-w-sm shadow-soft-xs">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0">
+            <ShieldCheck className="w-5 h-5 text-emerald-600" />
           </div>
           <div className="text-xs">
             <div className="font-bold text-ink-primary">100% 브라우저 메모리 로컬 검증</div>
@@ -66,10 +66,10 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         </div>
       </div>
 
-      {/* Metric Cards Grid - Northpoint Scandinavian Minimalist Layout */}
+      {/* Metric Cards Grid - Lifemed Minimalist Layout */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
         {/* Metric 1: Uploaded Creatives */}
-        <div className="bg-canvas-subtle/50 rounded-2xl p-4 border border-line/60 transition-colors hover:bg-canvas-subtle">
+        <div className="bg-neutral-50/70 rounded-2xl p-4 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
             업로드된 소재
           </div>
@@ -79,7 +79,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           </div>
           <div className="text-[11px] text-ink-muted mt-1 truncate">
             {hasFiles ? (
-              <span className="text-accent font-medium">
+              <span className="text-ink-primary font-semibold">
                 {aspectRatios.slice(0, 2).join(', ')}
                 {aspectRatios.length > 2 ? ` 외 ${aspectRatios.length - 2}종` : ''}
               </span>
@@ -87,7 +87,7 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
               <button
                 type="button"
                 onClick={onScrollToUpload}
-                className="text-accent hover:underline inline-flex items-center space-x-1 cursor-pointer font-medium"
+                className="text-ink-secondary hover:text-ink-primary hover:underline inline-flex items-center space-x-1 cursor-pointer font-medium"
               >
                 <span>소재 추가하기</span>
                 <ArrowDown className="w-3 h-3" />
@@ -98,47 +98,45 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           </div>
         </div>
 
-        {/* Metric 2: Target Platforms */}
-        <div className="bg-canvas-subtle/50 rounded-2xl p-4 border border-line/60 transition-colors hover:bg-canvas-subtle">
+        {/* Metric 2: Selected Platforms */}
+        <div className="bg-neutral-50/70 rounded-2xl p-4 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-            선택된 광고 매체
+            선택된 매체
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary font-mono mt-1 flex items-baseline gap-1.5">
             <span>{selectedPlatformCount}</span>
-            <span className="text-xs font-sans text-ink-tertiary font-normal">/ {totalPlatformCount > 0 ? totalPlatformCount : 32} 매체</span>
+            <span className="text-xs font-sans text-ink-tertiary font-normal">/ {totalPlatformCount}개</span>
           </div>
           <div className="text-[11px] text-ink-muted mt-1">
-            주요 매체 사전 선택됨
+            주요 포털 & SNS 우선 선택
           </div>
         </div>
 
-        {/* Metric 3: Active Placements */}
-        <div className="bg-canvas-subtle/50 rounded-2xl p-4 border border-line/60 transition-colors hover:bg-canvas-subtle">
+        {/* Metric 3: Supported Placements */}
+        <div className="bg-neutral-50/70 rounded-2xl p-4 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-            동시대조 검수 지면
+            검수 가능 지면 수
           </div>
           <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-ink-primary font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{totalPlacementCount > 0 ? totalPlacementCount : '430+'}</span>
+            <span>{totalPlacementCount}</span>
             <span className="text-xs font-sans text-ink-tertiary font-normal">개 지면</span>
           </div>
           <div className="text-[11px] text-ink-muted mt-1">
-            DA·비즈보드·피드·스토리 등
+            DA, 피드, 숏폼 전면 지원
           </div>
         </div>
 
-        {/* Metric 4: Readiness Status */}
-        <div className="bg-canvas-subtle/50 rounded-2xl p-4 border border-line/60 transition-colors hover:bg-canvas-subtle">
+        {/* Metric 4: Safety & Privacy */}
+        <div className="bg-neutral-50/70 rounded-2xl p-4 border border-black/[0.04] transition-all hover:bg-white hover:shadow-soft-sm hover:border-black/[0.08]">
           <div className="text-[11px] font-bold uppercase tracking-wider text-ink-muted">
-            시스템 준비 상태
+            보안 및 데이터 정책
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-accent font-mono mt-1 flex items-baseline gap-1.5">
-            <span className="inline-flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-accent-mint animate-pulse" />
-              <span>Ready</span>
-            </span>
+          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-600 font-mono mt-1 flex items-baseline gap-1.5">
+            <span>0</span>
+            <span className="text-xs font-sans text-ink-tertiary font-normal">Byte 전송</span>
           </div>
-          <div className="text-[11px] text-ink-muted mt-1">
-            {hasFiles ? '검수 시작 가능' : '소재 업로드 대기 중'}
+          <div className="text-[11px] text-emerald-700 font-semibold mt-1">
+            로컬 브라우저 100% 검증
           </div>
         </div>
       </div>
