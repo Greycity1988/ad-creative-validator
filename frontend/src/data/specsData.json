@@ -7531,14 +7531,16 @@
   {
     "id": "tiktok",
     "name": "틱톡 (TikTok Ads)",
-    "description": "인피드 세로형 (9:16), 정방형 (1:1), 가로형 (16:9), Pangle",
-    "official_update_date": "2026.01 공식 개정",
-    "official_source_name": "TikTok Ads Manager 헬프센터",
-    "official_source_url": "https://ads.tiktok.com/help/",
-    "revision_summary": "인피드 세로형 9:16(1080×1920, 500MB) 및 TikTok Ad Network(Pangle) 1.91:1 및 1:1 규격 가이드 최신화",
-    "last_verified_date": "2026-11-12",
+    "description": "이미지 광고 9:16·1:1·16:9, TikTok Ad Network 이미지 1200×628·640×640·720×1280, 전용 배너 600×500·640×200·640×100",
+    "official_update_date": "TikTok 비즈니스 고객센터 2026-09 수정본",
+    "official_source_name": "TikTok Ad Network 광고 소재 사양 (공식 고객센터)",
+    "official_source_url": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+    "revision_summary": "2026-11-15 공식 고객센터(2026-09 수정) 대조. 최대 100MB, JPG·JPEG·PNG. Ad Network 전용 배너를 공식 3종으로 교체(기존 320×50·300×250·728×90·320×480·480×320은 공식 목록에 없음). 브랜드 테이크오버는 매체 확인 중",
+    "last_verified_date": "2026-11-15",
     "verification": {
-      "status": "unverified"
+      "status": "partial",
+      "checked_on": "2026-11-15",
+      "method": "ads.tiktok.com 이미지 광고 사양·Ad Network 소재 사양(둘 다 Last updated 2026-09) 원문 대조. 고객센터가 자동 브라우저를 막아 원문 인용 도구로 확인"
     },
     "placements_count": 10,
     "placements": [
@@ -7547,11 +7549,11 @@
       "틱톡 가로형 (16:9)",
       "틱톡 Pangle 네트워크 배너 (1.91:1)",
       "틱톡 (Brand Takeover 전면 배너 1242×2208)",
-      "틱톡 Pangle (모바일 띠배너 320×50)",
-      "틱톡 Pangle (중형 배너 MREC 300×250)",
-      "틱톡 Pangle (태블릿 리더보드 728×90)",
-      "틱톡 Pangle (모바일 전면 인터스티셜 세로 320×480)",
-      "틱톡 Pangle (모바일 전면 인터스티셜 가로 480×320)"
+      "틱톡 Ad Network 정사각형 (640×640)",
+      "틱톡 Ad Network 세로형 (720×1280)",
+      "틱톡 Ad Network 전용 배너 (600×500)",
+      "틱톡 Ad Network 전용 배너 (640×200)",
+      "틱톡 Ad Network 전용 배너 (640×100)"
     ],
     "placements_detail": [
       {
@@ -7561,8 +7563,6 @@
           16
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1080,
-        "recommended_height": 1920,
         "min_width": 720,
         "min_height": 1280,
         "max_file_size_kb": 102400,
@@ -7598,7 +7598,16 @@
             }
           ]
         },
-        "dimension_str": "권장 1080×1920px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/help/article/image-ads-specification",
+        "unstated": [
+          "recommended_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "이미지 광고 세로형 9:16, 720×1280 이상 (공식 권장 비율), JPG·JPEG·PNG, 100MB 이내 (CapCut·Fizzo 등 비피드 지면)",
+        "dimension_str": "최소 720×1280px",
         "aspect_ratio_str": "9:16"
       },
       {
@@ -7608,8 +7617,6 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1080,
-        "recommended_height": 1080,
         "min_width": 640,
         "min_height": 640,
         "max_file_size_kb": 102400,
@@ -7620,7 +7627,16 @@
         ],
         "text_ratio_limit": 0.3,
         "text_ratio_level": "warning",
-        "dimension_str": "권장 1080×1080px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/help/article/image-ads-specification",
+        "unstated": [
+          "recommended_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "이미지 광고 정사각형 1:1, 640×640 이상, JPG·JPEG·PNG, 100MB 이내",
+        "dimension_str": "최소 640×640px",
         "aspect_ratio_str": "1:1"
       },
       {
@@ -7630,8 +7646,6 @@
           9
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1920,
-        "recommended_height": 1080,
         "min_width": 1280,
         "min_height": 720,
         "max_file_size_kb": 102400,
@@ -7642,7 +7656,16 @@
         ],
         "text_ratio_limit": 0.3,
         "text_ratio_level": "warning",
-        "dimension_str": "권장 1920×1080px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/help/article/image-ads-specification",
+        "unstated": [
+          "recommended_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "이미지 광고 가로형 16:9, 1280×720 이상, JPG·JPEG·PNG, 100MB 이내",
+        "dimension_str": "최소 1280×720px",
         "aspect_ratio_str": "16:9"
       },
       {
@@ -7652,17 +7675,23 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "recommended_width": 1200,
-        "recommended_height": 628,
-        "min_width": 600,
-        "min_height": 314,
+        "min_width": 1200,
+        "min_height": 628,
         "max_file_size_kb": 102400,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
-        "dimension_str": "권장 1200×628px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "description": "TikTok Ad Network 이미지 1200×628 (전면·앱 오픈·네이티브·배너), JPG·JPEG·PNG, 100MB. Ads Manager가 다른 비율은 여백을 채워 자동 맞춤",
+        "dimension_str": "최소 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
       {
@@ -7675,78 +7704,115 @@
           "jpeg",
           "png"
         ],
-        "description": "틱톡 앱 오픈 시 즉시 노출되는 고주목도 풀스크린 정적 이미지 규격 (최대 500KB)",
+        "description": "틱톡 앱 오픈 시 즉시 노출되는 고주목도 풀스크린 정적 이미지 규격 (최대 500KB) [매체 확인 중: TikTok 이미지·Ad Network 사양 페이지(2026-09)에 없음, 예약형 상품 별도 가이드 필요]",
+        "needs_confirmation": true,
         "dimension_str": "1242×2208px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "틱톡 Pangle (모바일 띠배너 320×50)",
-        "exact_width": 320,
-        "exact_height": 50,
-        "max_file_size_kb": 150,
+        "name": "틱톡 Ad Network 정사각형 (640×640)",
+        "aspect_ratio": [
+          1,
+          1
+        ],
+        "min_width": 640,
+        "min_height": 640,
+        "max_file_size_kb": 102400,
         "allowed_formats": [
           "jpg",
           "jpeg",
-          "png",
-          "gif"
+          "png"
         ],
-        "dimension_str": "320×50px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "description": "TikTok Ad Network 이미지 640×640, JPG·JPEG·PNG, 100MB",
+        "aspect_ratio_tolerance": 0.02,
+        "dimension_str": "최소 640×640px",
+        "aspect_ratio_str": "1:1"
+      },
+      {
+        "name": "틱톡 Ad Network 세로형 (720×1280)",
+        "aspect_ratio": [
+          9,
+          16
+        ],
+        "min_width": 720,
+        "min_height": 1280,
+        "max_file_size_kb": 102400,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "description": "TikTok Ad Network 이미지 720×1280, JPG·JPEG·PNG, 100MB",
+        "aspect_ratio_tolerance": 0.02,
+        "dimension_str": "최소 720×1280px",
+        "aspect_ratio_str": "9:16"
+      },
+      {
+        "name": "틱톡 Ad Network 전용 배너 (600×500)",
+        "exact_width": 600,
+        "exact_height": 500,
+        "max_file_size_kb": 102400,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png"
+        ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "description": "TikTok Ad Network 전용 배너 600×500, JPG·JPEG·PNG, 100MB",
+        "dimension_str": "600×500px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "틱톡 Pangle (중형 배너 MREC 300×250)",
-        "exact_width": 300,
-        "exact_height": 250,
-        "max_file_size_kb": 200,
+        "name": "틱톡 Ad Network 전용 배너 (640×200)",
+        "exact_width": 640,
+        "exact_height": 200,
+        "max_file_size_kb": 102400,
         "allowed_formats": [
           "jpg",
           "jpeg",
-          "png",
-          "gif"
+          "png"
         ],
-        "dimension_str": "300×250px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "description": "TikTok Ad Network 전용 배너 640×200, JPG·JPEG·PNG, 100MB",
+        "dimension_str": "640×200px",
         "aspect_ratio_str": ""
       },
       {
-        "name": "틱톡 Pangle (태블릿 리더보드 728×90)",
-        "exact_width": 728,
-        "exact_height": 90,
-        "max_file_size_kb": 200,
+        "name": "틱톡 Ad Network 전용 배너 (640×100)",
+        "exact_width": 640,
+        "exact_height": 100,
+        "max_file_size_kb": 102400,
         "allowed_formats": [
           "jpg",
           "jpeg",
-          "png",
-          "gif"
+          "png"
         ],
-        "dimension_str": "728×90px",
-        "aspect_ratio_str": ""
-      },
-      {
-        "name": "틱톡 Pangle (모바일 전면 인터스티셜 세로 320×480)",
-        "exact_width": 320,
-        "exact_height": 480,
-        "max_file_size_kb": 250,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png",
-          "gif"
-        ],
-        "dimension_str": "320×480px",
-        "aspect_ratio_str": ""
-      },
-      {
-        "name": "틱톡 Pangle (모바일 전면 인터스티셜 가로 480×320)",
-        "exact_width": 480,
-        "exact_height": 320,
-        "max_file_size_kb": 250,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png",
-          "gif"
-        ],
-        "dimension_str": "480×320px",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://ads.tiktok.com/resources/help/article/specifications-for-pangle-ad-assets",
+        "description": "TikTok Ad Network 전용 배너 640×100, JPG·JPEG·PNG, 100MB",
+        "dimension_str": "640×100px",
         "aspect_ratio_str": ""
       }
     ]
