@@ -1,13 +1,13 @@
 import React from 'react';
-import { MessageSquare, Coffee, BookOpen, TrendingUp, ExternalLink } from 'lucide-react';
+import { MessageSquare, Coffee, BookOpen, Menu } from 'lucide-react';
 import { ACVLogo } from './ACVLogo';
-import { OTT_URL, SHOW_OTT_LINK } from '../constants/links';
 
 interface HeaderProps {
   onOpenFeedback: () => void;
   onOpenDonation: () => void;
   onOpenGuide: () => void;
   onOpenLogo?: () => void;
+  onOpenSuiteDrawer?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,6 +15,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenDonation,
   onOpenGuide,
   onOpenLogo,
+  onOpenSuiteDrawer,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-black/[0.06] shadow-[0_2px_12px_rgba(0,0,0,0.02)]">
@@ -91,20 +92,17 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="tracking-wide">100% 로컬 메모리 검증</span>
           </div>
 
-          {/* OTT Trend Tracker Inter-service Switcher (Lifemed Jet Black Pill) */}
-          {SHOW_OTT_LINK && (
-            <a
-              href={OTT_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center space-x-2 h-9 px-4.5 rounded-full bg-[#0A0A0A] hover:bg-neutral-800 text-white text-xs font-bold transition-all shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap flex-shrink-0"
-              title="키워드 트렌드 도구(OTT)로 이동"
+          {/* Suite Drawer Trigger Button */}
+          {onOpenSuiteDrawer && (
+            <button
+              type="button"
+              onClick={onOpenSuiteDrawer}
+              className="inline-flex items-center space-x-1.5 h-9 px-3.5 rounded-full bg-[#0A0A0A] hover:bg-neutral-800 text-white text-xs font-bold transition-all shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap flex-shrink-0"
+              title="마케팅 스위트 전체 서비스 이동"
             >
-              <TrendingUp className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
-              <span className="font-mono">OTT</span>
-              <span className="hidden sm:inline whitespace-nowrap">트렌드 분석</span>
-              <ExternalLink className="w-3 h-3 text-white/60 flex-shrink-0" />
-            </a>
+              <Menu className="w-4 h-4 text-[#A8FF1A]" />
+              <span>Suite</span>
+            </button>
           )}
         </div>
       </div>

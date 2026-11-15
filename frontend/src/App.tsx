@@ -8,6 +8,7 @@ import { FeedbackModal } from './components/FeedbackModal';
 import { DonationModal } from './components/DonationModal';
 import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
+import { SuiteNavigationDrawer } from './components/SuiteNavigationDrawer';
 import { ACVLogo } from './components/ACVLogo';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
@@ -34,6 +35,7 @@ export const App: React.FC = () => {
   const [isDonationOpen, setIsDonationOpen] = useState<boolean>(false);
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isLogoOpen, setIsLogoOpen] = useState<boolean>(false);
+  const [isSuiteDrawerOpen, setIsSuiteDrawerOpen] = useState<boolean>(false);
 
   // Fetch available platform & placement specs from backend (or static fallback)
   useEffect(() => {
@@ -176,6 +178,7 @@ export const App: React.FC = () => {
         onOpenDonation={() => setIsDonationOpen(true)}
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenLogo={() => setIsLogoOpen(true)}
+        onOpenSuiteDrawer={() => setIsSuiteDrawerOpen(true)}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
@@ -288,6 +291,11 @@ export const App: React.FC = () => {
       <LogoModal
         isOpen={isLogoOpen}
         onClose={() => setIsLogoOpen(false)}
+      />
+      <SuiteNavigationDrawer
+        isOpen={isSuiteDrawerOpen}
+        onClose={() => setIsSuiteDrawerOpen(false)}
+        currentApp="acv"
       />
     </div>
   );
