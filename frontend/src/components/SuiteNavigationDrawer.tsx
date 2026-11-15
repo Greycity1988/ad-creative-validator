@@ -62,35 +62,35 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     {
       id: 'cal',
       name: 'CAL • Competitive Ad Lens',
-      tagline: 'EU DSA 공식 API 기반 글로벌 위너 소재 발굴 & AI 한국어 벤치마킹',
-      role: '경쟁사 광고 인텔리전스',
+      tagline: '메타·틱톡·구글 실시간 경쟁사 라이브 광고 소재 염탐 & 레퍼런스 발굴',
+      role: '경쟁사 광고 염탐',
       url: CAL_URL,
       icon: Flame,
-      iconColor: '#FF6B00',
+      iconColor: '#F34238',
     },
     {
       id: 'ott',
       name: 'OTT • Omni Trend Tracker',
-      tagline: '네이버 데이터랩 • 구글 트렌드 • SNS 다채널 검색량 및 관심도 비교',
-      role: '크로스 채널 트렌드',
+      tagline: '네이버·구글·인스타그램 3대 채널 통합 검색 트렌드 & 연관 키워드',
+      role: '통합 트렌드 발굴',
       url: OTT_URL,
       icon: TrendingUp,
       iconColor: '#38BDF8',
     },
     {
       id: 'bep',
-      name: 'BEP Master • Unit Economics',
-      tagline: '소비자 판매가·원가·수수료 기반 손익분기 ROAS & 한계 CPC 역산 계산기',
-      role: '손익분기 & 한계 CPC',
+      name: 'BEP Master • 유닛 이코노믹스',
+      tagline: 'ROAS 손익분기점, 제품 마진율 역산, 마케팅 예산 한도 시뮬레이터',
+      role: '손익분기점 시뮬레이션',
       url: BEP_URL,
       icon: Calculator,
-      iconColor: '#A8FF1A',
+      iconColor: '#FBBF24',
     },
     {
       id: 'cfr',
       name: 'FatigueRadar & StatWinner',
-      tagline: 'A/B 테스트 95% 신뢰도 판정 및 빈도 누적 소재 피로도 D-Day 예측기',
-      role: '소재 피로도 & 통계 유의성',
+      tagline: 'A/B 테스트 통계 유의성 판정 & 7일 잔여 소재 수명 골든타임 예측',
+      role: '피로도 & 통계 판정',
       url: CFR_URL,
       icon: Activity,
       iconColor: '#A8FF1A',
@@ -101,31 +101,28 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     <div className="fixed inset-0 z-50 flex justify-end animate-fadeIn">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity"
         onClick={onClose}
       />
 
       {/* Slide-over Drawer Panel */}
-      <div
-        className="relative w-full max-w-sm sm:max-w-md h-full border-l border-[#26272c] shadow-2xl flex flex-col z-10 overflow-hidden text-white"
-        style={{ backgroundColor: '#141416' }}
-      >
+      <div className="relative w-full max-w-sm sm:max-w-md h-full border-l shadow-2xl flex flex-col z-10 overflow-hidden bg-white text-slate-900 border-slate-200 dark:bg-[#141416] dark:border-[#26272c] dark:text-white transition-colors">
         {/* Drawer Header */}
-        <div className="p-5 border-b border-[#26272c] flex items-center justify-between flex-shrink-0">
+        <div className="p-5 border-b border-slate-200 dark:border-[#26272c] flex items-center justify-between flex-shrink-0">
           <div className="flex items-center space-x-2.5">
-            <div className="w-9 h-9 rounded-2xl bg-[#202126] border border-[#2e2f36] text-[#A8FF1A] flex items-center justify-center font-bold">
-              <LayoutGrid className="w-5 h-5 text-[#A8FF1A]" />
+            <div className="w-9 h-9 rounded-2xl bg-slate-100 text-slate-800 border border-slate-200 flex items-center justify-center font-bold dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#A8FF1A]">
+              <LayoutGrid className="w-5 h-5 text-emerald-600 dark:text-[#A8FF1A]" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="text-sm font-bold text-white tracking-wide">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white tracking-wide">
                   Marketing Suite
                 </h3>
-                <span className="text-[10px] font-mono font-semibold bg-[#202126] text-[#A8FF1A] border border-[#2e2f36] px-2 py-0.5 rounded-full font-bold">
+                <span className="text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full dark:bg-[#202126] dark:text-[#A8FF1A] dark:border-[#2e2f36]">
                   5 Services
                 </span>
               </div>
-              <p className="text-[11px] text-[#AEAEAE]">
+              <p className="text-[11px] text-slate-500 dark:text-[#AEAEAE]">
                 Antigravity 마케팅 인텔리전스 통합 도구 모음
               </p>
             </div>
@@ -133,7 +130,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-[#1a1b1f] hover:bg-[#26272c] border border-[#2e2f36] flex items-center justify-center text-[#AEAEAE] hover:text-white transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors cursor-pointer dark:bg-[#1a1b1f] dark:hover:bg-[#26272c] dark:border-[#2e2f36] dark:text-[#AEAEAE] dark:hover:text-white"
             title="닫기 (Esc)"
           >
             <X className="w-4 h-4" />
@@ -142,11 +139,11 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
 
         {/* Drawer Scrollable Body */}
         <div className="p-5 space-y-4 overflow-y-auto flex-1">
-          <div className="text-[11px] font-mono text-[#6E6E6E] uppercase tracking-wider font-semibold">
+          <div className="text-[11px] font-mono text-slate-400 dark:text-[#6E6E6E] uppercase tracking-wider font-semibold">
             Select Tool to Jump
           </div>
 
-          {/* 4 App Cards */}
+          {/* 5 App Cards */}
           <div className="space-y-3">
             {suiteApps.map((app) => {
               const isCurrent = app.id === currentApp;
@@ -156,40 +153,45 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
                 <div
                   className={`p-4 rounded-2xl border transition-all flex flex-col space-y-2.5 relative ${
                     isCurrent
-                      ? 'bg-[#1a1b1f] border-[#A8FF1A]/50 shadow-[0_0_15px_rgba(168,255,26,0.1)]'
-                      : 'bg-[#1a1b1f] hover:bg-[#202126] border-[#26272c] hover:border-[#2e2f36] cursor-pointer group'
+                      ? 'bg-emerald-50/70 border-emerald-300 dark:bg-[#1a1b1f] dark:border-[#A8FF1A]/50 shadow-sm'
+                      : 'bg-slate-50 hover:bg-slate-100/80 border-slate-200 hover:border-slate-300 dark:bg-[#1a1b1f] dark:hover:bg-[#202126] dark:border-[#26272c] dark:hover:border-[#2e2f36] cursor-pointer group'
                   }`}
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-[#202126] border border-[#2e2f36] flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0 dark:bg-[#202126] dark:border-[#2e2f36]">
                         <IconComp className="w-4 h-4" style={{ color: app.iconColor }} />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+                        <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center space-x-1.5">
                           <span>{app.name}</span>
                         </div>
-                        <span className="text-[10px] font-mono text-[#A8FF1A] font-semibold">
+                        <span className="text-[10px] font-mono text-emerald-700 dark:text-[#A8FF1A] font-semibold">
                           {app.role}
                         </span>
                       </div>
                     </div>
 
                     {isCurrent ? (
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#A8FF1A] text-black font-mono shadow-sm">
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white dark:bg-[#A8FF1A] dark:text-black font-mono shadow-sm">
                         ● 현재 이용 중
                       </span>
                     ) : (
-                      <span className="text-[11px] font-bold text-[#AEAEAE] group-hover:text-white transition-colors flex items-center space-x-1 font-mono">
+                      <div className="flex items-center text-[10px] text-slate-400 dark:text-[#AEAEAE] group-hover:text-slate-900 dark:group-hover:text-white font-mono transition-colors">
                         <span>이동</span>
-                        <ExternalLink className="w-3 h-3 text-[#AEAEAE] group-hover:text-white" />
-                      </span>
+                        <ExternalLink className="w-3 h-3 ml-1" />
+                      </div>
                     )}
                   </div>
 
-                  <p className="text-[11px] text-[#AEAEAE] leading-relaxed">
+                  <p className="text-[11px] text-slate-500 dark:text-[#AEAEAE] leading-relaxed">
                     {app.tagline}
                   </p>
+
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-[#26272c]/80 text-[10px] font-mono text-slate-400 dark:text-[#6E6E6E]">
+                    <span>Local URL: {app.url.replace('http://', '')}</span>
+                    <span className="text-emerald-700 dark:text-[#A8FF1A]">100% 로컬 무료</span>
+                  </div>
                 </div>
               );
 
@@ -203,7 +205,8 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
                   href={app.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="block text-inherit no-underline"
+                  className="block focus:outline-none"
+                  onClick={onClose}
                 >
                   {cardContent}
                 </a>
@@ -211,48 +214,33 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
             })}
           </div>
 
-          {/* Recommended Marketing Routine Box */}
-          <div className="p-4 rounded-2xl bg-[#1a1b1f] border border-[#26272c] space-y-2.5">
-            <div className="flex items-center space-x-2 text-white font-bold text-xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#A8FF1A]" />
-              <span>4단계 마케팅 연계 권장 루틴</span>
+          {/* Ko-fi Support Banner inside Drawer */}
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 dark:bg-[#1a1b1f] dark:border-[#26272c] space-y-2 mt-4">
+            <div className="flex items-center space-x-2 text-xs font-bold text-slate-900 dark:text-white">
+              <Coffee className="w-4 h-4 text-amber-500" />
+              <span>독립 개발자 후원 & 커피 선물</span>
             </div>
-            <div className="space-y-1.5 text-[11px] text-[#AEAEAE] leading-relaxed">
-              <div className="flex items-start space-x-1.5">
-                <span className="font-mono font-bold text-[#A8FF1A]">01.</span>
-                <span><strong>OTT</strong>에서 급상승 검색 키워드와 오디언스 연령·성별 확인</span>
-              </div>
-              <div className="flex items-start space-x-1.5">
-                <span className="font-mono font-bold text-[#A8FF1A]">02.</span>
-                <span><strong>CAL</strong>에서 해외 검증된 30일+ 위너 광고 소재 카피 벤치마킹</span>
-              </div>
-              <div className="flex items-start space-x-1.5">
-                <span className="font-mono font-bold text-[#A8FF1A]">03.</span>
-                <span><strong>ACV</strong>에서 32대 매체 지면별 세이프존 및 픽셀 규격 원클릭 검수</span>
-              </div>
-              <div className="flex items-start space-x-1.5">
-                <span className="font-mono font-bold text-[#A8FF1A]">04.</span>
-                <span><strong>BEP Master</strong>에서 손익분기 ROAS와 최대 허용 CPC를 산출하여 집행</span>
-              </div>
-            </div>
+            <p className="text-[11px] text-slate-500 dark:text-[#AEAEAE] leading-relaxed">
+              본 스위트는 마케터의 칼퇴와 안심 검수를 위해 100% 무료로 개발 및 유지되고 있습니다.
+            </p>
+            <a
+              href={KO_FI_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center space-x-1.5 w-full py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs transition shadow-sm"
+            >
+              <Heart className="w-3.5 h-3.5 fill-current" />
+              <span>Ko-fi에서 따뜻한 커피 한 잔 응원하기 ↗</span>
+            </a>
           </div>
         </div>
 
         {/* Drawer Footer */}
-        <div className="p-4 border-t border-[#26272c] bg-[#141416] flex items-center justify-between text-xs text-[#AEAEAE] flex-shrink-0">
-          <a
-            href={KO_FI_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center space-x-1.5 text-[11px] hover:text-white transition-colors"
-          >
-            <Coffee className="w-3.5 h-3.5 text-[#FFDD00]" />
-            <span>Ko-fi 커피 후원하기</span>
-          </a>
-
-          <span className="flex items-center space-x-1 text-[11px] text-[#6E6E6E]">
-            <Heart className="w-3 h-3 text-rose-500 fill-rose-500" />
-            <span>Owen O. Magnus</span>
+        <div className="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500 flex-shrink-0 dark:border-[#26272c] dark:bg-[#141416] dark:text-[#AEAEAE]">
+          <span className="font-mono text-[10px]">Antigravity Suite v2.0</span>
+          <span className="text-[11px] flex items-center space-x-1">
+            <Sparkles className="w-3 h-3 text-emerald-600 dark:text-[#A8FF1A]" />
+            <span>Built for Modern Marketers</span>
           </span>
         </div>
       </div>

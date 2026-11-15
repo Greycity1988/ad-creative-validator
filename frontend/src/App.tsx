@@ -10,6 +10,7 @@ import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
 import { SuiteNavigationDrawer } from './components/SuiteNavigationDrawer';
 import { ACVLogo } from './components/ACVLogo';
+import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isLogoOpen, setIsLogoOpen] = useState<boolean>(false);
   const [isSuiteDrawerOpen, setIsSuiteDrawerOpen] = useState<boolean>(false);
+  const { theme, toggleTheme } = useTheme();
 
   // Fetch available platform & placement specs from backend (or static fallback)
   useEffect(() => {
@@ -171,7 +173,7 @@ export const App: React.FC = () => {
   ) || 160;
 
   return (
-    <div className="min-h-screen monotone-canvas text-white font-sans antialiased flex flex-col selection:bg-[#A8FF1A]/20 selection:text-[#A8FF1A]">
+    <div className="min-h-screen monotone-canvas text-slate-900 dark:text-white font-sans antialiased flex flex-col selection:bg-[#A8FF1A]/20 selection:text-[#A8FF1A] transition-colors">
       <Analytics scriptSrc="https://va.vercel-scripts.com/v1/script.js" />
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
@@ -179,6 +181,8 @@ export const App: React.FC = () => {
         onOpenGuide={() => setIsGuideOpen(true)}
         onOpenLogo={() => setIsLogoOpen(true)}
         onOpenSuiteDrawer={() => setIsSuiteDrawerOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
@@ -246,31 +250,31 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-[#26272c] bg-[#141416] py-10 text-center text-xs text-[#AEAEAE] space-y-3 flex flex-col items-center justify-center">
+      <footer className="mt-auto border-t border-slate-200 bg-white dark:border-[#26272c] dark:bg-[#141416] py-10 text-center text-xs text-slate-500 dark:text-[#AEAEAE] space-y-3 flex flex-col items-center justify-center transition-colors">
         <button
           type="button"
           onClick={() => setIsLogoOpen(true)}
-          className="group relative p-2 rounded-2xl hover:bg-[#1a1b1f] transition-all cursor-pointer"
+          className="group relative p-2 rounded-2xl hover:bg-slate-100 dark:hover:bg-[#1a1b1f] transition-all cursor-pointer"
           title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
         >
           <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-105" />
         </button>
-        <p className="font-bold text-white text-sm tracking-tight">
-          Crafted with passion in 2026 by <strong className="text-[#A8FF1A] font-extrabold">Owen O. Magnus</strong>.
+        <p className="font-bold text-slate-900 dark:text-white text-sm tracking-tight">
+          Crafted with passion in 2026 by <strong className="text-emerald-700 dark:text-[#A8FF1A] font-extrabold">Owen O. Magnus</strong>.
         </p>
-        <p className="text-xs text-[#AEAEAE] font-medium">
+        <p className="text-xs text-slate-500 dark:text-[#AEAEAE] font-medium">
           Feedbacks are warmly welcomed, and{' '}
           <button
             type="button"
             onClick={() => setIsDonationOpen(true)}
-            className="text-[#A8FF1A] hover:text-[#b8ff33] font-bold underline decoration-[#A8FF1A]/30 hover:decoration-[#A8FF1A] cursor-pointer inline-flex items-center space-x-1"
+            className="text-emerald-700 hover:text-emerald-800 dark:text-[#A8FF1A] dark:hover:text-[#b8ff33] font-bold underline decoration-emerald-500/30 dark:decoration-[#A8FF1A]/30 cursor-pointer inline-flex items-center space-x-1"
           >
             <span>coffee sponsorships</span>
             <span>☕✨</span>
           </button>{' '}
           are deeply appreciated!
         </p>
-        <p className="text-[11px] text-[#6E6E6E]">
+        <p className="text-[11px] text-slate-400 dark:text-[#6E6E6E]">
           ACV (Ad Creative Validator) • 32 Major Advertising Platforms & 430+ Official Placements Supported • PC 환경 최적화
         </p>
       </footer>

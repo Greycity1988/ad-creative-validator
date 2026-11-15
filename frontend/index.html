@@ -10,6 +10,17 @@
       content="32대 주요 광고 매체(네이버, 카카오, 메타, 구글, 토스, 쿠팡 등 230+개 공식 지면) 가이드라인 실시간 대조. 서버 전송 없는 100% 브라우저 메모리 로컬 검증으로 대외비 소재를 안전하게 검수하세요."
     />
     <meta name="theme-color" content="#F8F8F6" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('antigravity_theme');
+          var theme = (saved === 'light' || saved === 'dark') ? saved : 'dark';
+          document.documentElement.classList.add(theme);
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
 
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
