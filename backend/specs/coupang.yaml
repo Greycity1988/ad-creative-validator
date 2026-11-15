@@ -1,11 +1,15 @@
 platform: 쿠팡 (Coupang Ads)
 platform_id: coupang
-official_update_date: 2026.03 공식 개정
+official_update_date: 공개 규격 문서 미확인
 official_source_name: 쿠팡 마케팅 서비스 디스플레이 광고 가이드
 official_source_url: https://advertising.coupang.com
 revision_summary: C1 메인 상단(PC 1920×450 / 모바일 720×380), G1 골드박스(PC 980×140 / 모바일 720×120), R1 로켓배송, S4 검색결과 배너 공식 사양 반영
-last_verified_date: '2026-11-12'
+last_verified_date: 미확인
 description: C1 메인 상단, G1 골드박스, R1 로켓배송, S4 검색결과, B2 기획전 배너
+verification:
+  status: unverified
+  checked_on: '2026-11-15'
+  method: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요
 placements:
 - name: 쿠팡 C1 (메인 상단 배너 PC 1920×450)
   exact_width: 1920
@@ -15,7 +19,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 쿠팡 PC 메인 상단 헤더 와이드 배너 (최대 500KB)
+  description: '쿠팡 PC 메인 상단 헤더 와이드 배너 (최대 500KB) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true
 - name: 쿠팡 C1 (메인 상단 배너 모바일 720×380)
   exact_width: 720
   exact_height: 380
@@ -24,7 +29,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 쿠팡 모바일 앱 메인 상단 대표 배너 (최대 300KB)
+  description: '쿠팡 모바일 앱 메인 상단 대표 배너 (최대 300KB) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true
 - name: 쿠팡 G1 (골드박스 상단 배너 PC 980×140)
   exact_width: 980
   exact_height: 140
@@ -33,6 +39,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 G1 (골드박스 상단 배너 모바일 720×120)
   exact_width: 720
   exact_height: 120
@@ -41,6 +49,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 R1 (로켓배송 상단 배너 PC 768×324)
   exact_width: 768
   exact_height: 324
@@ -49,6 +59,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 R1 (로켓배송 상단 배너 모바일 720×240)
   exact_width: 720
   exact_height: 240
@@ -57,6 +69,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 S4 (검색결과 배너 PC 1050×120)
   exact_width: 1050
   exact_height: 120
@@ -65,6 +79,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 S4 (검색결과 배너 모바일 720×240)
   exact_width: 720
   exact_height: 240
@@ -73,6 +89,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 B2 (브랜드 기획전 배너 PC 980×200)
   exact_width: 980
   exact_height: 200
@@ -81,6 +99,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 B2 (브랜드 기획전 배너 모바일 720×332)
   exact_width: 720
   exact_height: 332
@@ -89,6 +109,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 (메인 홈 와이드 배너 1200×600)
   exact_width: 1200
   exact_height: 600
@@ -97,6 +119,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 (C.Native 상품 피드 배너 500×500)
   exact_width: 500
   exact_height: 500
@@ -105,6 +129,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
 - name: 쿠팡 CM (카테고리 인기상품 중단 배너 PC 2040×200)
   exact_width: 2040
   exact_height: 200
@@ -113,7 +139,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 쿠팡 카테고리 인기상품 페이지 PC 중단 와이드 배너 (2040×200)
+  description: '쿠팡 카테고리 인기상품 페이지 PC 중단 와이드 배너 (2040×200) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true
 - name: 쿠팡 CM (카테고리 인기상품 중단 배너 모바일 828×172)
   exact_width: 828
   exact_height: 172
@@ -122,14 +149,16 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 쿠팡 카테고리 모바일 중단 배너 (828×172)
+  description: '쿠팡 카테고리 모바일 중단 배너 (828×172) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true
 - name: 쿠팡 W1 (메인 윙배너 PC Only 102×120)
   exact_width: 102
   exact_height: 120
   max_file_size_kb: 50
   allowed_formats:
   - png
-  description: 쿠팡 PC 메인 우측 날개 윙배너 (PNG 필수)
+  description: '쿠팡 PC 메인 우측 날개 윙배너 (PNG 필수) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true
 - name: 쿠팡 R1 (로켓배송 PC Item 배너 522×58)
   exact_width: 522
   exact_height: 58
@@ -138,4 +167,5 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 쿠팡 로켓배송 PC 상세 페이지 아이템 배너 (522×58)
+  description: '쿠팡 로켓배송 PC 상세 페이지 아이템 배너 (522×58) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]'
+  needs_confirmation: true

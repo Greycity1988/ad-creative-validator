@@ -1238,13 +1238,15 @@
     "id": "chzzk",
     "name": "네이버 치지직 (CHZZK)",
     "description": "치지직 채널 상단 배너 (1920×480), 오프라인 대기 화면 (1920×1080), 채널 프로필 (800×800)",
-    "official_update_date": "2026.04 공식 개정",
+    "official_update_date": "공개 규격 문서 미확인",
     "official_source_name": "치지직(CHZZK) 공식 채널 가이드",
     "official_source_url": "https://chzzk.naver.com",
     "revision_summary": "채널 상단 대문 배너(1920×480), 오프라인 대기 화면(16:9 1920×1080 FHD), 채널 프로필(1:1 800×800) 반영",
-    "last_verified_date": "2026-11-12",
+    "last_verified_date": "미확인",
     "verification": {
-      "status": "unverified"
+      "status": "unverified",
+      "checked_on": "2026-11-15",
+      "method": "치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)"
     },
     "placements_count": 3,
     "placements": [
@@ -1263,7 +1265,8 @@
           "jpeg",
           "png"
         ],
-        "description": "치지직 채널 메인 상단 와이드 헤더 배너 (최대 5MB)",
+        "description": "치지직 채널 메인 상단 와이드 헤더 배너 (최대 5MB) [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]",
+        "needs_confirmation": true,
         "dimension_str": "1920×480px",
         "aspect_ratio_str": ""
       },
@@ -1282,7 +1285,8 @@
           "jpeg",
           "png"
         ],
-        "description": "치지직 방송 대기 및 오프라인 풀HD 화면 (최대 10MB)",
+        "description": "치지직 방송 대기 및 오프라인 풀HD 화면 (최대 10MB) [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]",
+        "needs_confirmation": true,
         "dimension_str": "1920×1080px",
         "aspect_ratio_str": "16:9"
       },
@@ -1303,6 +1307,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]",
         "dimension_str": "권장 800×800px",
         "aspect_ratio_str": "1:1"
       }
@@ -1312,13 +1318,15 @@
     "id": "coupang",
     "name": "쿠팡 광고 (Coupang)",
     "description": "C1 메인 상단, G1 골드박스, R1 로켓배송, S4 검색결과, B2 기획전 배너",
-    "official_update_date": "2026.03 공식 개정",
+    "official_update_date": "공개 규격 문서 미확인",
     "official_source_name": "쿠팡 마케팅 서비스 디스플레이 광고 가이드",
     "official_source_url": "https://advertising.coupang.com",
     "revision_summary": "C1 메인 상단(PC 1920×450 / 모바일 720×380), G1 골드박스(PC 980×140 / 모바일 720×120), R1 로켓배송, S4 검색결과 배너 공식 사양 반영",
-    "last_verified_date": "2026-11-12",
+    "last_verified_date": "미확인",
     "verification": {
-      "status": "unverified"
+      "status": "unverified",
+      "checked_on": "2026-11-15",
+      "method": "쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요"
     },
     "placements_count": 16,
     "placements": [
@@ -1350,7 +1358,8 @@
           "jpeg",
           "png"
         ],
-        "description": "쿠팡 PC 메인 상단 헤더 와이드 배너 (최대 500KB)",
+        "description": "쿠팡 PC 메인 상단 헤더 와이드 배너 (최대 500KB) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "1920×450px",
         "aspect_ratio_str": ""
       },
@@ -1364,7 +1373,8 @@
           "jpeg",
           "png"
         ],
-        "description": "쿠팡 모바일 앱 메인 상단 대표 배너 (최대 300KB)",
+        "description": "쿠팡 모바일 앱 메인 상단 대표 배너 (최대 300KB) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "720×380px",
         "aspect_ratio_str": ""
       },
@@ -1378,6 +1388,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "980×140px",
         "aspect_ratio_str": ""
       },
@@ -1391,6 +1403,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "720×120px",
         "aspect_ratio_str": ""
       },
@@ -1404,6 +1418,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "768×324px",
         "aspect_ratio_str": ""
       },
@@ -1417,6 +1433,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "720×240px",
         "aspect_ratio_str": ""
       },
@@ -1430,6 +1448,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "1050×120px",
         "aspect_ratio_str": ""
       },
@@ -1443,6 +1463,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "720×240px",
         "aspect_ratio_str": ""
       },
@@ -1456,6 +1478,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "980×200px",
         "aspect_ratio_str": ""
       },
@@ -1469,6 +1493,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "720×332px",
         "aspect_ratio_str": ""
       },
@@ -1482,6 +1508,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "1200×600px",
         "aspect_ratio_str": ""
       },
@@ -1495,6 +1523,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
         "dimension_str": "500×500px",
         "aspect_ratio_str": ""
       },
@@ -1508,7 +1538,8 @@
           "jpeg",
           "png"
         ],
-        "description": "쿠팡 카테고리 인기상품 페이지 PC 중단 와이드 배너 (2040×200)",
+        "description": "쿠팡 카테고리 인기상품 페이지 PC 중단 와이드 배너 (2040×200) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "2040×200px",
         "aspect_ratio_str": ""
       },
@@ -1522,7 +1553,8 @@
           "jpeg",
           "png"
         ],
-        "description": "쿠팡 카테고리 모바일 중단 배너 (828×172)",
+        "description": "쿠팡 카테고리 모바일 중단 배너 (828×172) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "828×172px",
         "aspect_ratio_str": ""
       },
@@ -1534,7 +1566,8 @@
         "allowed_formats": [
           "png"
         ],
-        "description": "쿠팡 PC 메인 우측 날개 윙배너 (PNG 필수)",
+        "description": "쿠팡 PC 메인 우측 날개 윙배너 (PNG 필수) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "102×120px",
         "aspect_ratio_str": ""
       },
@@ -1548,7 +1581,8 @@
           "jpeg",
           "png"
         ],
-        "description": "쿠팡 로켓배송 PC 상세 페이지 아이템 배너 (522×58)",
+        "description": "쿠팡 로켓배송 PC 상세 페이지 아이템 배너 (522×58) [매체 확인 중: 쿠팡 광고센터가 공개 사양 문서를 제공하지 않음(로그인 앱), 매체 담당자 사양서 필요]",
+        "needs_confirmation": true,
         "dimension_str": "522×58px",
         "aspect_ratio_str": ""
       }
@@ -2852,20 +2886,21 @@
   {
     "id": "daangn",
     "name": "당근 전문가모드",
-    "description": "피드 정방형 (1:1), 피드 와이드 (1.91:1), 세로형 (4:5), 홈 상단 배너, 동네생활 스토리 (9:16)",
-    "official_update_date": "2026.04 공식 개정",
-    "official_source_name": "당근 비즈니스 공식 가이드",
-    "official_source_url": "https://business.daangn.com",
-    "revision_summary": "네이티브 피드 1:1(최소 200×200, 권장 1080×1080), 와이드(1.91:1), 세로형(4:5, 9:16), 홈 상단 배너, WebP 공식 지원 및 10MB 기준 확정",
-    "last_verified_date": "2026-11-12",
+    "description": "광고 이미지·브랜드 로고 1:1 (200×200 이상, 10MB), 그 밖의 홈·스토리·비즈프로필 이미지는 매체 확인 중",
+    "official_update_date": "당근 비즈니스 가이드 2026-10 수정본",
+    "official_source_name": "당근 광고 소재 가이드 (공식)",
+    "official_source_url": "https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative",
+    "revision_summary": "2026-11-15 공식 가이드(2026-10-27 수정) 대조. 이미지는 1:1 200×200 이상, JPG·JPEG·PNG(WEBP 제외), 10MB. 공식에 없는 1.91:1·4:5 피드 지면 삭제. 홈 배너·스토리·비즈프로필 규격은 매체 확인 중",
+    "last_verified_date": "2026-11-15",
     "verification": {
-      "status": "unverified"
+      "status": "partial",
+      "checked_on": "2026-11-15",
+      "method": "businessdaangn.gitbook.io 광고 소재 가이드(사이트맵 수정일 2026-10-27) 대조"
     },
-    "placements_count": 8,
+    "placements_count": 7,
     "placements": [
-      "당근 (피드 정방형 Square 1:1 1080×1080)",
-      "당근 (피드 와이드 Landscape 1.91:1 1200×628)",
-      "당근 (피드 세로형 Portrait 4:5 1080×1350)",
+      "당근 (광고 이미지 1:1, 200×200 이상)",
+      "당근 (브랜드 로고 1:1, 200×200 이상)",
       "당근 (중고거래 홈 상단 배너 1000×500)",
       "당근 (동네생활 스토리/리드폼 전면 9:16 1080×1920)",
       "당근 (리드폼 이미지 강조형 1440×2560 9:16)",
@@ -2874,7 +2909,7 @@
     ],
     "placements_detail": [
       {
-        "name": "당근 (피드 정방형 Square 1:1 1080×1080)",
+        "name": "당근 (광고 이미지 1:1, 200×200 이상)",
         "aspect_ratio": [
           1,
           1
@@ -2882,60 +2917,48 @@
         "aspect_ratio_tolerance": 0.02,
         "min_width": 200,
         "min_height": 200,
-        "recommended_width": 1080,
-        "recommended_height": 1080,
         "max_file_size_kb": 10240,
         "allowed_formats": [
           "jpg",
           "jpeg",
-          "png",
-          "webp"
+          "png"
         ],
-        "description": "당근 전문가모드 네이티브 피드 대표 정방형 규격 (JPG, PNG, WEBP 지원)",
-        "dimension_str": "권장 1080×1080px",
+        "description": "당근 광고(프로) 이미지 1:1, 200×200 이상, JPG·JPEG·PNG, 10MB 이하. 다른 비율은 잘릴 수 있음. 이미지 내 텍스트 50% 이상 불가 (기존 ACV는 WEBP 허용)",
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative",
+        "unstated": [
+          "aspect_ratio_tolerance"
+        ],
+        "dimension_str": "최소 200×200px",
         "aspect_ratio_str": "1:1"
       },
       {
-        "name": "당근 (피드 와이드 Landscape 1.91:1 1200×628)",
+        "name": "당근 (브랜드 로고 1:1, 200×200 이상)",
         "aspect_ratio": [
-          1.91,
+          1,
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "min_width": 600,
-        "min_height": 314,
-        "recommended_width": 1200,
-        "recommended_height": 628,
+        "min_width": 200,
+        "min_height": 200,
         "max_file_size_kb": 10240,
         "allowed_formats": [
           "jpg",
           "jpeg",
-          "png",
-          "webp"
+          "png"
         ],
-        "dimension_str": "권장 1200×628px",
-        "aspect_ratio_str": "1.91:1"
-      },
-      {
-        "name": "당근 (피드 세로형 Portrait 4:5 1080×1350)",
-        "aspect_ratio": [
-          4,
-          5
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative",
+        "unstated": [
+          "aspect_ratio_tolerance"
         ],
-        "aspect_ratio_tolerance": 0.02,
-        "min_width": 800,
-        "min_height": 1000,
-        "recommended_width": 1080,
-        "recommended_height": 1350,
-        "max_file_size_kb": 10240,
-        "allowed_formats": [
-          "jpg",
-          "jpeg",
-          "png",
-          "webp"
-        ],
-        "dimension_str": "권장 1080×1350px",
-        "aspect_ratio_str": "4:5"
+        "description": "브랜드 로고 1:1, 200×200 이상, 10MB 이내. 원형으로 잘려 등록되니 상하좌우 10px 여백 권장",
+        "dimension_str": "최소 200×200px",
+        "aspect_ratio_str": "1:1"
       },
       {
         "name": "당근 (중고거래 홈 상단 배너 1000×500)",
@@ -2948,6 +2971,8 @@
           "png",
           "webp"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]",
         "dimension_str": "1000×500px",
         "aspect_ratio_str": ""
       },
@@ -2969,7 +2994,8 @@
           "png",
           "webp"
         ],
-        "description": "당근 전문가모드 풀스크린/리드폼 세로형 규격 (권장 9:16)",
+        "description": "당근 전문가모드 풀스크린/리드폼 세로형 규격 (권장 9:16) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]",
+        "needs_confirmation": true,
         "dimension_str": "권장 1080×1920px",
         "aspect_ratio_str": "9:16"
       },
@@ -2984,7 +3010,8 @@
           "png",
           "webp"
         ],
-        "description": "당근 리드폼 고해상도 이미지 강조형 전면 규격 (1440×2560)",
+        "description": "당근 리드폼 고해상도 이미지 강조형 전면 규격 (1440×2560) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]",
+        "needs_confirmation": true,
         "dimension_str": "1440×2560px",
         "aspect_ratio_str": ""
       },
@@ -2999,7 +3026,8 @@
           "png",
           "webp"
         ],
-        "description": "당근 비즈프로필 홈 상단 대표 커버 이미지 (1200×600 2:1)",
+        "description": "당근 비즈프로필 홈 상단 대표 커버 이미지 (1200×600 2:1) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]",
+        "needs_confirmation": true,
         "dimension_str": "1200×600px",
         "aspect_ratio_str": ""
       },
@@ -3014,7 +3042,8 @@
           "png",
           "webp"
         ],
-        "description": "당근 비즈프로필 공식 대표 프로필 사진 (1:1 240×240)",
+        "description": "당근 비즈프로필 공식 대표 프로필 사진 (1:1 240×240) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]",
+        "needs_confirmation": true,
         "dimension_str": "240×240px",
         "aspect_ratio_str": ""
       }

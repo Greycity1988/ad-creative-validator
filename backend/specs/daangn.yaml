@@ -1,58 +1,54 @@
 platform: 당근 (Karrot Ads)
 platform_id: daangn
-official_update_date: 2026.04 공식 개정
-official_source_name: 당근 비즈니스 공식 가이드
-official_source_url: https://business.daangn.com
-revision_summary: 네이티브 피드 1:1(최소 200×200, 권장 1080×1080), 와이드(1.91:1), 세로형(4:5, 9:16), 홈 상단 배너, WebP 공식 지원 및 10MB 기준 확정
-last_verified_date: '2026-11-12'
-description: 피드 정방형 (1:1), 피드 와이드 (1.91:1), 세로형 (4:5), 홈 상단 배너, 동네생활 스토리 (9:16)
+official_update_date: 당근 비즈니스 가이드 2026-10 수정본
+official_source_name: 당근 광고 소재 가이드 (공식)
+official_source_url: https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative
+revision_summary: 2026-11-15 공식 가이드(2026-10-27 수정) 대조. 이미지는 1:1 200×200 이상, JPG·JPEG·PNG(WEBP 제외), 10MB. 공식에 없는 1.91:1·4:5 피드 지면 삭제. 홈 배너·스토리·비즈프로필 규격은 매체 확인 중
+last_verified_date: '2026-11-15'
+description: 광고 이미지·브랜드 로고 1:1 (200×200 이상, 10MB), 그 밖의 홈·스토리·비즈프로필 이미지는 매체 확인 중
+verification:
+  status: partial
+  checked_on: '2026-11-15'
+  method: businessdaangn.gitbook.io 광고 소재 가이드(사이트맵 수정일 2026-10-27) 대조
 placements:
-- name: 당근 (피드 정방형 Square 1:1 1080×1080)
+- name: 당근 (광고 이미지 1:1, 200×200 이상)
   aspect_ratio:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
   min_width: 200
   min_height: 200
-  recommended_width: 1080
-  recommended_height: 1080
   max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
-  - webp
-  description: 당근 전문가모드 네이티브 피드 대표 정방형 규격 (JPG, PNG, WEBP 지원)
-- name: 당근 (피드 와이드 Landscape 1.91:1 1200×628)
+  description: 당근 광고(프로) 이미지 1:1, 200×200 이상, JPG·JPEG·PNG, 10MB 이하. 다른 비율은 잘릴 수 있음. 이미지 내 텍스트 50% 이상 불가 (기존 ACV는 WEBP 허용)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative
+  unstated:
+  - aspect_ratio_tolerance
+- name: 당근 (브랜드 로고 1:1, 200×200 이상)
   aspect_ratio:
-  - 1.91
+  - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 600
-  min_height: 314
-  recommended_width: 1200
-  recommended_height: 628
+  min_width: 200
+  min_height: 200
   max_file_size_kb: 10240
   allowed_formats:
   - jpg
   - jpeg
   - png
-  - webp
-- name: 당근 (피드 세로형 Portrait 4:5 1080×1350)
-  aspect_ratio:
-  - 4
-  - 5
-  aspect_ratio_tolerance: 0.02
-  min_width: 800
-  min_height: 1000
-  recommended_width: 1080
-  recommended_height: 1350
-  max_file_size_kb: 10240
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  - webp
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://businessdaangn.gitbook.io/business.daangn/ads-pro/product/creative
+  unstated:
+  - aspect_ratio_tolerance
+  description: 브랜드 로고 1:1, 200×200 이상, 10MB 이내. 원형으로 잘려 등록되니 상하좌우 10px 여백 권장
 - name: 당근 (중고거래 홈 상단 배너 1000×500)
   exact_width: 1000
   exact_height: 500
@@ -62,6 +58,8 @@ placements:
   - jpeg
   - png
   - webp
+  needs_confirmation: true
+  description: ' [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]'
 - name: 당근 (동네생활 스토리/리드폼 전면 9:16 1080×1920)
   aspect_ratio:
   - 9
@@ -77,7 +75,8 @@ placements:
   - jpeg
   - png
   - webp
-  description: 당근 전문가모드 풀스크린/리드폼 세로형 규격 (권장 9:16)
+  description: '당근 전문가모드 풀스크린/리드폼 세로형 규격 (권장 9:16) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]'
+  needs_confirmation: true
 - name: 당근 (리드폼 이미지 강조형 1440×2560 9:16)
   exact_width: 1440
   exact_height: 2560
@@ -87,7 +86,8 @@ placements:
   - jpeg
   - png
   - webp
-  description: 당근 리드폼 고해상도 이미지 강조형 전면 규격 (1440×2560)
+  description: '당근 리드폼 고해상도 이미지 강조형 전면 규격 (1440×2560) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]'
+  needs_confirmation: true
 - name: 당근 (비즈프로필 커버 2:1 1200×600)
   exact_width: 1200
   exact_height: 600
@@ -97,7 +97,8 @@ placements:
   - jpeg
   - png
   - webp
-  description: 당근 비즈프로필 홈 상단 대표 커버 이미지 (1200×600 2:1)
+  description: '당근 비즈프로필 홈 상단 대표 커버 이미지 (1200×600 2:1) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]'
+  needs_confirmation: true
 - name: 당근 (비즈프로필 대표 사진 1:1 240×240)
   exact_width: 240
   exact_height: 240
@@ -107,4 +108,5 @@ placements:
   - jpeg
   - png
   - webp
-  description: 당근 비즈프로필 공식 대표 프로필 사진 (1:1 240×240)
+  description: '당근 비즈프로필 공식 대표 프로필 사진 (1:1 240×240) [매체 확인 중: 당근 광고 공식 소재 가이드(2026-10)에 이미지 규격 없음]'
+  needs_confirmation: true
