@@ -735,9 +735,9 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                       </div>
                       <p
                         className="text-[11px] text-ink-tertiary truncate mt-1 block"
-                        title={platform.description}
+                        title={meta?.description || platform.description}
                       >
-                        {platform.description}
+                        {meta?.description || platform.description}
                       </p>
                     </div>
                   </div>

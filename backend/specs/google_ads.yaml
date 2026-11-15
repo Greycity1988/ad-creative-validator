@@ -6,7 +6,7 @@ official_source_url: https://support.google.com/google-ads/answer/13676244
 revision_summary: 2026-11-15 공식 고객센터 대조. 업로드 이미지 20종 + 지역 한정 3종(150KB), PMax·반응형·디맨드젠·앱 캠페인 이미지와 로고 권장·최소 크기. 앱 캠페인 세로형은 9:16→4:5(1200×1500), 정사각형 최소 200×200. 공식에 없는 텍스트 20% 기준, 디맨드젠 9:16 이미지, AdMob 인터스티셜·480×32
   규격 삭제
 last_verified_date: '2026-11-15'
-description: GDN 고정 배너 전 규격(23종), AdMob 모바일/태블릿 인터스티셜, PMax/반응형 디스플레이, Demand Gen (Shorts 9:16), App 프로모션 캠페인 에셋
+description: 업로드 이미지 광고 20종 + 지역 한정 3종(150KB), PMax·반응형 디스플레이(1.91:1·1:1·4:5·9:16), 디맨드젠, 앱 캠페인, 로고
 verification:
   status: verified
   checked_on: '2026-11-15'

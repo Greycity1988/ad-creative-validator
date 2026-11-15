@@ -194,7 +194,8 @@ def test_real_banner_packs():
             failures.append(f"TargetPick missing format {w}×{h}")
             
     # 5. Kakao Bizboard & Display
-    kakao_pack = [(960, 300), (1920, 600), (1029, 258), (1200, 600), (800, 400), (170, 128), (1080, 150)]
+    # Official Kakao Business guide sizes (checked 2026-11-15); 1029×258 is retired, 1920×600 is not an upload size
+    kakao_pack = [(960, 300), (314, 300), (320, 222), (1200, 600), (500, 500), (720, 1280), (800, 1000), (1504, 336), (800, 400), (800, 600), (800, 800)]
     kakao_spec = specs_map.get("kakao", {})
     kakao_placements = kakao_spec.get("placements_detail", [])
     for w, h in kakao_pack:
