@@ -6,22 +6,23 @@ import {
   Flame,
   TrendingUp,
   Calculator,
+  Activity,
   LayoutGrid,
   Sparkles,
   Coffee,
   Heart,
   LucideIcon,
 } from 'lucide-react';
-import { ACV_URL, CAL_URL, OTT_URL, BEP_URL, KO_FI_URL } from '../constants/links';
+import { ACV_URL, CAL_URL, OTT_URL, BEP_URL, CFR_URL, KO_FI_URL } from '../constants/links';
 
 interface SuiteNavigationDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  currentApp: 'acv' | 'cal' | 'ott' | 'bep';
+  currentApp: 'acv' | 'cal' | 'ott' | 'bep' | 'cfr';
 }
 
 interface SuiteAppItem {
-  id: 'acv' | 'cal' | 'ott' | 'bep';
+  id: 'acv' | 'cal' | 'ott' | 'bep' | 'cfr';
   name: string;
   tagline: string;
   role: string;
@@ -85,6 +86,15 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
       icon: Calculator,
       iconColor: '#A8FF1A',
     },
+    {
+      id: 'cfr',
+      name: 'FatigueRadar & StatWinner',
+      tagline: 'A/B 테스트 95% 신뢰도 판정 및 빈도 누적 소재 피로도 D-Day 예측기',
+      role: '소재 피로도 & 통계 유의성',
+      url: CFR_URL,
+      icon: Activity,
+      iconColor: '#A8FF1A',
+    },
   ];
 
   return (
@@ -111,8 +121,8 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
                 <h3 className="text-sm font-bold text-white tracking-wide">
                   Marketing Suite
                 </h3>
-                <span className="text-[10px] font-mono font-semibold bg-[#202126] text-[#AEAEAE] border border-[#2e2f36] px-2 py-0.5 rounded-full">
-                  4 Services
+                <span className="text-[10px] font-mono font-semibold bg-[#202126] text-[#A8FF1A] border border-[#2e2f36] px-2 py-0.5 rounded-full font-bold">
+                  5 Services
                 </span>
               </div>
               <p className="text-[11px] text-[#AEAEAE]">
