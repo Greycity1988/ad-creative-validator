@@ -1,90 +1,156 @@
 platform: 엑스 (X / Twitter)
 platform_id: twitter
-official_update_date: 2026.03 공식 개정
-official_source_name: X 광고 크리에이티브 사양 (공식)
-official_source_url: 'https://business.x.com/en/help/campaign-setup/creative-ad-specifications'
-revision_summary: 단일 이미지 1:1 (1200×1200) 및 1.91:1 (1200×628), 9:16 몰입형 세로형, 웹사이트 카드
-  5MB 제한 최신화
-last_verified_date: '2026-11-12'
-description: 단일 이미지 (1:1, 1.91:1), 몰입형 (9:16), 웹사이트 카드
+official_update_date: X 고객센터 (게시일 미표기)
+official_source_name: X 광고 크리에이티브 사양 (공식 고객센터)
+official_source_url: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+revision_summary: 2026-11-15 공식 고객센터 대조(대표님 브라우저로 열람). 비율별 권장 크기로 정정(1.91:1 2064×1080, 4:5 1440×1800), 16:9·2:3 추가, 공식에 없는 최소 크기 삭제. DM 카드·프로필 이미지는 매체 확인 중
+last_verified_date: '2026-11-15'
+description: 이미지 광고 1:1·1.91:1·16:9·9:16·4:5·2:3 (PNG·JPEG, 5MB), 캐러셀 2~6장
+verification:
+  status: partial
+  checked_on: '2026-11-15'
+  method: help.x.com 크리에이티브 사양을 사용자 브라우저(Claude in Chrome)로 열람·대조. 자동 수집은 봇 차단으로 불가
 placements:
-- name: 엑스 단일 이미지 정사각형 (1:1)
+- name: 엑스 이미지 광고 1:1 (1080×1080)
   aspect_ratio:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  recommended_width: 1200
-  recommended_height: 1200
-  min_width: 600
-  min_height: 600
   max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
-  text_ratio_limit: 0.25
-  text_ratio_level: warning
-- name: 엑스 웹사이트 카드 가로형 (1.91:1)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  recommended_width: 1080
+  recommended_height: 1080
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 이미지 광고 1:1 권장 1080×1080, PNG·JPEG, 5MB (앱 버튼·캐러셀은 800×800 권장)
+- name: 엑스 이미지 광고 1.91:1 (2064×1080)
   aspect_ratio:
   - 1.91
   - 1
   aspect_ratio_tolerance: 0.02
-  recommended_width: 1200
-  recommended_height: 628
-  min_width: 600
-  min_height: 314
   max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
-  text_ratio_limit: 0.25
-  text_ratio_level: warning
-- name: 엑스 몰입형 세로형 (9:16)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  recommended_width: 2064
+  recommended_height: 1080
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 이미지 광고 1.91:1 권장 2064×1080, 5MB (앱 버튼·캐러셀은 800×418 권장)
+- name: 엑스 이미지 광고 9:16 (1080×1920)
   aspect_ratio:
   - 9
   - 16
   aspect_ratio_tolerance: 0.02
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
   recommended_width: 1080
   recommended_height: 1920
-  min_width: 720
-  min_height: 1280
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  text_ratio_limit: 0.25
-  text_ratio_level: warning
-- name: 엑스 캐러셀 카드 (1:1 / 1.91:1)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1080
-  min_width: 600
-  min_height: 600
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-- name: 엑스 세로형 피드 확장 (Portrait 4:5 1080×1350)
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 이미지 광고 9:16 권장 1080×1920, 5MB
+- name: 엑스 이미지 광고 4:5 (1440×1800)
   aspect_ratio:
   - 4
   - 5
   aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1350
-  min_width: 600
-  min_height: 750
   max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
-  description: 엑스 모바일 타임라인 확장 4:5 세로형 이미지 규격 (1080×1350)
+  description: 이미지 광고 4:5 권장 1440×1800, 5MB (신규 지원 비율)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  recommended_width: 1440
+  recommended_height: 1800
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+- name: 엑스 캐러셀 이미지 1:1 (800×800)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  recommended_width: 800
+  recommended_height: 800
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 캐러셀 이미지 1:1 권장 800×800(1.91:1은 800×418), 카드 2~6장, 한 캐러셀은 같은 비율, 5MB
+- name: 엑스 이미지 광고 16:9 (1920×1080)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1920
+  recommended_height: 1080
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 이미지 광고 16:9 권장 1920×1080, 5MB
+- name: 엑스 이미지 광고 2:3 (1080×1620)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.x.com/en/business-and-advertising/creative-ad-specifications
+  aspect_ratio:
+  - 2
+  - 3
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1080
+  recommended_height: 1620
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: 이미지 광고 2:3 권장 1080×1620, 5MB (신규 지원 비율)
 - name: 엑스 다이렉트 메시지 카드 (DM Card 1.91:1 800×418)
   aspect_ratio:
   - 1.91
@@ -98,6 +164,8 @@ placements:
   allowed_formats:
   - jpg
   - jpeg
+  needs_confirmation: true
+  description: ' [매체 확인 중: X 광고 크리에이티브 사양 페이지에 없음(DM 카드·프로필 이미지는 광고 소재 사양이 아님)]'
 - name: 엑스 프로필 헤더 배너 (3:1 1500×500)
   exact_width: 1500
   exact_height: 500
@@ -106,7 +174,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 엑스 공식 비즈니스 프로필 상단 헤더 와이드 배너 (1500×500)
+  description: '엑스 공식 비즈니스 프로필 상단 헤더 와이드 배너 (1500×500) [매체 확인 중: X 광고 크리에이티브 사양 페이지에 없음(DM 카드·프로필 이미지는 광고 소재 사양이 아님)]'
+  needs_confirmation: true
 - name: 엑스 프로필 사진 (1:1 400×400)
   exact_width: 400
   exact_height: 400
@@ -115,4 +184,5 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 엑스 공식 프로필 대표 원형/정방형 아바타 (400×400)
+  description: '엑스 공식 프로필 대표 원형/정방형 아바타 (400×400) [매체 확인 중: X 광고 크리에이티브 사양 페이지에 없음(DM 카드·프로필 이미지는 광고 소재 사양이 아님)]'
+  needs_confirmation: true
