@@ -84,24 +84,24 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   return (
-    <div className="bg-white/85 backdrop-blur-xl rounded-3xl border border-black/[0.06] shadow-lifemed p-6 sm:p-8 space-y-6 transition-all">
+    <div className="bg-[#141416] rounded-3xl border border-[#26272c] shadow-2xl p-6 sm:p-8 space-y-6 transition-all">
       {/* Step Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div className="flex items-center space-x-3 flex-wrap gap-y-2">
-          <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#0A0A0A] text-white text-xs font-bold font-mono tracking-tight shadow-soft-xs">
+          <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#000000] text-[#A8FF1A] border border-[#26272c] text-xs font-bold font-mono tracking-tight shadow-inner">
             01
           </span>
           <div>
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg sm:text-xl font-bold tracking-tight text-ink-primary">
+              <h2 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
                 소재 이미지 업로드
               </h2>
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-violet-50 border border-violet-200/80 text-violet-700">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#202126] border border-[#2e2f36] text-[#A8FF1A]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF1A]" />
                 <span>서버 미저장 · 100% 보안 안심</span>
               </span>
             </div>
-            <p className="text-xs text-ink-muted mt-0.5">
+            <p className="text-xs text-[#AEAEAE] mt-0.5">
               (JPG, PNG, GIF, WebP 다중 선택 가능)
             </p>
           </div>
@@ -112,21 +112,21 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             type="button"
             onClick={onClearFiles}
             disabled={disabled}
-            className="text-xs font-medium text-ink-muted hover:text-red-600 px-3 py-1.5 rounded-full hover:bg-neutral-100 transition-all cursor-pointer"
+            className="text-xs font-semibold text-[#AEAEAE] hover:text-[#F34238] px-3.5 py-1.5 rounded-full bg-[#202126] hover:bg-[#2c2d33] border border-[#2e2f36] transition-all cursor-pointer"
           >
             전체 비우기
           </button>
         )}
       </div>
 
-      {/* Security Privacy Callout - Lifemed Style */}
-      <div className="flex items-start gap-3 p-4 rounded-2xl bg-neutral-50/80 border border-black/[0.06] text-xs text-ink-secondary leading-relaxed shadow-soft-xs">
-        <div className="w-6 h-6 rounded-lg bg-white border border-violet-200/80 flex items-center justify-center text-violet-600 flex-shrink-0 mt-0.5 shadow-soft-xs">
-          <ShieldCheck className="w-3.5 h-3.5" />
+      {/* Security Privacy Callout */}
+      <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#1a1b1f] border border-[#26272c] text-xs text-[#AEAEAE] leading-relaxed shadow-inner">
+        <div className="w-7 h-7 rounded-xl bg-[#202126] border border-[#2e2f36] flex items-center justify-center text-[#A8FF1A] flex-shrink-0 mt-0.5">
+          <ShieldCheck className="w-4 h-4" />
         </div>
         <div>
-          <span className="font-bold text-ink-primary">100% 무저장 안심 보안 확인: </span>
-          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-semibold text-violet-700 underline decoration-violet-400 decoration-1.5 underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
+          <span className="font-bold text-white">100% 무저장 안심 보안 확인: </span>
+          업로드하신 광고 소재는 서버나 외부 DB에 <span className="font-bold text-[#A8FF1A] underline underline-offset-2">일체 저장되지 않으며</span>, 규격 판정 즉시 메모리(RAM)에서 완전히 파기됩니다. 기업 대외비 및 런칭 전 신규 캠페인 에셋도 유출 걱정 없이 안전하게 검수하실 수 있습니다.
         </div>
       </div>
 
@@ -139,8 +139,8 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         onClick={() => !disabled && fileInputRef.current?.click()}
         className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-10 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
-            ? 'border-black bg-neutral-100/60 scale-[0.995]'
-            : 'border-black/[0.12] hover:border-black/30 bg-neutral-50/40 hover:bg-neutral-50/80'
+            ? 'border-[#A8FF1A] bg-[#202126] scale-[0.995]'
+            : 'border-[#2e3036] hover:border-[#A8FF1A] bg-[#1a1b1f] hover:bg-[#202126]'
         } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <input
@@ -154,14 +154,14 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         />
 
         <div className="flex flex-col items-center justify-center space-y-3.5">
-          <div className="w-14 h-14 rounded-2xl bg-white border border-black/[0.06] flex items-center justify-center text-ink-primary shadow-soft-xs group-hover:scale-105 group-hover:border-black/20 transition-all duration-200">
+          <div className="w-14 h-14 rounded-2xl bg-[#202126] border border-[#2e2f36] flex items-center justify-center text-[#A8FF1A] shadow-inner group-hover:scale-105 group-hover:border-[#A8FF1A] transition-all duration-200">
             <UploadCloud className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-ink-primary">
+            <p className="text-sm font-bold text-white">
               이미지를 드래그하거나 클릭하여 업로드
             </p>
-            <p className="text-xs text-ink-muted mt-1">
+            <p className="text-xs text-[#AEAEAE] mt-1">
               최대 용량 30MB • 다중 파일 일괄 검수 가능
             </p>
           </div>
@@ -171,11 +171,11 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       {/* Selected File Previews */}
       {files.length > 0 && (
         <div className="space-y-3 pt-1">
-          <div className="flex items-center justify-between text-xs font-semibold text-ink-secondary">
-            <span className="tracking-wide">
+          <div className="flex items-center justify-between text-xs font-semibold text-[#AEAEAE]">
+            <span className="tracking-wide text-white">
               선택된 이미지 ({files.length}개)
             </span>
-            <span className="text-ink-muted text-[11px]">
+            <span className="text-[#AEAEAE] text-[11px]">
               지면별 적합도 자동 판정 준비 완료
             </span>
           </div>
@@ -186,9 +186,9 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               return (
                 <div
                   key={item.id}
-                  className="group relative flex items-center space-x-3 p-3 rounded-2xl border border-black/[0.06] bg-white hover:border-black/20 hover:shadow-soft-sm transition-all"
+                  className="group relative flex items-center space-x-3 p-3 rounded-2xl border border-[#26272c] bg-[#1a1b1f] hover:border-[#3a3b42] transition-all"
                 >
-                  <div className="w-14 h-14 rounded-xl overflow-hidden bg-neutral-100 flex-shrink-0 flex items-center justify-center border border-black/[0.06] relative">
+                  <div className="w-14 h-14 rounded-xl overflow-hidden bg-[#0d0e10] flex-shrink-0 flex items-center justify-center border border-[#26272c] relative">
                     {item.previewUrl ? (
                       <img
                         src={item.previewUrl}
@@ -196,29 +196,29 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
                         className="w-full h-full object-cover"
                       />
                     ) : (
-                      <ImageIcon className="w-6 h-6 text-ink-muted" />
+                      <ImageIcon className="w-6 h-6 text-[#6E6E6E]" />
                     )}
                   </div>
 
                   <div className="flex-1 min-w-0 pr-6">
                     <p
-                      className="text-xs font-medium text-ink-primary truncate"
+                      className="text-xs font-bold text-white truncate"
                       title={item.file.name}
                     >
                       {item.file.name}
                     </p>
                     <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-                      <span className="text-[11px] text-ink-muted font-mono">
+                      <span className="text-[11px] text-[#AEAEAE] font-mono">
                         {formatFileSize(item.file.size)}
                       </span>
                       {ratioLabel && (
-                        <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded-md bg-black/[0.04] border border-black/[0.06] text-ink-secondary">
+                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-md bg-[#202126] border border-[#2e2f36] text-[#A8FF1A]">
                           {ratioLabel}
                         </span>
                       )}
                     </div>
                     {item.dimensions && (
-                      <span className="inline-block mt-0.5 text-[10px] text-ink-muted font-mono">
+                      <span className="inline-block mt-0.5 text-[10px] text-[#AEAEAE] font-mono">
                         {item.dimensions.width}×{item.dimensions.height} px
                       </span>
                     )}
@@ -232,7 +232,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
                     }}
                     disabled={disabled}
                     title="파일 제거"
-                    className="absolute top-2.5 right-2.5 p-1 rounded-full text-ink-muted hover:text-red-600 hover:bg-neutral-100 transition-all cursor-pointer"
+                    className="absolute top-2.5 right-2.5 p-1 rounded-full text-[#AEAEAE] hover:text-[#F34238] hover:bg-[#202126] transition-all cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -244,9 +244,9 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               type="button"
               onClick={() => !disabled && fileInputRef.current?.click()}
               disabled={disabled}
-              className="flex flex-col items-center justify-center p-3 rounded-2xl border border-dashed border-black/[0.12] text-ink-secondary hover:border-black/30 hover:text-ink-primary hover:bg-neutral-50/70 transition-all min-h-[76px] text-xs font-semibold cursor-pointer group"
+              className="flex flex-col items-center justify-center p-3 rounded-2xl border border-dashed border-[#2e3036] text-[#AEAEAE] hover:border-[#A8FF1A] hover:text-white hover:bg-[#202126] transition-all min-h-[76px] text-xs font-semibold cursor-pointer group"
             >
-              <Plus className="w-4 h-4 mb-1 text-ink-muted group-hover:text-ink-primary group-hover:scale-110 transition-all" />
+              <Plus className="w-4 h-4 mb-1 text-[#AEAEAE] group-hover:text-[#A8FF1A] group-hover:scale-110 transition-all" />
               <span>추가 업로드</span>
             </button>
           </div>

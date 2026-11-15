@@ -21,7 +21,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-primary/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div className="bg-surface rounded-3xl shadow-soft-lg border border-line w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden animate-scaleUp">
         {/* Header */}
         <div className="p-6 border-b border-line flex items-center justify-between bg-surface">

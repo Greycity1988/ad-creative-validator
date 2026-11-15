@@ -206,7 +206,7 @@ ${contentStr}
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div className="bg-surface rounded-2xl shadow-soft-xl border border-line w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="p-5 border-b border-line-subtle flex items-center justify-between bg-gradient-to-r from-accent-light via-canvas-subtle to-accent-light/40">

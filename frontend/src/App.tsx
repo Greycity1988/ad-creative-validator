@@ -171,7 +171,7 @@ export const App: React.FC = () => {
   ) || 160;
 
   return (
-    <div className="min-h-screen bg-canvas text-ink-primary font-sans antialiased flex flex-col selection:bg-accent/15 selection:text-accent">
+    <div className="min-h-screen monotone-canvas text-white font-sans antialiased flex flex-col selection:bg-[#A8FF1A]/20 selection:text-[#A8FF1A]">
       <Analytics scriptSrc="https://va.vercel-scripts.com/v1/script.js" />
       <Header
         onOpenFeedback={() => setIsFeedbackOpen(true)}
@@ -222,11 +222,11 @@ export const App: React.FC = () => {
 
         {/* Error Alert */}
         {errorMessage && (
-          <div className="p-5 bg-red-50/80 border border-red-200/90 rounded-2xl flex items-start space-x-3 text-red-800 shadow-soft-xs">
-            <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-red-600" />
+          <div className="p-5 bg-[#F34238]/10 border border-[#F34238]/30 rounded-2xl flex items-start space-x-3 text-[#F34238] shadow-lg">
+            <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-[#F34238]" />
             <div className="text-sm">
               <span className="font-bold">검수 오류: </span>
-              <span className="text-red-700">{errorMessage}</span>
+              <span className="text-white/90">{errorMessage}</span>
             </div>
           </div>
         )}
@@ -246,31 +246,31 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-line bg-surface/80 backdrop-blur-sm py-10 text-center text-xs text-ink-muted space-y-3 flex flex-col items-center justify-center">
+      <footer className="mt-auto border-t border-[#26272c] bg-[#141416] py-10 text-center text-xs text-[#AEAEAE] space-y-3 flex flex-col items-center justify-center">
         <button
           type="button"
           onClick={() => setIsLogoOpen(true)}
-          className="group relative p-2 rounded-2xl hover:bg-canvas-subtle transition-all cursor-pointer"
+          className="group relative p-2 rounded-2xl hover:bg-[#1a1b1f] transition-all cursor-pointer"
           title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
         >
           <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-105" />
         </button>
-        <p className="font-semibold text-ink-primary text-sm tracking-tight">
-          Crafted with passion in 2026 by <strong className="text-accent font-bold">Owen O. Magnus</strong>.
+        <p className="font-bold text-white text-sm tracking-tight">
+          Crafted with passion in 2026 by <strong className="text-[#A8FF1A] font-extrabold">Owen O. Magnus</strong>.
         </p>
-        <p className="text-xs text-ink-secondary font-medium">
+        <p className="text-xs text-[#AEAEAE] font-medium">
           Feedbacks are warmly welcomed, and{' '}
           <button
             type="button"
             onClick={() => setIsDonationOpen(true)}
-            className="text-accent hover:text-accent-hover font-bold underline decoration-accent/30 hover:decoration-accent cursor-pointer inline-flex items-center space-x-1"
+            className="text-[#A8FF1A] hover:text-[#b8ff33] font-bold underline decoration-[#A8FF1A]/30 hover:decoration-[#A8FF1A] cursor-pointer inline-flex items-center space-x-1"
           >
             <span>coffee sponsorships</span>
             <span>☕✨</span>
           </button>{' '}
           are deeply appreciated!
         </p>
-        <p className="text-[11px] text-ink-muted">
+        <p className="text-[11px] text-[#6E6E6E]">
           ACV (Ad Creative Validator) • 32 Major Advertising Platforms & 430+ Official Placements Supported • PC 환경 최적화
         </p>
       </footer>

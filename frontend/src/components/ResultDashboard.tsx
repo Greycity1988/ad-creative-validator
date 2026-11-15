@@ -136,16 +136,16 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               type="button"
               onClick={handleDownloadCsv}
               disabled={isExporting}
-              className="inline-flex items-center space-x-2 bg-accent hover:bg-accent-hover active:scale-[0.98] text-white font-bold text-xs px-6 py-3.5 rounded-full shadow-soft-sm hover:shadow-soft-md transition-all cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center space-x-2 bg-[#A8FF1A] hover:bg-[#b8ff33] active:scale-[0.98] text-black font-extrabold text-xs px-6 py-3.5 rounded-full shadow-[0_0_12px_rgba(168,255,26,0.35)] transition-all cursor-pointer disabled:opacity-50"
             >
               {isExporting ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-white" />
+                  <Loader2 className="w-4 h-4 animate-spin text-black" />
                   <span>다운로드 생성 중...</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4" />
+                  <Download className="w-4 h-4 text-black" />
                   <span>📥 CSV 다운로드 (엑셀 호환)</span>
                 </>
               )}
@@ -286,14 +286,14 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                     onClick={() => setSelectedFileIndex(idx)}
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 flex-shrink-0 cursor-pointer ${
                       isSelected
-                        ? 'bg-accent text-white shadow-soft-xs'
-                        : 'bg-surface text-ink-secondary border border-line hover:border-line-strong'
+                        ? 'bg-[#A8FF1A] text-black font-extrabold shadow-sm'
+                        : 'bg-[#1a1b1f] text-[#AEAEAE] border border-[#26272c] hover:border-[#3a3b42]'
                     }`}
                   >
                     <span className="truncate max-w-[140px]">{item.filename}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                        isSelected ? 'bg-white/20 text-white' : 'bg-canvas-subtle text-ink-muted'
+                        isSelected ? 'bg-black/20 text-black font-bold' : 'bg-[#141416] text-[#AEAEAE]'
                       }`}
                     >
                       #{idx + 1}

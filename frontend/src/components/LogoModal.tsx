@@ -20,7 +20,7 @@ export const LogoModal: React.FC<LogoModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-primary/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div className="bg-surface text-ink-primary rounded-3xl shadow-soft-lg border border-line w-full max-w-xl overflow-hidden animate-scaleUp flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-line flex items-center justify-between bg-surface">
