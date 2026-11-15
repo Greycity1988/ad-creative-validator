@@ -1515,16 +1515,18 @@
   {
     "id": "criteo",
     "name": "크리테오 (Criteo)",
-    "description": "표준 IAB 배너 18종, 모바일 인터스티셜/풀스크린 6종, 제휴 네트워크 배너, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너, 타이머 및 로고존 에셋 규격 완비",
-    "official_update_date": "2026.03 공식 개정",
-    "official_source_name": "Criteo Advertising Guidelines (Help Center)",
-    "official_source_url": "https://help.criteo.com",
-    "revision_summary": "표준 IAB 디스플레이 배너 18종 및 모바일 풀스크린/인터스티셜, 제휴 네트워크 배너, 플래그십/쇼케이스 빅배너, 어댑티브 마스터, 빅쿠폰, 타이머 및 로고존 에셋 전 규격 완비",
-    "last_verified_date": "2026-11-13",
+    "description": "IAB 배너 20종(500KB), 다이내믹 광고 이미지 1:1·1.91:1·2:3, 플래그십·쇼케이스·로고존 등 계정별 규격(매체 확인 중)",
+    "official_update_date": "Criteo 고객센터 (게시일 미표기)",
+    "official_source_name": "Criteo 리테일 미디어 크리에이티브 가이드 (공식)",
+    "official_source_url": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+    "revision_summary": "2026-11-15 공식 고객센터 대조. 리테일 미디어 IAB 20종 500KB·JPG·PNG·GIF, 다이내믹 광고 이미지 1200×1200·1200×628·800×1200 5MB. 공개 가이드에 없는 플래그십·쇼케이스·브랜디드 헤더·로고존·Commerce Display 등은 매체 확인 중",
+    "last_verified_date": "2026-11-15",
     "verification": {
-      "status": "unverified"
+      "status": "partial",
+      "checked_on": "2026-11-15",
+      "method": "help.retailmedia.criteo.com 크리에이티브 가이드, help.criteo.com 다이내믹 광고 가이드 대조. 계정별 사양서 규격은 매체 확인 필요"
     },
-    "placements_count": 68,
+    "placements_count": 70,
     "placements": [
       "크리테오 (플래그십 데스크톱 빅배너 FS_300 576×300)",
       "크리테오 (플래그십 데스크톱 빅배너 FS_200 576×200)",
@@ -1593,7 +1595,9 @@
       "크리테오 (타이머/쿠폰 로고존 에셋 320×57)",
       "크리테오 (Commerce Display Spotlight 데스크톱 1400×450)",
       "크리테오 (Commerce Display Grid 데스크톱 1500×1500)",
-      "크리테오 (Commerce Display Grid 모바일 1280×400)"
+      "크리테오 (Commerce Display Grid 모바일 1280×400)",
+      "크리테오 리테일 미디어 (180×150)",
+      "크리테오 리테일 미디어 (240×400)"
     ],
     "placements_detail": [
       {
@@ -1606,6 +1610,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "576×300px",
         "aspect_ratio_str": ""
       },
@@ -1619,6 +1625,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "576×200px",
         "aspect_ratio_str": ""
       },
@@ -1632,6 +1640,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "310×500px",
         "aspect_ratio_str": ""
       },
@@ -1645,6 +1655,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "270×390px",
         "aspect_ratio_str": ""
       },
@@ -1658,6 +1670,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "1242×300px",
         "aspect_ratio_str": ""
       },
@@ -1671,6 +1685,8 @@
           "jpg",
           "jpeg"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "460×300px",
         "aspect_ratio_str": ""
       },
@@ -1685,6 +1701,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 300×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       },
@@ -1699,6 +1720,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 728×90, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "728×90px",
         "aspect_ratio_str": ""
       },
@@ -1713,6 +1739,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 160×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "160×600px",
         "aspect_ratio_str": ""
       },
@@ -1727,6 +1758,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 300×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "300×600px",
         "aspect_ratio_str": ""
       },
@@ -1741,6 +1777,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 970×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "970×250px",
         "aspect_ratio_str": ""
       },
@@ -1755,6 +1796,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 970×90, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "970×90px",
         "aspect_ratio_str": ""
       },
@@ -1769,6 +1815,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
       },
@@ -1783,6 +1831,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 320×50, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "320×50px",
         "aspect_ratio_str": ""
       },
@@ -1797,6 +1850,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 336×280, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "336×280px",
         "aspect_ratio_str": ""
       },
@@ -1811,6 +1869,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 120×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "120×600px",
         "aspect_ratio_str": ""
       },
@@ -1825,6 +1888,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 468×60, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "468×60px",
         "aspect_ratio_str": ""
       },
@@ -1839,6 +1907,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 250×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "250×250px",
         "aspect_ratio_str": ""
       },
@@ -1853,6 +1926,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 200×200, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "200×200px",
         "aspect_ratio_str": ""
       },
@@ -1867,6 +1945,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "240×240px",
         "aspect_ratio_str": ""
       },
@@ -1881,6 +1961,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "170×128px",
         "aspect_ratio_str": ""
       },
@@ -1895,6 +1977,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 320×480, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "320×480px",
         "aspect_ratio_str": ""
       },
@@ -1909,6 +1996,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 480×320, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "480×320px",
         "aspect_ratio_str": ""
       },
@@ -1923,6 +2015,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 320×568, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "320×568px",
         "aspect_ratio_str": ""
       },
@@ -1937,6 +2034,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 360×640, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "360×640px",
         "aspect_ratio_str": ""
       },
@@ -1951,6 +2053,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "640×360px",
         "aspect_ratio_str": ""
       },
@@ -1965,6 +2069,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×50px",
         "aspect_ratio_str": ""
       },
@@ -1979,6 +2085,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "500×500px",
         "aspect_ratio_str": ""
       },
@@ -1993,6 +2101,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "600×600px",
         "aspect_ratio_str": ""
       },
@@ -2007,6 +2117,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "360×300px",
         "aspect_ratio_str": ""
       },
@@ -2021,6 +2133,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 234×60, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "234×60px",
         "aspect_ratio_str": ""
       },
@@ -2035,6 +2152,11 @@
           "png",
           "gif"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 300×100, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB",
         "dimension_str": "300×100px",
         "aspect_ratio_str": ""
       },
@@ -2049,6 +2171,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "120×240px",
         "aspect_ratio_str": ""
       },
@@ -2063,6 +2187,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×1050px",
         "aspect_ratio_str": ""
       },
@@ -2077,6 +2203,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "768×1024px",
         "aspect_ratio_str": ""
       },
@@ -2091,6 +2219,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "1024×768px",
         "aspect_ratio_str": ""
       },
@@ -2101,16 +2231,23 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "min_width": 800,
-        "min_height": 800,
         "recommended_width": 1200,
         "recommended_height": 1200,
-        "max_file_size_kb": 1024,
+        "max_file_size_kb": 5120,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400",
+        "unstated": [
+          "min_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "Criteo 다이내믹 광고 이미지 1200×1200 (1:1), jpg·png, 최대 5MB",
         "dimension_str": "권장 1200×1200px",
         "aspect_ratio_str": "1:1"
       },
@@ -2121,16 +2258,23 @@
           1
         ],
         "aspect_ratio_tolerance": 0.02,
-        "min_width": 600,
-        "min_height": 314,
         "recommended_width": 1200,
         "recommended_height": 628,
-        "max_file_size_kb": 1024,
+        "max_file_size_kb": 5120,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400",
+        "unstated": [
+          "min_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "Criteo 다이내믹 광고 이미지 1200×628 (1.91:1), jpg·png, 최대 5MB",
         "dimension_str": "권장 1200×628px",
         "aspect_ratio_str": "1.91:1"
       },
@@ -2141,16 +2285,23 @@
           3
         ],
         "aspect_ratio_tolerance": 0.02,
-        "min_width": 600,
-        "min_height": 900,
         "recommended_width": 800,
         "recommended_height": 1200,
-        "max_file_size_kb": 1024,
+        "max_file_size_kb": 5120,
         "allowed_formats": [
           "jpg",
           "jpeg",
           "png"
         ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400",
+        "unstated": [
+          "min_size",
+          "aspect_ratio_tolerance"
+        ],
+        "description": "Criteo 다이내믹 광고 이미지 800×1200 (2:3), jpg·png, 최대 5MB",
         "dimension_str": "권장 800×1200px",
         "aspect_ratio_str": "2:3"
       },
@@ -2165,6 +2316,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       },
@@ -2178,6 +2331,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "1200×628px",
         "aspect_ratio_str": ""
       },
@@ -2192,6 +2347,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "728×90px",
         "aspect_ratio_str": ""
       },
@@ -2206,6 +2363,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×600px",
         "aspect_ratio_str": ""
       },
@@ -2220,6 +2379,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
       },
@@ -2234,6 +2395,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "320×50px",
         "aspect_ratio_str": ""
       },
@@ -2248,6 +2411,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×250px",
         "aspect_ratio_str": ""
       },
@@ -2262,6 +2427,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "728×90px",
         "aspect_ratio_str": ""
       },
@@ -2276,6 +2443,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "300×600px",
         "aspect_ratio_str": ""
       },
@@ -2290,6 +2459,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "160×600px",
         "aspect_ratio_str": ""
       },
@@ -2303,6 +2474,8 @@
           "jpeg",
           "png"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "1200×628px",
         "aspect_ratio_str": ""
       },
@@ -2317,6 +2490,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "320×100px",
         "aspect_ratio_str": ""
       },
@@ -2331,6 +2506,8 @@
           "png",
           "gif"
         ],
+        "needs_confirmation": true,
+        "description": " [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
         "dimension_str": "320×50px",
         "aspect_ratio_str": ""
       },
@@ -2345,7 +2522,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "100×100px",
         "aspect_ratio_str": ""
       },
@@ -2360,7 +2538,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "105×50px",
         "aspect_ratio_str": ""
       },
@@ -2375,7 +2554,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "120×60px",
         "aspect_ratio_str": ""
       },
@@ -2390,7 +2570,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "130×90px",
         "aspect_ratio_str": ""
       },
@@ -2405,7 +2586,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "160×56px",
         "aspect_ratio_str": ""
       },
@@ -2420,7 +2602,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "200×32px",
         "aspect_ratio_str": ""
       },
@@ -2435,7 +2618,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "300×40px",
         "aspect_ratio_str": ""
       },
@@ -2450,7 +2634,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "300×54px",
         "aspect_ratio_str": ""
       },
@@ -2465,7 +2650,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "336×48px",
         "aspect_ratio_str": ""
       },
@@ -2480,7 +2666,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "180×250px",
         "aspect_ratio_str": ""
       },
@@ -2495,7 +2682,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "180×34px",
         "aspect_ratio_str": ""
       },
@@ -2510,7 +2698,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "360×57px",
         "aspect_ratio_str": ""
       },
@@ -2525,7 +2714,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57)",
+        "description": "Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "320×57px",
         "aspect_ratio_str": ""
       },
@@ -2540,7 +2730,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450)",
+        "description": "Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "1400×450px",
         "aspect_ratio_str": ""
       },
@@ -2555,7 +2746,8 @@
           "png",
           "gif"
         ],
-        "description": "Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500)",
+        "description": "Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "1500×1500px",
         "aspect_ratio_str": ""
       },
@@ -2570,8 +2762,47 @@
           "png",
           "gif"
         ],
-        "description": "Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400)",
+        "description": "Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]",
+        "needs_confirmation": true,
         "dimension_str": "1280×400px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 리테일 미디어 (180×150)",
+        "exact_width": 180,
+        "exact_height": 150,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 180×150, JPG·PNG·GIF, 최대 500KB",
+        "dimension_str": "180×150px",
+        "aspect_ratio_str": ""
+      },
+      {
+        "name": "크리테오 리테일 미디어 (240×400)",
+        "exact_width": 240,
+        "exact_height": 400,
+        "max_file_size_kb": 500,
+        "allowed_formats": [
+          "jpg",
+          "jpeg",
+          "png",
+          "gif"
+        ],
+        "verified": true,
+        "source_type": "official_page",
+        "source_date": "2026-11-15",
+        "source": "https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923",
+        "description": "Criteo 리테일 미디어 크리에이티브 가이드 240×400, JPG·PNG·GIF, 최대 500KB",
+        "dimension_str": "240×400px",
         "aspect_ratio_str": ""
       }
     ]
