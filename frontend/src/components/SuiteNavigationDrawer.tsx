@@ -66,12 +66,12 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     {
       id: 'cal',
       name: 'CAL • Competitive Ad Lens',
-      tagline: '메타·틱톡·구글 실시간 경쟁사 라이브 광고 소재 염탐 & 레퍼런스 발굴',
-      role: '경쟁사 광고 염탐',
+      tagline: 'EU DSA 공식 API 기반 글로벌 라이브 위너 소재 발굴 & AI 한국어 벤치마킹',
+      role: '경쟁사 광고 염탐 & 벤치마킹',
       url: CAL_URL,
       icon: Flame,
       iconColor: '#F34238',
-      isDeveloping: true,
+      isDeveloping: false,
     },
     {
       id: 'ott',
@@ -81,7 +81,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
       url: OTT_URL,
       icon: TrendingUp,
       iconColor: '#38BDF8',
-      isDeveloping: true,
+      isDeveloping: false,
     },
     {
       id: 'bep',
