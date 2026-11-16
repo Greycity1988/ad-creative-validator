@@ -513,7 +513,6 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
               <CheckCircle2 className="w-3.5 h-3.5 text-[#A8FF1A]" />
               <span>{totalPlacementsCount}개 지면 수록</span>
             </div>
-            </div>
             <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#202126] border border-[#2e2f36] text-[#AEAEAE]" title="공식 가이드 주기적 변경 감지">
               <RefreshCw className="w-3.5 h-3.5 text-[#AEAEAE]" />
               <span>공식 가이드 주기적 점검</span>
@@ -792,8 +791,6 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                               : meta.verification?.status === 'partial'
                                 ? `일부 대조: ${meta.verification.checked_on}`
                                 : '공식 문서 미대조 (참고용)'}
-                          </span>
-                        </div>
                           </span>
                         </div>
                         {!meta.official_source_url && (

@@ -276,7 +276,6 @@ export const App: React.FC = () => {
         <p className="text-[11px] text-slate-400 dark:text-[#6E6E6E]">
           ACV (Ad Creative Validator) • {platformsMetadata.length} Advertising Platforms & {totalPlacementsCount} Placements Supported • PC 환경 최적화
         </p>
-        </p>
       </footer>
 
       {/* Modals */}

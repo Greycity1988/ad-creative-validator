@@ -50,7 +50,6 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
           <p className="text-sm text-slate-600 dark:text-[#AEAEAE] mt-1.5 max-w-2xl leading-relaxed">
             이미지를 업로드하면 네이버·카카오·메타·구글 등 {totalPlatformCount}개 매체 {totalPlacementCount}개 지면의 해상도, 용량, 포맷, 안전영역 적합성을 브라우저에서 즉시 판정합니다.
           </p>
-          </p>
         </div>
 
         {/* Local Security Badge */}
