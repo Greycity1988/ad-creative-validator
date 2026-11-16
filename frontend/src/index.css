@@ -3,32 +3,161 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-canvas text-ink-primary font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.025em;
-    background-image: 
-      radial-gradient(at 10% 8%, rgba(192, 132, 252, 0.28) 0px, transparent 45%),
-      radial-gradient(at 90% 12%, rgba(244, 114, 182, 0.22) 0px, transparent 45%),
-      radial-gradient(at 50% 25%, rgba(186, 230, 253, 0.35) 0px, transparent 55%),
-      radial-gradient(at 85% 75%, rgba(216, 180, 254, 0.20) 0px, transparent 45%),
-      radial-gradient(at 15% 85%, rgba(199, 210, 254, 0.25) 0px, transparent 45%);
-    background-attachment: fixed;
-    background-color: #FFFFFF;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    background-color: #010101;
+    color: #FFFFFF;
+  }
+
+  html.light body {
+    background-color: #F8F9FA;
+    color: #0F172A;
+  }
+
+  /* Scoped inputs: dark vs light */
+  html.dark input[type="text"],
+  html.dark input[type="number"],
+  html.dark input[type="search"],
+  html.dark textarea {
+    background-color: #1a1b1f !important;
+    color: #FFFFFF !important;
+    border-color: #2e3036 !important;
+  }
+
+  html.dark input[type="text"]::placeholder,
+  html.dark input[type="number"]::placeholder,
+  html.dark input[type="search"]::placeholder,
+  html.dark textarea::placeholder {
+    color: #6E6E6E !important;
+  }
+
+  html.light input[type="text"],
+  html.light input[type="number"],
+  html.light input[type="search"],
+  html.light textarea {
+    background-color: #FFFFFF !important;
+    color: #0F172A !important;
+    border-color: #CBD5E1 !important;
+  }
+
+  html.light input[type="text"]::placeholder,
+  html.light input[type="number"]::placeholder,
+  html.light input[type="search"]::placeholder,
+  html.light textarea::placeholder {
+    color: #94A3B8 !important;
+  }
+
+  /* Custom Range Slider */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 9999px;
+    outline: none;
+    margin: 8px 0;
+  }
+
+  html.dark input[type="range"] {
+    background: #26272c;
+  }
+
+  html.light input[type="range"] {
+    background: #E2E8F0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  html.dark input[type="range"]::-webkit-slider-thumb {
+    background-color: #A8FF1A !important;
+    border: 2px solid #141416;
+    box-shadow: 0 0 6px #A8FF1A;
+  }
+
+  html.light input[type="range"]::-webkit-slider-thumb {
+    background-color: #0F172A !important;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  html.dark input[type="range"]::-moz-range-thumb {
+    background-color: #A8FF1A !important;
+    border: 2px solid #141416;
+    box-shadow: 0 0 6px #A8FF1A;
+  }
+
+  html.light input[type="range"]::-moz-range-thumb {
+    background-color: #0F172A !important;
+    border: 2px solid #FFFFFF;
   }
 }
 
-/* Lifemed Minimalist Ultra-Clean Scrollbars */
+/* Tactile Canvas Texture */
+html.dark .monotone-canvas {
+  background-color: #010101;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+html.light .monotone-canvas {
+  background-color: #F8F9FA;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+html.dark ::-webkit-scrollbar-track {
+  background: #141416;
 }
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.10);
+html.dark ::-webkit-scrollbar-thumb {
+  background: #2e3036;
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.20);
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #A8FF1A;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }

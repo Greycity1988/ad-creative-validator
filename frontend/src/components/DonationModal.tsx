@@ -22,7 +22,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
   const [copied, setCopied] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const BMC_URL = 'https://buymeacoffee.com/greycity1988';
+  const KO_FI_URL = 'https://ko-fi.com/greycity1988';
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -32,10 +32,10 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
   const handleCopyLink = async () => {
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(BMC_URL);
+        await navigator.clipboard.writeText(KO_FI_URL);
       } else {
         const textArea = document.createElement('textarea');
-        textArea.value = BMC_URL;
+        textArea.value = KO_FI_URL;
         textArea.style.position = 'fixed';
         textArea.style.opacity = '0';
         document.body.appendChild(textArea);
@@ -44,17 +44,17 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
         document.body.removeChild(textArea);
       }
       setCopied(true);
-      showToast('Buy Me a Coffee 후원 링크가 복사되었습니다!');
+      showToast('Ko-fi 후원 링크가 복사되었습니다!');
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      showToast(`링크: ${BMC_URL}`);
+      showToast(`링크: ${KO_FI_URL}`);
     }
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-primary/60 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
       <div className="bg-surface rounded-3xl shadow-soft-lg border border-line w-full max-w-md overflow-hidden animate-scaleUp max-h-[92vh] flex flex-col">
         {/* Header */}
         <div className="p-6 border-b border-line flex items-center justify-between bg-surface flex-shrink-0">
@@ -102,7 +102,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
 
             <div className="p-3.5 bg-surface rounded-2xl border border-line shadow-soft-xs">
               <QRCodeSVG
-                value={BMC_URL}
+                value={KO_FI_URL}
                 size={150}
                 level="M"
                 includeMargin={false}
@@ -114,7 +114,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                 PC 사용자는 카메라로 QR 코드를 비추시거나,
               </p>
               <p className="text-[11px] text-ink-muted">
-                아래 버튼을 눌러 Buy Me a Coffee 공식 페이지에서 바로 후원하실 수 있습니다.
+                아래 버튼을 눌러 Ko-fi 공식 페이지에서 바로 후원하실 수 있습니다.
               </p>
             </div>
           </div>
@@ -135,19 +135,19 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
           {/* Main CTA */}
           <div className="space-y-2.5">
             <a
-              href={BMC_URL}
+              href={KO_FI_URL}
               target="_blank"
               rel="noreferrer"
               className="w-full py-3.5 px-5 rounded-full bg-accent hover:bg-accent-hover text-white font-bold text-sm transition-all flex items-center justify-center space-x-2 shadow-soft-xs cursor-pointer active:scale-[0.99]"
             >
               <Coffee className="w-4 h-4 text-[#FFDD00]" />
-              <span>Buy Me a Coffee로 커피 한 잔 후원하기</span>
+              <span>Ko-fi로 커피 한 잔 후원하기</span>
               <ExternalLink className="w-4 h-4 text-white/80" />
             </a>
 
             <div className="flex items-center space-x-2">
               <div className="flex-1 px-3.5 py-2 bg-canvas-subtle rounded-full text-xs font-mono text-ink-muted truncate border border-line">
-                buymeacoffee.com/greycity1988
+                ko-fi.com/greycity1988
               </div>
               <button
                 type="button"
@@ -180,7 +180,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               <span>안전한 글로벌 창작자 후원 플랫폼</span>
             </div>
             <p>
-              <strong>Buy Me a Coffee</strong>는 전 세계 수백만 창작자와 개발자가 사용하는 안전한 후원 플랫폼입니다. 국내외 신용카드, 체크카드, 간편결제로 계좌번호나 개인정보 노출 없이 간편하게 마음을 전하실 수 있습니다.
+              <strong>Ko-fi</strong>는 전 세계 수백만 창작자와 개발자가 사용하는 안전한 후원 플랫폼입니다. PayPal 및 국내외 신용카드, 체크카드로 계좌번호나 개인정보 노출 없이 간편하게 마음을 전하실 수 있습니다.
             </p>
             <div className="pt-2 border-t border-line/60 flex items-start space-x-1.5 text-ink-muted">
               <ShieldCheck className="w-3.5 h-3.5 text-accent-mint flex-shrink-0 mt-0.5" />

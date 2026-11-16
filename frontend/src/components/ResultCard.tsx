@@ -70,23 +70,23 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   } else if (activeFailPlacements.length === 0 && activePassPlacements.length > 0) {
     overallBadge = {
       label: '적합 (PASS)',
-      dotColor: 'bg-accent-mint',
-      bgColor: 'bg-emerald-500/10',
-      textColor: 'text-emerald-700',
+      dotColor: 'bg-[#A8FF1A]',
+      bgColor: 'bg-[#A8FF1A]/10 border border-[#A8FF1A]/30',
+      textColor: 'text-[#A8FF1A]',
     };
   } else if (activePassPlacements.length === 0 && activeFailPlacements.length > 0) {
     overallBadge = {
       label: '부적합 (FAIL)',
-      dotColor: 'bg-rose-500',
-      bgColor: 'bg-rose-500/10',
-      textColor: 'text-rose-700',
+      dotColor: 'bg-[#F34238]',
+      bgColor: 'bg-[#F34238]/10 border border-[#F34238]/30',
+      textColor: 'text-[#F34238]',
     };
   } else {
     overallBadge = {
       label: '주의 (PARTIAL)',
-      dotColor: 'bg-amber-500',
-      bgColor: 'bg-amber-500/10',
-      textColor: 'text-amber-700',
+      dotColor: 'bg-amber-400',
+      bgColor: 'bg-amber-400/10 border border-amber-400/30',
+      textColor: 'text-amber-400',
     };
   }
 
@@ -102,16 +102,16 @@ export const ResultCard: React.FC<ResultCardProps> = ({
       case 'pass':
       case 'success':
         return (
-          <span className="inline-flex items-center space-x-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span className="inline-flex items-center space-x-1.5 text-[11px] font-bold text-[#A8FF1A] bg-[#A8FF1A]/10 border border-[#A8FF1A]/30 px-2.5 py-0.5 rounded-full font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF1A]" />
             <span>적합 (PASS)</span>
           </span>
         );
       case 'warning':
       case 'warn':
         return (
-          <span className="inline-flex items-center space-x-1.5 text-[11px] font-semibold text-amber-700 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+          <span className="inline-flex items-center space-x-1.5 text-[11px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/30 px-2.5 py-0.5 rounded-full font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
             <span>주의 (WARN)</span>
           </span>
         );
@@ -119,8 +119,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({
       case 'error':
       default:
         return (
-          <span className="inline-flex items-center space-x-1.5 text-[11px] font-semibold text-rose-700 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-full font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+          <span className="inline-flex items-center space-x-1.5 text-[11px] font-bold text-[#F34238] bg-[#F34238]/10 border border-[#F34238]/30 px-2.5 py-0.5 rounded-full font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#F34238]" />
             <span>부적합 (FAIL)</span>
           </span>
         );
@@ -131,16 +131,16 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     switch (status?.toLowerCase()) {
       case 'pass':
       case 'success':
-        return <CheckCircle className="w-3.5 h-3.5 text-accent-mint flex-shrink-0" />;
+        return <CheckCircle className="w-3.5 h-3.5 text-[#A8FF1A] flex-shrink-0" />;
       case 'warning':
       case 'warn':
-        return <AlertTriangle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />;
+        return <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />;
       case 'manual':
-        return <Info className="w-3.5 h-3.5 text-accent flex-shrink-0" />;
+        return <Info className="w-3.5 h-3.5 text-[#A8FF1A] flex-shrink-0" />;
       case 'fail':
       case 'error':
       default:
-        return <XCircle className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />;
+        return <XCircle className="w-3.5 h-3.5 text-[#F34238] flex-shrink-0" />;
     }
   };
 

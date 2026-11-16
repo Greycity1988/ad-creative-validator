@@ -101,7 +101,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
       {/* Full Image Modal */}
       {isModalOpen && previewUrl && (
         <div
-          className="fixed inset-0 z-50 bg-ink-primary/80 flex items-center justify-center p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/85 flex items-center justify-center p-4 backdrop-blur-md"
           onClick={() => setIsModalOpen(false)}
         >
           <div

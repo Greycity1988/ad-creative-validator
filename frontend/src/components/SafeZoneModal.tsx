@@ -144,7 +144,7 @@ export const SafeZoneModal: React.FC<SafeZoneModalProps> = ({
 
   // Rendered on <body> so the overlay also covers the sticky header.
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
       <div
         className="bg-surface rounded-2xl shadow-soft-xl border border-line w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
