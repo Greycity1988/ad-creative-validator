@@ -69,15 +69,17 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
         {/* Metric 1: Uploaded Creatives */}
-        <div className="bg-slate-50 rounded-2xl p-4.5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42]">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
-            업로드된 소재
+        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42] flex flex-col justify-between min-h-[120px]">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
+              업로드된 소재
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1.5 flex items-baseline gap-1.5">
+              <span>{files.length}</span>
+              <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">건</span>
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{files.length}</span>
-            <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">건</span>
-          </div>
-          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] mt-1 truncate">
+          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] mt-2 truncate">
             {hasFiles ? (
               <span className="text-emerald-600 dark:text-[#A8FF1A] font-semibold">
                 {aspectRatios.slice(0, 2).join(', ')}
@@ -99,42 +101,48 @@ export const OverviewHero: React.FC<OverviewHeroProps> = ({
         </div>
 
         {/* Metric 2: Selected Platforms */}
-        <div className="bg-slate-50 rounded-2xl p-4.5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42]">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
-            선택된 광고 매체
+        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42] flex flex-col justify-between min-h-[120px]">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
+              선택된 광고 매체
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-600 dark:text-[#A8FF1A] font-mono mt-1.5 flex items-baseline gap-1.5">
+              <span>{selectedPlatformCount}</span>
+              <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">/ {totalPlatformCount > 0 ? totalPlatformCount : 32} 매체</span>
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-600 dark:text-[#A8FF1A] font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{selectedPlatformCount}</span>
-            <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">/ {totalPlatformCount > 0 ? totalPlatformCount : 32} 매체</span>
-          </div>
-          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] font-medium mt-1">
+          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] font-medium mt-2">
             주요 매체 사전 선택됨
           </div>
         </div>
 
         {/* Metric 3: Supported Placements */}
-        <div className="bg-slate-50 rounded-2xl p-4.5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42]">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
-            동시대조 검수 지면
+        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42] flex flex-col justify-between min-h-[120px]">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#AEAEAE]">
+              동시대조 검수 지면
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1.5 flex items-baseline gap-1.5">
+              <span>{totalPlacementCount}</span>
+              <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">개 지면</span>
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{totalPlacementCount}</span>
-            <span className="text-xs font-sans text-slate-500 dark:text-[#AEAEAE] font-normal">개 지면</span>
-          </div>
-          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] font-medium mt-1">
+          <div className="text-[11px] text-slate-500 dark:text-[#AEAEAE] font-medium mt-2">
             DA·비즈보드·피드·스토리 등
           </div>
         </div>
 
         {/* Metric 4: System Readiness */}
-        <div className="bg-slate-50 rounded-2xl p-4.5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42]">
-          <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-[#A8FF1A]">
-            시스템 준비 상태
+        <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200/90 transition-all hover:border-slate-300 dark:bg-[#1a1b1f] dark:border-[#26272c] dark:hover:border-[#3a3b42] flex flex-col justify-between min-h-[120px]">
+          <div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-emerald-600 dark:text-[#A8FF1A]">
+              시스템 준비 상태
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1.5 flex items-baseline gap-1.5">
+              <span>{hasFiles ? 'READY' : 'STANDBY'}</span>
+            </div>
           </div>
-          <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white font-mono mt-1 flex items-baseline gap-1.5">
-            <span>{hasFiles ? 'READY' : 'STANDBY'}</span>
-          </div>
-          <div className="text-[11px] text-emerald-600 dark:text-[#A8FF1A] font-bold mt-1">
+          <div className="text-[11px] text-emerald-600 dark:text-[#A8FF1A] font-bold mt-2">
             {hasFiles ? '검수 시작 가능' : '소재 업로드 대기 중'}
           </div>
         </div>
