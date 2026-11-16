@@ -71,7 +71,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
       url: CAL_URL,
       icon: Flame,
       iconColor: '#F34238',
-      isDeveloping: false,
+      isDeveloping: true,
     },
     {
       id: 'ott',
@@ -81,7 +81,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
       url: OTT_URL,
       icon: TrendingUp,
       iconColor: '#38BDF8',
-      isDeveloping: false,
+      isDeveloping: true,
     },
     {
       id: 'bep',
