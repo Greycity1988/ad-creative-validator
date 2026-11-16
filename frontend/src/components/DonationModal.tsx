@@ -59,8 +59,8 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
         {/* Header */}
         <div className="p-6 border-b border-line flex items-center justify-between bg-surface flex-shrink-0">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-accent text-white rounded-2xl shadow-soft-xs">
-              <Coffee className="w-5 h-5 text-[#FFDD00]" />
+            <div className="p-2.5 bg-[#A8FF1A] text-black rounded-2xl shadow-soft-xs">
+              <Coffee className="w-5 h-5 text-black" strokeWidth={2.2} />
             </div>
             <div>
               <h2 className="text-base font-bold text-ink-primary flex items-center space-x-1.5">
@@ -138,11 +138,11 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
               href={KO_FI_URL}
               target="_blank"
               rel="noreferrer"
-              className="w-full py-3.5 px-5 rounded-full bg-accent hover:bg-accent-hover text-white font-bold text-sm transition-all flex items-center justify-center space-x-2 shadow-soft-xs cursor-pointer active:scale-[0.99]"
+              className="w-full py-3.5 px-5 rounded-full bg-[#A8FF1A] hover:bg-[#b8ff33] text-black font-extrabold text-sm transition-all flex items-center justify-center space-x-2 shadow-[0_0_14px_rgba(168,255,26,0.35)] cursor-pointer active:scale-[0.99]"
             >
-              <Coffee className="w-4 h-4 text-[#FFDD00]" />
-              <span>Ko-fi로 커피 한 잔 후원하기</span>
-              <ExternalLink className="w-4 h-4 text-white/80" />
+              <Coffee className="w-4 h-4 text-black" strokeWidth={2.2} />
+              <span className="font-extrabold text-black">Ko-fi로 커피 한 잔 후원하기</span>
+              <ExternalLink className="w-4 h-4 text-black/75" strokeWidth={2} />
             </a>
 
             <div className="flex items-center space-x-2">
@@ -154,7 +154,7 @@ export const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose })
                 onClick={handleCopyLink}
                 className={`px-4 py-2 rounded-full text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer shadow-2xs ${
                   copied
-                    ? 'bg-accent-mint text-white'
+                    ? 'bg-[#A8FF1A] text-black font-extrabold'
                     : 'bg-surface hover:bg-canvas-subtle text-ink-primary border border-line'
                 }`}
               >

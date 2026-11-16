@@ -141,8 +141,8 @@ ${contentStr}
         {/* Header */}
         <div className="p-5 border-b border-line-subtle flex items-center justify-between bg-gradient-to-r from-accent-light via-canvas-subtle to-accent-light/40">
           <div className="flex items-center space-x-2.5">
-            <div className="p-2 bg-accent text-white rounded-xl shadow-soft-xs">
-              <MessageSquare className="w-5 h-5" />
+            <div className="p-2 bg-[#A8FF1A] text-black rounded-xl shadow-soft-xs">
+              <MessageSquare className="w-5 h-5 text-black" strokeWidth={2.2} />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -356,10 +356,10 @@ ${contentStr}
                     <button
                       type="button"
                       onClick={() => setActiveTab('write')}
-                      className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-accent text-white text-xs font-bold hover:bg-accent-hover transition-colors shadow-soft-xs cursor-pointer"
+                      className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-[#A8FF1A] text-black text-xs font-extrabold hover:bg-[#b8ff33] transition-colors shadow-[0_0_12px_rgba(168,255,26,0.3)] cursor-pointer active:scale-[0.98]"
                     >
-                      <Sparkles className="w-3.5 h-3.5" />
-                      <span>첫 번째 제보 작성하기</span>
+                      <Sparkles className="w-3.5 h-3.5 text-black" strokeWidth={2.2} />
+                      <span className="text-black font-bold">첫 번째 제보 작성하기</span>
                     </button>
                     <a
                       href={GITHUB_ISSUES_URL}

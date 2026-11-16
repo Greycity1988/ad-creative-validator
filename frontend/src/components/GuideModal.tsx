@@ -26,8 +26,8 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="p-6 border-b border-line flex items-center justify-between bg-surface">
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-accent text-white rounded-2xl shadow-soft-xs">
-              <BookOpen className="w-5 h-5" />
+            <div className="p-2.5 bg-[#A8FF1A] text-black rounded-2xl shadow-soft-xs">
+              <BookOpen className="w-5 h-5 text-black" strokeWidth={2.2} />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -58,8 +58,8 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           <div className="p-4 rounded-2xl border border-line bg-canvas-subtle/60 space-y-2.5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center space-x-2">
-                <div className="p-1.5 bg-accent text-white rounded-lg shadow-soft-xs flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4" />
+                <div className="p-1.5 bg-[#A8FF1A] text-black rounded-lg shadow-soft-xs flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-black" strokeWidth={2.2} />
                 </div>
                 <h3 className="text-xs sm:text-sm font-bold text-ink-primary tracking-tight">
                   매체 공식 가이드 기준 & 공식 문서 대조 여부 표시
@@ -98,7 +98,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           {/* Section 1: Why is this needed? */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#A8FF1A] text-black text-xs font-black font-mono">
                 !
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
@@ -142,7 +142,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           {/* Section 2: When to use? */}
           <div className="space-y-3 pt-2 border-t border-line/60">
             <div className="flex items-center space-x-2">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#A8FF1A] text-black text-xs font-black font-mono">
                 ★
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
@@ -212,7 +212,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           {/* Section 3: 3-step usage */}
           <div className="space-y-3 pt-2 border-t border-line/60">
             <div className="flex items-center space-x-2">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-accent text-white text-xs font-bold font-mono">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-[#A8FF1A] text-black text-xs font-black font-mono">
                 ✓
               </span>
               <h3 className="text-sm font-bold text-ink-primary">
@@ -306,7 +306,7 @@ export const GuideModal: React.FC<GuideModalProps> = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={onClose}
-            className="px-6 py-2.5 rounded-full bg-accent hover:bg-accent-hover text-white font-bold cursor-pointer transition-all shadow-soft-xs"
+            className="px-6 py-2.5 rounded-full bg-[#A8FF1A] hover:bg-[#b8ff33] text-black font-extrabold cursor-pointer transition-all shadow-[0_0_12px_rgba(168,255,26,0.35)] active:scale-[0.98]"
           >
             확인 및 시작하기
           </button>
