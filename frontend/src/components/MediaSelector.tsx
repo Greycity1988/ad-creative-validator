@@ -498,29 +498,32 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   };
 
   return (
-    <div className="bg-surface rounded-2xl shadow-soft-sm border border-line p-5 sm:p-6 space-y-5">
+    <div className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 space-y-6 transition-all dark:bg-[#141416] dark:border-[#26272c] dark:shadow-2xl">
       {/* ── 1. Top Section Header ── */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 pb-4 border-b border-line-subtle">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 pb-5 border-b border-slate-200 dark:border-[#26272c]">
         <div>
-          <div className="flex items-center space-x-2.5">
-            <h2 className="text-base font-extrabold text-ink-primary tracking-tight">
-              2. 검수 대상 광고 매체 선택
+          <div className="flex items-center space-x-2.5 flex-wrap gap-y-2">
+            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-800 border border-slate-300 text-xs font-bold font-mono tracking-tight shadow-sm dark:bg-[#000000] dark:text-[#A8FF1A] dark:border-[#26272c] dark:shadow-inner">
+              02
+            </span>
+            <h2 className="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              검수 대상 광고 매체 선택
             </h2>
-            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#202126] border border-[#2e2f36] text-[#AEAEAE]">
+            <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#AEAEAE]">
               {PLATFORMS.length}대 매체 지원
             </span>
-            <div className="hidden sm:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#202126] border border-[#2e2f36] text-[#A8FF1A]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#A8FF1A]" />
+            <div className="hidden sm:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#A8FF1A]">
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-[#A8FF1A]" />
               <span>{totalPlacementsCount}개 지면 수록</span>
             </div>
-            <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#202126] border border-[#2e2f36] text-[#AEAEAE]" title="공식 가이드 주기적 변경 감지">
-              <RefreshCw className="w-3.5 h-3.5 text-[#AEAEAE]" />
+            <div className="hidden lg:inline-flex items-center space-x-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#AEAEAE]" title="공식 가이드 주기적 변경 감지">
+              <RefreshCw className="w-3.5 h-3.5 text-slate-500 dark:text-[#AEAEAE]" />
               <span>공식 가이드 주기적 점검</span>
             </div>
           </div>
-          <p className="text-xs text-ink-tertiary mt-1">
+          <p className="text-xs text-slate-500 dark:text-[#AEAEAE] mt-1.5 leading-relaxed">
             원하는 광고 매체를 선택하세요. 규격은 매체 공식 가이드를 기준으로 정리했고, 공식 문서와 대조하지 않은 지면은 결과에 따로 표시합니다. 현재{' '}
-            <strong className="text-[#A8FF1A] font-bold">{selectedPlatforms.length}개</strong> 매체 (
+            <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{selectedPlatforms.length}개</strong> 매체 (
             {PLATFORMS.length}개 중)가 검수 대상으로 지정되었습니다.
           </p>
         </div>
@@ -530,7 +533,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           <button
             type="button"
             onClick={handleSelectCoreOnly}
-            className="inline-flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-line hover:border-accent/40 text-ink-secondary hover:text-accent hover:bg-accent-light/60 transition-colors cursor-pointer"
+            className="inline-flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300 text-slate-700 transition-colors cursor-pointer dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#AEAEAE] dark:hover:text-white dark:hover:bg-[#2c2d33]"
             title="네이버, 카카오, 메타, 구글 4대 매체만 원클릭 선택"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
@@ -541,16 +544,16 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
             type="button"
             onClick={handleToggleAll}
             disabled={isLoading}
-            className="inline-flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-line hover:border-line-strong text-ink-secondary hover:bg-canvas-subtle transition-colors cursor-pointer"
+            className="inline-flex items-center space-x-1.5 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300 text-slate-700 transition-colors cursor-pointer dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#AEAEAE] dark:hover:text-white dark:hover:bg-[#2c2d33]"
           >
             {isAllSelected ? (
               <>
-                <Square className="w-3.5 h-3.5 text-ink-muted" />
+                <Square className="w-3.5 h-3.5 text-slate-400 dark:text-[#6E6E6E]" />
                 <span>전체 해제</span>
               </>
             ) : (
               <>
-                <CheckSquare className="w-3.5 h-3.5 text-accent" />
+                <CheckSquare className="w-3.5 h-3.5 text-emerald-600 dark:text-[#A8FF1A]" />
                 <span>32개 전체 선택</span>
               </>
             )}
@@ -571,14 +574,16 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer flex items-center space-x-1.5 ${
                   isActive
-                    ? 'bg-[#A8FF1A] text-black shadow-sm font-extrabold'
-                    : 'bg-[#202126] hover:bg-[#2c2d33] border border-[#2e2f36] text-[#AEAEAE] hover:text-white'
+                    ? 'bg-slate-900 text-white shadow-sm font-extrabold dark:bg-[#A8FF1A] dark:text-black'
+                    : 'bg-slate-100 hover:bg-slate-200/80 border border-slate-200 text-slate-600 hover:text-slate-900 dark:bg-[#202126] dark:hover:bg-[#2c2d33] dark:border-[#2e2f36] dark:text-[#AEAEAE] dark:hover:text-white'
                 }`}
               >
                 <span>{cat.label}</span>
                 <span
                   className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                    isActive ? 'bg-black/20 text-black font-bold' : 'bg-[#141416] text-[#AEAEAE]'
+                    isActive
+                      ? 'bg-white/20 text-white font-bold dark:bg-black/20 dark:text-black'
+                      : 'bg-slate-200 text-slate-700 dark:bg-[#141416] dark:text-[#AEAEAE]'
                   }`}
                 >
                   {cat.count}
@@ -590,19 +595,19 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
         {/* Real-time Search Input */}
         <div className="relative w-full md:w-64 flex-shrink-0">
-          <Search className="w-4 h-4 text-[#AEAEAE] absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-slate-400 dark:text-[#AEAEAE] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="매체명·규격 실시간 검색..."
-            className="w-full pl-9 pr-8 py-1.5 text-xs rounded-lg border border-[#26272c] bg-[#1a1b1f] text-white focus:outline-none focus:border-[#A8FF1A] transition-all placeholder:text-[#6E6E6E]"
+            className="w-full pl-9 pr-8 py-1.5 text-xs rounded-lg border border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 dark:border-[#26272c] dark:bg-[#1a1b1f] dark:text-white dark:placeholder:text-[#6E6E6E] dark:focus:border-[#A8FF1A] transition-all"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#AEAEAE] hover:text-white cursor-pointer"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:text-[#AEAEAE] dark:hover:text-white cursor-pointer"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -611,18 +616,18 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       </div>
 
       {/* ── 3. Smart Preset & Auto-Match Bar ── */}
-      <div className="bg-[#1a1b1f] border border-[#26272c] rounded-2xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+      <div className="bg-slate-50 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-sm dark:bg-[#1a1b1f] dark:border-[#26272c] dark:shadow-inner">
         {/* Left: Auto Match Checkbox */}
-        <label className="flex items-center space-x-2.5 text-xs font-bold text-white cursor-pointer select-none">
+        <label className="flex items-center space-x-2.5 text-xs font-bold text-slate-900 dark:text-white cursor-pointer select-none">
           <input
             type="checkbox"
             checked={autoMatch}
             onChange={(e) => onToggleAutoMatch(e.target.checked)}
-            className="rounded accent-[#A8FF1A] w-4 h-4 cursor-pointer"
+            className="rounded accent-emerald-600 dark:accent-[#A8FF1A] w-4 h-4 cursor-pointer"
           />
           <div className="flex items-center space-x-1.5">
-            <span className="text-[#A8FF1A] font-extrabold">🎯 스마트 자동 매칭</span>
-            <span className="text-[#AEAEAE] font-normal hidden lg:inline">
+            <span className="text-emerald-700 dark:text-[#A8FF1A] font-extrabold">🎯 스마트 자동 매칭</span>
+            <span className="text-slate-500 dark:text-[#AEAEAE] font-normal hidden lg:inline">
               (소재 파일명·해상도와 일치하는 지면만 지능형 자동 선별)
             </span>
           </div>
@@ -630,13 +635,13 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
         {/* Right: Quick Placement Preset Dropdown */}
         <div className="flex items-center space-x-2 flex-shrink-0">
-          <span className="text-[11px] font-semibold text-[#AEAEAE] hidden sm:inline">
+          <span className="text-[11px] font-semibold text-slate-500 dark:text-[#AEAEAE] hidden sm:inline">
             대표 지면 필터:
           </span>
           <select
             value={selectedChannelId}
             onChange={(e) => handleChannelSelect(e.target.value)}
-            className="px-2.5 py-1.5 text-xs rounded-lg bg-[#202126] border border-[#2e2f36] text-white font-medium focus:outline-none focus:border-[#A8FF1A] cursor-pointer shadow-sm max-w-[240px] truncate"
+            className="px-2.5 py-1.5 text-xs rounded-lg bg-white border border-slate-200 text-slate-800 font-medium focus:outline-none focus:border-slate-400 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-white dark:focus:border-[#A8FF1A] cursor-pointer shadow-sm max-w-[240px] truncate"
           >
             <option value="all">⚡ 핵심 4대 매체 기본 검수</option>
             <optgroup label="네이버 (Naver NOSP & GFA)">
@@ -677,9 +682,9 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
       {/* ── 4. Platform Cards Grid (No-Overflow Guaranteed) ── */}
       {filteredPlatforms.length === 0 ? (
-        <div className="py-12 text-center border border-dashed border-line rounded-xl bg-canvas-subtle/50">
-          <Layers className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-          <p className="text-xs font-bold text-ink-secondary">
+        <div className="py-12 text-center border border-dashed border-slate-200 dark:border-line rounded-xl bg-slate-50/50 dark:bg-canvas-subtle/50">
+          <Layers className="w-8 h-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+          <p className="text-xs font-bold text-slate-700 dark:text-ink-secondary">
             '{searchQuery}' 검색어와 일치하는 광고 매체가 없습니다.
           </p>
           <button
@@ -688,7 +693,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
               setSearchQuery('');
               setSelectedCategory('all');
             }}
-            className="text-xs text-accent font-semibold hover:underline mt-2 cursor-pointer"
+            className="text-xs text-emerald-700 dark:text-accent font-semibold hover:underline mt-2 cursor-pointer"
           >
             전체 매체 목록 보기
           </button>
@@ -708,8 +713,8 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                 key={platform.id}
                 className={`rounded-2xl border transition-all overflow-hidden flex flex-col justify-between ${
                   isSelected
-                    ? 'border-[#A8FF1A] bg-[#1a1b1f] ring-1 ring-[#A8FF1A]/30 shadow-lg'
-                    : 'border-[#26272c] hover:border-[#3a3b42] bg-[#141416]'
+                    ? 'border-emerald-500 bg-emerald-50/40 ring-1 ring-emerald-500/30 shadow-sm dark:border-[#A8FF1A] dark:bg-[#1a1b1f] dark:ring-1 dark:ring-[#A8FF1A]/30 dark:shadow-lg'
+                    : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50/60 shadow-sm dark:border-[#26272c] dark:hover:border-[#3a3b42] dark:bg-[#141416]'
                 }`}
               >
                 {/* Card Header (Strictly constrained layout, no overflow) */}
@@ -722,19 +727,19 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center space-x-1.5 flex-nowrap min-w-0">
                         <span
-                          className="text-xs font-bold text-white truncate block"
+                          className="text-xs font-bold text-slate-900 dark:text-white truncate block"
                           title={platform.name}
                         >
                           {platform.name}
                         </span>
                         <span
-                          className={`text-[10px] font-bold px-1.5 py-0.2 rounded border flex-shrink-0 whitespace-nowrap ${platform.badgeColor}`}
+                          className="text-[10px] font-bold px-1.5 py-0.2 rounded border flex-shrink-0 whitespace-nowrap bg-slate-100 border-slate-200 text-slate-600 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#AEAEAE]"
                         >
                           {placementsCount}개
                         </span>
                       </div>
                       <p
-                        className="text-[11px] text-[#AEAEAE] truncate mt-1 block"
+                        className="text-[11px] text-slate-500 dark:text-[#AEAEAE] truncate mt-1 block"
                         title={meta?.description || platform.description}
                       >
                         {meta?.description || platform.description}
@@ -747,13 +752,13 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                     <button
                       type="button"
                       onClick={() => handleTogglePlatform(platform.id)}
-                      className="p-1 text-[#AEAEAE] hover:text-[#A8FF1A] transition-colors cursor-pointer"
+                      className="p-1 text-slate-400 hover:text-emerald-600 dark:text-[#AEAEAE] dark:hover:text-[#A8FF1A] transition-colors cursor-pointer"
                       aria-label={`${platform.name} 선택 토글`}
                     >
                       {isSelected ? (
-                        <CheckSquare className="w-4 h-4 text-[#A8FF1A]" />
+                        <CheckSquare className="w-4 h-4 text-emerald-600 dark:text-[#A8FF1A]" />
                       ) : (
-                        <Square className="w-4 h-4 text-[#6E6E6E] hover:text-white" />
+                        <Square className="w-4 h-4 text-slate-400 hover:text-slate-700 dark:text-[#6E6E6E] dark:hover:text-white" />
                       )}
                     </button>
 
@@ -762,11 +767,11 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                       onClick={() =>
                         setExpandedPlatform(isExpanded ? null : platform.id)
                       }
-                      className="p-1 text-[#AEAEAE] hover:text-white rounded hover:bg-[#202126] transition-colors cursor-pointer"
+                      className="p-1 text-slate-400 hover:text-slate-700 rounded hover:bg-slate-100 dark:text-[#AEAEAE] dark:hover:text-white dark:hover:bg-[#202126] transition-colors cursor-pointer"
                       title={isExpanded ? '상세 지면 접기' : '상세 지면 펼치기'}
                     >
                       {isExpanded ? (
-                        <ChevronUp className="w-4 h-4 text-[#A8FF1A]" />
+                        <ChevronUp className="w-4 h-4 text-emerald-600 dark:text-[#A8FF1A]" />
                       ) : (
                         <ChevronDown className="w-4 h-4" />
                       )}
@@ -776,16 +781,16 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
                 {/* Expanded Placements Drawer */}
                 {isExpanded && (
-                  <div className="px-3.5 pb-3.5 pt-2 border-t border-[#26272c] bg-[#141416]/90 space-y-2">
+                  <div className="px-3.5 pb-3.5 pt-2 border-t border-slate-200 bg-slate-50/80 dark:border-[#26272c] dark:bg-[#141416]/90 space-y-2">
                     {/* Official Guide Source Info */}
                     {meta && (
-                      <div className="p-2 rounded-lg bg-[#1a1b1f] border border-[#26272c] text-[11px] space-y-1">
-                        <div className="flex items-center justify-between text-[#AEAEAE]">
-                          <span className="flex items-center space-x-1 font-semibold text-white">
-                            <Calendar className="w-3 h-3 text-[#A8FF1A]" />
+                      <div className="p-2 rounded-lg bg-white border border-slate-200 text-[11px] space-y-1 dark:bg-[#1a1b1f] dark:border-[#26272c]">
+                        <div className="flex items-center justify-between text-slate-600 dark:text-[#AEAEAE]">
+                          <span className="flex items-center space-x-1 font-semibold text-slate-900 dark:text-white">
+                            <Calendar className="w-3 h-3 text-emerald-600 dark:text-[#A8FF1A]" />
                             <span>{meta.official_update_date || '공식 가이드 미확인'}</span>
                           </span>
-                          <span className="text-[10px] text-[#6E6E6E]">
+                          <span className="text-[10px] text-slate-400 dark:text-[#6E6E6E]">
                             {meta.verification?.status === 'verified'
                               ? `공식 문서 대조: ${meta.verification.checked_on}`
                               : meta.verification?.status === 'partial'
@@ -794,7 +799,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                           </span>
                         </div>
                         {!meta.official_source_url && (
-                          <div className="pt-0.5 text-ink-tertiary font-semibold">
+                          <div className="pt-0.5 text-slate-500 dark:text-ink-tertiary font-semibold">
                             {meta.official_source_name || '공식 출처 확인 불가 (매체 담당자 확인 필요)'}
                           </div>
                         )}
@@ -804,7 +809,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                               href={meta.official_source_url}
                               target="_blank"
                               rel="noreferrer"
-                              className="inline-flex items-center space-x-1 text-[#A8FF1A] hover:text-[#b8ff33] font-bold hover:underline"
+                              className="inline-flex items-center space-x-1 text-emerald-700 hover:text-emerald-800 dark:text-[#A8FF1A] dark:hover:text-[#b8ff33] font-bold hover:underline"
                             >
                               <span>{meta.official_source_name || '공식 제작 가이드 바로가기'}</span>
                               <ExternalLink className="w-3 h-3" />
@@ -814,8 +819,8 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                       </div>
                     )}
 
-                    <div className="flex items-center justify-between text-[11px] text-[#AEAEAE] pt-1">
-                      <span className="font-semibold text-white">
+                    <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-[#AEAEAE] pt-1">
+                      <span className="font-semibold text-slate-900 dark:text-white">
                         세부 지면 선택 ({selectedForThisPlatform.length === 0 ? '전체 검수' : `${selectedForThisPlatform.length}개 선택됨`}):
                       </span>
                       {selectedForThisPlatform.length > 0 && (
@@ -827,7 +832,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                               [platform.id]: [],
                             })
                           }
-                          className="text-[10px] text-[#A8FF1A] hover:underline cursor-pointer"
+                          className="text-[10px] text-emerald-700 hover:text-emerald-800 dark:text-[#A8FF1A] hover:underline cursor-pointer"
                         >
                           지면 초기화
                         </button>
@@ -836,7 +841,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
                     <div className="max-h-48 overflow-y-auto space-y-1 pr-1">
                       {platformPlacements.length === 0 ? (
-                        <div className="text-[11px] text-[#6E6E6E] py-1">
+                        <div className="text-[11px] text-slate-400 dark:text-[#6E6E6E] py-1">
                           등록된 세부 지면이 없습니다.
                         </div>
                       ) : (
@@ -855,8 +860,8 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                               onMouseLeave={handlePlacementMouseLeave}
                               className={`flex items-start justify-between p-1.5 rounded-lg text-[11px] cursor-pointer transition-colors relative group/item ${
                                 isChecked
-                                  ? 'bg-[#202126] text-[#A8FF1A] font-bold'
-                                  : 'hover:bg-[#202126] text-[#AEAEAE] hover:text-white'
+                                  ? 'bg-emerald-100/70 text-emerald-900 font-bold dark:bg-[#202126] dark:text-[#A8FF1A]'
+                                  : 'hover:bg-slate-200/60 text-slate-700 hover:text-slate-900 dark:hover:bg-[#202126] dark:text-[#AEAEAE] dark:hover:text-white'
                               }`}
                             >
                               <div className="flex items-start space-x-1.5 flex-1 pr-1.5 min-w-0">
@@ -866,14 +871,14 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                                   onChange={() =>
                                     handleTogglePlacement(platform.id, placementName)
                                   }
-                                  className="rounded accent-[#A8FF1A] w-3.5 h-3.5 mt-0.5 cursor-pointer flex-shrink-0"
+                                  className="rounded accent-emerald-600 dark:accent-[#A8FF1A] w-3.5 h-3.5 mt-0.5 cursor-pointer flex-shrink-0"
                                 />
                                 <span className="leading-tight truncate block">
                                   {placementName}
                                 </span>
                               </div>
                               {detail && detail.dimension_str && (
-                                <span className="text-[10px] font-mono text-[#AEAEAE] bg-[#141416] px-1.5 py-0.5 rounded border border-[#26272c] flex-shrink-0 ml-1">
+                                <span className="text-[10px] font-mono text-slate-600 bg-white border border-slate-200 dark:text-[#AEAEAE] dark:bg-[#141416] dark:border-[#26272c] px-1.5 py-0.5 rounded flex-shrink-0 ml-1">
                                   {detail.dimension_str}
                                 </span>
                               )}
@@ -891,20 +896,20 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       )}
 
       {/* ── 5. Helper Notice ── */}
-      <div className="p-3 bg-[#1a1b1f] border border-[#26272c] rounded-2xl flex items-start space-x-2.5 text-xs text-[#AEAEAE] leading-relaxed shadow-inner">
-        <ShieldCheck className="w-4 h-4 text-[#A8FF1A] flex-shrink-0 mt-0.5" />
+      <div className="p-3 bg-slate-50 border border-slate-200/90 rounded-2xl flex items-start space-x-2.5 text-xs text-slate-600 leading-relaxed shadow-sm dark:bg-[#1a1b1f] dark:border-[#26272c] dark:text-[#AEAEAE] dark:shadow-inner">
+        <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-[#A8FF1A] flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-bold text-white">100% 클라이언트 독립 검수:</span> 업로드된 광고 소재 파일은 서버로 전송되지 않고 브라우저 로컬 메모리에서 즉시 공식 가이드 센터 규격과 대조됩니다.
+          <span className="font-bold text-slate-900 dark:text-white">100% 클라이언트 독립 검수:</span> 업로드된 광고 소재 파일은 서버로 전송되지 않고 브라우저 로컬 메모리에서 즉시 공식 가이드 센터 규격과 대조됩니다.
         </div>
       </div>
 
       {/* ── 6. Bottom Start Validation Action Bar ── */}
-      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-[#26272c]">
-        <div className="text-xs text-[#AEAEAE]">
+      <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-slate-200 dark:border-[#26272c]">
+        <div className="text-xs text-slate-500 dark:text-[#AEAEAE]">
           {fileCount > 0 ? (
-            <span className="font-medium text-white">
-              업로드된 <strong className="text-[#A8FF1A] font-bold">{fileCount}개 소재</strong>를 선택된{' '}
-              <strong className="text-[#A8FF1A] font-bold">{selectedPlatforms.length}개 매체</strong>의 공식 규격으로 실시간 검수합니다.
+            <span className="font-medium text-slate-900 dark:text-white">
+              업로드된 <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{fileCount}개 소재</strong>를 선택된{' '}
+              <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{selectedPlatforms.length}개 매체</strong>의 공식 규격으로 실시간 검수합니다.
             </span>
           ) : (
             <span>소재 파일을 먼저 상단에 드래그하거나 선택하여 업로드해주세요.</span>
@@ -918,7 +923,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           className={`inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-full font-bold text-sm transition-all cursor-pointer ${
             canValidate && !isLoading
               ? 'bg-[#A8FF1A] hover:bg-[#b8ff33] text-black font-extrabold shadow-[0_0_12px_rgba(168,255,26,0.35)] active:scale-98'
-              : 'bg-[#202126] text-[#6E6E6E] border border-[#2e2f36] cursor-not-allowed'
+              : 'bg-slate-100 text-slate-400 border border-slate-200 dark:bg-[#202126] dark:text-[#6E6E6E] dark:border-[#2e2f36] cursor-not-allowed'
           }`}
         >
           {isLoading ? (
@@ -948,23 +953,23 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
             transform: hoveredPlacement.rect.top < 110 ? 'none' : 'translateY(-100%)',
           }}
         >
-          <div className="bg-[#141416] text-white px-3.5 py-3 rounded-2xl shadow-2xl border border-[#26272c] max-w-sm w-max space-y-2">
+          <div className="bg-white text-slate-900 border border-slate-200 shadow-2xl dark:bg-[#141416] dark:text-white dark:border-[#26272c] px-3.5 py-3 rounded-2xl max-w-sm w-max space-y-2">
             {/* Title / Name */}
-            <div className="font-bold text-white text-xs flex items-center gap-1.5 leading-snug">
-              <span className="text-[#A8FF1A] flex-shrink-0">📍</span>
-              <span className="text-white font-bold">{hoveredPlacement.name}</span>
+            <div className="font-bold text-slate-900 dark:text-white text-xs flex items-center gap-1.5 leading-snug">
+              <span className="text-emerald-600 dark:text-[#A8FF1A] flex-shrink-0">📍</span>
+              <span className="font-bold">{hoveredPlacement.name}</span>
             </div>
 
             {/* Spec Badges */}
             {hoveredPlacement.detail && (
-              <div className="flex items-center gap-1.5 text-[10px] font-mono flex-wrap pt-1 border-t border-[#26272c]">
+              <div className="flex items-center gap-1.5 text-[10px] font-mono flex-wrap pt-1 border-t border-slate-200 dark:border-[#26272c]">
                 {hoveredPlacement.detail.dimension_str && (
-                  <span className="bg-[#202126] text-[#A8FF1A] border border-[#2e2f36] px-2 py-0.5 rounded-md font-bold">
+                  <span className="bg-slate-100 text-slate-800 border border-slate-200 dark:bg-[#202126] dark:text-[#A8FF1A] dark:border-[#2e2f36] px-2 py-0.5 rounded-md font-bold">
                     📐 {hoveredPlacement.detail.dimension_str}
                   </span>
                 )}
                 {hoveredPlacement.detail.max_file_size_kb && (
-                  <span className="bg-[#202126] text-[#AEAEAE] border border-[#2e2f36] px-2 py-0.5 rounded-md font-semibold">
+                  <span className="bg-slate-100 text-slate-600 border border-slate-200 dark:bg-[#202126] dark:text-[#AEAEAE] dark:border-[#2e2f36] px-2 py-0.5 rounded-md font-semibold">
                     💾 최대{' '}
                     {hoveredPlacement.detail.max_file_size_kb >= 1024
                       ? `${(hoveredPlacement.detail.max_file_size_kb / 1024).toFixed(1)}MB`
@@ -973,7 +978,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
                 )}
                 {hoveredPlacement.detail.allowed_formats &&
                   hoveredPlacement.detail.allowed_formats.length > 0 && (
-                    <span className="bg-[#202126] text-[#AEAEAE] border border-[#2e2f36] px-2 py-0.5 rounded-md uppercase font-medium">
+                    <span className="bg-slate-100 text-slate-600 border border-slate-200 dark:bg-[#202126] dark:text-[#AEAEAE] dark:border-[#2e2f36] px-2 py-0.5 rounded-md uppercase font-medium">
                       🖼️ {hoveredPlacement.detail.allowed_formats.join(', ')}
                     </span>
                   )}
@@ -982,7 +987,7 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
 
             {/* Description if available */}
             {hoveredPlacement.detail?.description && (
-              <p className="text-[10px] text-[#AEAEAE] font-sans leading-relaxed pt-0.5">
+              <p className="text-[10px] text-slate-500 dark:text-[#AEAEAE] font-sans leading-relaxed pt-0.5">
                 {hoveredPlacement.detail.description}
               </p>
             )}
@@ -991,8 +996,8 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
             <div
               className={`absolute left-6 border-4 border-transparent ${
                 hoveredPlacement.rect.top < 110
-                  ? 'bottom-full -mb-1 border-b-[#141416]'
-                  : 'top-full -mt-1 border-t-[#141416]'
+                  ? 'bottom-full -mb-1 border-b-white dark:border-b-[#141416]'
+                  : 'top-full -mt-1 border-t-white dark:border-t-[#141416]'
               }`}
             />
           </div>
