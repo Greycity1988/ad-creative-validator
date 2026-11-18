@@ -16,6 +16,7 @@ import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { track, pageview } from '@vercel/analytics';
+import { SuiteFooter } from './components/SuiteFooter';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
@@ -250,34 +251,13 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <footer className="mt-auto border-t border-slate-200 bg-white dark:border-[#26272c] dark:bg-[#141416] py-10 text-center text-xs text-slate-500 dark:text-[#AEAEAE] space-y-3 flex flex-col items-center justify-center transition-colors">
-        <button
-          type="button"
-          onClick={() => setIsLogoOpen(true)}
-          className="group relative p-2 rounded-2xl hover:bg-slate-100 dark:hover:bg-[#1a1b1f] transition-all cursor-pointer"
-          title="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
-        >
-          <ACVLogo size={36} showText={false} className="opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-105" />
-        </button>
-        <p className="font-bold text-slate-900 dark:text-white text-sm tracking-tight">
-          Crafted with passion in 2026 by <strong className="text-emerald-700 dark:text-[#A8FF1A] font-extrabold">Owen O. Magnus</strong>.
-        </p>
-        <p className="text-xs text-slate-500 dark:text-[#AEAEAE] font-medium">
-          Feedbacks are warmly welcomed, and{' '}
-          <button
-            type="button"
-            onClick={() => setIsDonationOpen(true)}
-            className="text-emerald-700 hover:text-emerald-800 dark:text-[#A8FF1A] dark:hover:text-[#b8ff33] font-bold underline decoration-emerald-500/30 dark:decoration-[#A8FF1A]/30 cursor-pointer inline-flex items-center space-x-1"
-          >
-            <span>coffee sponsorships</span>
-            <span>☕✨</span>
-          </button>{' '}
-          are deeply appreciated!
-        </p>
-        <p className="text-[11px] text-slate-400 dark:text-[#6E6E6E]">
-          ACV (Ad Creative Validator) • 32 Major Advertising Platforms & 430+ Official Placements Supported • PC 환경 최적화
-        </p>
-      </footer>
+      <SuiteFooter
+        appName="ACV (Ad Creative Validator)"
+        emblem={<ACVLogo size={36} showText={false} />}
+        onOpenDonation={() => setIsDonationOpen(true)}
+        onEmblemClick={() => setIsLogoOpen(true)}
+        emblemTitle="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
+      />
 
       {/* Modals */}
       <GuideModal
