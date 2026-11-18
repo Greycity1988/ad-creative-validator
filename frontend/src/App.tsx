@@ -9,7 +9,8 @@ import { DonationModal } from './components/DonationModal';
 import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
 import { SuiteNavigationDrawer } from './components/SuiteNavigationDrawer';
-import { Footer } from './components/Footer';
+import { SuiteFooter } from './components/SuiteFooter';
+import { ACVLogo } from './components/ACVLogo';
 import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages } from './api/validator';
@@ -249,12 +250,13 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      <Footer
+      <SuiteFooter
+        appName={`ACV (Ad Creative Validator) • ${platformsMetadata.length} Platforms & ${totalPlacementsCount} Placements Supported`}
+        emblem={<ACVLogo size={36} showText={false} />}
+        onEmblemClick={() => setIsLogoOpen(true)}
+        emblemTitle="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
         onOpenFeedback={() => setIsFeedbackOpen(true)}
         onOpenDonation={() => setIsDonationOpen(true)}
-        onOpenLogo={() => setIsLogoOpen(true)}
-        platformsCount={platformsMetadata.length}
-        placementsCount={totalPlacementsCount}
       />
 
       {/* Modals */}
