@@ -1,11 +1,15 @@
 platform: 크리테오
 platform_id: criteo
-official_update_date: 2026.03 공식 개정
-official_source_name: Criteo Advertising Guidelines (Help Center)
-official_source_url: https://help.criteo.com
-revision_summary: 표준 IAB 디스플레이 배너 18종 및 모바일 풀스크린/인터스티셜, 제휴 네트워크 배너, 플래그십/쇼케이스 빅배너, 어댑티브 마스터, 빅쿠폰, 타이머 및 로고존 에셋 전 규격 완비
-last_verified_date: '2026-11-13'
-description: 표준 IAB 배너 18종, 모바일 인터스티셜/풀스크린 6종, 제휴 네트워크 배너, 빅배너(플래그십 576×300/200, 쇼케이스, 헤더), 어댑티브 (1:1, 1.91:1, 2:3), 빅쿠폰 배너, 타이머 및 로고존 에셋 규격 완비
+official_update_date: Criteo 고객센터 (게시일 미표기)
+official_source_name: Criteo 리테일 미디어 크리에이티브 가이드 (공식)
+official_source_url: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+revision_summary: 2026-11-15 공식 고객센터 대조. 리테일 미디어 IAB 20종 500KB·JPG·PNG·GIF, 다이내믹 광고 이미지 1200×1200·1200×628·800×1200 5MB. 공개 가이드에 없는 플래그십·쇼케이스·브랜디드 헤더·로고존·Commerce Display 등은 매체 확인 중
+last_verified_date: '2026-11-15'
+description: IAB 배너 20종(500KB), 다이내믹 광고 이미지 1:1·1.91:1·2:3, 플래그십·쇼케이스·로고존 등 계정별 규격(매체 확인 중)
+verification:
+  status: partial
+  checked_on: '2026-11-15'
+  method: help.retailmedia.criteo.com 크리에이티브 가이드, help.criteo.com 다이내믹 광고 가이드 대조. 계정별 사양서 규격은 매체 확인 필요
 placements:
 - name: 크리테오 (플래그십 데스크톱 빅배너 FS_300 576×300)
   exact_width: 576
@@ -15,6 +19,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (플래그십 데스크톱 빅배너 FS_200 576×200)
   exact_width: 576
   exact_height: 200
@@ -23,6 +29,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (쇼케이스 빅배너 310×500)
   exact_width: 310
   exact_height: 500
@@ -31,6 +39,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (쇼케이스 일반 빅배너 270×390)
   exact_width: 270
   exact_height: 390
@@ -39,6 +49,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (브랜디드 헤더 빅배너 배경 1242×300)
   exact_width: 1242
   exact_height: 300
@@ -47,6 +59,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (브랜디드 헤더 빅배너 로고 460×300)
   exact_width: 460
   exact_height: 300
@@ -55,6 +69,8 @@ placements:
   - png
   - jpg
   - jpeg
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (표준 디스플레이 배너 300×250)
   exact_width: 300
   exact_height: 250
@@ -64,6 +80,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 300×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 728×90)
   exact_width: 728
   exact_height: 90
@@ -73,6 +94,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 728×90, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 160×600)
   exact_width: 160
   exact_height: 600
@@ -82,6 +108,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 160×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 300×600)
   exact_width: 300
   exact_height: 600
@@ -91,6 +122,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 300×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 970×250)
   exact_width: 970
   exact_height: 250
@@ -100,6 +136,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 970×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 970×90)
   exact_width: 970
   exact_height: 90
@@ -109,6 +150,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 970×90, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 모바일 배너 320×100)
   exact_width: 320
   exact_height: 100
@@ -118,6 +164,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (표준 모바일 배너 320×50)
   exact_width: 320
   exact_height: 50
@@ -127,6 +175,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 320×50, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 336×280)
   exact_width: 336
   exact_height: 280
@@ -136,6 +189,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 336×280, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 120×600)
   exact_width: 120
   exact_height: 600
@@ -145,6 +203,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 120×600, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 468×60)
   exact_width: 468
   exact_height: 60
@@ -154,6 +217,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 468×60, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 250×250)
   exact_width: 250
   exact_height: 250
@@ -163,6 +231,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 250×250, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 200×200)
   exact_width: 200
   exact_height: 200
@@ -172,6 +245,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 200×200, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (표준 디스플레이 배너 240×240)
   exact_width: 240
   exact_height: 240
@@ -181,6 +259,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (네트워크 서브 배너 170×128)
   exact_width: 170
   exact_height: 128
@@ -190,6 +270,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (모바일 전면 배너 세로 320×480)
   exact_width: 320
   exact_height: 480
@@ -199,6 +281,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 320×480, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (모바일 전면 배너 가로 480×320)
   exact_width: 480
   exact_height: 320
@@ -208,6 +295,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 480×320, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (모바일 풀스크린 배너 320×568)
   exact_width: 320
   exact_height: 568
@@ -217,6 +309,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 320×568, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (모바일 풀스크린 배너 360×640)
   exact_width: 360
   exact_height: 640
@@ -226,6 +323,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 360×640, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (모바일 와이드 배너 640×360)
   exact_width: 640
   exact_height: 360
@@ -235,6 +337,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (표준 모바일 배너 300×50)
   exact_width: 300
   exact_height: 50
@@ -244,6 +348,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (정방형 대형 배너 500×500)
   exact_width: 500
   exact_height: 500
@@ -253,6 +359,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (정방형 대형 배너 600×600)
   exact_width: 600
   exact_height: 600
@@ -262,6 +370,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (중형 직사각형 배너 360×300)
   exact_width: 360
   exact_height: 300
@@ -271,6 +381,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (하프 배너 234×60)
   exact_width: 234
   exact_height: 60
@@ -280,6 +392,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 234×60, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (직사각형 배너 300×100)
   exact_width: 300
   exact_height: 100
@@ -289,6 +406,11 @@ placements:
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 300×100, JPG·PNG·GIF(애니메이션 최대 30초), 최대 500KB
 - name: 크리테오 (세로형 소형 배너 120×240)
   exact_width: 120
   exact_height: 240
@@ -298,6 +420,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (포트레이트 대형 배너 300×1050)
   exact_width: 300
   exact_height: 1050
@@ -307,6 +431,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (태블릿 전면 배너 세로 768×1024)
   exact_width: 768
   exact_height: 1024
@@ -316,6 +442,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (태블릿 전면 배너 가로 1024×768)
   exact_width: 1024
   exact_height: 768
@@ -325,48 +453,68 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (어댑티브 Square 1:1 1200×1200)
   aspect_ratio:
   - 1
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 800
-  min_height: 800
   recommended_width: 1200
   recommended_height: 1200
-  max_file_size_kb: 1024
+  max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: Criteo 다이내믹 광고 이미지 1200×1200 (1:1), jpg·png, 최대 5MB
 - name: 크리테오 (어댑티브 Landscape 1.91:1 1200×628)
   aspect_ratio:
   - 1.91
   - 1
   aspect_ratio_tolerance: 0.02
-  min_width: 600
-  min_height: 314
   recommended_width: 1200
   recommended_height: 628
-  max_file_size_kb: 1024
+  max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: Criteo 다이내믹 광고 이미지 1200×628 (1.91:1), jpg·png, 최대 5MB
 - name: 크리테오 (어댑티브 Portrait 2:3 800×1200)
   aspect_ratio:
   - 2
   - 3
   aspect_ratio_tolerance: 0.02
-  min_width: 600
-  min_height: 900
   recommended_width: 800
   recommended_height: 1200
-  max_file_size_kb: 1024
+  max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.criteo.com/kb/guide/en/dynamic-ads-BlOsyHZFaF/Steps/775669,820400
+  unstated:
+  - min_size
+  - aspect_ratio_tolerance
+  description: Criteo 다이내믹 광고 이미지 800×1200 (2:3), jpg·png, 최대 5MB
 - name: 크리테오 (빅쿠폰 배너 300×250)
   exact_width: 300
   exact_height: 250
@@ -376,6 +524,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (빅쿠폰 배너 1200×628)
   exact_width: 1200
   exact_height: 628
@@ -384,6 +534,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (빅쿠폰 배너 728×90)
   exact_width: 728
   exact_height: 90
@@ -393,6 +545,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (빅쿠폰 배너 300×600)
   exact_width: 300
   exact_height: 600
@@ -402,6 +556,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (빅쿠폰 배너 320×100)
   exact_width: 320
   exact_height: 100
@@ -411,6 +567,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (빅쿠폰 배너 320×50)
   exact_width: 320
   exact_height: 50
@@ -420,6 +578,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 300×250)
   exact_width: 300
   exact_height: 250
@@ -429,6 +589,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 728×90)
   exact_width: 728
   exact_height: 90
@@ -438,6 +600,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 300×600)
   exact_width: 300
   exact_height: 600
@@ -447,6 +611,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 160×600)
   exact_width: 160
   exact_height: 600
@@ -456,6 +622,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 1200×628)
   exact_width: 1200
   exact_height: 628
@@ -464,6 +632,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 320×100)
   exact_width: 320
   exact_height: 100
@@ -473,6 +643,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머 배너 320×50)
   exact_width: 320
   exact_height: 50
@@ -482,6 +654,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 100×100)
   exact_width: 100
   exact_height: 100
@@ -491,7 +665,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 1:1 오버레이 에셋 (100×100) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 105×50)
   exact_width: 105
   exact_height: 50
@@ -501,7 +676,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (105×50) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 120×60)
   exact_width: 120
   exact_height: 60
@@ -511,7 +687,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (120×60) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 130×90)
   exact_width: 130
   exact_height: 90
@@ -521,7 +698,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (130×90) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 160×56)
   exact_width: 160
   exact_height: 56
@@ -531,7 +709,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (160×56) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 200×32)
   exact_width: 200
   exact_height: 32
@@ -541,7 +720,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (200×32) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 300×40)
   exact_width: 300
   exact_height: 40
@@ -551,7 +731,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×40) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 300×54)
   exact_width: 300
   exact_height: 54
@@ -561,7 +742,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (300×54) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 336×48)
   exact_width: 336
   exact_height: 48
@@ -571,7 +753,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (336×48) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 180×250)
   exact_width: 180
   exact_height: 250
@@ -581,7 +764,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×250) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 180×34)
   exact_width: 180
   exact_height: 34
@@ -591,7 +775,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (180×34) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 360×57)
   exact_width: 360
   exact_height: 57
@@ -601,7 +786,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (360×57) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (타이머/쿠폰 로고존 에셋 320×57)
   exact_width: 320
   exact_height: 57
@@ -611,7 +797,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57)
+  description: 'Criteo RTCO 타이머/쿠폰 배너 로고존(LogoZone) 오버레이 에셋 (320×57) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (Commerce Display Spotlight 데스크톱 1400×450)
   exact_width: 1400
   exact_height: 450
@@ -621,7 +808,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450)
+  description: 'Criteo Commerce Display 최신 스포트라이트 데스크톱 와이드 배너 (1400×450) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (Commerce Display Grid 데스크톱 1500×1500)
   exact_width: 1500
   exact_height: 1500
@@ -631,7 +819,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500)
+  description: 'Criteo Commerce Display 그리드 듀엣/셀프 데스크톱 1:1 대형 배너 (1500×1500) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
 - name: 크리테오 (Commerce Display Grid 모바일 1280×400)
   exact_width: 1280
   exact_height: 400
@@ -641,4 +830,33 @@ placements:
   - jpeg
   - png
   - gif
-  description: Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400)
+  description: 'Criteo Commerce Display 그리드 모바일 전용 배너 (1280×400) [매체 확인 중: Criteo 공개 가이드(리테일 미디어 IAB 20종, 다이내믹 이미지 3종)에 없는 규격 — 계정 담당자 사양서 확인 필요]'
+  needs_confirmation: true
+- name: 크리테오 리테일 미디어 (180×150)
+  exact_width: 180
+  exact_height: 150
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 180×150, JPG·PNG·GIF, 최대 500KB
+- name: 크리테오 리테일 미디어 (240×400)
+  exact_width: 240
+  exact_height: 400
+  max_file_size_kb: 500
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://help.retailmedia.criteo.com/kb/guide/en/creative-guidelines-1Kj4Q8vcM3/Steps/2973923
+  description: Criteo 리테일 미디어 크리에이티브 가이드 240×400, JPG·PNG·GIF, 최대 500KB

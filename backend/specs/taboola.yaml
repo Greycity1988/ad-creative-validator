@@ -1,110 +1,215 @@
 platform: 타불라 (Taboola)
 platform_id: taboola
-official_update_date: 2026.04 공식 개정
-official_source_name: Taboola Help Center Creative Specifications
-official_source_url: https://help.taboola.com
-revision_summary: 네이티브 스폰서드 콘텐츠 16:9(1200×674 / 1200×628), 1:1(1000×1000), 세로형(300×600) 및 5MB 기준 확정
-last_verified_date: '2026-11-12'
-description: 네이티브 스폰서드 콘텐츠 (16:9, 1:1, 4:3, 1:2)
+official_update_date: Realize(타불라) 고객센터 (게시일 미표기)
+official_source_name: Realize(Taboola) 썸네일·디스플레이 광고 가이드 (공식)
+official_source_url: https://realize.com/help/en/articles/8964660-video-title-and-thumbnail-best-practices
+revision_summary: 2026-11-15 공식 고객센터 대조. 네이티브 썸네일 16:9·4:3·1:1, 최소 400×350, 5MB. 디스플레이 IAB 7종과 9:16·16:9, 2MB. 공식 비율에 없는 1.91:1 삭제, 300×250·300×600·9:16은 디스플레이 규격(2MB)으로 정정
+last_verified_date: '2026-11-15'
+description: 네이티브 썸네일 16:9(권장 1200×674)·4:3·1:1 (5MB), 디스플레이 IAB 7종·9:16·16:9 (2MB)
+verification:
+  status: verified
+  checked_on: '2026-11-15'
+  method: realize.com/help 썸네일 모범 사례·디스플레이 광고 문서 대조
 placements:
 - name: 타불라 (네이티브 추천 가로형 16:9 1200×674)
   aspect_ratio:
   - 16
   - 9
-  aspect_ratio_tolerance: 0.05
+  aspect_ratio_tolerance: 0.02
+  max_file_size_kb: 5120
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  description: 네이티브 썸네일 16:9 권장 (1200×674, 최소 400×350), 5MB, JPEG 권장(PNG·GIF 가능)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/8964660-video-title-and-thumbnail-best-practices
   min_width: 400
   min_height: 350
+  unstated:
+  - aspect_ratio_tolerance
   recommended_width: 1200
   recommended_height: 674
+- name: 타불라 (네이티브 썸네일 1:1)
+  aspect_ratio:
+  - 1
+  - 1
+  aspect_ratio_tolerance: 0.02
   max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
   - gif
-  description: 타불라 공식 베스트 프랙티스 16:9 메인 추천 지면 규격 (최대 5MB)
-- name: 타불라 (네이티브 정방형 Square 1:1 1000×1000)
-  aspect_ratio:
-  - 1
-  - 1
-  aspect_ratio_tolerance: 0.02
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/8964660-video-title-and-thumbnail-best-practices
   min_width: 400
-  min_height: 400
-  recommended_width: 1000
-  recommended_height: 1000
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  - gif
-- name: 타불라 (네이티브 세로형 Vertical 1:2 300×600)
-  aspect_ratio:
-  - 1
-  - 2
-  aspect_ratio_tolerance: 0.02
-  exact_width: 300
-  exact_height: 600
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  - gif
-- name: 타불라 (네이티브 추천 4:3 1200×900)
+  min_height: 350
+  unstated:
+  - aspect_ratio_tolerance
+  description: 네이티브 썸네일 1:1 (최소 400×350), 5MB
+- name: 타불라 (네이티브 썸네일 4:3)
   aspect_ratio:
   - 4
   - 3
-  aspect_ratio_tolerance: 0.05
-  recommended_width: 1200
-  recommended_height: 900
-  min_width: 600
-  min_height: 450
-  max_file_size_kb: 5120
-  allowed_formats:
-  - jpg
-  - jpeg
-  - png
-  - gif
-  description: 타불라 4:3 네이티브 추천 그리드 규격 (1200×900 권장)
-- name: 타불라 (네이티브 와이드 1.91:1 1200×628)
-  aspect_ratio:
-  - 1.91
-  - 1
   aspect_ratio_tolerance: 0.02
-  recommended_width: 1200
-  recommended_height: 628
-  min_width: 600
-  min_height: 314
   max_file_size_kb: 5120
   allowed_formats:
   - jpg
   - jpeg
   - png
   - gif
-  description: 타불라 1.91:1 모바일 피드형 네이티브 배너 (1200×628 권장)
-- name: 타불라 (모바일 세로형 Stories 9:16 1080×1920)
+  description: 네이티브 썸네일 4:3 (최소 400×350), 5MB
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/8964660-video-title-and-thumbnail-best-practices
+  min_width: 400
+  min_height: 350
+  unstated:
+  - aspect_ratio_tolerance
+- name: 타불라 디스플레이 (Medium Rectangle 300×250)
+  exact_width: 300
+  exact_height: 250
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Medium Rectangle 300×250, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Half Page 300×600)
+  exact_width: 300
+  exact_height: 600
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Half Page 300×600, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Mobile Leaderboard 320×50)
+  exact_width: 320
+  exact_height: 50
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Mobile Leaderboard 320×50, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Leaderboard 728×90)
+  exact_width: 728
+  exact_height: 90
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Leaderboard 728×90, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Billboard 970×250)
+  exact_width: 970
+  exact_height: 250
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Billboard 970×250, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Skyscraper 160×600)
+  exact_width: 160
+  exact_height: 600
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Skyscraper 160×600, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Square 250×250)
+  exact_width: 250
+  exact_height: 250
+  max_file_size_kb: 2048
+  allowed_formats:
+  - jpg
+  - jpeg
+  - png
+  - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  description: Vertical/Display 광고 Square 250×250, JPEG·PNG·GIF, 2MB
+- name: 타불라 디스플레이 (Portrait 9:16)
   aspect_ratio:
   - 9
   - 16
   aspect_ratio_tolerance: 0.02
-  recommended_width: 1080
-  recommended_height: 1920
-  min_width: 720
-  min_height: 1280
-  max_file_size_kb: 5120
+  recommended_width: 720
+  recommended_height: 1280
+  max_file_size_kb: 2048
   allowed_formats:
   - jpg
   - jpeg
   - png
   - gif
-  description: 타불라 모바일 스토리 및 세로형 풀스크린 피드 규격
-- name: 타불라 (인라인 추천 위젯 배너 300×250)
-  exact_width: 300
-  exact_height: 250
-  max_file_size_kb: 500
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  unstated:
+  - aspect_ratio_tolerance
+  - min_size
+  description: Vertical/Display 광고 Portrait 9:16 (720×1280), JPEG·PNG·GIF, 2MB. 같은 비율이면 크기가 달라도 매칭
+- name: 타불라 디스플레이 (Landscape 16:9)
+  aspect_ratio:
+  - 16
+  - 9
+  aspect_ratio_tolerance: 0.02
+  recommended_width: 1280
+  recommended_height: 720
+  max_file_size_kb: 2048
   allowed_formats:
   - jpg
   - jpeg
   - png
   - gif
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://realize.com/help/en/articles/10693567-display-ads
+  unstated:
+  - aspect_ratio_tolerance
+  - min_size
+  description: Vertical/Display 광고 Landscape 16:9 (1280×720), JPEG·PNG·GIF, 2MB. 같은 비율이면 크기가 달라도 매칭

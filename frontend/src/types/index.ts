@@ -37,6 +37,11 @@ export interface PlacementResult {
   checks: CheckItem[];
   is_matched_target?: boolean;
   safe_zone?: SafeZoneSpec;
+  // true only when this placement's rule was checked against the publisher's official document
+  verified?: boolean;
+  source?: string;
+  // the source is old or contradicted, so the value is being confirmed with the publisher
+  needs_confirmation?: boolean;
 }
 
 export interface PlatformResult {
@@ -76,6 +81,18 @@ export interface PlacementDetail {
   max_file_size_kb?: number | null;
   description?: string;
   notes?: string[];
+  verified?: boolean;
+  source?: string;
+  source_type?: 'official_page' | 'official_document' | 'media_confirmed';
+  source_date?: string;
+  needs_confirmation?: boolean;
+  unstated?: string[];
+}
+
+export interface PlatformVerification {
+  status: 'verified' | 'partial' | 'unverified';
+  checked_on?: string;
+  method?: string;
 }
 
 export interface PlatformMetadata {
@@ -87,6 +104,7 @@ export interface PlatformMetadata {
   official_source_url?: string;
   revision_summary?: string;
   last_verified_date?: string;
+  verification?: PlatformVerification;
   placements_count: number;
   placements: string[];
   placements_detail: PlacementDetail[];

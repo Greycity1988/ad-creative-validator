@@ -8,12 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "sync:specs": "../backend/.venv/bin/python ../scripts/sync_specs.py",
-    "monitor:specs": "../backend/.venv/bin/python ../scripts/monitor_specs.py"
+    "sync:specs": "python3 ../scripts/sync_specs.py",
+    "monitor:specs": "python3 ../scripts/monitor_specs.py",
+    "verify:specs": "python3 ../scripts/verify_specs.py"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
-    "axios": "^1.7.9",
     "lucide-react": "^0.460.0",
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",

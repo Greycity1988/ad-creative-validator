@@ -1,27 +1,36 @@
 platform: 스냅챗 (Snapchat)
 platform_id: snapchat
-official_update_date: 2026.03 공식 개정
-official_source_name: Snapchat Business Help Center Ads Specs
-official_source_url: https://businesshelp.snapchat.com
-revision_summary: 풀스크린 싱글 이미지(9:16 1080×1920, 최소 720×1280), 스토리 타일(360×600) 및 5MB 기준 확정
-last_verified_date: '2026-11-12'
-description: 풀스크린 싱글 이미지 (9:16), 스토리 타일
+official_update_date: Snapchat for Business 광고 형식 페이지 (게시일 미표기)
+official_source_name: Snapchat 광고 형식·사양 (공식)
+official_source_url: https://forbusiness.snapchat.com/advertising/ad-formats
+revision_summary: 2026-11-15 공식 광고 형식 페이지 대조. 9:16 720×1280, jpg·png. 공식에 없는 이미지 용량 제한(5MB·300KB) 삭제, 스토리 타일·컬렉션 썸네일은 매체 확인 중
+last_verified_date: '2026-11-15'
+description: 싱글 이미지·스토리·컬렉션 9:16 (720×1280), AR 정적 필터 945×2048
+verification:
+  status: partial
+  checked_on: '2026-11-15'
+  method: forbusiness.snapchat.com 광고 형식 페이지 대조. 상세 고객센터는 자동 접근 불가
 placements:
-- name: 스냅챗 (싱글 이미지/스냅 광고 9:16 1080×1920)
+- name: 스냅챗 (싱글 이미지·스토리·컬렉션 9:16 720×1280)
   aspect_ratio:
   - 9
   - 16
   aspect_ratio_tolerance: 0.02
   min_width: 720
   min_height: 1280
-  recommended_width: 1080
-  recommended_height: 1920
-  max_file_size_kb: 5120
+  max_file_size_kb: null
   allowed_formats:
   - jpg
   - jpeg
   - png
-  description: 스냅챗 풀스크린 세로형 9:16 표준 광고 (최대 5MB)
+  description: 싱글 이미지·스토리·컬렉션 광고 9:16, 720×1280, .jpg·.png. 공식 광고 형식 페이지에 이미지 최대 용량 표기 없음(기존 ACV 5MB는 근거 확인 안 됨)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://forbusiness.snapchat.com/advertising/ad-formats
+  unstated:
+  - max_file_size
+  - aspect_ratio_tolerance
 - name: 스냅챗 (스토리 광고 타일 360×600)
   exact_width: 360
   exact_height: 600
@@ -30,6 +39,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: Snapchat 공개 광고 형식 페이지에 없음]'
 - name: 스냅챗 (컬렉션 제품 썸네일 1:1 160×160)
   exact_width: 160
   exact_height: 160
@@ -38,12 +49,19 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 스냅챗 컬렉션 광고 하단 4칸 제품 썸네일 타일 (160×160 이상)
+  description: '스냅챗 컬렉션 광고 하단 4칸 제품 썸네일 타일 (160×160 이상) [매체 확인 중: Snapchat 공개 광고 형식 페이지에 없음]'
+  needs_confirmation: true
 - name: 스냅챗 (AR 정적 필터 945×2048)
   exact_width: 945
   exact_height: 2048
-  max_file_size_kb: 300
+  max_file_size_kb: null
   allowed_formats:
   - png
   require_transparency: true
-  description: 스냅챗 카메라 오버레이 정적 AR 필터 (투명 PNG 필수, 300KB 이하)
+  description: AR 정적 필터 945×2048, .png. 공식 페이지에 용량 표기 없음(기존 ACV 300KB는 근거 확인 안 됨)
+  verified: true
+  source_type: official_page
+  source_date: '2026-11-15'
+  source: https://forbusiness.snapchat.com/advertising/ad-formats
+  unstated:
+  - max_file_size

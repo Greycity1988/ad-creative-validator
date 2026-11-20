@@ -1,11 +1,15 @@
 platform: 네이버 (GFA / NOSP)
 platform_id: naver
-official_update_date: 2026.04 공식 개정
-official_source_name: 네이버 디스플레이 광고(N Ads / NOSP) 공식 가이드
-official_source_url: https://ads.naver.com/guide/da
+official_update_date: 네이버 상품소개서 2026-10 기준 (지면별 제작가이드 날짜 상이)
+official_source_name: 네이버 디스플레이 광고 상품소개서 (공식, PDF)
+official_source_url: https://displayad.naver.com/download/Naver_Display_AD.pdf
 revision_summary: NOSP 타임보드 300KB 허용 기준 반영, 모바일 스페셜DA(1250×520 300KB), 스마트채널(750×280 투명PNG 250KB 및 750×200/160), 네이티브 피드 사양 최신화
-last_verified_date: '2026-11-12'
+last_verified_date: '2026-11-15'
 description: 스마트채널, 네이버 DA, NOSP 타임보드, 스페셜DA, 더블크라운, 롤링보드
+verification:
+  status: partial
+  checked_on: '2026-11-15'
+  method: 네이버 공식 PDF(상품소개서 2026-10, 지면별 제작가이드) 대조. 기준일 12개월 넘은 자료는 반영하지 않고 매체 확인 중으로 표시. 타임보드 용량은 매체 확인
 placements:
 - name: 네이버 NOSP (PC 타임보드 고해상도 1660×260)
   exact_width: 1660
@@ -18,7 +22,11 @@ placements:
   - gif
   text_ratio_limit: 0.25
   text_ratio_level: warning
-  description: NOSP PC 타임보드 레티나 대응 규격 (노출 시 830×130 축소, NOSP 콘솔 최대 300KB 허용)
+  description: PC 메인 타임보드 1660×260 (화면에는 830×130으로 표시). 용량 300KB는 매체 확인(2026-11-15), 크기·포맷은 공식 가이드(2023-04)
+  verified: true
+  source_type: media_confirmed
+  source_date: '2026-11-15'
+  source: https://nosp.da.naver.com/center/api/dafile/download?fileNm=Naver_PC_Timeboard_Rollingboard_Image_Guide.pdf
 - name: 네이버 NOSP (PC 타임보드 기본형 830×130)
   exact_width: 830
   exact_height: 130
@@ -28,6 +36,8 @@ placements:
   - jpeg
   - png
   - gif
+  needs_confirmation: true
+  description: ' [매체 확인 중: 2023-04 가이드상 830×130은 화면 표시 크기이고 업로드는 1660×260]'
 - name: 네이버 NOSP (모바일 스페셜DA 520 확장형 1250×520)
   exact_width: 1250
   exact_height: 520
@@ -38,16 +48,22 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  needs_confirmation: true
+  description: ' [매체 확인 중: 2026-04 제작가이드 520에 1250×520 업로드 규격 없음]'
 - name: 네이버 NOSP (모바일 스페셜DA 기본형 750×280)
   exact_width: 750
   exact_height: 280
   max_file_size_kb: 250
   allowed_formats:
-  - jpg
-  - jpeg
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  require_transparency: true
+  verified: true
+  source_type: official_document
+  source_date: '2026-05-27'
+  source: https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip
+  description: 모바일 메인 스페셜DA 기본형 750×280, 투명 배경 PNG만, 최대 250KB, 텍스트 영역 상하좌우 40px 여백 (스페셜DA 제작가이드 280, 2026-05)
 - name: 네이버 NOSP (모바일 더블크라운 메인 1250×520)
   exact_width: 1250
   exact_height: 520
@@ -58,6 +74,8 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 NOSP (모바일 더블크라운 우측 브랜딩 1340×200)
   exact_width: 1340
   exact_height: 200
@@ -66,6 +84,8 @@ placements:
   - png
   - jpg
   - jpeg
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 NOSP (모바일 트리플크라운 스페셜 로고 960×160)
   exact_width: 960
   exact_height: 160
@@ -73,6 +93,8 @@ placements:
   allowed_formats:
   - png
   require_transparency: true
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 NOSP (모바일 트리플크라운 메인 1250×520)
   exact_width: 1250
   exact_height: 520
@@ -83,6 +105,8 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 스마트채널 (750×280 투명 PNG)
   exact_width: 750
   exact_height: 280
@@ -92,9 +116,9 @@ placements:
   require_transparency: true
   text_ratio_limit: 0.2
   text_ratio_level: error
-  description: GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB)
+  description: 'GFA 모바일 메인 스마트채널 현행 주력 규격 (배경 투명 필수 PNG, 최대 250KB) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
   safe_zone:
-    description: "상/하 50px 및 좌/우 40px 외곽 여백 준수 (우측 하단 네이버 공식 AD 마크 영역)"
+    description: 상/하 50px 및 좌/우 40px 외곽 여백 준수 (우측 하단 네이버 공식 AD 마크 영역)
     base_width: 750
     base_height: 280
     top_px: 50
@@ -102,11 +126,12 @@ placements:
     left_px: 40
     right_px: 40
     ui_elements:
-    - name: "네이버 AD 마크"
-      position: "bottom-right"
+    - name: 네이버 AD 마크
+      position: bottom-right
       width_ratio: 0.12
       height_ratio: 0.15
-      description: "우측 하단 네이버 기본 AD 배지"
+      description: 우측 하단 네이버 기본 AD 배지
+  needs_confirmation: true
 - name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
   exact_width: 750
   exact_height: 200
@@ -115,9 +140,9 @@ placements:
   allowed_formats:
   - png
   require_transparency: true
-  description: GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG)
+  description: 'GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
   safe_zone:
-    description: "상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)"
+    description: 상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)
     base_width: 750
     base_height: 200
     top_px: 35
@@ -125,10 +150,11 @@ placements:
     left_px: 35
     right_px: 35
     ui_elements:
-    - name: "네이버 AD 마크"
-      position: "bottom-right"
+    - name: 네이버 AD 마크
+      position: bottom-right
       width_ratio: 0.12
       height_ratio: 0.16
+  needs_confirmation: true
 - name: 네이버 DA (모바일 DA 1250×560)
   exact_width: 1250
   exact_height: 560
@@ -138,13 +164,15 @@ placements:
   - jpeg
   - png
   safe_zone:
-    description: "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 광고 마크)"
+    description: 상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 광고 마크)
     base_width: 1250
     base_height: 560
     top_px: 60
     bottom_px: 60
     left_px: 50
     right_px: 50
+  needs_confirmation: true
+  description: ' [매체 확인 중: 2025-04 가이드는 50~250KB, 투명 배경 불가, 좌우 225px 여백]'
 - name: 네이버 DA (네이티브 피드 Square 1:1)
   aspect_ratio:
   - 1
@@ -162,13 +190,15 @@ placements:
   text_ratio_limit: 0.2
   text_ratio_level: error
   safe_zone:
-    description: "외곽 상하좌우 60px 여백 준수 (모바일 피드 라운딩 모서리 보호)"
+    description: 외곽 상하좌우 60px 여백 준수 (모바일 피드 라운딩 모서리 보호)
     base_width: 1200
     base_height: 1200
     top_px: 60
     bottom_px: 60
     left_px: 60
     right_px: 60
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 DA (네이티브 피드 Landscape 1.91:1)
   aspect_ratio:
   - 1.91
@@ -186,13 +216,15 @@ placements:
   text_ratio_limit: 0.2
   text_ratio_level: error
   safe_zone:
-    description: "상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 AD 배지 보호)"
+    description: 상/하 60px 및 좌/우 50px 외곽 여백 준수 (우하단 AD 배지 보호)
     base_width: 1200
     base_height: 628
     top_px: 60
     bottom_px: 60
     left_px: 50
     right_px: 50
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 DA (네이티브 피드 Vertical 2:3)
   aspect_ratio:
   - 2
@@ -207,6 +239,8 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: error
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 DA (네이티브 배너 342×228)
   exact_width: 342
   exact_height: 228
@@ -215,6 +249,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 DA (쇼핑 DA 750×500)
   exact_width: 750
   exact_height: 500
@@ -225,6 +261,8 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 NOSP (PC 메인 롤링보드 350×280)
   exact_width: 350
   exact_height: 280
@@ -236,6 +274,8 @@ placements:
   - gif
   text_ratio_limit: 0.25
   text_ratio_level: warning
+  needs_confirmation: true
+  description: ' [매체 확인 중: 2023-04 가이드는 840×480·200KB]'
 - name: 네이버 NOSP (모바일 롤링보드 750×400)
   exact_width: 750
   exact_height: 400
@@ -246,6 +286,8 @@ placements:
   - png
   text_ratio_limit: 0.2
   text_ratio_level: warning
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 브랜드검색 (PC 메인 브랜드존 300×150)
   exact_width: 300
   exact_height: 150
@@ -254,6 +296,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 브랜드검색 (모바일 브랜드존 와이드 1000×500)
   exact_width: 1000
   exact_height: 500
@@ -262,6 +306,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 브랜드검색 (모바일 브랜드존 정방형 1000×1000)
   exact_width: 1000
   exact_height: 1000
@@ -270,6 +316,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 밴드 (BAND 피드 배너 정방형 1000×1000)
   exact_width: 1000
   exact_height: 1000
@@ -278,6 +326,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 밴드 (BAND 피드 배너 와이드 1200×600)
   exact_width: 1200
   exact_height: 600
@@ -286,6 +336,8 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
 - name: 네이버 DA (컬렉션/슬라이드 정방형 600×600)
   exact_width: 600
   exact_height: 600
@@ -294,7 +346,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 네이버 GFA 컬렉션형 및 피드 슬라이드 1:1 정방형 규격 (최대 500KB)
+  description: '네이버 GFA 컬렉션형 및 피드 슬라이드 1:1 정방형 규격 (최대 500KB) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 DA (커뮤니케이션 애드 댓글형 112×112)
   exact_width: 112
   exact_height: 112
@@ -303,7 +356,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 네이버 카페/블로그 댓글 및 커뮤니케이션 지면 아이콘 규격
+  description: '네이버 카페/블로그 댓글 및 커뮤니케이션 지면 아이콘 규격 [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 DA (브랜드 패키지 로고 140×140)
   exact_width: 140
   exact_height: 140
@@ -312,7 +366,8 @@ placements:
   - png
   - jpg
   - jpeg
-  description: 네이버 파워링크 및 브랜드 패키지 로고 이미지 규격
+  description: '네이버 파워링크 및 브랜드 패키지 로고 이미지 규격 [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 NOSP (PC 메인 롤링보드 고해상도 700×560)
   exact_width: 700
   exact_height: 560
@@ -322,7 +377,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: NOSP PC 메인 롤링보드 2배수 레티나 규격 (노출 시 350×280 축소)
+  description: 'NOSP PC 메인 롤링보드 2배수 레티나 규격 (노출 시 350×280 축소) [매체 확인 중: 2023-04 가이드는 840×480·200KB]'
+  needs_confirmation: true
 - name: 네이버 NOSP (PC 메인 브릿지보드 1080×100)
   exact_width: 1080
   exact_height: 100
@@ -332,7 +388,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: NOSP PC 메인 브릿지보드 와이드 배너 (1080×100)
+  description: 'NOSP PC 메인 브릿지보드 와이드 배너 (1080×100) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 NOSP (PC 메인 브릿지보드 기본 540×50)
   exact_width: 540
   exact_height: 50
@@ -342,7 +399,8 @@ placements:
   - jpeg
   - png
   - gif
-  description: NOSP PC 메인 브릿지보드 기본 규격 (540×50)
+  description: 'NOSP PC 메인 브릿지보드 기본 규격 (540×50) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 DA (스마트채널 고해상도 1500×560 투명 PNG)
   exact_width: 1500
   exact_height: 560
@@ -350,7 +408,8 @@ placements:
   allowed_formats:
   - png
   require_transparency: true
-  description: 네이버 스마트채널 2배수 레티나 규격 (1500×560 투명 PNG 필수)
+  description: '네이버 스마트채널 2배수 레티나 규격 (1500×560 투명 PNG 필수) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
 - name: 네이버 NOSP (모바일 롤링보드 고해상도 1500×800)
   exact_width: 1500
   exact_height: 800
@@ -359,4 +418,29 @@ placements:
   - jpg
   - jpeg
   - png
-  description: NOSP 모바일 롤링보드 2배수 고해상도 규격 (1500×800)
+  description: 'NOSP 모바일 롤링보드 2배수 고해상도 규격 (1500×800) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  needs_confirmation: true
+- name: 네이버 NOSP (모바일 스페셜DA 520 오브젝트·썸네일 750×220 투명 PNG)
+  exact_width: 750
+  exact_height: 220
+  max_file_size_kb: 200
+  allowed_formats:
+  - png
+  require_transparency: true
+  verified: true
+  source_type: official_document
+  source_date: '2026-04-29'
+  source: https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip
+  description: 스페셜DA 520형 오브젝트/썸네일 이미지 750×220, 투명 배경 PNG, 최대 200KB, 좌 64px·우 30px·상 30px 여백 (제작가이드 520, 2026-04)
+- name: 네이버 NOSP (모바일 스페셜DA 520 텍스트 1020×300 투명 PNG)
+  exact_width: 1020
+  exact_height: 300
+  max_file_size_kb: 200
+  allowed_formats:
+  - png
+  require_transparency: true
+  verified: true
+  source_type: official_document
+  source_date: '2026-04-29'
+  source: https://nosp.da.naver.com/center/api/dafile/download?fileNm=M_Main_SpecialDA_Guide.zip
+  description: 스페셜DA 520형 광고 문구·로고 이미지 1020×300, 투명 배경 PNG, 최대 200KB, 라이트·다크 2장, 좌우 48px·상단 34px 여백 (제작가이드 520, 2026-04)

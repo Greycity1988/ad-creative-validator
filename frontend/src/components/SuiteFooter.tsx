@@ -6,6 +6,7 @@ interface SuiteFooterProps {
   /** The tool's logo emblem */
   emblem: React.ReactNode;
   onOpenDonation: () => void;
+  onOpenFeedback?: () => void;
   /** Optional: make the emblem clickable (ACV opens its logo modal) */
   onEmblemClick?: () => void;
   emblemTitle?: string;
@@ -19,6 +20,7 @@ export const SuiteFooter: React.FC<SuiteFooterProps> = ({
   appName,
   emblem,
   onOpenDonation,
+  onOpenFeedback,
   onEmblemClick,
   emblemTitle,
 }) => (
@@ -27,13 +29,13 @@ export const SuiteFooter: React.FC<SuiteFooterProps> = ({
       <button
         type="button"
         onClick={onEmblemClick}
-        className="group relative p-2 rounded-2xl hover:bg-slate-100 dark:hover:bg-[#1a1b1f] transition-all cursor-pointer"
+        className="group relative p-2 rounded-2xl hover:bg-slate-100 dark:hover:bg-[#1a1b1f] transition-all cursor-pointer select-none"
         title={emblemTitle}
       >
         <span className="block opacity-80 group-hover:opacity-100 transition-transform group-hover:scale-105">{emblem}</span>
       </button>
     ) : (
-      <div className="p-2 opacity-90" aria-hidden="true">
+      <div className="p-2 opacity-90 select-none" aria-hidden="true">
         {emblem}
       </div>
     )}
@@ -42,13 +44,26 @@ export const SuiteFooter: React.FC<SuiteFooterProps> = ({
       <strong className="text-emerald-700 dark:text-[#A8FF1A] font-extrabold">Owen O. Magnus</strong>.
     </p>
     <p className="text-xs text-slate-500 dark:text-[#AEAEAE] font-medium leading-relaxed">
-      Feedbacks &amp; feature ideas are warmly welcomed,
+      {onOpenFeedback ? (
+        <button
+          type="button"
+          onClick={onOpenFeedback}
+          className="font-semibold text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white underline decoration-slate-300 dark:decoration-slate-600 underline-offset-2 transition cursor-pointer"
+          title="새로운 기능 제안 및 건의사항 남기기"
+        >
+          Feedbacks &amp; feature ideas
+        </button>
+      ) : (
+        <span>Feedbacks &amp; feature ideas</span>
+      )}{' '}
+      are warmly welcomed,
       <br />
       and{' '}
       <button
         type="button"
         onClick={onOpenDonation}
         className="text-emerald-700 hover:text-emerald-800 dark:text-[#A8FF1A] dark:hover:text-[#b8ff33] font-bold underline decoration-emerald-500/30 dark:decoration-[#A8FF1A]/30 cursor-pointer inline-flex items-center space-x-1"
+        title="개발자에게 커피 한 잔 선물하기"
       >
         <span>coffee sponsorships</span>
         <span>☕✨</span>

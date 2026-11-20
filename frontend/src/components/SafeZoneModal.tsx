@@ -175,11 +175,11 @@ export const SafeZoneModal: React.FC<SafeZoneModalProps> = ({
               type="button"
               onClick={handleExportAnnotated}
               disabled={isExporting}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-accent hover:bg-accent-hover text-white text-xs font-bold transition-colors cursor-pointer shadow-soft-sm"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-[#A8FF1A] hover:bg-[#b8ff33] text-black text-xs font-extrabold transition-colors cursor-pointer shadow-[0_0_10px_rgba(168,255,26,0.25)]"
               title="세이프존 가이드라인이 합성된 이미지 다운로드"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">대조 미리보기 저장</span>
+              <Download className="w-3.5 h-3.5 text-black" strokeWidth={2.2} />
+              <span className="hidden sm:inline text-black">대조 미리보기 저장</span>
             </button>
 
             <button
@@ -214,7 +214,7 @@ export const SafeZoneModal: React.FC<SafeZoneModalProps> = ({
               onClick={() => setShowUIElements(!showUIElements)}
               className={`inline-flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 showUIElements
-                  ? 'bg-accent text-white shadow-soft-xs'
+                  ? 'bg-[#A8FF1A] text-black font-extrabold shadow-soft-xs'
                   : 'bg-surface text-ink-secondary border border-line-strong hover:bg-canvas-subtle'
               }`}
             >

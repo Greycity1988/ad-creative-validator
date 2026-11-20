@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p className="text-[11px] text-slate-500 dark:text-[#AEAEAE] font-normal mt-0.5 hidden sm:block truncate max-w-xs md:max-w-sm lg:max-w-md">
-              Ad Creative Guideline Validator — 32대 국내외 광고 매체 & 430+ 공식 지면 원클릭 규격 검수
+              Ad Creative Guideline Validator — 32대 국내외 광고 매체 지면 규격 원클릭 검수
             </p>
           </div>
         </div>

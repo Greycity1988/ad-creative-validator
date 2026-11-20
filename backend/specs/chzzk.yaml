@@ -1,11 +1,15 @@
 platform: 네이버 치지직 (CHZZK)
 platform_id: chzzk
-official_update_date: 2026.04 공식 개정
+official_update_date: 공개 규격 문서 미확인
 official_source_name: 치지직(CHZZK) 공식 채널 가이드
 official_source_url: https://chzzk.naver.com
 revision_summary: 채널 상단 대문 배너(1920×480), 오프라인 대기 화면(16:9 1920×1080 FHD), 채널 프로필(1:1 800×800) 반영
-last_verified_date: '2026-11-12'
+last_verified_date: 미확인
 description: 치지직 채널 상단 배너 (1920×480), 오프라인 대기 화면 (1920×1080), 채널 프로필 (800×800)
+verification:
+  status: unverified
+  checked_on: '2026-11-15'
+  method: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)
 placements:
 - name: 치지직 (채널 상단 대문 배너 1920×480)
   exact_width: 1920
@@ -15,7 +19,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 치지직 채널 메인 상단 와이드 헤더 배너 (최대 5MB)
+  description: '치지직 채널 메인 상단 와이드 헤더 배너 (최대 5MB) [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]'
+  needs_confirmation: true
 - name: 치지직 (오프라인 대기 화면 16:9 1920×1080)
   aspect_ratio:
   - 16
@@ -28,7 +33,8 @@ placements:
   - jpg
   - jpeg
   - png
-  description: 치지직 방송 대기 및 오프라인 풀HD 화면 (최대 10MB)
+  description: '치지직 방송 대기 및 오프라인 풀HD 화면 (최대 10MB) [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]'
+  needs_confirmation: true
 - name: 치지직 (채널 프로필 1:1 800×800)
   aspect_ratio:
   - 1
@@ -43,3 +49,5 @@ placements:
   - jpg
   - jpeg
   - png
+  needs_confirmation: true
+  description: ' [매체 확인 중: 치지직 채널 이미지 규격의 공식 공개 문서를 찾지 못함(네이버 치지직 광고 가이드 2024-01은 인스트림 동영상 상품)]'

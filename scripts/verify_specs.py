@@ -38,9 +38,11 @@ def test_schema_and_dimensions():
         if not pid or not pname:
             errors.append(f"{yf.name}: missing platform or platform_id")
             
-        url = data.get("official_source_url")
-        if not url:
+        # An empty URL is allowed only when the source name says why (e.g. the publisher's site is gone)
+        if "official_source_url" not in data:
             errors.append(f"{yf.name}: missing official_source_url")
+        elif not data["official_source_url"] and "확인 불가" not in str(data.get("official_source_name", "")):
+            errors.append(f"{yf.name}: empty official_source_url without a reason in official_source_name")
             
         placements = data.get("placements", [])
         if not placements:
@@ -81,8 +83,21 @@ def test_schema_and_dimensions():
             # File size limit
             max_kb = p.get("max_file_size_kb")
             max_mb = p.get("max_file_size_mb")
-            if max_kb is None and max_mb is None:
-                errors.append(f"{yf.name} - '{name}': no max_file_size defined")
+            if max_kb is None and max_mb is None and "max_file_size" not in (p.get("unstated") or []):
+                errors.append(f"{yf.name} - '{name}': no max_file_size defined (mark unstated: [max_file_size] if the official document has none)")
+            if p.get("verified"):
+                if not p.get("source"):
+                    errors.append(f"{yf.name} - '{name}': verified placement without a source URL")
+                if p.get("source_type") not in ("official_page", "official_document", "media_confirmed"):
+                    errors.append(f"{yf.name} - '{name}': verified placement needs source_type")
+                if not p.get("source_date"):
+                    errors.append(f"{yf.name} - '{name}': verified placement needs source_date")
+                elif p.get("source_type") == "official_document" and not p.get("needs_confirmation"):
+                    # A document older than a year may be outdated (Naver's 2023 timeboard guide was): confirm first
+                    from datetime import date
+                    age = (date.today() - date.fromisoformat(str(p["source_date"])[:10])).days
+                    if age > 365:
+                        errors.append(f"{yf.name} - '{name}': source document is {age} days old; set needs_confirmation or confirm with the publisher")
                 
             # Safe zone check if exists
             sz = p.get("safe_zone")
@@ -155,13 +170,14 @@ def test_real_banner_packs():
         if not any(matches_placement(p, w, h) for p in criteo_placements):
             failures.append(f"Criteo missing timer asset {w}×{h}")
             
-    # 3. Google Ads / GDN 28 pack
+    # 3. Google Ads: the 20 uploaded image sizes + 3 regional sizes (support.google.com/google-ads/answer/1722096)
+    #    and the recommended asset sizes (answers 17091269, 17091671, 9823397), checked 2026-11-15
     gdn_pack = [
         (300, 250), (336, 280), (728, 90), (300, 600), (160, 600), (120, 600),
         (320, 100), (320, 50), (200, 200), (250, 250), (970, 90), (970, 250),
         (468, 60), (300, 50), (240, 400), (930, 180), (580, 400), (980, 120),
-        (250, 360), (300, 1050), (320, 480), (480, 320), (768, 1024), (1024, 768),
-        (1200, 628), (1200, 1200), (960, 1200), (1080, 1920)
+        (250, 360), (300, 1050), (750, 100), (750, 200), (750, 300),
+        (1200, 628), (1200, 1200), (960, 1200), (1200, 1500), (900, 1600)
     ]
     gdn_spec = specs_map.get("google_ads", {})
     gdn_placements = gdn_spec.get("placements_detail", [])
@@ -178,7 +194,8 @@ def test_real_banner_packs():
             failures.append(f"TargetPick missing format {w}×{h}")
             
     # 5. Kakao Bizboard & Display
-    kakao_pack = [(960, 300), (1920, 600), (1029, 258), (1200, 600), (800, 400), (170, 128), (1080, 150)]
+    # Official Kakao Business guide sizes (checked 2026-11-15); 1029×258 is retired, 1920×600 is not an upload size
+    kakao_pack = [(960, 300), (314, 300), (320, 222), (1200, 600), (500, 500), (720, 1280), (800, 1000), (1504, 336), (800, 400), (800, 600), (800, 800)]
     kakao_spec = specs_map.get("kakao", {})
     kakao_placements = kakao_spec.get("placements_detail", [])
     for w, h in kakao_pack:

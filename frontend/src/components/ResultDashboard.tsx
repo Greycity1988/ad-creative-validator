@@ -377,9 +377,9 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                 <button
                   type="button"
                   onClick={() => setPlatformFilter('all')}
-                  className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                     platformFilter === 'all'
-                      ? 'bg-accent text-white'
+                      ? 'bg-[#A8FF1A] text-black shadow-xs font-extrabold'
                       : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                   }`}
                 >
@@ -394,9 +394,9 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                       key={pid}
                       type="button"
                       onClick={() => setPlatformFilter(pid)}
-                      className={`px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
                         platformFilter === pid
-                          ? 'bg-accent text-white'
+                          ? 'bg-[#A8FF1A] text-black shadow-xs font-extrabold'
                           : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                       }`}
                     >

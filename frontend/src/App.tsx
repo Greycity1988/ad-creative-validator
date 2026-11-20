@@ -9,6 +9,7 @@ import { DonationModal } from './components/DonationModal';
 import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
 import { SuiteNavigationDrawer } from './components/SuiteNavigationDrawer';
+import { SuiteFooter } from './components/SuiteFooter';
 import { ACVLogo } from './components/ACVLogo';
 import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
@@ -16,7 +17,6 @@ import { fetchPlatformsMetadata, validateImages } from './api/validator';
 import { AlertCircle } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { track, pageview } from '@vercel/analytics';
-import { SuiteFooter } from './components/SuiteFooter';
 
 export const App: React.FC = () => {
   const [files, setFiles] = useState<UploadedFileItem[]>([]);
@@ -136,7 +136,6 @@ export const App: React.FC = () => {
         rawFiles,
         selectedPlatforms,
         selectedPlacements,
-        false,
         autoMatch
       );
 
@@ -252,11 +251,12 @@ export const App: React.FC = () => {
       </main>
 
       <SuiteFooter
-        appName="ACV (Ad Creative Validator)"
+        appName={`ACV (Ad Creative Validator) • ${platformsMetadata.length} Platforms & ${totalPlacementsCount} Placements Supported`}
         emblem={<ACVLogo size={36} showText={false} />}
-        onOpenDonation={() => setIsDonationOpen(true)}
         onEmblemClick={() => setIsLogoOpen(true)}
         emblemTitle="클릭하여 ACV 로고 아이덴티티 및 고해상도 엠블럼 크게 보기"
+        onOpenFeedback={() => setIsFeedbackOpen(true)}
+        onOpenDonation={() => setIsDonationOpen(true)}
       />
 
       {/* Modals */}
