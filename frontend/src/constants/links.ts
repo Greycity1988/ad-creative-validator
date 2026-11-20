@@ -13,7 +13,7 @@ export const OTT_URL: string =
 
 export const BEP_URL: string =
   import.meta.env.VITE_BEP_URL ??
-  (import.meta.env.DEV ? 'http://localhost:5176' : 'https://greycity1988.github.io/bep-master/');
+  (import.meta.env.DEV ? 'http://localhost:5176' : 'https://bep-master.vercel.app');
 
 export const CFR_URL: string =
   import.meta.env.VITE_CFR_URL ??

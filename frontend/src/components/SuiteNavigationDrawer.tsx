@@ -66,7 +66,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     {
       id: 'cal',
       name: 'CAL • Competitive Ad Lens',
-      tagline: 'EU DSA 공식 API 기반 글로벌 라이브 위너 소재 발굴 & AI 한국어 벤치마킹',
+      tagline: 'EU DSA 공식 API 기반 해외 장기 집행 소재 탐색 & 한국어 카피 벤치마킹',
       role: '경쟁사 광고 염탐 & 벤치마킹',
       url: CAL_URL,
       icon: Flame,
@@ -76,7 +76,7 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     {
       id: 'ott',
       name: 'OTT • Omni Trend Tracker',
-      tagline: '네이버·구글·인스타그램 3대 채널 통합 검색 트렌드 & 연관 키워드',
+      tagline: '네이버·구글 검색 관심도를 일·주·월로 비교 & 연관 키워드',
       role: '통합 트렌드 발굴',
       url: OTT_URL,
       icon: TrendingUp,
@@ -86,12 +86,12 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
     {
       id: 'bep',
       name: 'BEP Master • 유닛 이코노믹스',
-      tagline: 'ROAS 손익분기점, 제품 마진율 역산, 마케팅 예산 한도 시뮬레이터',
+      tagline: '손익분기·목표 ROAS, 최대 CPA·CPC 역산 & 캠페인 진단·월 목표 플래너',
       role: '손익분기점 시뮬레이션',
       url: BEP_URL,
       icon: Calculator,
       iconColor: '#FBBF24',
-      isDeveloping: true,
+      isDeveloping: false,
     },
     {
       id: 'cfr',
