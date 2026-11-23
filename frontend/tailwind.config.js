@@ -71,6 +71,7 @@ export default {
             dot: '#FBBF24',
           },
           fail: {
+            DEFAULT: '#F34238',
             bg: '#250c0b',
             border: '#4f1a18',
             text: '#F34238',
