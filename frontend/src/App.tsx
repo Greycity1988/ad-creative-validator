@@ -13,7 +13,7 @@ import { SuiteFooter } from './components/SuiteFooter';
 import { ACVLogo } from './components/ACVLogo';
 import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
-import { fetchPlatformsMetadata, validateImages } from './api/validator';
+import { fetchPlatformsMetadata, validateImages, TOTAL_PLACEMENT_COUNT } from './api/validator';
 import { AlertCircle } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { track, pageview } from '@vercel/analytics';
@@ -170,7 +170,7 @@ export const App: React.FC = () => {
   const totalPlacementsCount = platformsMetadata.reduce(
     (acc, p) => acc + (p.placements?.length || 0),
     0
-  ) || 160;
+  ) || TOTAL_PLACEMENT_COUNT;
 
   return (
     <div className="min-h-screen monotone-canvas text-slate-900 dark:text-white font-sans antialiased flex flex-col selection:bg-[#A8FF1A]/20 selection:text-[#A8FF1A] transition-colors">

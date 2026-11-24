@@ -12,6 +12,12 @@ const DEFAULT_METADATA = specsData as unknown as PlatformMetadata[];
 
 export const fetchPlatformsMetadata = async (): Promise<PlatformMetadata[]> => DEFAULT_METADATA;
 
+/** Total placement count across all bundled platform specs. */
+export const TOTAL_PLACEMENT_COUNT = DEFAULT_METADATA.reduce(
+  (acc, p) => acc + (p.placements?.length || 0),
+  0
+);
+
 interface GitHubIssue {
   id: number;
   number: number;

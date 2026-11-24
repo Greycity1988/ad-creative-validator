@@ -2,6 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme-aware design tokens (consumed by tailwind.config.js). Dark is the default. */
+:root,
+html.dark {
+  --c-canvas: 1 1 1;
+  --c-canvas-subtle: 20 20 22;
+  --c-canvas-muted: 26 27 31;
+  --c-surface: 20 20 22;
+  --c-surface-raised: 26 27 31;
+  --c-surface-sunken: 13 14 16;
+  --c-surface-sage: 26 27 31;
+  --c-ink-primary: 255 255 255;
+  --c-ink-secondary: 174 174 174;
+  --c-ink-tertiary: 142 142 147;
+  --c-ink-muted: 110 110 110;
+  --c-ink-faint: 38 39 44;
+  --c-line: 38 39 44;
+  --c-line-subtle: 32 33 38;
+  --c-line-strong: 46 48 54;
+  --c-accent: 168 255 26;
+  --c-accent-hover: 184 255 51;
+  --c-accent-blue: 56 189 248;
+  --c-accent-sage: 32 33 38;
+  --c-accent-mint: 168 255 26;
+  --c-accent-light: 26 27 31;
+  --c-status-pass-bg: 13 34 8;
+  --c-status-pass-border: 31 72 18;
+  --c-status-pass-text: 168 255 26;
+  --c-status-pass-dot: 168 255 26;
+  --c-status-warn-bg: 37 27 5;
+  --c-status-warn-border: 74 55 10;
+  --c-status-warn-text: 251 191 36;
+  --c-status-warn-dot: 251 191 36;
+  --c-status-fail: 243 66 56;
+  --c-status-fail-bg: 37 12 11;
+  --c-status-fail-border: 79 26 24;
+  --c-status-fail-text: 243 66 56;
+  --c-status-fail-dot: 243 66 56;
+  --c-status-skip-bg: 26 27 31;
+  --c-status-skip-border: 38 39 44;
+  --c-status-skip-text: 174 174 174;
+  --c-status-skip-dot: 110 110 110;
+  --c-surface-glass: rgba(20, 20, 22, 0.95);
+  --shadow-a: 0, 0, 0;
+  --shadow-k: 1;
+}
+
+html.light {
+  --c-canvas: 241 245 249;
+  --c-canvas-subtle: 248 250 252;
+  --c-canvas-muted: 241 245 249;
+  --c-surface: 255 255 255;
+  --c-surface-raised: 248 250 252;
+  --c-surface-sunken: 241 245 249;
+  --c-surface-sage: 248 250 252;
+  --c-ink-primary: 15 23 42;
+  --c-ink-secondary: 71 85 105;
+  --c-ink-tertiary: 100 116 139;
+  --c-ink-muted: 148 163 184;
+  --c-ink-faint: 226 232 240;
+  --c-line: 226 232 240;
+  --c-line-subtle: 241 245 249;
+  --c-line-strong: 203 213 225;
+  --c-accent: 4 120 87;
+  --c-accent-hover: 6 95 70;
+  --c-accent-blue: 2 132 199;
+  --c-accent-sage: 241 245 249;
+  --c-accent-mint: 4 120 87;
+  --c-accent-light: 236 253 245;
+  --c-status-pass-bg: 236 253 245;
+  --c-status-pass-border: 167 243 208;
+  --c-status-pass-text: 4 120 87;
+  --c-status-pass-dot: 16 185 129;
+  --c-status-warn-bg: 255 251 235;
+  --c-status-warn-border: 253 230 138;
+  --c-status-warn-text: 180 83 9;
+  --c-status-warn-dot: 245 158 11;
+  --c-status-fail: 220 38 38;
+  --c-status-fail-bg: 254 242 242;
+  --c-status-fail-border: 254 202 202;
+  --c-status-fail-text: 220 38 38;
+  --c-status-fail-dot: 239 68 68;
+  --c-status-skip-bg: 248 250 252;
+  --c-status-skip-border: 226 232 240;
+  --c-status-skip-text: 100 116 139;
+  --c-status-skip-dot: 148 163 184;
+  --c-surface-glass: rgba(255, 255, 255, 0.95);
+  --shadow-a: 15, 23, 42;
+  --shadow-k: 0.18;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
