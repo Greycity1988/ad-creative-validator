@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   X,
   ExternalLink,
@@ -38,6 +38,16 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
   currentApp,
 }) => {
   const [devNotice, setDevNotice] = useState<string | null>(null);
+  const noticeTimer = useRef<number | undefined>(undefined);
+  const showDevNotice = (name: string) => {
+    window.clearTimeout(noticeTimer.current);
+    setDevNotice(`[${name.split('•')[0].trim()}] 현재 개발 진행 중인 서비스입니다. 정식 릴리즈 시 안내해 드리겠습니다!`);
+    noticeTimer.current = window.setTimeout(() => setDevNotice(null), 3500);
+  };
+  useEffect(() => () => window.clearTimeout(noticeTimer.current), []);
+  useEffect(() => {
+    if (!isOpen) setDevNotice(null);
+  }, [isOpen]);
 
   // ESC key listener to close drawer
   useEffect(() => {
@@ -148,7 +158,11 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
         {/* Drawer Scrollable Body */}
         <div className="p-5 space-y-4 overflow-y-auto flex-1">
           {devNotice && (
-            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs font-semibold flex items-center justify-between animate-fadeIn shadow-sm">
+            // Sticky so it stays in view when the clicked card is further down the list (mobile)
+            <div
+              role="status"
+              className="sticky top-0 z-10 p-3 rounded-xl bg-amber-50 border border-amber-300 text-amber-800 dark:bg-[#251b05] dark:border-amber-500/40 dark:text-amber-300 text-xs font-semibold flex items-center justify-between animate-fadeIn shadow-sm"
+            >
               <div className="flex items-center space-x-2">
                 <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse flex-shrink-0" />
                 <span>{devNotice}</span>
@@ -243,11 +257,17 @@ export const SuiteNavigationDrawer: React.FC<SuiteNavigationDrawerProps> = ({
                 return (
                   <div
                     key={app.id}
-                    onClick={() => {
-                      setDevNotice(`[${app.name.split('•')[0].trim()}] 현재 개발 진행 중인 서비스입니다. 정식 릴리즈 시 안내해 드리겠습니다!`);
-                      setTimeout(() => setDevNotice(null), 3500);
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`${app.name} (개발 진행 중)`}
+                    onClick={() => showDevNotice(app.name)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showDevNotice(app.name);
+                      }
                     }}
-                    className="block focus:outline-none select-none"
+                    className="block select-none rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
                   >
                     {cardContent}
                   </div>

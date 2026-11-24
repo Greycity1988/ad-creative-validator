@@ -115,3 +115,7 @@ npm run dev   # http://localhost:5173
 ## 🌐 배포
 
 Vercel 이 `frontend/` 를 빌드해 배포합니다. 설정과 보안 헤더는 `frontend/vercel.json` 에 있습니다.
+
+## 📄 라이선스
+
+[MIT License](LICENSE). Crafted in 2026 by Owen O. Magnus.
