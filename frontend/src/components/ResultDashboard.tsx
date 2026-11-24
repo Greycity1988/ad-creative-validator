@@ -287,13 +287,13 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                     className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center space-x-2 flex-shrink-0 cursor-pointer ${
                       isSelected
                         ? 'bg-[#A8FF1A] text-black font-extrabold shadow-sm'
-                        : 'bg-[#1a1b1f] text-[#AEAEAE] border border-[#26272c] hover:border-[#3a3b42]'
+                        : 'bg-surface-raised text-ink-secondary border border-line hover:border-line-strong'
                     }`}
                   >
                     <span className="truncate max-w-[140px]">{item.filename}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                        isSelected ? 'bg-black/20 text-black font-bold' : 'bg-[#141416] text-[#AEAEAE]'
+                        isSelected ? 'bg-black/20 text-black font-bold' : 'bg-surface text-ink-secondary'
                       }`}
                     >
                       #{idx + 1}
