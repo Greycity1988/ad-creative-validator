@@ -1,3 +1,4 @@
+import type { SpecReportPrefill } from './SpecReportModal';
 import React, { useState } from 'react';
 import {
   Download,
@@ -21,14 +22,16 @@ import { track } from '@vercel/analytics';
 
 interface ResultDashboardProps {
   results: ValidationItem[];
-  filePreviews: Record<string, string>; // filename -> blob url
+  filePreviews: Record<string, string>; // upload id (or filename) -> blob url
   onReset: () => void;
+  onReportSpec?: (prefill: SpecReportPrefill) => void;
 }
 
 export const ResultDashboard: React.FC<ResultDashboardProps> = ({
   results,
   filePreviews,
   onReset,
+  onReportSpec,
 }) => {
   const [mainTab, setMainTab] = useState<'batch' | 'detail'>('batch');
   const [selectedFileIndex, setSelectedFileIndex] = useState<number>(0);
@@ -260,6 +263,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
         <BatchSummaryView
           results={results}
           filePreviews={filePreviews}
+          onReportSpec={onReportSpec}
           onSelectFileDetail={(index) => {
             setSelectedFileIndex(index);
             setMainTab('detail');

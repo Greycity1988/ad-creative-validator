@@ -9,7 +9,7 @@ import {
   HelpCircle,
   ExternalLink,
 } from 'lucide-react';
-import { specReportUrl } from '../constants/links';
+import type { SpecReportPrefill } from './SpecReportModal';
 import { ValidationItem, CheckItem, PlacementResult } from '../types';
 import { PLATFORM_LABELS, folderOf } from '../utils/folderClassifier';
 
@@ -17,6 +17,7 @@ interface BatchSummaryViewProps {
   results: ValidationItem[];
   filePreviews: Record<string, string>;
   onSelectFileDetail: (index: number) => void;
+  onReportSpec?: (prefill: SpecReportPrefill) => void;
 }
 
 interface FileSummary {
@@ -34,6 +35,7 @@ interface FileSummary {
   overallStatus: 'pass' | 'fail' | 'warning' | 'unregistered';
   /** Platforms that have no placement of this size (for the report link) */
   unregisteredPlatforms: string[];
+  unregisteredPlatformIds: string[];
   targetPlacementNames: string[];
   passedPlacementsCount: number;
   failedPlacementsCount: number;
@@ -46,6 +48,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   results,
   filePreviews,
   onSelectFileDetail,
+  onReportSpec,
 }) => {
   const [statusFilter, setStatusFilter] = useState<'all' | 'fail' | 'pass' | 'unregistered'>('all');
   const [folderFilter, setFolderFilter] = useState<string>('__all__');
@@ -95,9 +98,9 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
     let passedCount = 0;
     let failedCount = 0;
     let overallStatus: FileSummary['overallStatus'] = 'pass';
-    const unregisteredPlatforms = item.platform_results
-      .filter((p) => p.overall === 'na' && p.platform_id !== 'unknown')
-      .map((p) => p.platform);
+    const unregisteredResults = item.platform_results.filter((p) => p.overall === 'na' && p.platform_id !== 'unknown');
+    const unregisteredPlatforms = unregisteredResults.map((p) => p.platform);
+    const unregisteredPlatformIds = unregisteredResults.map((p) => p.platform_id);
     const unreadable = item.platform_results.some((p) => p.platform_id === 'unknown');
     let targetPlacementNames: string[] = [];
 
@@ -161,6 +164,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
       textRatio,
       overallStatus,
       unregisteredPlatforms,
+      unregisteredPlatformIds,
       targetPlacementNames,
       passedPlacementsCount: passedCount,
       failedPlacementsCount: failedCount,
@@ -591,20 +595,25 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             <div className="text-[11px] text-ink-secondary bg-canvas-subtle border border-line px-2.5 py-1 rounded-lg font-medium leading-snug">
                               {file.warningReasons[0]}
                             </div>
-                            <a
-                              href={specReportUrl({
-                                platforms: file.unregisteredPlatforms,
-                                width: file.width,
-                                height: file.height,
-                                format: file.format,
-                              })}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center gap-1 text-[11px] font-bold text-accent hover:underline"
-                            >
-                              공식 규격이라면 제보하기
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
+                            {onReportSpec && (
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  onReportSpec({
+                                    // with several candidate platforms, let the reporter pick
+                                    platformId:
+                                      file.unregisteredPlatformIds.length === 1 ? file.unregisteredPlatformIds[0] : undefined,
+                                    width: file.width,
+                                    height: file.height,
+                                    format: file.format,
+                                  })
+                                }
+                                className="inline-flex items-center gap-1 text-[11px] font-bold text-accent hover:underline cursor-pointer"
+                              >
+                                공식 규격이라면 제보하기
+                                <ExternalLink className="w-3 h-3" />
+                              </button>
+                            )}
                           </div>
                         ) : (
                           <div className="space-y-1 max-h-24 overflow-y-auto pr-1">

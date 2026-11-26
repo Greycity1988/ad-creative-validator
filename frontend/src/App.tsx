@@ -10,6 +10,7 @@ import { GuideModal } from './components/GuideModal';
 import { LogoModal } from './components/LogoModal';
 import { SuiteNavigationDrawer } from './components/SuiteNavigationDrawer';
 import { SuiteFooter } from './components/SuiteFooter';
+import { SpecReportModal, SpecReportPrefill } from './components/SpecReportModal';
 import { ACVLogo } from './components/ACVLogo';
 import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
@@ -42,6 +43,10 @@ export const App: React.FC = () => {
   const [isGuideOpen, setIsGuideOpen] = useState<boolean>(false);
   const [isLogoOpen, setIsLogoOpen] = useState<boolean>(false);
   const [isSuiteDrawerOpen, setIsSuiteDrawerOpen] = useState<boolean>(false);
+  const [specReport, setSpecReport] = useState<{ open: boolean; prefill: SpecReportPrefill | null }>({
+    open: false,
+    prefill: null,
+  });
   const { theme, toggleTheme } = useTheme();
 
   // Fetch available platform & placement specs from backend (or static fallback)
@@ -278,6 +283,7 @@ export const App: React.FC = () => {
             <ResultDashboard
               results={results}
               filePreviews={filePreviewMap}
+              onReportSpec={(prefill) => setSpecReport({ open: true, prefill })}
               onReset={() => {
                 setResults(null);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -304,6 +310,15 @@ export const App: React.FC = () => {
       <FeedbackModal
         isOpen={isFeedbackOpen}
         onClose={() => setIsFeedbackOpen(false)}
+        onOpenSpecReport={() => {
+          setIsFeedbackOpen(false);
+          setSpecReport({ open: true, prefill: null });
+        }}
+      />
+      <SpecReportModal
+        isOpen={specReport.open}
+        prefill={specReport.prefill}
+        onClose={() => setSpecReport({ open: false, prefill: null })}
       />
       <DonationModal
         isOpen={isDonationOpen}
