@@ -16,11 +16,12 @@ import { fetchFeedbacks, submitFeedback } from '../api/validator';
 interface FeedbackModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenSpecReport?: () => void;
 }
 
 const GITHUB_ISSUES_URL = 'https://github.com/Greycity1988/ad-creative-validator/issues/new';
 
-export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose }) => {
+export const FeedbackModal: React.FC<FeedbackModalProps> = ({ isOpen, onClose, onOpenSpecReport }) => {
   const [feedbacks, setFeedbacks] = useState<FeedbackItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -169,6 +170,15 @@ ${contentStr}
 
         {/* Public board link */}
         <div className="bg-canvas-subtle/90 border-b border-line px-5 py-2.5 flex flex-wrap items-center justify-end gap-2 text-xs">
+          {onOpenSpecReport && (
+            <button
+              type="button"
+              onClick={onOpenSpecReport}
+              className="mr-auto inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#A8FF1A] text-black font-extrabold text-[11px] cursor-pointer"
+            >
+              공식 규격 제보 (계정 없이)
+            </button>
+          )}
           <a
             href="https://github.com/Greycity1988/ad-creative-validator/issues"
             target="_blank"

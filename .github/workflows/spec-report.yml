@@ -1,0 +1,96 @@
+name: Spec report check
+
+# Checks a visitor's spec report (issues filed by /api/spec-report with the `spec-report` label)
+# against the official guide it cites. When the values are found, it opens a PR that adds the
+# placement. A person reviews and merges that PR; nothing here merges or deploys.
+#
+# Re-run for one issue: Actions → Spec report check → Run workflow → issue number.
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to check
+        required: true
+
+permissions:
+  contents: write       # push the spec-report/issue-N branch
+  pull-requests: write  # open the PR
+  issues: write         # comment and label
+
+concurrency:
+  group: spec-report-${{ github.event.issue.number || inputs.issue_number }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'spec-report')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ISSUE: ${{ github.event.issue.number || inputs.issue_number }}
+      OUT: ${{ runner.temp }}/spec-report-out
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r scripts/requirements.txt pypdf==6.17.0
+
+      # The issue text is untrusted: it is only ever written to a file and read as data by the script.
+      - name: Read the issue
+        run: |
+          case "$ISSUE" in ''|*[!0-9]*) echo "issue number must be numeric"; exit 1;; esac
+          gh issue view "$ISSUE" --json body --jq .body > "$RUNNER_TEMP/issue_body.md"
+
+      - name: Check against the official guide
+        id: check
+        run: |
+          python scripts/check_spec_report.py --issue "$ISSUE" --body-file "$RUNNER_TEMP/issue_body.md" --out "$OUT"
+          echo "ready=$(jq -r .branch_ready "$OUT/result.json")" >> "$GITHUB_OUTPUT"
+          echo "label=$(jq -r '.label // ""' "$OUT/result.json")" >> "$GITHUB_OUTPUT"
+
+      - name: Regenerate site data and run the spec audit
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          python scripts/sync_specs.py
+          python scripts/verify_specs.py
+
+      - name: Open a pull request
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          branch="spec-report/issue-$ISSUE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add backend/specs frontend/src/data/specsData.json
+          git commit -m "specs: add placement from spec report #$ISSUE"
+          git push --force -u origin "$branch"
+          if gh pr view "$branch" --json url --jq .url > "$OUT/pr_url.txt" 2>/dev/null; then
+            echo "PR already open: $(cat "$OUT/pr_url.txt")"
+          elif ! gh pr create --base main --head "$branch" --title "규격 제보 #$ISSUE 반영" --body-file "$OUT/pr_body.md"; then
+            {
+              echo
+              echo
+              echo "> PR을 자동으로 열지 못했습니다. 저장소 Settings → Actions → General에서"
+              echo "> \"Allow GitHub Actions to create and approve pull requests\"를 켜 주세요."
+              echo "> 지면을 추가한 브랜치 \`$branch\`는 올라가 있습니다."
+            } >> "$OUT/comment.md"
+          fi
+
+      - name: Comment on the issue
+        if: always() && steps.check.outcome == 'success'
+        env:
+          LABEL: ${{ steps.check.outputs.label }}
+        run: |
+          gh issue comment "$ISSUE" --body-file "$OUT/comment.md"
+          label="$LABEL"
+          if [ -n "$label" ]; then
+            gh label create "$label" --color FBCA04 --description "자동 점검으로 확인하지 못해 사람이 봐야 함" 2>/dev/null || true
+            gh issue edit "$ISSUE" --add-label "$label"
+          fi
