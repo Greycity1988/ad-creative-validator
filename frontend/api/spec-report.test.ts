@@ -1,4 +1,14 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+const putCalls: Array<{ pathname: string; options: Record<string, unknown> }> = [];
+vi.mock('@vercel/blob', () => ({
+  put: vi.fn(async (pathname: string, _body: unknown, options: Record<string, unknown>) => {
+    putCalls.push({ pathname, options });
+    const stored = pathname.replace('guide.', 'guide-AbC123.');
+    return { url: `https://store1.private.blob.vercel-storage.com/${stored}`, pathname: stored, downloadUrl: '', contentType: '', contentDisposition: '' };
+  }),
+}));
+
 import handler from './spec-report';
 import { isOfficialUrl, issueBody, validateSpecReport } from '../src/utils/specReport';
 
@@ -71,6 +81,18 @@ describe('validateSpecReport', () => {
   });
 });
 
+function multipart(payload: unknown, file?: { bytes: Uint8Array; name: string; type: string }, headers: Record<string, string> = {}): Request {
+  const form = new FormData();
+  form.set('payload', JSON.stringify(payload));
+  if (file) form.set('file', new File([file.bytes], file.name, { type: file.type }));
+  return new Request('https://ad-creative-validator.vercel.app/api/spec-report', {
+    method: 'POST',
+    headers: { host: 'ad-creative-validator.vercel.app', origin: 'https://ad-creative-validator.vercel.app', 'x-forwarded-for': `10.1.0.${++ipSeq}`, ...headers },
+    body: form,
+  });
+}
+const pdfBytes = new TextEncoder().encode('%PDF-1.4 fake guide 320x250');
+
 describe('POST /api/spec-report', () => {
   const calls: Array<{ url: string; init?: RequestInit }> = [];
 
@@ -89,6 +111,54 @@ describe('POST /api/spec-report', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
     delete process.env.GITHUB_REPORT_TOKEN;
+    delete process.env.BLOB_READ_WRITE_TOKEN;
+    putCalls.length = 0;
+  });
+
+  describe('with a guide file', () => {
+    beforeEach(() => {
+      process.env.BLOB_READ_WRITE_TOKEN = 'blob-token';
+    });
+
+    it('stores the file privately for 90 days and lists only its name in the issue', async () => {
+      const res = await handler(multipart({ ...good, guideUrl: '' }, { bytes: pdfBytes, name: '애피어 사양서|v2.pdf', type: 'application/pdf' }));
+      expect(res.status).toBe(201);
+      expect(putCalls).toHaveLength(1);
+      expect(putCalls[0].pathname).toMatch(/^spec-reports\/\d{4}-\d{2}-\d{2}\/guide\.pdf$/);
+      expect(putCalls[0].options).toMatchObject({ access: 'private', addRandomSuffix: true, ttlDays: 90, contentType: 'application/pdf' });
+      const create = calls.find((c) => c.url.endsWith('/issues') && c.init?.method === 'POST')!;
+      const body = JSON.parse(String(create.init!.body)).body as string;
+      expect(body).toContain('| 첨부 | 애피어 사양서 v2.pdf');
+      expect(body).toContain('비공개 보관');
+      expect(body).toContain('"pathname":"spec-reports/');
+    });
+
+    it('rejects a file that is not really a PDF/PNG/JPG', async () => {
+      const res = await handler(multipart(good, { bytes: new TextEncoder().encode('<html>hi</html>'), name: 'guide.pdf', type: 'application/pdf' }));
+      expect(res.status).toBe(400);
+      expect(putCalls).toHaveLength(0);
+    });
+
+    it('rejects files over 4MB', async () => {
+      const big = new Uint8Array(4 * 1024 * 1024 + 10);
+      big.set(pdfBytes);
+      const res = await handler(multipart(good, { bytes: big, name: 'big.pdf', type: 'application/pdf' }));
+      expect(res.status).toBe(413);
+      expect(putCalls).toHaveLength(0);
+    });
+
+    it('needs a guide address or a file', async () => {
+      const res = await handler(multipart({ ...good, guideUrl: '' }));
+      expect(res.status).toBe(400);
+      expect((await res.json()).error).toContain('첨부');
+    });
+
+    it('says so when the private store is not connected', async () => {
+      delete process.env.BLOB_READ_WRITE_TOKEN;
+      const res = await handler(multipart({ ...good, guideUrl: '' }, { bytes: pdfBytes, name: 'a.pdf', type: 'application/pdf' }));
+      expect(res.status).toBe(503);
+      expect(await res.json()).toMatchObject({ fallback: true });
+    });
   });
 
   it('files an issue with the spec-report label', async () => {
