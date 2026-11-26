@@ -98,19 +98,15 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
 
   const currentItem = results[selectedFileIndex] || results[0];
 
-  // Unique platform IDs for filtering
-  const allPlatforms = Array.from(
-    new Set(
-      results.flatMap((item) =>
-        item.platform_results.map((p) => p.platform_id)
-      )
-    )
-  );
+  // Platform chips for the file on screen. Files classified by folder can each have different
+  // platforms, so chips come from this file only (and a stale filter falls back to all).
+  const allPlatforms = Array.from(new Set(currentItem.platform_results.map((p) => p.platform_id)));
+  const activePlatformFilter = allPlatforms.includes(platformFilter) ? platformFilter : 'all';
 
   const filteredPlatformResults =
-    platformFilter === 'all'
+    activePlatformFilter === 'all'
       ? currentItem.platform_results
-      : currentItem.platform_results.filter((p) => p.platform_id === platformFilter);
+      : currentItem.platform_results.filter((p) => p.platform_id === activePlatformFilter);
 
   return (
     <div className="space-y-6">
@@ -380,7 +376,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                   type="button"
                   onClick={() => setPlatformFilter('all')}
                   className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                    platformFilter === 'all'
+                    activePlatformFilter === 'all'
                       ? 'bg-[#A8FF1A] text-black shadow-xs font-extrabold'
                       : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                   }`}
@@ -397,7 +393,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                       type="button"
                       onClick={() => setPlatformFilter(pid)}
                       className={`px-2.5 py-1 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                        platformFilter === pid
+                        activePlatformFilter === pid
                           ? 'bg-[#A8FF1A] text-black shadow-xs font-extrabold'
                           : 'bg-canvas-subtle text-ink-secondary border border-line hover:border-line-strong'
                       }`}

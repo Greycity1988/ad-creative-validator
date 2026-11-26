@@ -177,7 +177,7 @@ export const downloadCsvReport = async (
           csvCell(basis),
           csvCell(pr.platform),
           csvCell(pl.name),
-          csvCell(pl.overall.toUpperCase()),
+          csvCell(pl.overall === 'na' ? 'UNREGISTERED' : pl.overall.toUpperCase()),
           csvCell(checkSummary),
         ];
         rows.push(row.join(','));

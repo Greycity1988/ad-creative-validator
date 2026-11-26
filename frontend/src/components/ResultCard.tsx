@@ -62,7 +62,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
   if (isPlatformNA || activePlacements.length === 0) {
     overallBadge = {
-      label: '해당 규격 없음 (N/A)',
+      label: '등록 규격 없음',
       dotColor: 'bg-ink-muted',
       bgColor: 'bg-canvas-subtle',
       textColor: 'text-ink-muted',
@@ -99,6 +99,13 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
   const getStatusBadge = (status: string) => {
     switch (status?.toLowerCase()) {
+      case 'na':
+        return (
+          <span className="inline-flex items-center space-x-1.5 text-[11px] font-bold text-ink-secondary bg-canvas-subtle border border-line px-2.5 py-0.5 rounded-full font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-ink-muted" />
+            <span>규격 미등록</span>
+          </span>
+        );
       case 'pass':
       case 'success':
         return (

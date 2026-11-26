@@ -6,7 +6,10 @@ import {
   ArrowRight,
   Image as ImageIcon,
   Folder,
+  HelpCircle,
+  ExternalLink,
 } from 'lucide-react';
+import { specReportUrl } from '../constants/links';
 import { ValidationItem, CheckItem, PlacementResult } from '../types';
 import { PLATFORM_LABELS, folderOf } from '../utils/folderClassifier';
 
@@ -28,7 +31,9 @@ interface FileSummary {
   format: string;
   fileSizeKb: number;
   textRatio?: number | null;
-  overallStatus: 'pass' | 'fail' | 'warning';
+  overallStatus: 'pass' | 'fail' | 'warning' | 'unregistered';
+  /** Platforms that have no placement of this size (for the report link) */
+  unregisteredPlatforms: string[];
   targetPlacementNames: string[];
   passedPlacementsCount: number;
   failedPlacementsCount: number;
@@ -42,7 +47,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   filePreviews,
   onSelectFileDetail,
 }) => {
-  const [statusFilter, setStatusFilter] = useState<'all' | 'fail' | 'pass'>('all');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'fail' | 'pass' | 'unregistered'>('all');
   const [folderFilter, setFolderFilter] = useState<string>('__all__');
 
   // Process all files into clear summary objects
@@ -89,16 +94,25 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
     let warningReasons: string[] = [];
     let passedCount = 0;
     let failedCount = 0;
-    let overallStatus: 'pass' | 'fail' | 'warning' = 'pass';
+    let overallStatus: FileSummary['overallStatus'] = 'pass';
+    const unregisteredPlatforms = item.platform_results
+      .filter((p) => p.overall === 'na' && p.platform_id !== 'unknown')
+      .map((p) => p.platform);
+    const unreadable = item.platform_results.some((p) => p.platform_id === 'unknown');
     let targetPlacementNames: string[] = [];
 
-    if (relevantPlacements.length === 0) {
-      targetPlacementNames = ['호환 규격 지면 없음'];
-      failureReasons = [
-        `업로드된 소재 규격(${width}×${height}px)에 해당하는 주요 매체 공식 지면이 없습니다.`,
-      ];
+    if (relevantPlacements.length === 0 && unreadable) {
+      targetPlacementNames = ['파일 판독 실패'];
+      failureReasons = ['이미지를 읽을 수 없습니다. 파일이 손상됐거나 지원하지 않는 형식입니다.'];
       overallStatus = 'fail';
       failedCount = 1;
+    } else if (relevantPlacements.length === 0) {
+      // No placement of this size is registered: say so instead of predicting a rejection.
+      targetPlacementNames = ['등록되지 않은 규격'];
+      warningReasons = [
+        `${width}×${height}px는 ACV에 등록된 ${unregisteredPlatforms.join(', ') || '선택한 매체'} 지면에 없습니다. 매체 공식 가이드에 있는 규격인지 확인해 주세요.`,
+      ];
+      overallStatus = 'unregistered';
     } else {
       relevantPlacements.forEach(({ placement }) => {
         if (placement.overall === 'pass' || placement.overall === 'success') {
@@ -146,6 +160,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
       fileSizeKb,
       textRatio,
       overallStatus,
+      unregisteredPlatforms,
       targetPlacementNames,
       passedPlacementsCount: passedCount,
       failedPlacementsCount: failedCount,
@@ -159,6 +174,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   const failFiles = fileSummaries.filter((f) => f.overallStatus === 'fail');
   const passFiles = fileSummaries.filter((f) => f.overallStatus === 'pass');
   const warnFiles = fileSummaries.filter((f) => f.overallStatus === 'warning');
+  const unregFiles = fileSummaries.filter((f) => f.overallStatus === 'unregistered');
 
   const folders = Array.from(new Set(fileSummaries.map((f) => f.folder))).sort((a, b) => a.localeCompare(b, 'ko'));
   const showFolders = folders.length > 1 || (folders.length === 1 && folders[0] !== '');
@@ -167,6 +183,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
     if (folderFilter !== '__all__' && f.folder !== folderFilter) return false;
     if (statusFilter === 'fail') return f.overallStatus === 'fail';
     if (statusFilter === 'pass') return f.overallStatus === 'pass';
+    if (statusFilter === 'unregistered') return f.overallStatus === 'unregistered';
     return true;
   });
 
@@ -188,7 +205,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   return (
     <div className="space-y-6">
       {/* 1. Batch KPI & Diagnostics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className={`grid grid-cols-1 sm:grid-cols-2 gap-4 ${unregFiles.length > 0 ? 'lg:grid-cols-5' : 'lg:grid-cols-4'}`}>
         {/* Total Files */}
         <div className="bg-surface p-5 rounded-2xl border border-line shadow-soft-xs flex items-center justify-between">
           <div>
@@ -266,6 +283,32 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
             <AlertTriangle className="w-5 h-5" />
           </div>
         </div>
+
+        {/* Unregistered sizes: not a rejection, ACV just has no such placement */}
+        {unregFiles.length > 0 && (
+          <div
+            onClick={() => setStatusFilter(statusFilter === 'unregistered' ? 'all' : 'unregistered')}
+            className={`p-5 rounded-2xl border shadow-soft-xs flex items-center justify-between cursor-pointer transition-all ${
+              statusFilter === 'unregistered'
+                ? 'bg-canvas-subtle border-line-strong ring-2 ring-line-strong/40'
+                : 'bg-surface border-line hover:border-line-strong'
+            }`}
+            title="ACV에 이 크기의 지면이 등록돼 있지 않습니다. 반려 여부는 매체 가이드로 확인하세요."
+          >
+            <div>
+              <span className="tracking-wider text-[11px] font-bold text-ink-secondary uppercase block">
+                ❔ 규격 미등록
+              </span>
+              <div className="flex items-baseline space-x-1.5 mt-1">
+                <span className="text-3xl font-extrabold font-mono text-ink-primary">{unregFiles.length}</span>
+                <span className="text-xs text-ink-secondary font-semibold">개 파일</span>
+              </div>
+            </div>
+            <div className="w-12 h-12 rounded-xl bg-canvas-subtle border border-line flex items-center justify-center text-ink-secondary">
+              <HelpCircle className="w-5 h-5" />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* 2. Failure Root-Cause Breakdown */}
@@ -374,6 +417,19 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
             >
               통과 ({passFiles.length})
             </button>
+            {unregFiles.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setStatusFilter('unregistered')}
+                className={`px-3 py-1 rounded-xl font-semibold transition-all cursor-pointer ${
+                  statusFilter === 'unregistered'
+                    ? 'bg-surface text-ink-primary shadow-soft-xs border border-line'
+                    : 'text-ink-secondary hover:text-ink-primary'
+                }`}
+              >
+                미등록 ({unregFiles.length})
+              </button>
+            )}
           </div>
           </div>
         </div>
@@ -402,6 +458,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                 displayedFiles.map((file) => {
                   const isFail = file.overallStatus === 'fail';
                   const isPass = file.overallStatus === 'pass';
+                  const isUnreg = file.overallStatus === 'unregistered';
 
                   return (
                     <tr
@@ -501,6 +558,14 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
                             <span>적합 (통과)</span>
                           </span>
+                        ) : isUnreg ? (
+                          <span
+                            className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-ink-secondary bg-canvas-subtle border border-line font-mono"
+                            title="ACV에 이 크기의 지면이 없어 판정하지 않았습니다"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-ink-muted" />
+                            <span>규격 미등록</span>
+                          </span>
                         ) : isFail ? (
                           <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-status-fail bg-rose-500/10 border border-rose-500/20 font-mono">
                             <span className="w-1.5 h-1.5 rounded-full bg-status-fail" />
@@ -521,6 +586,26 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             <CheckCircle2 className="w-4 h-4 text-accent-mint" />
                             <span>해상도, 파일 형식, 용량, 비율 기준을 모두 충족했습니다.</span>
                           </span>
+                        ) : isUnreg ? (
+                          <div className="space-y-1.5">
+                            <div className="text-[11px] text-ink-secondary bg-canvas-subtle border border-line px-2.5 py-1 rounded-lg font-medium leading-snug">
+                              {file.warningReasons[0]}
+                            </div>
+                            <a
+                              href={specReportUrl({
+                                platforms: file.unregisteredPlatforms,
+                                width: file.width,
+                                height: file.height,
+                                format: file.format,
+                              })}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1 text-[11px] font-bold text-accent hover:underline"
+                            >
+                              공식 규격이라면 제보하기
+                              <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </div>
                         ) : (
                           <div className="space-y-1 max-h-24 overflow-y-auto pr-1">
                             {file.failureReasons.map((reason, rIdx) => (

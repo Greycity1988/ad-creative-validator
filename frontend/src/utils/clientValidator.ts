@@ -647,13 +647,14 @@ export async function validateImagesLocally(
             overall: 'na',
             placements: [
               {
-                name: '해당 매체 일치 규격 없음',
-                overall: 'fail',
+                // Not a rejection: ACV simply has no placement of this size for the platform.
+                name: '등록된 규격 없음',
+                overall: 'na',
                 checks: [
                   {
                     name: 'match',
                     status: 'warning',
-                    message: `업로드된 규격(${width}×${height}px)과 일치하거나 호환되는 ${spec.name} 공식 지면이 없습니다.`,
+                    message: `${width}×${height}px는 ACV에 등록된 ${spec.name} 지면에 없습니다. 매체 공식 가이드에 있는 규격이라면 제보해 주세요.`,
                   },
                 ],
                 is_matched_target: false,

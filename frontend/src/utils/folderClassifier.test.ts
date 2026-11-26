@@ -16,6 +16,7 @@ describe('platformsInSegment', () => {
     ['X', ['twitter']],
     ['rtb_house', ['rtb_house']],
     ['OK캐쉬백', ['syrup']],
+    ['에피어_(320x250)_1_copy1', ['appier']],
   ])('%s -> %j', (segment, expected) => {
     expect(platformsInSegment(segment)).toEqual(expected);
   });
