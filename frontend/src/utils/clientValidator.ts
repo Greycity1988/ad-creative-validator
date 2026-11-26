@@ -215,10 +215,8 @@ export function isPlacementMatchedByFilename(placement: SpecPlacement, filename:
   if (fnameLower.includes('롤링보드') || fnameLower.includes('rolling')) return pnameLower.includes('롤링보드');
   if (fnameLower.includes('브랜드검색') || fnameLower.includes('브검')) return pnameLower.includes('브랜드');
   if (fnameLower.includes('밴드') || fnameLower.includes('band')) return pnameLower.includes('밴드');
-  if (fnameLower.includes('쿠팡') || fnameLower.includes('coupang')) return pnameLower.includes('쿠팡');
-  if (fnameLower.includes('토스') || fnameLower.includes('toss')) return pnameLower.includes('토스');
-  if (fnameLower.includes('당근') || fnameLower.includes('daangn')) return pnameLower.includes('당근');
-  if (fnameLower.includes('버즈빌') || fnameLower.includes('buzzvil')) return pnameLower.includes('버즈빌');
+  // A platform name alone (토스, 쿠팡, 당근, 버즈빌 ...) says which platform, not which placement:
+  // folderClassifier picks the platform, and the image size picks the placement.
   if (fnameLower.includes('피드') || fnameLower.includes('feed')) return pnameLower.includes('피드') || pnameLower.includes('feed');
   if (fnameLower.includes('스토리') || fnameLower.includes('story') || fnameLower.includes('릴스') || fnameLower.includes('reels')) {
     return pnameLower.includes('stories') || pnameLower.includes('reels') || pnameLower.includes('9:16');
@@ -496,15 +494,35 @@ export function evaluatePlacement(
   };
 }
 
+/** One file to check. A bare File is checked against the selected platforms, as before. */
+export interface ValidationInput {
+  file: File;
+  /** Stable id used to link results back to previews (file names can repeat across folders). */
+  id?: string;
+  /** Path inside an uploaded folder, e.g. "카카오/비즈보드/a.png". */
+  relativePath?: string;
+  /** Platforms to check this file against; overrides the shared platform list. */
+  platformIds?: string[];
+  classification?: ValidationItem['classification'];
+}
+
 export async function validateImagesLocally(
-  files: File[],
+  inputs: Array<File | ValidationInput>,
   platformIds: string[],
   selectedPlacementsMap: Record<string, string[]>,
-  autoMatch: boolean = true
+  autoMatch: boolean = true,
+  onProgress?: (done: number, total: number) => void
 ): Promise<ValidationResponse> {
   const results: ValidationItem[] = [];
+  const items: ValidationInput[] = inputs.map((x) => (x instanceof File ? { file: x } : x));
 
-  for (const file of files) {
+  for (const [itemIndex, input] of items.entries()) {
+    const file = input.file;
+    const filePlatformIds = input.platformIds && input.platformIds.length > 0 ? input.platformIds : platformIds;
+    if (itemIndex > 0 && itemIndex % 10 === 0) {
+      onProgress?.(itemIndex, items.length);
+      await new Promise((r) => setTimeout(r, 0)); // let the progress label paint on big folders
+    }
     // 1. Detect actual image format from binary magic bytes
     const detectedFormat = await detectActualImageFormat(file);
 
@@ -536,6 +554,9 @@ export async function validateImagesLocally(
     if (loadFailed || width <= 0 || height <= 0) {
       results.push({
         filename: file.name,
+        file_id: input.id,
+        relative_path: input.relativePath,
+        classification: input.classification,
         image_info: {
           width: 0,
           height: 0,
@@ -593,7 +614,7 @@ export async function validateImagesLocally(
 
     const platformResults: PlatformResult[] = [];
 
-    for (const pid of platformIds) {
+    for (const pid of filePlatformIds) {
       const spec = typedSpecs.find((s) => s.id === pid);
       if (!spec) continue;
 
@@ -663,12 +684,16 @@ export async function validateImagesLocally(
 
     results.push({
       filename: file.name,
+      file_id: input.id,
+      relative_path: input.relativePath,
+      classification: input.classification,
       image_info: imageInfo,
       text_ratio: null,
       platform_results: platformResults,
     });
   }
 
+  onProgress?.(items.length, items.length);
   return { results };
 }
 

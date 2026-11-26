@@ -6,7 +6,7 @@ import {
   FeedbackCreateRequest,
 } from '../types';
 import specsData from '../data/specsData.json';
-import { validateImagesLocally } from '../utils/clientValidator';
+import { validateImagesLocally, ValidationInput } from '../utils/clientValidator';
 
 const DEFAULT_METADATA = specsData as unknown as PlatformMetadata[];
 
@@ -132,11 +132,12 @@ export const submitFeedback = async (data: FeedbackCreateRequest): Promise<Feedb
  * Files are processed in browser memory only; nothing is sent over the network.
  */
 export const validateImages = async (
-  files: File[],
+  files: Array<File | ValidationInput>,
   platforms: string[],
   selectedPlacements: Record<string, string[]>,
-  autoMatch: boolean = true
-): Promise<ValidationResponse> => validateImagesLocally(files, platforms, selectedPlacements, autoMatch);
+  autoMatch: boolean = true,
+  onProgress?: (done: number, total: number) => void
+): Promise<ValidationResponse> => validateImagesLocally(files, platforms, selectedPlacements, autoMatch, onProgress);
 
 // Quote a CSV cell; a leading = + - @ (or tab/CR) would make Excel evaluate it as a formula.
 const csvCell = (value: string): string => {
@@ -150,7 +151,7 @@ export const downloadCsvReport = async (
 ): Promise<void> => {
   // Client-side CSV generation with UTF-8 BOM (opens in Microsoft Excel in Korean without mojibake)
   const rows: string[] = [];
-  rows.push(['파일명', '해상도', '용량(KB)', '비율', '매체명', '지면명', '최종판정', '세부검수내역'].join(','));
+  rows.push(['폴더', '파일명', '해상도', '용량(KB)', '비율', '매체 분류', '매체명', '지면명', '최종판정', '세부검수내역'].join(','));
 
   for (const item of results) {
     const img = item.image_info;
@@ -161,11 +162,19 @@ export const downloadCsvReport = async (
     for (const pr of item.platform_results) {
       for (const pl of pr.placements) {
         const checkSummary = pl.checks.map((c) => `[${c.name}] ${c.message}`).join(' | ');
+        const folder = item.relative_path && item.relative_path.includes('/')
+          ? item.relative_path.slice(0, item.relative_path.lastIndexOf('/'))
+          : '';
+        const basis = item.classification
+          ? `${item.classification.source === 'folder' ? '폴더' : '파일명'} "${item.classification.matched}"`
+          : '선택한 매체';
         const row = [
+          csvCell(folder),
           csvCell(item.filename),
           csvCell(dim),
           csvCell(size),
           csvCell(ratio),
+          csvCell(basis),
           csvCell(pr.platform),
           csvCell(pl.name),
           csvCell(pl.overall.toUpperCase()),

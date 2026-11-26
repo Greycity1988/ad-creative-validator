@@ -15,6 +15,8 @@ import { useTheme } from './utils/useTheme';
 import { UploadedFileItem, ValidationItem, PlatformMetadata } from './types';
 import { fetchPlatformsMetadata, validateImages, TOTAL_PLACEMENT_COUNT } from './api/validator';
 import { AlertCircle } from 'lucide-react';
+import { UploadEntry, classifyCreativePath } from './utils/folderClassifier';
+import { ValidationInput } from './utils/clientValidator';
 import { Analytics } from '@vercel/analytics/react';
 import { track, pageview } from '@vercel/analytics';
 
@@ -30,6 +32,8 @@ export const App: React.FC = () => {
   const [platformsMetadata, setPlatformsMetadata] = useState<PlatformMetadata[]>([]);
   const [selectedPlacements, setSelectedPlacements] = useState<Record<string, string[]>>({});
   const [autoMatch, setAutoMatch] = useState<boolean>(true);
+  const [autoClassify, setAutoClassify] = useState<boolean>(true);
+  const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<ValidationItem[] | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -56,13 +60,23 @@ export const App: React.FC = () => {
     };
   }, []);
 
-  const handleAddFiles = (newFiles: File[]) => {
-    const newItems: UploadedFileItem[] = newFiles.map((file) => {
+  const handleAddFiles = (entries: UploadEntry[]) => {
+    // Dropping the same folder twice should not double the list.
+    const seen = new Set(files.map((f) => `${f.relativePath}|${f.file.size}|${f.file.lastModified}`));
+    const fresh = entries.filter((e) => {
+      const key = `${e.relativePath}|${e.file.size}|${e.file.lastModified}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    const newItems: UploadedFileItem[] = fresh.map(({ file, relativePath }) => {
       const previewUrl = URL.createObjectURL(file);
       const item: UploadedFileItem = {
-        id: `${file.name}-${file.lastModified}-${Math.random()}`,
+        id: `${relativePath}-${file.lastModified}-${Math.random().toString(36).slice(2)}`,
         file,
         previewUrl,
+        relativePath,
       };
 
       // Measure dimensions
@@ -106,7 +120,9 @@ export const App: React.FC = () => {
   };
 
   const handleStartValidation = async () => {
-    if (files.length === 0 || selectedPlatforms.length === 0) return;
+    if (files.length === 0) return;
+    const allClassified = autoClassify && files.every((f) => classifyCreativePath(f.relativePath));
+    if (selectedPlatforms.length === 0 && !allClassified) return;
 
     try {
       setIsLoading(true);
@@ -126,17 +142,29 @@ export const App: React.FC = () => {
           platform_count: selectedPlatforms.length,
           platforms: selectedPlatforms.slice(0, 8).join(','),
           auto_match: autoMatch ? 'enabled' : 'disabled',
+          folder_upload: files.some((f) => f.relativePath.includes('/')) ? 'yes' : 'no',
         });
       } catch {
         // ignore tracking failures
       }
 
-      const rawFiles = files.map((f) => f.file);
+      const inputs: ValidationInput[] = files.map((f) => {
+        const c = autoClassify ? classifyCreativePath(f.relativePath) : null;
+        return {
+          file: f.file,
+          id: f.id,
+          relativePath: f.relativePath,
+          platformIds: c?.platformIds,
+          classification: c ? { platform_ids: c.platformIds, source: c.source, matched: c.matched } : undefined,
+        };
+      });
+      setProgress({ done: 0, total: inputs.length });
       const response = await validateImages(
-        rawFiles,
+        inputs,
         selectedPlatforms,
         selectedPlacements,
-        autoMatch
+        autoMatch,
+        (done, total) => setProgress({ done, total })
       );
 
       setResults(response.results);
@@ -157,15 +185,20 @@ export const App: React.FC = () => {
       setErrorMessage(message);
     } finally {
       setIsLoading(false);
+      setProgress(null);
     }
   };
 
-  // Map item IDs and file names to preview URLs for ResultDashboard
+  // Map upload ids (and, for older callers, file names) to preview URLs. Ids are unique even when
+  // two folders hold files with the same name.
   const filePreviewMap: Record<string, string> = {};
   files.forEach((f) => {
-    filePreviewMap[f.file.name] = f.previewUrl;
+    if (!(f.file.name in filePreviewMap)) filePreviewMap[f.file.name] = f.previewUrl;
     filePreviewMap[f.id] = f.previewUrl;
   });
+  const classifiedCount = autoClassify
+    ? files.filter((f) => classifyCreativePath(f.relativePath)).length
+    : 0;
 
   const totalPlacementsCount = platformsMetadata.reduce(
     (acc, p) => acc + (p.placements?.length || 0),
@@ -206,6 +239,8 @@ export const App: React.FC = () => {
             onRemoveFile={handleRemoveFile}
             onClearFiles={handleClearFiles}
             disabled={isLoading}
+            autoClassify={autoClassify}
+            onToggleAutoClassify={setAutoClassify}
           />
         </div>
 
@@ -220,8 +255,10 @@ export const App: React.FC = () => {
           onToggleAutoMatch={setAutoMatch}
           onStartValidation={handleStartValidation}
           isLoading={isLoading}
-          canValidate={files.length > 0 && selectedPlatforms.length > 0}
+          canValidate={files.length > 0 && (selectedPlatforms.length > 0 || classifiedCount === files.length)}
           fileCount={files.length}
+          classifiedCount={classifiedCount}
+          progress={progress}
         />
 
         {/* Error Alert */}

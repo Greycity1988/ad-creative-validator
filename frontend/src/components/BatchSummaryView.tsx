@@ -5,8 +5,10 @@ import {
   AlertTriangle,
   ArrowRight,
   Image as ImageIcon,
+  Folder,
 } from 'lucide-react';
 import { ValidationItem, CheckItem, PlacementResult } from '../types';
+import { PLATFORM_LABELS, folderOf } from '../utils/folderClassifier';
 
 interface BatchSummaryViewProps {
   results: ValidationItem[];
@@ -17,6 +19,9 @@ interface BatchSummaryViewProps {
 interface FileSummary {
   index: number;
   filename: string;
+  folder: string;
+  /** e.g. "카카오 (폴더 \"카카오\")" when the platform came from the path */
+  classificationLabel: string | null;
   previewUrl?: string;
   width: number;
   height: number;
@@ -38,11 +43,18 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   onSelectFileDetail,
 }) => {
   const [statusFilter, setStatusFilter] = useState<'all' | 'fail' | 'pass'>('all');
+  const [folderFilter, setFolderFilter] = useState<string>('__all__');
 
   // Process all files into clear summary objects
   const fileSummaries: FileSummary[] = results.map((item, index) => {
     const filename = item.filename;
-    const previewUrl = filePreviews[filename];
+    const previewUrl = (item.file_id && filePreviews[item.file_id]) || filePreviews[filename];
+    const folder = item.relative_path ? folderOf(item.relative_path) : '';
+    const classificationLabel = item.classification
+      ? `${item.classification.platform_ids.map((id) => PLATFORM_LABELS[id] || id).join(' · ')} (${
+          item.classification.source === 'folder' ? '폴더' : '파일명'
+        } "${item.classification.matched}")`
+      : null;
     const width = item.image_info.width;
     const height = item.image_info.height;
     const format = item.image_info.format;
@@ -125,6 +137,8 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
     return {
       index,
       filename,
+      folder,
+      classificationLabel,
       previewUrl,
       width,
       height,
@@ -146,7 +160,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
   const passFiles = fileSummaries.filter((f) => f.overallStatus === 'pass');
   const warnFiles = fileSummaries.filter((f) => f.overallStatus === 'warning');
 
+  const folders = Array.from(new Set(fileSummaries.map((f) => f.folder))).sort((a, b) => a.localeCompare(b, 'ko'));
+  const showFolders = folders.length > 1 || (folders.length === 1 && folders[0] !== '');
+
   const displayedFiles = fileSummaries.filter((f) => {
+    if (folderFilter !== '__all__' && f.folder !== folderFilter) return false;
     if (statusFilter === 'fail') return f.overallStatus === 'fail';
     if (statusFilter === 'pass') return f.overallStatus === 'pass';
     return true;
@@ -303,6 +321,25 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
             </span>
           </div>
 
+          <div className="flex flex-wrap items-center gap-2">
+          {showFolders && (
+            <label className="inline-flex items-center gap-1.5 text-xs text-ink-secondary">
+              <Folder className="w-3.5 h-3.5" />
+              <select
+                value={folderFilter}
+                onChange={(e) => setFolderFilter(e.target.value)}
+                className="px-2.5 py-1.5 rounded-xl bg-surface border border-line text-ink-primary font-semibold max-w-[260px] cursor-pointer"
+                aria-label="폴더별로 보기"
+              >
+                <option value="__all__">모든 폴더 ({folders.length})</option>
+                {folders.map((f) => (
+                  <option key={f} value={f}>
+                    {f || '(폴더 밖 파일)'} ({fileSummaries.filter((x) => x.folder === f).length})
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
           <div className="bg-canvas-subtle p-1 rounded-2xl border border-line inline-flex items-center space-x-1 text-xs">
             <button
               type="button"
@@ -337,6 +374,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
             >
               통과 ({passFiles.length})
             </button>
+          </div>
           </div>
         </div>
 
@@ -395,6 +433,24 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                             <div className="font-bold text-ink-primary truncate max-w-[220px]" title={file.filename}>
                               {file.filename}
                             </div>
+                            {(file.folder || file.classificationLabel) && (
+                              <div className="flex items-center gap-1.5 mt-0.5 text-[10px] max-w-[260px]">
+                                {file.folder && (
+                                  <span className="inline-flex items-center gap-1 text-ink-muted truncate" title={file.folder}>
+                                    <Folder className="w-3 h-3 flex-shrink-0" />
+                                    <span className="truncate font-mono">{file.folder}</span>
+                                  </span>
+                                )}
+                                {file.classificationLabel && (
+                                  <span
+                                    className="flex-shrink-0 px-1.5 py-0.5 rounded-md font-bold text-accent bg-accent/10 border border-accent/20"
+                                    title={`매체 자동 분류: ${file.classificationLabel}`}
+                                  >
+                                    {file.classificationLabel.split(' (')[0]}
+                                  </span>
+                                )}
+                              </div>
+                            )}
                             <div className="text-[11px] text-ink-muted font-mono mt-0.5 space-x-1.5">
                               <span>{file.width}×{file.height}px</span>
                               <span>•</span>

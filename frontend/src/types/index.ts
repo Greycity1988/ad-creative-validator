@@ -63,6 +63,16 @@ export interface ImageInfo {
 
 export interface ValidationItem {
   filename: string;
+  /** Links the result to its upload (and preview) even when file names repeat. */
+  file_id?: string;
+  /** Path inside an uploaded folder, e.g. "카카오/비즈보드/a.png". */
+  relative_path?: string;
+  /** How the file's platforms were chosen when it came from a folder or a telling file name. */
+  classification?: {
+    platform_ids: string[];
+    source: 'folder' | 'filename';
+    matched: string;
+  };
   image_info: ImageInfo;
   text_ratio?: number | null;
   platform_results: PlatformResult[];
@@ -126,6 +136,8 @@ export interface UploadedFileItem {
   previewUrl: string;
   dimensions?: { width: number; height: number };
   targetChannelId?: string;
+  /** Path inside an uploaded folder; equals the file name for loose files. */
+  relativePath: string;
 }
 
 export interface FeedbackItem {
