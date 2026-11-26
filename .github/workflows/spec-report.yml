@@ -32,7 +32,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ISSUE: ${{ github.event.issue.number || inputs.issue_number }}
-      OUT: ${{ runner.temp }}/spec-report-out
+      OUT: /tmp/spec-report-out # runner.temp is not available in job-level env
     steps:
       - uses: actions/checkout@v4
 
