@@ -31,7 +31,7 @@ export const PLATFORM_ALIASES: Record<string, string[]> = {
   criteo: ['criteo', '크리테오'],
   moloco: ['moloco', '몰로코'],
   rtb_house: ['rtbhouse', 'rtb', '알티비하우스'],
-  appier: ['appier', '애피어'],
+  appier: ['appier', '애피어', '에피어'],
   dable: ['dable', '데이블'],
   taboola: ['taboola', '타불라'],
   acetrader: ['acetrader', '에이스트레이더'],
