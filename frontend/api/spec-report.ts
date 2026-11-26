@@ -22,7 +22,7 @@ import {
   validateSpecReport,
 } from '../src/utils/specReport';
 
-export const config = { runtime: 'edge' };
+// Node.js runtime (the default): @vercel/blob needs Node modules that the Edge runtime lacks.
 
 declare const process: { env: Record<string, string | undefined> };
 
@@ -68,7 +68,7 @@ async function github(path: string, token: string, init: RequestInit = {}): Prom
   });
 }
 
-export default async function handler(req: Request): Promise<Response> {
+export async function handleSpecReport(req: Request): Promise<Response> {
   if (req.method !== 'POST') return json(405, { ok: false, error: 'POST만 받습니다.' });
 
   // Only this site's own pages may post here.
@@ -187,3 +187,5 @@ export default async function handler(req: Request): Promise<Response> {
     return json(502, { ok: false, fallback: true, error: '제보를 등록하지 못했습니다. GitHub로 직접 제보해 주세요.' });
   }
 }
+
+export default { fetch: handleSpecReport };

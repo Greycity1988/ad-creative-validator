@@ -9,7 +9,7 @@ vi.mock('@vercel/blob', () => ({
   }),
 }));
 
-import handler from './spec-report';
+import { handleSpecReport as handler } from '../api/spec-report';
 import { isOfficialUrl, issueBody, validateSpecReport } from '../src/utils/specReport';
 
 const good = {
