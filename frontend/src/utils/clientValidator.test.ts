@@ -186,3 +186,20 @@ describe('filename hints', () => {
     expect(isPlacementMatchedByFilename(wide as never, 'toss_1200x628.png')).toBe(true);
   });
 });
+
+describe('naver smart channel sizes', () => {
+  it('750×160 and 750×200 each have their own placement', async () => {
+    const { isPlacementMatchedByDimension } = await import('./clientValidator');
+    const specs = (await import('../data/specsData.json')).default as unknown as Array<{
+      id: string;
+      placements_detail: Array<{ name: string; exact_width?: number; exact_height?: number }>;
+    }>;
+    const naver = specs.find((s) => s.id === 'naver')!;
+    const hit = (w: number, h: number) =>
+      naver.placements_detail
+        .filter((p) => isPlacementMatchedByDimension(p as never, w, h, w / h))
+        .map((p) => p.name);
+    expect(hit(750, 160)).toContain('네이버 스마트채널 (기본 750×160 투명 PNG)');
+    expect(hit(750, 200)).toContain('네이버 스마트채널 (기본 750×200 투명 PNG)');
+  });
+});

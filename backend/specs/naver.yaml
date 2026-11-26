@@ -132,10 +132,9 @@ placements:
       height_ratio: 0.15
       description: 우측 하단 네이버 기본 AD 배지
   needs_confirmation: true
-- name: 네이버 스마트채널 (기본 750×200/160 투명 PNG)
+- name: 네이버 스마트채널 (기본 750×200 투명 PNG)
   exact_width: 750
   exact_height: 200
-  min_height: 160
   max_file_size_kb: 200
   allowed_formats:
   - png
@@ -145,6 +144,28 @@ placements:
     description: 상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)
     base_width: 750
     base_height: 200
+    top_px: 35
+    bottom_px: 35
+    left_px: 35
+    right_px: 35
+    ui_elements:
+    - name: 네이버 AD 마크
+      position: bottom-right
+      width_ratio: 0.12
+      height_ratio: 0.16
+  needs_confirmation: true
+- name: 네이버 스마트채널 (기본 750×160 투명 PNG)
+  exact_width: 750
+  exact_height: 160
+  max_file_size_kb: 200
+  allowed_formats:
+  - png
+  require_transparency: true
+  description: 'GFA 스마트채널 서브/클래식 규격 (배경 투명 필수 PNG) [매체 확인 중: 확인한 공식 자료에 근거 없음 또는 오래된 자료뿐]'
+  safe_zone:
+    description: 상/하 35px 및 좌/우 35px 외곽 여백 준수 (우하단 AD 마크)
+    base_width: 750
+    base_height: 160
     top_px: 35
     bottom_px: 35
     left_px: 35
