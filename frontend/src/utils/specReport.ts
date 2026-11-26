@@ -3,7 +3,7 @@
  * Shared by the report form (browser) and /api/spec-report (Vercel function), so both
  * apply the same rules. scripts/check_spec_report.py re-checks everything on GitHub.
  */
-import officialSources from '../data/officialSources.json';
+import officialSources from '../data/officialSources.json' with { type: 'json' };
 
 type SourceRule = { host: string; pathPrefix?: string };
 const PLATFORMS = (officialSources as { platforms: Record<string, { name: string; sources: SourceRule[] }> }).platforms;

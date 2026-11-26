@@ -20,7 +20,7 @@ import {
   issueTitle,
   sniffAttachmentType,
   validateSpecReport,
-} from '../src/utils/specReport';
+} from '../src/utils/specReport.js';
 
 // Node.js runtime (the default): @vercel/blob needs Node modules that the Edge runtime lacks.
 
@@ -110,7 +110,7 @@ export async function handleSpecReport(req: Request): Promise<Response> {
   }
 
   const checked = validateSpecReport(input, { hasAttachment: !!file });
-  if (!checked.ok) return json(400, { ok: false, error: checked.error });
+  if (checked.ok === false) return json(400, { ok: false, error: (checked as { error: string }).error });
   const report = checked.value;
 
   // The file must really be a PDF/PNG/JPG of the allowed size, whatever its name says.
