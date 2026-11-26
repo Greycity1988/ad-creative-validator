@@ -7,10 +7,10 @@
 **👉 바로 사용하기: [ad-creative-validator.vercel.app](https://ad-creative-validator.vercel.app/)** · 설치·회원가입 없음 · 소재는 서버로 전송되지 않습니다
 
 <p align="center">
-  <img src="docs/acv-demo.gif" alt="ACV 데모: 소재 4개를 올리고 32개 매체 목록을 훑은 뒤 카카오·META 세부 지면을 골라 검수하면 지면별 적합·불일치 리포트가 바로 나옵니다" width="800">
+  <img src="docs/acv-demo.gif" alt="ACV 데모: 캠페인 폴더를 통째로 올리면 폴더 이름으로 매체가 자동 분류되고, 검수 결과를 폴더별로 걸러 볼 수 있습니다" width="800">
 </p>
 
-<p align="center"><sub>소재 업로드 → 매체·세부 지면 선택 → 검수 실행 → 결과 리포트까지 모두 브라우저 안에서 진행됩니다.</sub></p>
+<p align="center"><sub>폴더째 업로드 → 매체 자동 분류 → 검수 실행 → 폴더별 결과 리포트까지 모두 브라우저 안에서 진행됩니다.</sub></p>
 
 ## 🧭 3단계로 쓰기
 
