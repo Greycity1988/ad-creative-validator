@@ -1,8 +1,8 @@
 # 🖼️ 광고 소재 검수 시스템 (Ad Creative Validator Pro)
 
-광고 소재(이미지 파일)를 업로드하면 **32개 국내외 광고 매체, 428개 세부 지면**의 규격(해상도·비율·용량·포맷·투명 배경) 적합 여부를 한 번에 검수하고 CSV 리포트(엑셀에서 열림)를 만들어 주는 도구입니다.
+광고 소재(이미지 파일)를 업로드하면 **32개 국내외 광고 매체, 429개 세부 지면**의 규격(해상도·비율·용량·포맷·투명 배경) 적합 여부를 한 번에 검수하고 CSV 리포트(엑셀에서 열림)를 만들어 주는 도구입니다.
 
-> Upload ad creatives and check them against 428 placement specs across 32 Korean and global ad platforms — entirely in your browser.
+> Upload ad creatives and check them against 429 placement specs across 32 Korean and global ad platforms — entirely in your browser.
 
 **👉 바로 사용하기: [ad-creative-validator.vercel.app](https://ad-creative-validator.vercel.app/)** · 설치·회원가입 없음 · 소재는 서버로 전송되지 않습니다
 
@@ -20,11 +20,11 @@
 
 ---
 
-## 🎯 지원 매체 (32개 매체 · 428개 세부 지면)
+## 🎯 지원 매체 (32개 매체 · 429개 세부 지면)
 
 매체 이름 옆 숫자는 등록된 세부 지면 수입니다.
 
-1. **포털 & SNS (6개 매체 · 118개 지면)**: 네이버 33, 카카오 19, META 11, 구글 35, 틱톡 10, 엑스(X) 10
+1. **포털 & SNS (6개 매체 · 119개 지면)**: 네이버 34, 카카오 19, META 11, 구글 35, 틱톡 10, 엑스(X) 10
 2. **네트워크 DA & DSP (9개 매체 · 186개 지면)**: 크리테오 70, 몰로코 18, RTB House 17, 애피어 20, 데이블 8, 타불라 12, 에이스트레이더 15, 타겟픽 19, 리얼클릭 7
 3. **커머스 & 금융 (4개 매체 · 36개 지면)**: 쿠팡 16, 토스 9, 당근 7, 원스토어 4
 4. **리워드 & 앱테크 (4개 매체 · 35개 지면)**: 버즈빌 7, 애디슨 오퍼월 4, 시럽/OK캐쉬백 11, TNK팩토리 13
