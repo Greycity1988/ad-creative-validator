@@ -175,3 +175,14 @@ describe('specsData.json', () => {
     expect(result.checks.some((c) => c.name === 'text_ratio' && c.status === 'manual')).toBe(true);
   });
 });
+
+describe('filename hints', () => {
+  it('a platform name in the file name does not pull in every placement of that platform', async () => {
+    const { isPlacementMatchedByFilename } = await import('./clientValidator');
+    const wide = { name: '토스 (광고 이미지 가로형 1.91:1, 1200×628 이상)', aspect_ratio: [1.91, 1], min_width: 1200, min_height: 628 };
+    expect(isPlacementMatchedByFilename(wide as never, 'toss_main.png')).toBe(false);
+    expect(isPlacementMatchedByFilename(wide as never, '쿠팡_메인.png')).toBe(false);
+    // size hints in the name still work
+    expect(isPlacementMatchedByFilename(wide as never, 'toss_1200x628.png')).toBe(true);
+  });
+});

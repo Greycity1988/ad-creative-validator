@@ -290,7 +290,9 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                         : 'bg-surface-raised text-ink-secondary border border-line hover:border-line-strong'
                     }`}
                   >
-                    <span className="truncate max-w-[140px]">{item.filename}</span>
+                    <span className="truncate max-w-[140px]" title={item.relative_path || item.filename}>
+                      {item.filename}
+                    </span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
                         isSelected ? 'bg-black/20 text-black font-bold' : 'bg-surface text-ink-secondary'
@@ -311,7 +313,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                 <ImagePreview
                   filename={currentItem.filename}
                   imageInfo={currentItem.image_info}
-                  previewUrl={filePreviews[currentItem.filename]}
+                  previewUrl={((currentItem.file_id && filePreviews[currentItem.file_id]) || filePreviews[currentItem.filename])}
                 />
               </div>
               <div>
@@ -323,7 +325,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
               <ImagePreview
                 filename={currentItem.filename}
                 imageInfo={currentItem.image_info}
-                previewUrl={filePreviews[currentItem.filename]}
+                previewUrl={((currentItem.file_id && filePreviews[currentItem.file_id]) || filePreviews[currentItem.filename])}
               />
             </div>
           )}
@@ -426,7 +428,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
                   key={index}
                   platformResult={pResult}
                   viewMode={viewMode}
-                  imageUrl={filePreviews[currentItem.filename] || ''}
+                  imageUrl={((currentItem.file_id && filePreviews[currentItem.file_id]) || filePreviews[currentItem.filename]) || ''}
                   imageInfo={{
                     width: currentItem.image_info.width,
                     height: currentItem.image_info.height,
@@ -451,7 +453,7 @@ export const ResultDashboard: React.FC<ResultDashboardProps> = ({
         <SafeZoneModal
           isOpen={!!activeSafeZone}
           onClose={() => setActiveSafeZone(null)}
-          imageUrl={filePreviews[currentItem.filename] || ''}
+          imageUrl={((currentItem.file_id && filePreviews[currentItem.file_id]) || filePreviews[currentItem.filename]) || ''}
           imageInfo={{
             width: currentItem.image_info.width,
             height: currentItem.image_info.height,

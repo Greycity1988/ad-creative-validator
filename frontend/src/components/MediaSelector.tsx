@@ -331,6 +331,9 @@ interface MediaSelectorProps {
   isLoading: boolean;
   canValidate: boolean;
   fileCount: number;
+  /** Files whose folder or file name already picks their platform. */
+  classifiedCount?: number;
+  progress?: { done: number; total: number } | null;
 }
 
 type CategoryType = 'all' | 'portal' | 'network' | 'commerce' | 'reward' | 'global';
@@ -353,6 +356,8 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
   isLoading,
   canValidate,
   fileCount,
+  classifiedCount = 0,
+  progress = null,
 }) => {
   const [expandedPlatform, setExpandedPlatform] = useState<string | null>(null);
   const [selectedChannelId, setSelectedChannelId] = useState<string>('all');
@@ -906,7 +911,19 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
       {/* ── 6. Bottom Start Validation Action Bar ── */}
       <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-slate-200 dark:border-[#26272c]">
         <div className="text-xs text-slate-500 dark:text-[#AEAEAE]">
-          {fileCount > 0 ? (
+          {fileCount > 0 && classifiedCount > 0 ? (
+            <span className="font-medium text-slate-900 dark:text-white">
+              <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{classifiedCount}개</strong>는 폴더·파일 이름으로 분류한 매체로
+              {classifiedCount < fileCount ? (
+                <>
+                  , 나머지 <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{fileCount - classifiedCount}개</strong>는 선택된{' '}
+                  <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{selectedPlatforms.length}개 매체</strong>로 검수합니다.
+                </>
+              ) : (
+                ' 검수합니다.'
+              )}
+            </span>
+          ) : fileCount > 0 ? (
             <span className="font-medium text-slate-900 dark:text-white">
               업로드된 <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{fileCount}개 소재</strong>를 선택된{' '}
               <strong className="text-emerald-700 dark:text-[#A8FF1A] font-bold">{selectedPlatforms.length}개 매체</strong>의 공식 규격으로 실시간 검수합니다.
@@ -929,7 +946,11 @@ export const MediaSelector: React.FC<MediaSelectorProps> = ({
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin text-black" />
-              <span>규격 검수 분석 중...</span>
+              <span>
+                {progress && progress.total > 1
+                  ? `검수 중 ${progress.done}/${progress.total}`
+                  : '규격 검수 분석 중...'}
+              </span>
             </>
           ) : (
             <>

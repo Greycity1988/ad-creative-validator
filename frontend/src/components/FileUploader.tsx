@@ -1,13 +1,24 @@
-import React, { useRef, useState } from 'react';
-import { UploadCloud, X, Image as ImageIcon, Plus, ShieldCheck } from 'lucide-react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { UploadCloud, X, Image as ImageIcon, Plus, ShieldCheck, FolderOpen, Folder, Loader2, Tags } from 'lucide-react';
 import { UploadedFileItem } from '../types';
+import {
+  UploadEntry,
+  classifyCreativePath,
+  collectDroppedFiles,
+  entriesFromInput,
+  folderOf,
+  isCheckableImage,
+  PLATFORM_LABELS,
+} from '../utils/folderClassifier';
 
 interface FileUploaderProps {
   files: UploadedFileItem[];
-  onAddFiles: (files: File[]) => void;
+  onAddFiles: (entries: UploadEntry[]) => void;
   onRemoveFile: (id: string) => void;
   onClearFiles: () => void;
   disabled?: boolean;
+  autoClassify: boolean;
+  onToggleAutoClassify: (value: boolean) => void;
 }
 
 export const FileUploader: React.FC<FileUploaderProps> = ({
@@ -16,9 +27,43 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   onRemoveFile,
   onClearFiles,
   disabled = false,
+  autoClassify,
+  onToggleAutoClassify,
 }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const [isReading, setIsReading] = useState(false);
+  const [skippedCount, setSkippedCount] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const folderInputRef = useRef<HTMLInputElement>(null);
+
+  // React has no typed prop for the folder picker; set the attributes directly.
+  useEffect(() => {
+    folderInputRef.current?.setAttribute('webkitdirectory', '');
+    folderInputRef.current?.setAttribute('directory', '');
+  }, []);
+
+  const addEntries = (entries: UploadEntry[]) => {
+    const images = entries.filter((e) => isCheckableImage(e.file, e.relativePath));
+    setSkippedCount(entries.length - images.length);
+    if (images.length > 0) onAddFiles(images);
+  };
+
+  // Group the upload list by folder and count auto-classified files.
+  const { groups, classifiedCount, hasFolders } = useMemo(() => {
+    const map = new Map<string, UploadedFileItem[]>();
+    let classified = 0;
+    for (const f of files) {
+      const folder = folderOf(f.relativePath);
+      if (!map.has(folder)) map.set(folder, []);
+      map.get(folder)!.push(f);
+      if (classifyCreativePath(f.relativePath)) classified++;
+    }
+    return {
+      groups: Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b, 'ko')),
+      classifiedCount: classified,
+      hasFolders: files.some((f) => f.relativePath.includes('/')),
+    };
+  }, [files]);
 
   const handleDragEnter = (e: React.DragEvent) => {
     e.preventDefault();
@@ -44,24 +89,17 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     setIsDragging(false);
     if (disabled) return;
 
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      const droppedFiles = Array.from(e.dataTransfer.files).filter((file) =>
-        file.type.startsWith('image/')
-      );
-      if (droppedFiles.length > 0) {
-        onAddFiles(droppedFiles);
-      }
-    }
+    // Must start synchronously: the browser clears dataTransfer after this handler returns.
+    const pending = collectDroppedFiles(e.dataTransfer);
+    setIsReading(true);
+    pending
+      .then(addEntries)
+      .finally(() => setIsReading(false));
   };
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const selectedFiles = Array.from(e.target.files).filter((file) =>
-        file.type.startsWith('image/')
-      );
-      if (selectedFiles.length > 0) {
-        onAddFiles(selectedFiles);
-      }
+      addEntries(entriesFromInput(e.target.files));
       e.target.value = '';
     }
   };
@@ -102,7 +140,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-[#AEAEAE] mt-0.5">
-              (JPG, PNG, GIF, WebP 다중 선택 가능)
+              (JPG, PNG, GIF, WebP · 여러 파일 또는 폴더째 업로드 가능)
             </p>
           </div>
         </div>
@@ -136,7 +174,12 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        onClick={() => !disabled && fileInputRef.current?.click()}
+        onClick={(e) => {
+          // The hidden inputs live inside this zone; their own click events bubble up here and
+          // must not open a second (file) picker on top of the folder picker.
+          if (e.target instanceof HTMLInputElement) return;
+          if (!disabled) fileInputRef.current?.click();
+        }}
         className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-10 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
             ? 'border-emerald-500 bg-emerald-50/50 scale-[0.995] dark:border-[#A8FF1A] dark:bg-[#202126]'
@@ -152,21 +195,83 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           className="hidden"
           disabled={disabled}
         />
+        <input
+          ref={folderInputRef}
+          type="file"
+          multiple
+          onChange={handleFileInputChange}
+          className="hidden"
+          disabled={disabled}
+          data-testid="folder-input"
+        />
 
         <div className="flex flex-col items-center justify-center space-y-3.5">
           <div className="w-14 h-14 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-700 shadow-sm group-hover:scale-105 group-hover:border-slate-400 transition-all duration-200 dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#A8FF1A] dark:shadow-inner dark:group-hover:border-[#A8FF1A]">
-            <UploadCloud className="w-7 h-7" />
+            {isReading ? <Loader2 className="w-7 h-7 animate-spin" /> : <UploadCloud className="w-7 h-7" />}
           </div>
           <div>
             <p className="text-sm font-bold text-slate-900 dark:text-white">
-              이미지를 드래그하거나 클릭하여 업로드
+              {isReading ? '폴더를 읽는 중...' : '이미지나 폴더를 드래그하거나 클릭하여 업로드'}
             </p>
             <p className="text-xs text-slate-500 dark:text-[#AEAEAE] mt-1">
-              최대 용량 30MB • 다중 파일 일괄 검수 가능
+              폴더째 올리면 하위 폴더까지 읽고, 폴더·파일 이름으로 매체를 자동 분류합니다
             </p>
+          </div>
+          <div className="flex items-center gap-2 pt-1">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (!disabled) fileInputRef.current?.click();
+              }}
+              disabled={disabled}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-800 hover:border-slate-500 transition-colors cursor-pointer dark:bg-[#202126] dark:border-[#2e2f36] dark:text-white dark:hover:border-[#A8FF1A]"
+            >
+              <ImageIcon className="w-3.5 h-3.5" />
+              파일 선택
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (!disabled) folderInputRef.current?.click();
+              }}
+              disabled={disabled}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white border border-slate-300 text-slate-800 hover:border-slate-500 transition-colors cursor-pointer dark:bg-[#202126] dark:border-[#2e2f36] dark:text-white dark:hover:border-[#A8FF1A]"
+            >
+              <FolderOpen className="w-3.5 h-3.5" />
+              폴더 선택
+            </button>
           </div>
         </div>
       </div>
+
+      {skippedCount > 0 && (
+        <p className="text-[11px] text-slate-500 dark:text-[#AEAEAE] -mt-2">
+          이미지가 아닌 파일 {skippedCount}개(문서, 시스템 파일 등)는 제외했습니다.
+        </p>
+      )}
+
+      {/* Auto-classification toggle (shown once a folder or file name names a platform) */}
+      {classifiedCount > 0 && (
+        <label className="flex items-start gap-2.5 p-3.5 rounded-2xl border border-emerald-200 bg-emerald-50/60 text-xs cursor-pointer select-none dark:border-[#2e2f36] dark:bg-[#1a1b1f]">
+          <input
+            type="checkbox"
+            checked={autoClassify}
+            onChange={(e) => onToggleAutoClassify(e.target.checked)}
+            disabled={disabled}
+            className="mt-0.5 w-4 h-4 accent-emerald-600 cursor-pointer"
+          />
+          <span className="leading-relaxed text-slate-700 dark:text-[#AEAEAE]">
+            <span className="font-bold text-slate-900 dark:text-white">
+              <Tags className="inline w-3.5 h-3.5 mr-1 -mt-0.5 text-emerald-600 dark:text-[#A8FF1A]" />
+              폴더·파일 이름으로 매체 자동 분류 ({classifiedCount}/{files.length}개 분류됨)
+            </span>
+            <br />
+            분류된 소재는 해당 매체 규격으로만 검수하고, 분류되지 않은 {files.length - classifiedCount}개는 아래에서 선택한 매체로 검수합니다.
+          </span>
+        </label>
+      )}
 
       {/* Selected File Previews */}
       {files.length > 0 && (
@@ -180,8 +285,25 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 max-h-88 overflow-y-auto pr-1">
-            {files.map((item) => {
+          <div className="max-h-[26rem] overflow-y-auto pr-1 space-y-4">
+            {groups.map(([folder, groupFiles]) => {
+              const folderClass = autoClassify && folder ? classifyCreativePath(folder + '/_') : null;
+              return (
+                <div key={folder || '(root)'} className="space-y-2">
+                  {hasFolders && (
+                    <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-600 dark:text-[#AEAEAE]">
+                      <Folder className="w-3.5 h-3.5 text-slate-400 dark:text-[#6E6E6E]" />
+                      <span className="font-mono truncate" title={folder}>{folder || '(폴더 밖 파일)'}</span>
+                      <span className="text-slate-400 dark:text-[#6E6E6E]">{groupFiles.length}개</span>
+                      {folderClass && (
+                        <span className="px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] font-bold dark:bg-[#202126] dark:border-[#2e2f36] dark:text-[#A8FF1A]">
+                          {folderClass.platformIds.map((id) => PLATFORM_LABELS[id] || id).join(' · ')}
+                        </span>
+                      )}
+                    </div>
+                  )}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
+            {groupFiles.map((item) => {
               const ratioLabel = getAspectRatioLabel(item.dimensions?.width, item.dimensions?.height);
               return (
                 <div
@@ -222,6 +344,18 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
                         {item.dimensions.width}×{item.dimensions.height} px
                       </span>
                     )}
+                    {(() => {
+                      const c = autoClassify ? classifyCreativePath(item.relativePath) : null;
+                      if (!c) return null;
+                      return (
+                        <span
+                          className="block mt-0.5 text-[10px] font-bold text-emerald-700 dark:text-[#A8FF1A] truncate"
+                          title={`${c.source === 'folder' ? '폴더' : '파일명'} "${c.matched}"에서 분류`}
+                        >
+                          → {c.platformIds.map((id) => PLATFORM_LABELS[id] || id).join(' · ')}
+                        </span>
+                      );
+                    })()}
                   </div>
 
                   <button
@@ -236,6 +370,10 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
+                </div>
+              );
+            })}
+                  </div>
                 </div>
               );
             })}
