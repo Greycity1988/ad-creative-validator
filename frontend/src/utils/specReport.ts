@@ -16,8 +16,11 @@ export const ATTACHMENT_TTL_DAYS = 90;
 export const ATTACHMENT_TYPES = ['application/pdf', 'image/png', 'image/jpeg'] as const;
 export type AttachmentType = (typeof ATTACHMENT_TYPES)[number];
 
+/**
+ * What a report keeps about its file. The file name is deliberately absent: names of confidential
+ * documents ("ClientX_Audit_Report.pdf") give away who and what, and reports are public issues.
+ */
 export interface ReportAttachment {
-  name: string;
   size: number;
   contentType: AttachmentType;
   /** Private Blob URL: opens only with the store's token */
@@ -31,6 +34,10 @@ export function sniffAttachmentType(head: Uint8Array): AttachmentType | null {
   if (head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47) return 'image/png';
   if (head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff) return 'image/jpeg';
   return null;
+}
+
+export function attachmentKind(type: AttachmentType): string {
+  return type === 'application/pdf' ? 'PDF' : type === 'image/png' ? 'PNG' : 'JPG';
 }
 
 export function formatBytes(n: number): string {
@@ -172,7 +179,7 @@ export function issueBody(r: SpecReport): string {
     `| 투명 배경 | ${r.transparent ? '필수' : '아님'} |`,
     `| 공식 가이드 | ${r.guideUrl || '(주소 없음, 첨부 파일로 제보)'} |`,
     ...(r.attachment
-      ? [`| 첨부 | ${r.attachment.name} (${formatBytes(r.attachment.size)}) · 비공개 보관, 운영자만 열람 · ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제 |`]
+      ? [`| 첨부 | ${attachmentKind(r.attachment.contentType)} 1개 (${formatBytes(r.attachment.size)}) · 비공개 보관, 운영자만 열람 · ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제 |`]
       : []),
     `| 문서 날짜 | ${r.docDate || '(미기재)'} |`,
   ];

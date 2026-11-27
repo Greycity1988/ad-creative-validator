@@ -357,7 +357,7 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
               </div>
               <span className={`block text-[11px] ${fileError ? 'text-status-fail' : 'text-ink-muted'}`}>
                 {fileError ||
-                  `PDF·PNG·JPG, ${formatBytes(ATTACHMENT_MAX_BYTES)}까지. 첨부 파일은 공개되지 않고 운영자만 열람하며 ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제됩니다.`}
+                  `PDF·PNG·JPG, ${formatBytes(ATTACHMENT_MAX_BYTES)}까지. 첨부 파일은 이름과 내용 모두 공개되지 않고 운영자만 열람하며 ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제됩니다.`}
               </span>
             </div>
 
