@@ -16,7 +16,7 @@ import {
   ATTACHMENT_MAX_BYTES,
   ATTACHMENT_TTL_DAYS,
   ReportAttachment,
-  attachmentKind,
+  duplicateComment,
   issueBody,
   issueTitle,
   sniffAttachmentType,
@@ -166,13 +166,7 @@ export async function handleSpecReport(req: Request): Promise<Response> {
       if (same) {
         await github(`/repos/${REPO}/issues/${same.number}/comments`, token, {
           method: 'POST',
-          body: JSON.stringify({
-            body:
-              `같은 규격이 한 번 더 제보됐습니다. 가이드 주소: ${report.guideUrl || '(없음)'}` +
-              (report.attachment
-                ? `\n첨부 ${attachmentKind(report.attachment.contentType)} 1개 추가 (비공개 보관, 운영자 확인용 경로 \`${report.attachment.pathname}\`)`
-                : ''),
-          }),
+          body: JSON.stringify({ body: duplicateComment(report) }),
         });
         return json(200, { ok: true, duplicate: true, issueUrl: same.html_url, issueNumber: same.number });
       }

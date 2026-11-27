@@ -184,6 +184,27 @@ export function issueBody(r: SpecReport): string {
     `| 문서 날짜 | ${r.docDate || '(미기재)'} |`,
   ];
   if (r.note) lines.push('', '**메모**', '', r.note);
-  lines.push('', `<!-- ${REPORT_MARKER}`, JSON.stringify(r), '-->');
+  lines.push('', reportBlock(r));
+  return lines.join('\n');
+}
+
+/** Machine-readable copy of a report, hidden in issue bodies and re-check comments. */
+export function reportBlock(r: SpecReport): string {
+  return [`<!-- ${REPORT_MARKER}`, JSON.stringify(r), '-->'].join('\n');
+}
+
+/**
+ * Comment for a report that repeats an open issue. When it brings a guide file, the comment carries
+ * the report block so the checker workflow runs again on that file (see spec-report.yml).
+ */
+export function duplicateComment(r: SpecReport): string {
+  const lines = [`같은 규격이 한 번 더 제보됐습니다. 가이드 주소: ${r.guideUrl || '(없음)'}`];
+  if (r.attachment) {
+    lines.push(
+      `첨부 ${attachmentKind(r.attachment.contentType)} 1개 추가 (비공개 보관, 운영자 확인용 경로 \`${r.attachment.pathname}\`). 이 첨부로 자동 점검을 다시 실행합니다.`,
+      '',
+      reportBlock(r)
+    );
+  }
   return lines.join('\n');
 }

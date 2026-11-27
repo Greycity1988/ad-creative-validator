@@ -165,6 +165,18 @@ describe('POST /api/spec-report', () => {
       expect(putCalls).toHaveLength(1);
     });
 
+    it('a duplicate that brings a file asks for a re-check; the file name stays out', async () => {
+      const dup = { ...good, platformId: 'kakao', placementName: '비즈보드', width: 960, height: 300, guideUrl: '' };
+      const res = await handler(multipart(dup, { bytes: pdfBytes, name: 'ClientX_secret.pdf', type: 'application/pdf' }));
+      expect(await res.json()).toMatchObject({ ok: true, duplicate: true, issueNumber: 7 });
+      const comment = calls.find((c) => c.url.endsWith('/issues/7/comments'))!;
+      const text = JSON.parse(String(comment.init!.body)).body as string;
+      expect(text).toContain('<!-- acv-spec-report');
+      expect(text).toContain('자동 점검을 다시 실행');
+      expect(text).toContain('"pathname":"spec-reports/');
+      expect(text).not.toContain('ClientX');
+    });
+
     it('says so when the private store is not connected', async () => {
       delete process.env.BLOB_READ_WRITE_TOKEN;
       const res = await handler(multipart({ ...good, guideUrl: '' }, { bytes: pdfBytes, name: 'a.pdf', type: 'application/pdf' }));
@@ -187,7 +199,9 @@ describe('POST /api/spec-report', () => {
   it('comments on an open duplicate instead of filing a second issue', async () => {
     const res = await handler(post({ ...good, platformId: 'kakao', placementName: '비즈보드', width: 960, height: 300, guideUrl: 'https://kakaobusiness.gitbook.io/main' }));
     expect(await res.json()).toMatchObject({ ok: true, duplicate: true, issueNumber: 7 });
-    expect(calls.some((c) => c.url.endsWith('/issues/7/comments'))).toBe(true);
+    const note = calls.find((c) => c.url.endsWith('/issues/7/comments'))!;
+    // no new evidence (no file), so no re-check block
+    expect(JSON.parse(String(note.init!.body)).body).not.toContain('acv-spec-report');
     expect(calls.some((c) => c.url.endsWith('/issues') && c.init?.method === 'POST')).toBe(false);
   });
 
