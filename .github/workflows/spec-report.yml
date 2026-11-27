@@ -50,6 +50,9 @@ jobs:
 
       - name: Check against the official guide
         id: check
+        env:
+          # Reads files attached to reports from the private Vercel Blob store (only *.private.blob.vercel-storage.com).
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
         run: |
           python scripts/check_spec_report.py --issue "$ISSUE" --body-file "$RUNNER_TEMP/issue_body.md" --out "$OUT"
           echo "ready=$(jq -r .branch_ready "$OUT/result.json")" >> "$GITHUB_OUTPUT"

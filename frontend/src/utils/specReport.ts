@@ -3,12 +3,39 @@
  * Shared by the report form (browser) and /api/spec-report (Vercel function), so both
  * apply the same rules. scripts/check_spec_report.py re-checks everything on GitHub.
  */
-import officialSources from '../data/officialSources.json';
+import officialSources from '../data/officialSources.json' with { type: 'json' };
 
 type SourceRule = { host: string; pathPrefix?: string };
 const PLATFORMS = (officialSources as { platforms: Record<string, { name: string; sources: SourceRule[] }> }).platforms;
 
 export const REPORT_FORMATS = ['jpg', 'png', 'gif', 'webp'] as const;
+
+/** Guide file attached to a report: kept in a private Blob store, deleted after ATTACHMENT_TTL_DAYS. */
+export const ATTACHMENT_MAX_BYTES = 4 * 1024 * 1024;
+export const ATTACHMENT_TTL_DAYS = 90;
+export const ATTACHMENT_TYPES = ['application/pdf', 'image/png', 'image/jpeg'] as const;
+export type AttachmentType = (typeof ATTACHMENT_TYPES)[number];
+
+export interface ReportAttachment {
+  name: string;
+  size: number;
+  contentType: AttachmentType;
+  /** Private Blob URL: opens only with the store's token */
+  url: string;
+  pathname: string;
+}
+
+/** Real file type from the first bytes (the extension and the browser's type can lie). */
+export function sniffAttachmentType(head: Uint8Array): AttachmentType | null {
+  if (head[0] === 0x25 && head[1] === 0x50 && head[2] === 0x44 && head[3] === 0x46) return 'application/pdf'; // %PDF
+  if (head[0] === 0x89 && head[1] === 0x50 && head[2] === 0x4e && head[3] === 0x47) return 'image/png';
+  if (head[0] === 0xff && head[1] === 0xd8 && head[2] === 0xff) return 'image/jpeg';
+  return null;
+}
+
+export function formatBytes(n: number): string {
+  return n >= 1024 * 1024 ? `${(n / 1024 / 1024).toFixed(1)}MB` : `${Math.max(1, Math.round(n / 1024))}KB`;
+}
 export type ReportFormat = (typeof REPORT_FORMATS)[number];
 
 export interface SpecReport {
@@ -21,11 +48,12 @@ export interface SpecReport {
   maxKb?: number;
   formats: ReportFormat[];
   transparent: boolean;
-  /** Official guide page or PDF */
+  /** Official guide page or PDF; may be empty when a guide file is attached */
   guideUrl: string;
   /** Date printed on the guide, YYYY-MM-DD, if known */
   docDate?: string;
   note?: string;
+  attachment?: ReportAttachment;
 }
 
 export const REPORT_MARKER = 'acv-spec-report';
@@ -66,7 +94,7 @@ const int = (v: unknown): number => (typeof v === 'number' ? v : typeof v === 's
 export type ValidationResult = { ok: true; value: SpecReport } | { ok: false; error: string };
 
 /** Check and normalise a report. Error messages are shown to the visitor. */
-export function validateSpecReport(input: Record<string, unknown>): ValidationResult {
+export function validateSpecReport(input: Record<string, unknown>, opts: { hasAttachment?: boolean } = {}): ValidationResult {
   const platformId = clean(input.platformId, 40);
   if (!PLATFORMS[platformId]) return { ok: false, error: '매체를 선택해 주세요.' };
 
@@ -90,7 +118,10 @@ export function validateSpecReport(input: Record<string, unknown>): ValidationRe
   if (formats.length === 0) return { ok: false, error: '허용 파일 형식을 하나 이상 골라 주세요.' };
 
   const guideUrl = clean(input.guideUrl, 500);
-  if (!isOfficialUrl(platformId, guideUrl)) {
+  if (!guideUrl && !opts.hasAttachment) {
+    return { ok: false, error: '공식 가이드 주소를 적거나 가이드 파일을 첨부해 주세요.' };
+  }
+  if (guideUrl && !isOfficialUrl(platformId, guideUrl)) {
     return {
       ok: false,
       error: `${PLATFORMS[platformId].name} 공식 가이드 주소가 아닙니다. 허용 주소: ${officialHosts(platformId).join(', ')}`,
@@ -139,7 +170,10 @@ export function issueBody(r: SpecReport): string {
     `| 최대 용량 | ${r.maxKb ? `${r.maxKb}KB` : '(미기재)'} |`,
     `| 형식 | ${r.formats.join(', ').toUpperCase()} |`,
     `| 투명 배경 | ${r.transparent ? '필수' : '아님'} |`,
-    `| 공식 가이드 | ${r.guideUrl} |`,
+    `| 공식 가이드 | ${r.guideUrl || '(주소 없음, 첨부 파일로 제보)'} |`,
+    ...(r.attachment
+      ? [`| 첨부 | ${r.attachment.name} (${formatBytes(r.attachment.size)}) · 비공개 보관, 운영자만 열람 · ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제 |`]
+      : []),
     `| 문서 날짜 | ${r.docDate || '(미기재)'} |`,
   ];
   if (r.note) lines.push('', '**메모**', '', r.note);

@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { X, FileSearch, ExternalLink, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
+import { X, FileSearch, ExternalLink, CheckCircle2, AlertTriangle, Loader2, Paperclip } from 'lucide-react';
 import {
+  ATTACHMENT_MAX_BYTES,
+  ATTACHMENT_TTL_DAYS,
+  formatBytes,
+  sniffAttachmentType,
   REPORT_FORMATS,
   ReportFormat,
   isOfficialUrl,
@@ -47,6 +51,9 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
   const [docDate, setDocDate] = useState('');
   const [note, setNote] = useState('');
   const [website, setWebsite] = useState(''); // honeypot, hidden from people
+  const [file, setFile] = useState<File | null>(null);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const fileInput = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
 
   // Reset and prefill each time the dialog opens.
@@ -65,13 +72,15 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
     setDocDate('');
     setNote('');
     setWebsite('');
+    setFile(null);
+    setFileError(null);
     setStatus({ kind: 'idle' });
   }, [isOpen, prefill]);
 
   // An error message describes the old input; drop it as soon as the visitor edits anything.
   useEffect(() => {
     setStatus((s) => (s.kind === 'error' ? { kind: 'idle' } : s));
-  }, [platformId, placementName, width, height, maxKb, formats, transparent, guideUrl, docDate]);
+  }, [platformId, placementName, width, height, maxKb, formats, transparent, guideUrl, docDate, file]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -103,20 +112,45 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
     format: formats.join(', ').toUpperCase() || '-',
   });
 
+  const pickFile = async (f: File | undefined) => {
+    setFileError(null);
+    if (!f) return;
+    if (f.size > ATTACHMENT_MAX_BYTES) {
+      setFile(null);
+      setFileError(`파일이 ${formatBytes(f.size)}입니다. ${formatBytes(ATTACHMENT_MAX_BYTES)}까지 올릴 수 있습니다.`);
+      return;
+    }
+    if (!sniffAttachmentType(new Uint8Array(await f.slice(0, 8).arrayBuffer()))) {
+      setFile(null);
+      setFileError('PDF, PNG, JPG 파일만 올릴 수 있습니다.');
+      return;
+    }
+    setFile(f);
+  };
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const checked = validateSpecReport(payload);
+    const checked = validateSpecReport(payload, { hasAttachment: !!file });
     if (!checked.ok) {
       setStatus({ kind: 'error', message: checked.error, fallback: false });
       return;
     }
     setStatus({ kind: 'sending' });
     try {
-      const res = await fetch('/api/spec-report', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ ...payload, website, elapsedMs: Date.now() - openedAt.current }),
-      });
+      const fields = { ...payload, website, elapsedMs: Date.now() - openedAt.current };
+      let res: Response;
+      if (file) {
+        const form = new FormData();
+        form.set('payload', JSON.stringify(fields));
+        form.set('file', file, file.name);
+        res = await fetch('/api/spec-report', { method: 'POST', body: form });
+      } else {
+        res = await fetch('/api/spec-report', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(fields),
+        });
+      }
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         issueUrl?: string;
@@ -274,7 +308,7 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
             </div>
 
             <label className="block space-y-1">
-              <span className="font-bold text-ink-primary">공식 가이드 주소 *</span>
+              <span className="font-bold text-ink-primary">공식 가이드 주소 {file ? '' : '*'}</span>
               <input
                 type="url"
                 value={guideUrl}
@@ -289,6 +323,43 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
                 </span>
               )}
             </label>
+
+            <div className="space-y-1">
+              <span className="font-bold text-ink-primary">공식 가이드 파일 {urlTyped ? '(선택)' : '(주소가 없으면 필수)'}</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <input
+                  ref={fileInput}
+                  type="file"
+                  accept="application/pdf,image/png,image/jpeg"
+                  className="hidden"
+                  aria-label="공식 가이드 파일"
+                  onChange={(e) => {
+                    void pickFile(e.target.files?.[0]);
+                    e.target.value = '';
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInput.current?.click()}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-line-strong text-ink-secondary hover:text-ink-primary cursor-pointer"
+                >
+                  <Paperclip className="w-3.5 h-3.5" />
+                  {file ? '다른 파일 선택' : '파일 첨부'}
+                </button>
+                {file && (
+                  <span className="inline-flex items-center gap-1.5 text-ink-primary">
+                    {file.name} <span className="text-ink-muted">({formatBytes(file.size)})</span>
+                    <button type="button" onClick={() => setFile(null)} aria-label="첨부 취소" className="text-ink-muted hover:text-status-fail cursor-pointer">
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </span>
+                )}
+              </div>
+              <span className={`block text-[11px] ${fileError ? 'text-status-fail' : 'text-ink-muted'}`}>
+                {fileError ||
+                  `PDF·PNG·JPG, ${formatBytes(ATTACHMENT_MAX_BYTES)}까지. 첨부 파일은 공개되지 않고 운영자만 열람하며 ${ATTACHMENT_TTL_DAYS}일 뒤 자동 삭제됩니다.`}
+              </span>
+            </div>
 
             <div className="grid grid-cols-2 gap-3">
               <label className="space-y-1">
@@ -313,7 +384,7 @@ export const SpecReportModal: React.FC<SpecReportModalProps> = ({ isOpen, onClos
             />
 
             <p className="text-[11px] text-ink-muted leading-relaxed">
-              제보 내용은 GitHub에 공개 게시됩니다. 매체 담당자에게 받은 비공개 사양서, 집행 전 소재 이름은 적지 마세요.
+              제보 내용(첨부 파일 제외)은 GitHub에 공개 게시됩니다. 매체 담당자에게 받은 사양서는 본문에 옮겨 적지 말고 파일로 첨부해 주세요. 집행 전 소재 이름은 적지 마세요.
               목록에 없는 주소의 가이드는{' '}
               <a href={githubFallbackUrl} target="_blank" rel="noreferrer" className="underline">
                 GitHub 이슈

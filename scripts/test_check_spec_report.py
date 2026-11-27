@@ -116,6 +116,60 @@ class CheckSpecReportTest(unittest.TestCase):
         self.assertEqual(res["status"], "fetch_failed")
         self.assertIn("403", comment)
 
+    # ── attached guide files ──
+
+    ATT = {"name": "appier_spec.pdf", "size": 1200, "contentType": "application/pdf",
+           "url": "https://store1.private.blob.vercel-storage.com/spec-reports/2026-11-26/guide-AbC.pdf",
+           "pathname": "spec-reports/2026-11-26/guide-AbC.pdf"}
+
+    def run_att(self, b, data, fetcher=None):
+        res = c.run(b, 101, self.out, TODAY, fetcher=fetcher or page("x"), attachment_fetcher=lambda att: data)
+        return res, (self.out / "comment.md").read_text(encoding="utf-8")
+
+    def pdf_data(self, text):
+        return pdf(text)(None, None)[0]
+
+    def test_attachment_only_pdf_is_added_but_never_verified(self):
+        res, comment = self.run_att(body(guideUrl="", attachment=self.ATT), self.pdf_data("Mobile banner 320x250 JPG PNG 150KB"))
+        self.assertEqual(res["status"], "attachment")
+        self.assertTrue(res["branch_ready"])
+        p = self.added()
+        self.assertTrue(p["needs_confirmation"])
+        self.assertNotIn("verified", p)
+        self.assertNotIn("source", p)
+        self.assertIn("출처 확인 필요", comment)
+        self.assertIn("media_confirmed", (self.out / "pr_body.md").read_text(encoding="utf-8"))
+
+    def test_official_url_without_the_size_falls_back_to_the_attachment(self):
+        res, _ = self.run_att(body(attachment=self.ATT), self.pdf_data("Banner 320 x 250"), fetcher=page("<p>nothing here</p>"))
+        self.assertEqual(res["status"], "attachment")
+
+    def test_image_attachments_go_to_a_person(self):
+        att = dict(self.ATT, contentType="image/png", url=self.ATT["url"].replace(".pdf", ".png"), pathname=self.ATT["pathname"].replace(".pdf", ".png"))
+        res, comment = self.run_att(body(guideUrl="", attachment=att), b"\x89PNG\r\n\x1a\n....")
+        self.assertEqual(res["status"], "needs_review")
+        self.assertFalse(res["branch_ready"])
+        self.assertIn("이미지", comment)
+
+    def test_attachment_that_is_not_what_it_claims(self):
+        res, _ = self.run_att(body(guideUrl="", attachment=self.ATT), b"<html>not a pdf</html>")
+        self.assertEqual(res["status"], "fetch_failed")
+
+    def test_attachment_urls_must_be_private_blob_storage(self):
+        for bad in ("https://evil.example/spec-reports/x.pdf", "http://store1.private.blob.vercel-storage.com/spec-reports/x.pdf",
+                    "https://store1.public.blob.vercel-storage.com/spec-reports/x.pdf"):
+            att = dict(self.ATT, url=bad, pathname="spec-reports/x.pdf")
+            self.assertEqual(self.run_att(body(guideUrl="", attachment=att), b"")[0]["status"], "invalid", bad)
+        att = dict(self.ATT, pathname="other/guide.pdf")  # path must match the URL and live under spec-reports/
+        self.assertEqual(self.run_att(body(guideUrl="", attachment=att), b"")[0]["status"], "invalid")
+
+    def test_no_store_token_means_a_person_checks(self):
+        import os
+        os.environ.pop("BLOB_READ_WRITE_TOKEN", None)
+        res = c.run(body(guideUrl="", attachment=self.ATT), 101, self.out, TODAY, fetcher=page("x"))
+        self.assertEqual(res["status"], "fetch_failed")
+        self.assertIn("BLOB_READ_WRITE_TOKEN", (self.out / "comment.md").read_text(encoding="utf-8"))
+
     def test_redirects_stay_on_official_hosts(self):
         with self.assertRaises(Exception):
             c._OfficialRedirects("appier").redirect_request(None, None, 302, "Found", {}, "https://evil.example/x")
