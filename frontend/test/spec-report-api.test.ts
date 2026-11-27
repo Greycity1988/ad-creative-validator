@@ -128,7 +128,10 @@ describe('POST /api/spec-report', () => {
       expect(putCalls[0].options).toMatchObject({ access: 'private', addRandomSuffix: true, ttlDays: 90, contentType: 'application/pdf' });
       const create = calls.find((c) => c.url.endsWith('/issues') && c.init?.method === 'POST')!;
       const body = JSON.parse(String(create.init!.body)).body as string;
-      expect(body).toContain('| 첨부 | 애피어 사양서 v2.pdf');
+      // the file name can identify a client or document, so it must not reach the public issue
+      expect(body).not.toContain('애피어 사양서');
+      expect(body).not.toContain('v2.pdf');
+      expect(body).toContain('| 첨부 | PDF 1개 (');
       expect(body).toContain('비공개 보관');
       expect(body).toContain('"pathname":"spec-reports/');
     });

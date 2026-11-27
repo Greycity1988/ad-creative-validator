@@ -16,6 +16,7 @@ import {
   ATTACHMENT_MAX_BYTES,
   ATTACHMENT_TTL_DAYS,
   ReportAttachment,
+  attachmentKind,
   issueBody,
   issueTitle,
   sniffAttachmentType,
@@ -142,8 +143,8 @@ export async function handleSpecReport(req: Request): Promise<Response> {
         contentType: fileType,
         ttlDays: ATTACHMENT_TTL_DAYS,
       });
+      // The original file name is not kept anywhere public (see ReportAttachment).
       const attachment: ReportAttachment = {
-        name: (file.name || `guide.${EXT[fileType]}`).replace(/[\u0000-\u001f\u007f<>`|]/g, ' ').slice(0, 80),
         size: file.size,
         contentType: fileType,
         url: stored.url,
@@ -169,7 +170,7 @@ export async function handleSpecReport(req: Request): Promise<Response> {
             body:
               `같은 규격이 한 번 더 제보됐습니다. 가이드 주소: ${report.guideUrl || '(없음)'}` +
               (report.attachment
-                ? `\n첨부: ${report.attachment.name} (비공개 보관, 운영자 확인용 경로 \`${report.attachment.pathname}\`)`
+                ? `\n첨부 ${attachmentKind(report.attachment.contentType)} 1개 추가 (비공개 보관, 운영자 확인용 경로 \`${report.attachment.pathname}\`)`
                 : ''),
           }),
         });

@@ -128,9 +128,12 @@ def parse_attachment(a) -> dict | None:
         or ctype not in ATTACHMENT_TYPES or not isinstance(size, int) or not (0 < size <= ATTACHMENT_MAX)
     ):
         raise ValueError("첨부 정보가 올바르지 않습니다.")
-    name = a.get("name") if isinstance(a.get("name"), str) else "guide"
-    return {"url": url, "pathname": path, "contentType": ctype, "size": size,
-            "name": re.sub(r"[<>`|\x00-\x1f]", " ", name)[:80]}
+    # A file name, if any, is ignored: names of confidential documents must not reach public comments.
+    return {"url": url, "pathname": path, "contentType": ctype, "size": size}
+
+
+KIND_LABEL = {"application/pdf": "PDF", "image/png": "PNG", "image/jpeg": "JPG"}
+PRIVATE_QUOTE = "첨부 문서 본문에서 확인 (비공개 문서라 인용하지 않음)"
 
 
 class _NoRedirects(urllib.request.HTTPRedirectHandler):
@@ -316,7 +319,10 @@ def build_placement(r: dict, issue: int, ev: dict, kind: str, doc_date: dt.date 
         "exact_height": h,
     }
     where = {"pdf": "공식 문서", "page": "공식 페이지", "attachment": "제보자가 첨부한 문서(비공개 보관)"}[kind]
-    notes = [f"사용자 제보 #{issue} 자동 확인: {where}에서 \"{ev['size']['quote'][:120]}\" 확인."]
+    if kind == "attachment":
+        notes = [f"사용자 제보 #{issue} 자동 확인: {where} 본문에서 {w}×{h} 확인 (비공개 문서라 인용하지 않음)."]
+    else:
+        notes = [f"사용자 제보 #{issue} 자동 확인: {where}에서 \"{ev['size']['quote'][:120]}\" 확인."]
     if r.get("maxKb"):
         if "maxKb" in ev:
             p["max_file_size_kb"] = r["maxKb"]
@@ -368,8 +374,10 @@ def run(body: str, issue: int, out: Path, today: dt.date, fetcher=fetch, attachm
         return finish("duplicate", f"### ℹ️ 이미 등록된 규격\n{pname} {size}은 이미 `{dup}` 지면으로 등록돼 있습니다. 값이 다르다면 이 이슈에 근거와 함께 알려주세요.")
 
     att = r.get("attachment")
-    att_line = f"\n\n첨부 파일: {att['name']} (비공개 보관, Vercel → Storage에서 `{att['pathname']}`)" if att else ""
-    source_label = r["guideUrl"] or f"첨부 파일 {att['name']}"
+    att_line = (
+        f"\n\n첨부 {KIND_LABEL[att['contentType']]} 1개 (비공개 보관, Vercel → Storage에서 `{att['pathname']}`)" if att else ""
+    )
+    source_label = r["guideUrl"] or "제보자가 첨부한 문서 (비공개)"
     kind = None
     text, meta, ev = "", {}, {}
     problems = []
@@ -431,10 +439,14 @@ def run(body: str, issue: int, out: Path, today: dt.date, fetcher=fetch, attachm
     placement = build_placement(r, issue, ev, kind, doc_date, fresh, today)
     append_placement(r["platformId"], placement)
 
+    def found(key: str, limit: int) -> str:
+        # Text from an attached (possibly confidential) document is never quoted in public.
+        return "✅ " + (PRIVATE_QUOTE if kind == "attachment" else f"\"{ev[key]['quote'][:limit]}\"")
+
     rows = [
-        f"| 크기 {size} | ✅ \"{ev['size']['quote'][:140]}\" |",
-        f"| 최대 용량 | {'✅ \"' + ev['maxKb']['quote'][:100] + '\"' if 'maxKb' in ev else ('❔ 문서에서 못 찾음 (제외)' if r.get('maxKb') else '- 제보 없음')} |",
-        f"| 투명 배경 | {'✅ \"' + ev['transparent']['quote'][:100] + '\"' if 'transparent' in ev else ('❔ 문서에서 못 찾음 (제외)' if r['transparent'] else '- 해당 없음')} |",
+        f"| 크기 {size} | {found('size', 140)} |",
+        f"| 최대 용량 | {found('maxKb', 100) if 'maxKb' in ev else ('❔ 문서에서 못 찾음 (제외)' if r.get('maxKb') else '- 제보 없음')} |",
+        f"| 투명 배경 | {found('transparent', 100) if 'transparent' in ev else ('❔ 문서에서 못 찾음 (제외)' if r['transparent'] else '- 해당 없음')} |",
         f"| 형식 | 문서에 있음: {', '.join(ev['formats']).upper() or '없음'} / 제보: {', '.join(r['formats']).upper()} |",
         f"| 기준일 | {date_line} |",
     ]

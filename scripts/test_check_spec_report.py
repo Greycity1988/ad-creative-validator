@@ -140,6 +140,22 @@ class CheckSpecReportTest(unittest.TestCase):
         self.assertIn("출처 확인 필요", comment)
         self.assertIn("media_confirmed", (self.out / "pr_body.md").read_text(encoding="utf-8"))
 
+    def test_attachment_name_and_text_never_reach_public_output(self):
+        att = dict(self.ATT, name="ClientX_Confidential_Audit_2026.pdf")
+        res, comment = self.run_att(
+            body(guideUrl="", attachment=att),
+            self.pdf_data("ClientX secret plan - Mobile banner 320x250 JPG PNG 150KB"),
+        )
+        self.assertEqual(res["status"], "attachment")
+        pr = (self.out / "pr_body.md").read_text(encoding="utf-8")
+        yml = (c.SPECS / "appier.yaml").read_text(encoding="utf-8")
+        for public in (comment, pr, yml):
+            self.assertNotIn("ClientX", public)
+            self.assertNotIn("Confidential", public)
+            self.assertNotIn("secret plan", public)
+        self.assertIn("비공개 문서라 인용하지 않음", comment)
+        self.assertIn("첨부 PDF 1개", comment)
+
     def test_official_url_without_the_size_falls_back_to_the_attachment(self):
         res, _ = self.run_att(body(attachment=self.ATT), self.pdf_data("Banner 320 x 250"), fetcher=page("<p>nothing here</p>"))
         self.assertEqual(res["status"], "attachment")
