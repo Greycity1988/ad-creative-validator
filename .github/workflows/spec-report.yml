@@ -4,11 +4,17 @@ name: Spec report check
 # against the official guide it cites. When the values are found, it opens a PR that adds the
 # placement. A person reviews and merges that PR; nothing here merges or deploys.
 #
+# It runs again when the same report comes back with a guide file: /api/spec-report then comments on
+# the open issue with a report block. Only comments by the repository owner (the account behind the
+# site's token) count, since anyone can comment on a public issue.
+#
 # Re-run for one issue: Actions → Spec report check → Run workflow → issue number.
 
 on:
   issues:
     types: [opened]
+  issue_comment:
+    types: [created]
   workflow_dispatch:
     inputs:
       issue_number:
@@ -26,12 +32,20 @@ concurrency:
 
 jobs:
   check:
-    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'spec-report')
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'spec-report')) ||
+      (github.event_name == 'issue_comment' &&
+        !github.event.issue.pull_request &&
+        contains(github.event.issue.labels.*.name, 'spec-report') &&
+        github.event.comment.author_association == 'OWNER' &&
+        contains(github.event.comment.body, '<!-- acv-spec-report'))
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ISSUE: ${{ github.event.issue.number || inputs.issue_number }}
+      COMMENT_ID: ${{ github.event.comment.id }}
       OUT: /tmp/spec-report-out # runner.temp is not available in job-level env
     steps:
       - uses: actions/checkout@v4
@@ -42,11 +56,17 @@ jobs:
 
       - run: pip install -r scripts/requirements.txt pypdf==6.17.0
 
-      # The issue text is untrusted: it is only ever written to a file and read as data by the script.
-      - name: Read the issue
+      # The report text is untrusted: it is only ever written to a file and read as data by the script.
+      # A re-check reads the report block from the triggering comment instead of the issue body.
+      - name: Read the report
         run: |
           case "$ISSUE" in ''|*[!0-9]*) echo "issue number must be numeric"; exit 1;; esac
-          gh issue view "$ISSUE" --json body --jq .body > "$RUNNER_TEMP/issue_body.md"
+          if [ -n "$COMMENT_ID" ]; then
+            case "$COMMENT_ID" in *[!0-9]*) echo "comment id must be numeric"; exit 1;; esac
+            gh api "repos/$GITHUB_REPOSITORY/issues/comments/$COMMENT_ID" --jq .body > "$RUNNER_TEMP/issue_body.md"
+          else
+            gh issue view "$ISSUE" --json body --jq .body > "$RUNNER_TEMP/issue_body.md"
+          fi
 
       - name: Check against the official guide
         id: check

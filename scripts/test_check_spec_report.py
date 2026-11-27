@@ -156,6 +156,19 @@ class CheckSpecReportTest(unittest.TestCase):
         self.assertIn("비공개 문서라 인용하지 않음", comment)
         self.assertIn("첨부 PDF 1개", comment)
 
+    def test_recheck_comment_from_a_duplicate_report_is_read_like_an_issue(self):
+        import json as _json
+        report = dict(platformId="appier", placementName="모바일 배너", width=320, height=250,
+                      formats=["jpg", "png"], transparent=False, guideUrl="", attachment=self.ATT)
+        comment_body = (
+            "같은 규격이 한 번 더 제보됐습니다. 가이드 주소: (없음)\n"
+            "첨부 PDF 1개 추가 (비공개 보관, 운영자 확인용 경로 `spec-reports/2026-11-26/guide-AbC.pdf`). "
+            "이 첨부로 자동 점검을 다시 실행합니다.\n\n<!-- acv-spec-report\n"
+            + _json.dumps(report, ensure_ascii=False) + "\n-->"
+        )
+        res, _ = self.run_att(comment_body, self.pdf_data("Mobile banner 320x250 JPG PNG"))
+        self.assertEqual(res["status"], "attachment")
+
     def test_official_url_without_the_size_falls_back_to_the_attachment(self):
         res, _ = self.run_att(body(attachment=self.ATT), self.pdf_data("Banner 320 x 250"), fetcher=page("<p>nothing here</p>"))
         self.assertEqual(res["status"], "attachment")
