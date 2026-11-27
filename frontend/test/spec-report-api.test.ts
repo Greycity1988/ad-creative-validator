@@ -153,6 +153,15 @@ describe('POST /api/spec-report', () => {
       expect((await res.json()).error).toContain('첨부');
     });
 
+    it('accepts files with an OIDC-connected store (BLOB_STORE_ID, no static token)', async () => {
+      delete process.env.BLOB_READ_WRITE_TOKEN;
+      process.env.BLOB_STORE_ID = 'store_test';
+      const res = await handler(multipart({ ...good, guideUrl: '' }, { bytes: pdfBytes, name: 'a.pdf', type: 'application/pdf' }));
+      delete process.env.BLOB_STORE_ID;
+      expect(res.status).toBe(201);
+      expect(putCalls).toHaveLength(1);
+    });
+
     it('says so when the private store is not connected', async () => {
       delete process.env.BLOB_READ_WRITE_TOKEN;
       const res = await handler(multipart({ ...good, guideUrl: '' }, { bytes: pdfBytes, name: 'a.pdf', type: 'application/pdf' }));

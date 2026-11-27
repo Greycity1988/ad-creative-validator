@@ -8,8 +8,8 @@
  * form falls back to a prefilled GitHub issue link.
  *
  * A guide file (PDF/PNG/JPG, up to 4MB) may come with the report as multipart form data. It is
- * stored in the project's private Blob store (BLOB_READ_WRITE_TOKEN, set by Vercel when the store is
- * connected) and deleted automatically after 90 days. The public issue shows only its name and size.
+ * stored in the project's private Blob store (connected in Vercel; credentials come from BLOB_STORE_ID
+ * with OIDC, or BLOB_READ_WRITE_TOKEN) and deleted automatically after 90 days. The public issue shows only its name and size.
  */
 import { put } from '@vercel/blob';
 import {
@@ -123,7 +123,10 @@ export async function handleSpecReport(req: Request): Promise<Response> {
 
   const token = process.env.GITHUB_REPORT_TOKEN;
   if (!token) return json(503, { ok: false, fallback: true, error: '지금은 바로 접수할 수 없습니다.' });
-  if (file && !process.env.BLOB_READ_WRITE_TOKEN) {
+  // A connected store gives either a static token or, on newer projects, BLOB_STORE_ID plus the
+  // per-request OIDC token that Vercel passes to the function (read by @vercel/blob itself).
+  const blobReady = !!(process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID);
+  if (file && !blobReady) {
     return json(503, { ok: false, fallback: !report.guideUrl, error: '지금은 첨부 파일을 받을 수 없습니다. 파일 없이 가이드 주소로 제보해 주세요.' });
   }
 
