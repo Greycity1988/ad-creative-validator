@@ -65,7 +65,21 @@ class CheckSpecReportTest(unittest.TestCase):
     def added(self):
         import yaml
         data = yaml.safe_load((c.SPECS / "appier.yaml").read_text(encoding="utf-8"))
+        self.assert_passes_spec_audit()
         return data["placements"][-1]
+
+    def assert_passes_spec_audit(self):
+        """The workflow runs verify_specs.py before opening the PR; what the checker adds must pass it."""
+        import contextlib
+        import verify_specs as v
+        old, v.SPECS_DIR = v.SPECS_DIR, c.SPECS
+        try:
+            log = io.StringIO()
+            with contextlib.redirect_stdout(log):
+                ok, _ = v.test_schema_and_dimensions()
+            self.assertTrue(ok, log.getvalue())
+        finally:
+            v.SPECS_DIR = old
 
     def test_found_on_official_page(self):
         res, comment = self.run_case(body(), page(
@@ -91,6 +105,7 @@ class CheckSpecReportTest(unittest.TestCase):
         self.assertEqual(res["status"], "verified")
         p = self.added()
         self.assertNotIn("max_file_size_kb", p)
+        self.assertEqual(p["unstated"], ["max_file_size"])
         self.assertNotIn("require_transparency", p)
         self.assertIn("문서에서 못 찾음", comment)
 
