@@ -7,7 +7,7 @@ import {
   Image as ImageIcon,
   Folder,
   HelpCircle,
-  ExternalLink,
+  Send,
 } from 'lucide-react';
 import type { SpecReportPrefill } from './SpecReportModal';
 import { ValidationItem, CheckItem, PlacementResult } from '../types';
@@ -558,25 +558,25 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                       {/* Status Badge */}
                       <td className="py-3.5 px-4 text-center">
                         {isPass ? (
-                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-accent-mint bg-accent-mint/10 border border-accent-mint/20 font-mono">
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap text-accent-mint bg-accent-mint/10 border border-accent-mint/20">
                             <span className="w-1.5 h-1.5 rounded-full bg-accent-mint" />
                             <span>적합 (통과)</span>
                           </span>
                         ) : isUnreg ? (
                           <span
-                            className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-ink-secondary bg-canvas-subtle border border-line font-mono"
+                            className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap text-ink-secondary bg-canvas-subtle border border-line"
                             title="ACV에 이 크기의 지면이 없어 판정하지 않았습니다"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-ink-muted" />
                             <span>규격 미등록</span>
                           </span>
                         ) : isFail ? (
-                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-status-fail bg-rose-500/10 border border-rose-500/20 font-mono">
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap text-status-fail bg-rose-500/10 border border-rose-500/20">
                             <span className="w-1.5 h-1.5 rounded-full bg-status-fail" />
                             <span>반려 위험</span>
                           </span>
                         ) : (
-                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-700 bg-amber-500/10 border border-amber-500/20 font-mono">
+                          <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap text-amber-700 bg-amber-500/10 border border-amber-500/20">
                             <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
                             <span>수정 권장</span>
                           </span>
@@ -608,10 +608,11 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                                     format: file.format,
                                   })
                                 }
-                                className="inline-flex items-center gap-1 text-[11px] font-bold text-accent hover:underline cursor-pointer"
+                                title="매체 공식 가이드에 있는 규격이라면 알려주세요. 확인 후 ACV에 추가됩니다."
+                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-extrabold whitespace-nowrap bg-[#A8FF1A] hover:bg-[#b8ff33] text-black shadow-[0_0_10px_rgba(168,255,26,0.3)] active:scale-[0.98] transition-all cursor-pointer"
                               >
-                                공식 규격이라면 제보하기
-                                <ExternalLink className="w-3 h-3" />
+                                <Send className="w-3.5 h-3.5" />
+                                공식 규격 제보하기
                               </button>
                             )}
                           </div>
@@ -642,7 +643,7 @@ export const BatchSummaryView: React.FC<BatchSummaryViewProps> = ({
                         <button
                           type="button"
                           onClick={() => onSelectFileDetail(file.index)}
-                          className="inline-flex items-center space-x-1 text-xs font-bold text-accent hover:text-accent-hover bg-surface hover:bg-canvas-subtle border border-line px-3 py-1.5 rounded-full transition-all cursor-pointer shadow-2xs"
+                          className="inline-flex items-center space-x-1 text-xs font-bold whitespace-nowrap text-accent hover:text-accent-hover bg-surface hover:bg-canvas-subtle border border-line px-3 py-1.5 rounded-full transition-all cursor-pointer shadow-2xs"
                         >
                           <span>상세</span>
                           <ArrowRight className="w-3 h-3" />
