@@ -79,6 +79,7 @@ jobs:
           echo "label=$(jq -r '.label // ""' "$OUT/result.json")" >> "$GITHUB_OUTPUT"
 
       - name: Regenerate site data and run the spec audit
+        id: audit
         if: steps.check.outputs.ready == 'true'
         run: |
           python scripts/sync_specs.py
@@ -110,9 +111,18 @@ jobs:
         if: always() && steps.check.outcome == 'success'
         env:
           LABEL: ${{ steps.check.outputs.label }}
+          AUDIT: ${{ steps.audit.outcome }}
         run: |
-          gh issue comment "$ISSUE" --body-file "$OUT/comment.md"
           label="$LABEL"
+          if [ "$AUDIT" = "failure" ]; then
+            {
+              echo
+              echo
+              echo "> 추가할 지면이 규격 검사(verify_specs.py)를 통과하지 못해 PR을 열지 않았습니다. 운영자가 Actions 로그를 확인하겠습니다."
+            } >> "$OUT/comment.md"
+            label="needs-human"
+          fi
+          gh issue comment "$ISSUE" --body-file "$OUT/comment.md"
           if [ -n "$label" ]; then
             gh label create "$label" --color FBCA04 --description "자동 점검으로 확인하지 못해 사람이 봐야 함" 2>/dev/null || true
             gh issue edit "$ISSUE" --add-label "$label"

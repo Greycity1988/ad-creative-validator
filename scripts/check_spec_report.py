@@ -328,6 +328,9 @@ def build_placement(r: dict, issue: int, ev: dict, kind: str, doc_date: dt.date 
             p["max_file_size_kb"] = r["maxKb"]
         else:
             notes.append(f"제보된 최대 용량 {r['maxKb']}KB는 문서에서 찾지 못해 넣지 않음.")
+    if "max_file_size_kb" not in p:
+        # The spec audit needs a limit or an explicit "the guide states none" marker.
+        p["unstated"] = ["max_file_size"]
     p["allowed_formats"] = formats
     if r["transparent"]:
         if "transparent" in ev:
